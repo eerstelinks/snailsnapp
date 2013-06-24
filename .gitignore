@@ -1,0 +1,13 @@
+# ignore Mac OS files
+.DS_Store
+
+# ignore Sublime Text config files
+*.sublime-workspace
+*.sublime-project
+*sftp-config.json
+
+# ignore all these file types
+*.css
+*.jpg
+*.png
+*.ico
