@@ -11,3 +11,6 @@
 *.jpg
 *.png
 *.ico
+*.pyc
+
+app/0.1/build.log
