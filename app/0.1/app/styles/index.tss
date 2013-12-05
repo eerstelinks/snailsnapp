@@ -1,8 +1,20 @@
+"*": {
+	color: "#000"
+},
 ".container": {
 	backgroundColor:"white"
 },
-"Label": {
+"#counter": {
 	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
-	color: "#000"
+	height: 35,
+	top: 100,
+	font: {
+		fontSize: '35dp',
+		fontWeight: 'normal'
+	}
+},
+"#label": {
+	width: Ti.UI.SIZE,
+	height: 150,
+	top: 150
 }
