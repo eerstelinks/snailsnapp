@@ -54,7 +54,7 @@ function showErrorAlert(message) {
 
 function showSuccessAlert(message) {
 	dialog = Ti.UI.createAlertDialog({
-    	message: message || 'Everything succeded',
+    	message: message || 'This was a big success',
     	ok: 'Let me go',
     	title: 'Snailed it'
 	}).show();
@@ -70,10 +70,10 @@ function submitForm(e) {
 	var error = '';
 	
 	if (emailMe == '' && emailFriend != '') {
-		error = 'You can only invite a friend when you fill in your own email. Don\'t worry, we won\'t mail you twice!';
+		error = 'You can only invite a friend when you enter your own e-mail. Don\'t worry, we won\'t mail you twice!';
 	}
 	else if (emailMe == '') {
-		error = 'Please fill in you own email';
+		error = 'Please enter your e-mail';
 	}
 	else if (!validateEmail(emailMe)) {
 		error = 'Your own email is not valid';
@@ -83,7 +83,7 @@ function submitForm(e) {
 	}
 	else if (emailFriend == '' && askedForFriend == 'false') {
 		Ti.App.Properties.setString('askedForFriend', 'true');
-		error = 'Sure you don\'t want to invite a friend? Our invites go fast! Submit again with or without a friend invite.';
+		error = 'Sure you don\'t want to invite a friend? Our invites go fast! Submit again with or without inviting a friend.';
 	}
 	
 	if (error != '') {
@@ -93,7 +93,7 @@ function submitForm(e) {
 		
 		sendData();
 		
-    	showSuccessAlert('You will get your invite soon!');
+    	showSuccessAlert('Stay tuned, you will get your invite soon!');
 		
 		if (emailFriend != '') {
 			$.emailFriend.setEditable(false);

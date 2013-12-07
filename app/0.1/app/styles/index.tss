@@ -92,6 +92,14 @@
 	color: '#8D8D8D',
 	width: '90%',
 },
+'.bold': {
+	font: {
+		fontFamily:'Helvetica',
+        fontSize: '18dp',
+        fontStyle: 'normal',
+		fontWeight: 'bold'
+	}
+},
 '.spacer': {
 	top: 50,
 	height: 0,
