@@ -1,20 +1,147 @@
-"*": {
-	color: "#000"
+'ImageView[platform=ios]': {
+    preventDefaultImage: true // never show ugly image while loading remote
 },
-".container": {
-	backgroundColor:"white"
+'Label': {
+	color: 'white',
+    font: {
+        fontFamily:'Helvetica',
+        fontSize: '16dp',
+        fontStyle: 'normal',
+        fontWeight: 'normal'
+    },
 },
-"#counter": {
-	width: Ti.UI.SIZE,
-	height: 35,
-	top: 100,
+'TextField': {
+	borderStyle: "Ti.UI.INPUT_BORDERSTYLE_ROUNDED",
+	backgroundColor: "white",
+	color: "black",
+	width: "90%",
+	height: 30,
+	hintText: 'Focus to see keyboard with toolbar',
+    paddingLeft: 5,
+    paddingRight: 5,
+    autocorrect: true,
+},
+'.arrow': {
+	top: -20,
+    backgroundColor: Alloy.CFG.green,
+    height: 40,
+    width: 40,
+    transform: Alloy.Globals.rotateArrow
+},
+
+'#win': {
+	//exitOnClose: "true",
+	//fullscreen: "false",
+},
+'#scrollView': {
+	showVerticalScrollIndicator: "false",
+	showHorizontalScrollIndicator: "false",
+	disableBounce: "true",
+	height: "100%",
+	width: "100%",
+	layout: 'vertical',
+},
+
+'#timerscreen': {
+	 backgroundColor: Alloy.CFG.green,
+	 top: '0',
+	 width: "100%"
+},
+'#timer': {
+	top: '10%',
+    font: {
+        fontSize: '35dp',
+        fontWeight: 'normal'
+    }
+},
+'#image': {
+	width: '200%',
+},
+'.snailname': {
+	bottom: '10%',
+    font: {
+        fontSize: '45dp',
+        fontWeight: 'normal'
+    }
+},
+
+'#explanation': {
+	//width: "100%",
+	//height: 'auto',
+	backgroundColor: Alloy.CFG.grey,
+},
+'#timerArrow': {
+    backgroundColor: Alloy.CFG.green,
+},
+'#timerArrow[platform=ios]': {
+	top: -50,
+},
+'#explanationBox': {
+	//height: 'auto',
+	//width: "100%",
+	layout: 'vertical',
+},
+'.inline': {
+	top: 15,
+	width: '90%',
+	height: 'auto',
+	borderRadius: '10',
+},
+'.text': {
+	top: 15,
+	color: '#8D8D8D',
+	width: '90%',
+},
+'.spacer': {
+	top: 50,
+	height: 0,
+},
+
+
+'#invite': {
+	backgroundColor: Alloy.CFG.green,
+},
+'#inviteArrow': {
+    backgroundColor: Alloy.CFG.grey,
+},
+'#inviteBox': {
+	top: 50,
+	layout: 'vertical',
+},
+'.releaseText': {
 	font: {
-		fontSize: '35dp',
-		fontWeight: 'normal'
+		fontSize: '30',
 	}
 },
-"#label": {
-	width: Ti.UI.SIZE,
-	height: 150,
-	top: 150
+'.inviteField': {
+	top: 10,
+	height: 30,
+	autocorrect: false,
+	keyboardType: Ti.UI.KEYBOARD_EMAIL, 
+},
+'.inviteField[platform=android]': {
+	height: 'auto',
+},
+'.inviteText': {
+	top: 15,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+	left: '5%',
+	width: '90%',
+},
+'#submit': {
+	top: 20,
+	color: Alloy.CFG.green,
+	backgroundColor: Alloy.CFG.white,
+	width: "90%",
+	height: 40,
+},
+'#submit[platform=android]': {
+	height: 60,
+},
+'.byText': {
+	bottom: 20,
+	color: Alloy.CFG.white,
+	font: {
+		fontSize: '11',
+	}
 }

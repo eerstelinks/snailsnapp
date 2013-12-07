@@ -1,6 +1,41 @@
 <Alloy>
-	<Window class="container">
-		<Label id="counter"></Label>
-		<Label id="label" onClick="doClick">Klik niet op mij!</Label>
-	</Window>
+    <Window id="win">
+        <ScrollView id="scrollView">
+            <View id="timerscreen">
+            	<Label id="timer">Loading timer...</Label>
+				<ImageView id="image" image="/images/logo.png" />
+            	<Label class="snailname">snailsnapp</Label>
+            </View>
+            <View id="explanation">
+            	<View class="arrow" id="animation"></View>
+	            <View id="explanationBox" top="50">
+	            	<Label class="text">The coolest power of the snail is that it leaves mucus behind where-ever it goes.</Label>
+					<Label class="text">Wouldn't it be awesome if you could do the same? If you could leave a memory of that very special moment on that exact spot?</Label> 
+					<ImageView class="inline" image="/images/snailtrail.png" />
+					<Label class="text">Snailsnapp does just that. It is the new way to take, share and store your memories on the locations where they belong.</Label>
+					<Label class="text">You will soon be able to start your personal snailtrail!</Label> 
+					<ImageView class="inline" image="/images/snailexplorer.png" />
+					<Label class="text">If you do snap a pic that is worth sharing to the world, do not hesitate!</Label>	
+					<Label class="text">One of Snailsnapp's coolest features is your ability to publicly share and explore spotlight news broadcasted on-site!</Label>
+					<Label class="spacer"></Label>
+	            </View>
+	        </View>
+            <View id="invite">
+            	<View class="arrow" id="inviteArrow"></View>
+            	<View id="inviteBox">
+            		<Label class="inviteText releaseText">Only 1000 invites available for the first release!</Label>
+            		
+            		<Label class="inviteText" top="40">Get yourself an invite now:</Label>
+            		
+            		<TextField id="emailMe" class="inviteField" hintText="your email" />
+            		
+            		<Label class="inviteText">Invite 1 friend:</Label>
+            		<TextField id="emailFriend" class="inviteField" hintText="your friends email" />
+            		
+            		<Button id="submit" onClick="submitForm" title="Give me this awesomeness!" />
+            	</View>
+            	<Label class="byText">by Christian &amp; Adriaan</Label>
+            </View>
+        </ScrollView>
+    </Window>
 </Alloy>

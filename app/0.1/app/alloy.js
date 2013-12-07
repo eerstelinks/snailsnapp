@@ -9,3 +9,10 @@
 // object. For example:
 //
 // Alloy.Globals.someGlobalFunction = function(){};
+
+// colors
+Alloy.CFG.green = "#18DB6E";
+Alloy.CFG.grey = "#DCDCDC";
+Alloy.CFG.white = "#FFFFFF";
+
+Alloy.Globals.rotateArrow = Ti.UI.create2DMatrix().rotate(-45);
