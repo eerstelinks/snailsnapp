@@ -1,3 +1,7 @@
+// settings
+var app_version = '1.0';
+var api_url = "https://eerstelinks.nl/snailsnapp/api";
+
 // countdown part
 var countdownTo = new Date(2014,00,15).getTime();
 var counter     = setInterval(countdown, 1000);
@@ -91,16 +95,20 @@ function submitForm(e) {
 	}
 	else {
 		
-		sendData();
+		sendData(function(message) {
+			
+			var showMessage = message || 'Stay tuned, you will get your invite soon!';
+			
+	    	showSuccessAlert(showMessage);
+			
+			if (emailFriend != '') {
+				//$.emailFriend.setEditable(false);
+				//$.submit.hide();
+			}
+			
+			//$.emailMe.setEditable(false);
+		});
 		
-    	showSuccessAlert('Stay tuned, you will get your invite soon!');
-		
-		if (emailFriend != '') {
-			$.emailFriend.setEditable(false);
-			$.submit.hide();
-		}
-		
-		$.emailMe.setEditable(false);
 	}
 	
 };
@@ -111,12 +119,59 @@ function validateEmail(email) {
     return re.test(email);
 } 
 
-function sendData() {
+function sendData(callback) {
 	// email
 	// email friend
 	// os
 	// locale
 	// version
+	
+	var data = {
+		email_own: $.emailMe.value,
+		email_friend: $.emailFriend.value,
+		os_name: Titanium.Platform.osname,
+		os_version: Titanium.Platform.version,
+		os_locale: Titanium.Platform.locale,
+		user_ip: Titanium.Platform.address,
+		app_version: app_version
+	};
+	
+	var client = Ti.Network.createHTTPClient({
+		// function called when the response data is available
+		onload : function(e) {
+			
+			var response = JSON.parse(this.responseText);
+			
+			if (response == null) {
+				showErrorAlert('Something is wrong with parsing the response, try again later');
+			}
+			else if (response.status == 'success') {
+				if (response.message) {
+					callback(response.message);
+				}
+				else {
+					callback();
+				}
+			}
+			else if (response.message) {
+				showErrorAlert(response.message);
+			}
+			else {
+				showErrorAlert('Something went wrong with receiving the data, try again later');
+			}
+		},
+		// function called when an error occurs, including a timeout
+		onerror : function(e) {
+			showErrorAlert('Something went wrong with sending the data (' + e.error + '), try again later');
+		},
+		timeout : 5000  // in milliseconds
+	});
+	
+	// Prepare the connection.
+	client.open("POST", api_url + '/post/invite');
+	
+	// Send the request.
+	client.send();
 }
 
 // open the first window

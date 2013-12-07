@@ -3,7 +3,7 @@
         <ScrollView id="scrollView">
             <View id="timerscreen">
             	<Label id="timer">Loading timer...</Label>
-				<ImageView id="image" image="/images/logo.png" />
+				<ImageView id="image" />
             	<Label class="snailname">snailsnapp</Label>
             </View>
             <View id="explanation">

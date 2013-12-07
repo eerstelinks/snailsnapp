@@ -31,7 +31,7 @@ if (isset($_SERVER['SERVER_ADDR'])
 ) {
     $isDeveloper = true;
     $isLocalhost = true;
-//    $useLocalMysql = true;
+    // $useLocalMysql = true;
 }
 if (isset($_GET['debug']) || $_SERVER['REMOTE_ADDR'] == $ourIP) {
     $isDeveloper = true;
@@ -56,28 +56,15 @@ if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
 }
 
 if ($isLocalhost) {
-    if (substr($_SERVER['SERVER_ADDR'], 0, 10) == '192.168.1.') {
-        $apiURL = 'http://'.$_SERVER['HTTP_HOST'].'/api/v1/';
-    }
-    else {
-        $apiURL = 'http://eerstelinks/api/v1/';
-    }
     $host = 'dbc1039.ext.intention.nl';
 }
 else {
-    // https is only supported on eerstelinks.nl, so don't use it on other domains.
-    if ($_SERVER['HTTP_HOST'] == 'eerstelinks.nl') {
-        $apiURL = $protocol.'://'.$_SERVER['HTTP_HOST'].'/api/v1/';
-    }
-    else {
-        $apiURL = 'http://'.$_SERVER['HTTP_HOST'].'/api/v1/';
-    }
     $host = 'dbc1039.int.intention.nl';
 }
 
 // check for database
 if (!defined('DATABASE')) {
-    define('DATABASE', 'c2526_sites');
+    define('DATABASE', 'c2526_snailsnapp');
 }
 
 // use local database, usefull for Marocco
@@ -100,87 +87,5 @@ if ($mysqli->connect_error) {
 $mysqli->query('SET NAMES utf8');
 $mysqli->query('SET CHARACTER SET utf8');
 
-$pathItems = explode("/", $_SERVER['REQUEST_URI']);
-// search for domainname in database if != eerstelinks
-if (!empty($_GET['pathname'])) {
-    $searchMysql  = "`pathname` LIKE ".cf_quotevalue($_GET['pathname']);
-    $nameForError = htmlentities($_GET['pathname']);
-    $url_lang_placeholder = '/[LANG]/'.htmlentities($_GET['pathname']);
-}
-elseif (strpos($_SERVER['HTTP_HOST'], 'eerstelinks') === false && substr($_SERVER['SERVER_ADDR'], 0, 10) != '192.168.1.') {
-
-    // check if there is a language code in url (eg.: http://frankvreeswijk.com/nl)
-    if (!isset($current_lang_code) && isset($pathItems[1]) && isset($languages[$pathItems[1]])) {
-        $current_lang_code = $pathItems[1];
-    }
-    $searchMysql  = "`hostname` LIKE ".cf_quotevalue($_SERVER['HTTP_HOST']);
-    $nameForError = $_SERVER['HTTP_HOST'];
-    $url_lang_placeholder = 'http://'.$_SERVER['HTTP_HOST'].'/[LANG]';
-}
-elseif (isset($pathItems[1])) {
-
-    // check if the first dir is a language code (eg.: en, nl)
-    if (isset($pathItems[2]) && isset($languages[$pathItems[1]])) {
-        $pathname             = $pathItems[2];
-        if (!isset($current_lang_code)) {
-            $current_lang_code    = $pathItems[1];
-        }
-    }
-    else {
-        $pathname = $pathItems[1];
-    }
-    $searchMysql  = "`pathname` LIKE ".cf_quotevalue($pathname);
-    $nameForError = $pathname;
-
-    $url_lang_placeholder = '/[LANG]/'.$pathname;
-
-    // used multiple times, so unset after use
-    unset($pathname);
-}
-
-if (!empty($searchMysql)) {
-
-    $result = $mysqli->query("SHOW TABLES LIKE 'websites'");
-    $tableExists = $result->num_rows > 0;
-
-    if ($tableExists) {
-        $query = "SELECT * FROM `websites`
-            WHERE ".$searchMysql." LIMIT 0,2";
-        $result = $mysqli->query($query);
-
-        if ($result->num_rows == 1) {
-            $row = $result->fetch_assoc();
-            $website = $row;
-        }
-    }
-    else {
-        $website = false;
-    }
-}
-
-// set language code default to first element of $website['languages']
-// todo: set language code depending on country
-if (empty($current_lang_code)) {
-    if (isset($website['languages'])) {
-        $website_languages = explode(",", $website['languages']);
-        $current_lang_code = $website_languages[0];
-    }
-    else {
-        $current_lang_code = 'nl';
-    }
-}
-
-// set the $lang variable and get it from the json file
-// remove every language except the current language
-$languageJson  = file_get_contents(dirname(__FILE__).'/lang/lang.json');
-$languageArray = json_decode($languageJson, true);
-$lang          = cf_getonelang($languageArray, $current_lang_code);
-
-if (isset($website)) {
-    $selectedLanguagesArray = explode(",", $website['languages']);
-}
-
-$postSafe = cf_htmlentities_array($_POST);
-$getSafe  = cf_htmlentities_array($_GET);
 
 ?>

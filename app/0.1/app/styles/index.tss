@@ -55,7 +55,12 @@
     }
 },
 '#image': {
-	width: '200%',
+	width: 320,
+	image: "/images/logo_smartphone.png",
+},
+'#image[formFactor=tablet]': {
+	width: 1024,
+	image: "/images/logo_tablet.png",
 },
 '.snailname': {
 	bottom: '10%',
