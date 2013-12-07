@@ -75,6 +75,12 @@ function submitForm(e) {
 	else if (emailMe == '') {
 		error = 'Please fill in you own email';
 	}
+	else if (!validateEmail(emailMe)) {
+		error = 'Your own email is not valid';
+	}
+	else if (emailFriend != '' && !validateEmail(emailFriend)) {
+		error = 'Your friends email is not valid';
+	}
 	else if (emailFriend == '' && askedForFriend == 'false') {
 		Ti.App.Properties.setString('askedForFriend', 'true');
 		error = 'Sure you don\'t want to invite a friend? Our invites go fast! Submit again with or without a friend invite.';
@@ -98,6 +104,12 @@ function submitForm(e) {
 	}
 	
 };
+
+// source: http://stackoverflow.com/a/46181
+function validateEmail(email) { 
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+} 
 
 function sendData() {
 	// email
