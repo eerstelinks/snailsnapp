@@ -1,32 +1,39 @@
 // settings
 var app_version = '1.0';
 var api_url = "https://eerstelinks.nl/snailsnapp/api";
+var counter;
 
-// countdown part
-var countdownTo = new Date(2014,00,15).getTime();
-var counter     = setInterval(countdown, 1000);
+var defaultCountDownTo = new Date(2014,00,15).getTime();
 
-function countdown() {
-        var miliseconds = countdownTo - new Date().getTime();
-        var seconds     = Math.round(miliseconds / 1000);
-        
-        var days        = Math.floor(seconds / 86400);
-        seconds         = seconds - days * 86400;
-        
-        var hours       = Math.floor(seconds / 3600);
-        seconds         = seconds - hours * 3600;
-        
-        var minutes     = Math.floor(seconds / 60);
-        seconds         = seconds - minutes * 60;
+// start count down at certain point
+function countdownTo(time) {
+	counter = setInterval(function() { countdown(time); }, 1000);
+}
+
+function countdown(time) {
+		
+        var miliseconds = time - new Date().getTime();
         
          if (miliseconds <= 0) {
-                clearInterval(counter);
-                //counter ended, do something here
-                $.timer.text = 'Update this app!';
                 
-                return;
+                clearInterval(counter);
+                
+                //counter ended
+                $.timer.text = 'Update this app!';
         }
         else {
+        	
+	        var seconds     = Math.round(miliseconds / 1000);
+	        
+	        var days        = Math.floor(seconds / 86400);
+	        seconds         = seconds - days * 86400;
+	        
+	        var hours       = Math.floor(seconds / 3600);
+	        seconds         = seconds - hours * 3600;
+	        
+	        var minutes     = Math.floor(seconds / 60);
+	        seconds         = seconds - minutes * 60;
+        	
         	$.timer.text = days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's';
         }        
 }
@@ -55,6 +62,54 @@ if (Ti.App.Properties.getString('askedForFriend') == null) {
 // set random string
 if (Ti.App.Properties.getString('uniqueId') == null) {
 	Ti.App.Properties.setString('uniqueId', randomString(20));
+}
+
+// get time for update from our server
+if (Titanium.Network.networkType != Titanium.Network.NETWORK_NONE) {
+
+	var data = {
+		time_zone: new Date().getTimezoneOffset(),
+		platform: Titanium.Platform.name,
+		os_version: Titanium.Platform.version,
+		os_name: Titanium.Platform.osname,
+		locale: Titanium.Platform.locale,
+		app_version: app_version,
+		user_random_string: Ti.App.Properties.getString('uniqueId')
+	};
+	
+	var clientTimer = Ti.Network.createHTTPClient({
+		
+		// function called when the response data is available
+		onload : function(e) {
+			
+			var response = JSON.parse(this.responseText);
+			
+			if (response != null && response.status == 'success' && response.release_date) {
+
+				var jsReleaseDate = new Date(response.release_date).getTime();
+
+				Ti.App.Properties.setString('gotTimeFromServerOn', new Date().getTime());
+				Ti.App.Properties.setString('releaseTime', jsReleaseDate);
+				countdownTo(jsReleaseDate);
+			}
+			else {
+				countdownTo(defaultCountDownTo);
+			}
+		},
+		onerror: function(e) {
+			countdownTo(defaultCountDownTo);
+		},
+		timeout: 10*1000
+	});
+
+	clientTimer.open("POST", api_url + '/post/install');
+	clientTimer.send(data);
+}
+else if (Ti.App.Properties.getString('releaseTime') != null) {
+	countdownTo(Ti.App.Properties.getString('releaseTime'));
+}
+else {
+	countdownTo(defaultCountDownTo);
 }
 
 function randomString(string_length) {
@@ -122,9 +177,11 @@ function submitForm(e) {
 			
 			if (emailFriend != '') {
 				$.emailFriend.setEditable(false);
+				$.emailFriend.setOpacity(0.4);
 				$.submit.hide();
 			}
 			
+			$.emailMe.setOpacity(0.4);
 			$.emailMe.setEditable(false);
 		});
 		
@@ -205,7 +262,6 @@ function sendData(callback) {
 	// Send the request.
 	client.send(data);
 }
-
 
 // open the first window
 $.win.open();

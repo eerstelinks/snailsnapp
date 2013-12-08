@@ -4,12 +4,12 @@ require(dirname(__FILE__).'/../assets/json_header.php');
 $return['status']  = 'error';
 
 if (count($_POST) == 0) {
-  $return['message'] = 'The server has nothing received from the app, try again later '.print_r($_POST, true).print_r($_GET, true);
+  $return['message'] = 'The server has nothing received from the app, try again later';
   die(json_encode($return));
 }
 elseif (empty($_POST['email_friend'])) {
   $return['status'] = 'success';
-  $return['message'] = 'Stay tuned, you will get your invite soon! You still can invite a friend, but you can\'t change your own email';
+  $return['message'] = 'Stay tuned, you will get your invite soon! You may still invite a friend, but you can\'t change your own email';
   echo json_encode($return);
 }
 else {
