@@ -4,10 +4,10 @@ body {
   div.container {
 
     div.row {
-      height: 100%;
 
       div.iphone-green {
         background-image: url("/img/iphone-green.png");
+        background-position: center top;
         background-repeat: no-repeat;
         margin-left: auto;
         margin-right: auto;
@@ -17,17 +17,19 @@ body {
         position: relative;
 
         iframe {
+          border: 0;
           margin-top: 1px;
           position: absolute;
+          top: 0;
           margin-left: -11px;
           width: 282px;
           height: 496px;
 
-            -moz-transform: scale(0.60, 0.60);
-            -webkit-transform: scale(0.60, 0.60);
-            -o-transform: scale(0.60, 0.60);
-            -ms-transform: scale(0.60, 0.60);
-            transform: scale(0.60, 0.60);
+          -moz-transform: scale(0.60, 0.60);
+          -webkit-transform: scale(0.60, 0.60);
+          -o-transform: scale(0.60, 0.60);
+          -ms-transform: scale(0.60, 0.60);
+          transform: scale(0.60, 0.60);
         }
       }
       h1.header {
