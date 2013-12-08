@@ -36,7 +36,7 @@ if (Titanium.Platform.name == 'iPhone OS') {
 	$.timerArrow.animate({
 		top: -20,
 		duration: 300,
-		delay: 5000
+		delay: 1500
 	});
 }
 
