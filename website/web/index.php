@@ -33,7 +33,7 @@
     <!-- Google analytics tracker -->
     <script src="js/analytics.js"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="assets/bootstrap-3.0.3/js/bootstrap.min.js"></script>
 
