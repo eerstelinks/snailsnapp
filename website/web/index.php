@@ -11,7 +11,7 @@
     <link href="assets/bootstrap-3.0.3/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- stylesheets -->
-    <link href="css/start.css" rel="stylesheet">
+    <link href="style/css/start.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,7 +25,7 @@
     <div class="container">
       <div class="row">
         <div class="iphone-green">
-          <iframe src="http://127.0.0.1:8020/index.html" ></iframe>
+          <iframe src="http://snailsnapp.com/app/iframe" ></iframe>
         </div>
         <h1 class="header">Snailsnapp is coming!</h1>
       </div>
