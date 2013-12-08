@@ -12,7 +12,3 @@
 *.png
 *.ico
 *.pyc
-
-app/0.1/build.log
-app/0.1/.fastdev.lock
-app/0.1/app/assets/

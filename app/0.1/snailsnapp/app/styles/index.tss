@@ -30,8 +30,8 @@
 },
 
 '#win': {
-	//exitOnClose: "true",
-	//fullscreen: "false",
+	exitOnClose: "true",
+	fullscreen: "false",
 },
 '#scrollView': {
 	showVerticalScrollIndicator: "false",
@@ -71,8 +71,7 @@
 },
 
 '#explanation': {
-	//width: "100%",
-	//height: 'auto',
+	height: 'auto',
 	backgroundColor: Alloy.CFG.grey,
 },
 '#timerArrow': {
@@ -82,8 +81,7 @@
 	top: -50,
 },
 '#explanationBox': {
-	//height: 'auto',
-	//width: "100%",
+	height: 'auto',
 	layout: 'vertical',
 },
 '.inline': {
@@ -97,10 +95,13 @@
 	color: '#8D8D8D',
 	width: '90%',
 },
+'.smallTopMargin': {
+	top: 3,
+},
 '.bold': {
 	font: {
 		fontFamily:'Helvetica',
-        fontSize: '18dp',
+        fontSize: '16dp',
         fontStyle: 'normal',
 		fontWeight: 'bold'
 	}

@@ -2,12 +2,12 @@
     <Window id="win">
         <ScrollView id="scrollView">
             <View id="timerscreen">
-            	<Label id="timer">Loading timer...</Label>
+            	<Label id="timer">loading timer...</Label>
 				<ImageView id="image" />
             	<Label class="snailname">snailsnapp</Label>
             </View>
             <View id="explanation">
-            	<View class="arrow" id="animation"></View>
+            	<View class="arrow" id="timerArrow"></View>
 	            <View id="explanationBox" top="50">
 	            	<Label class="bold text">The coolest power of the snail is that it leaves something behind where-ever it goes.</Label>
 					<Label class="text">Wouldn't it be awesome if you could do the same? If you could leave a memory of that very special moment on that exact spot?</Label> 
@@ -17,12 +17,12 @@
 					<ImageView class="inline" image="/images/snailexplorer.png" />
 					<Label class="text">If you do snap a pic that is worth sharing to the world, do not hesitate!</Label>	
 					<Label class="text">One of Snailsnapp's coolest features is your ability to publicly share and explore spotlight news broadcasted on-site!</Label>
-					<Label class="bold text">Why you want snailpower:</Label>
-					<Label class="text">\u2022 It will enable you to leave and find back your memories on a map</Label>
-					<Label class="text">\u2022 By exploring publicly shared pictures you're abe to get you a view on when, what, happened where</Label>
-					<Label class="bold text">Our mission:</Label>
-					<Label class="text">\u2022 Give snailpower to the world!</Label>
-					<Label class="text">\u2022 Privacy first, nothing will ever be shared without permission</Label>
+					<Label class="bold text">Why you want snailpower</Label>
+					<Label class="text smallTopMargin">\u2022 It will enable you to leave and find back your memories on a map</Label>
+					<Label class="text smallTopMargin">\u2022 By exploring publicly shared pictures you're abe to get you a view on when, what, happened where</Label>
+					<Label class="bold text">Our mission</Label>
+					<Label class="text smallTopMargin">\u2022 Give snailpower to the world!</Label>
+					<Label class="text smallTopMargin">\u2022 Privacy first, nothing will ever be shared without permission</Label>
 					<Label class="spacer"></Label>
 	            </View>
 	        </View>

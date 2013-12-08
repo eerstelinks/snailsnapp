@@ -1,0 +1,7 @@
+'Window': {
+	 fullscreen: "true",
+	 backgroundColor: Alloy.CFG.green,
+},
+'#activityIndicator': {
+	color: Alloy.CFG.white,
+}

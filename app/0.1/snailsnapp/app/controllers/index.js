@@ -22,45 +22,64 @@ function countdown() {
          if (miliseconds <= 0) {
                 clearInterval(counter);
                 //counter ended, do something here
+                $.timer.text = 'Update this app!';
+                
                 return;
         }
-
-        $.timer.text = days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's';
+        else {
+        	$.timer.text = days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's';
+        }        
 }
 
+// animate arrow so it will get more attention
+if (Titanium.Platform.name == 'iPhone OS') {
+	$.timerArrow.animate({
+		top: -20,
+		duration: 300,
+		delay: 5000
+	});
+}
 
 // set height of the timerscreen a little less height than the screen
 $.timerscreen.height = Titanium.Platform.displayCaps.platformHeight - 50;
 $.invite.height = Titanium.Platform.displayCaps.platformHeight + 30;
 
-// animate arrow so it will get more attention
-if (Titanium.Platform.name == 'iPhone OS') {
-	$.animation.animate({
-		top: -20,
-		duration: 300,
-		delay: 1500
-	});
-}
-
+// loading animation window
+var loading = Alloy.createController('loading').getView();
 
 // set askedForFriend to false only when it isn't set
 if (Ti.App.Properties.getString('askedForFriend') == null) {
 	Ti.App.Properties.setString('askedForFriend', 'false');
 }
 
-function showErrorAlert(message) {
+// set random string
+if (Ti.App.Properties.getString('uniqueId') == null) {
+	Ti.App.Properties.setString('uniqueId', randomString(20));
+}
+
+function randomString(string_length) {
+	var chars = "0123456789abcdefghiklmnopqrstuvwxyz";
+	var randomstring = '';
+	for (var i=0; i<string_length; i++) {
+		var rnum = Math.floor(Math.random() * chars.length);
+		randomstring += chars.substring(rnum,rnum+1);
+	}
+	return randomstring;
+}
+
+function showErrorAlert(message, button, title) {
 	dialog = Ti.UI.createAlertDialog({
     	message: message || 'Something went wrong',
-    	ok: 'Let me try again',
-    	title: 'Snapp...'
+    	ok: button || 'Let me try again',
+    	title: title || 'Snapp...'
 	}).show();
 }
 
-function showSuccessAlert(message) {
+function showSuccessAlert(message, button, title) {
 	dialog = Ti.UI.createAlertDialog({
     	message: message || 'This was a big success',
-    	ok: 'Let me go',
-    	title: 'Snailed it'
+    	ok: button || 'Let me go',
+    	title: title || 'Snailed it'
 	}).show();
 }
 
@@ -102,11 +121,11 @@ function submitForm(e) {
 	    	showSuccessAlert(showMessage);
 			
 			if (emailFriend != '') {
-				//$.emailFriend.setEditable(false);
-				//$.submit.hide();
+				$.emailFriend.setEditable(false);
+				$.submit.hide();
 			}
 			
-			//$.emailMe.setEditable(false);
+			$.emailMe.setEditable(false);
 		});
 		
 	}
@@ -120,30 +139,39 @@ function validateEmail(email) {
 } 
 
 function sendData(callback) {
-	// email
-	// email friend
-	// os
-	// locale
-	// version
+
+	if (Titanium.Network.networkType == Titanium.Network.NETWORK_NONE) {
+		showErrorAlert('This snail needs to connect to his home!', 'Let me enable internet');
+		return false;
+	}
+
+	// open loading window
+	loading.open();
 	
 	var data = {
+		time_zone: new Date().getTimezoneOffset(),
 		email_own: $.emailMe.value,
 		email_friend: $.emailFriend.value,
-		os_name: Titanium.Platform.osname,
+		platform: Titanium.Platform.name,
 		os_version: Titanium.Platform.version,
-		os_locale: Titanium.Platform.locale,
-		user_ip: Titanium.Platform.address,
-		app_version: app_version
+		os_name: Titanium.Platform.osname,
+		locale: Titanium.Platform.locale,
+		app_version: app_version,
+		user_random_string: Ti.App.Properties.getString('uniqueId')
 	};
 	
 	var client = Ti.Network.createHTTPClient({
+		
 		// function called when the response data is available
 		onload : function(e) {
+			
+			// close loading window
+			loading.close();
 			
 			var response = JSON.parse(this.responseText);
 			
 			if (response == null) {
-				showErrorAlert('Something is wrong with parsing the response, try again later');
+				showErrorAlert('Something is wrong with parsing the response', 'Let me try again later');
 			}
 			else if (response.status == 'success') {
 				if (response.message) {
@@ -157,26 +185,27 @@ function sendData(callback) {
 				showErrorAlert(response.message);
 			}
 			else {
-				showErrorAlert('Something went wrong with receiving the data, try again later');
+				showErrorAlert('Something went wrong with receiving the data', 'Let me try again later');
 			}
 		},
 		// function called when an error occurs, including a timeout
 		onerror : function(e) {
-			showErrorAlert('Something went wrong with sending the data (' + e.error + '), try again later');
+			
+			// close loading window
+			loading.close();
+			
+			showErrorAlert('Something went wrong with sending the data (' + e.error + ')', 'Let me try again later');
 		},
-		timeout : 5000  // in milliseconds
+		timeout : 60*1000  // in milliseconds
 	});
 	
 	// Prepare the connection.
 	client.open("POST", api_url + '/post/invite');
 	
 	// Send the request.
-	client.send();
+	client.send(data);
 }
+
 
 // open the first window
 $.win.open();
-
-
-
-

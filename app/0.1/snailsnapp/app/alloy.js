@@ -16,3 +16,7 @@ Alloy.CFG.grey = "#DCDCDC";
 Alloy.CFG.white = "#FFFFFF";
 
 Alloy.Globals.rotateArrow = Ti.UI.create2DMatrix().rotate(-45);
+
+if (Titanium.Platform.name == 'iPhone OS') {
+	var service = Ti.App.iOS.registerBackgroundService({url:'notification.js'});
+}

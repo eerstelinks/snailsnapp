@@ -1,3 +1,17 @@
+.DS_Store
+build.log
 build
+npm-debug.log
+tmp
+.map
+CHANGELOG.txt
+LICENSE
+LICENSE.txt
+README
+app/assets/
+!assets/images/*.jpg
+!assets/images/*.png
 Resources
 .settings
+.project
+.fastdev.lock
