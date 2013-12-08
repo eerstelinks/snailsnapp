@@ -25,7 +25,7 @@
     <div class="container">
       <div class="row">
         <div class="iphone-green">
-          <iframe src="http://snailsnapp.com/app/iframe" ></iframe>
+          <iframe src="/app/iframe" ></iframe>
         </div>
         <h1 class="header">Snailsnapp is coming!</h1>
       </div>
