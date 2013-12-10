@@ -9,7 +9,7 @@ facebook.addEventListener('login', function(e) {
 		Alloy.createController('map').getView().open();
     }
     else {
-    	showErrorAlert('Something went wrong');
+    	showErrorAlert();
     }
 });
 

@@ -28,14 +28,14 @@ function setLocation(coords){
 
 function locateMe() {
 	if (Ti.Geolocation.locationServicesEnabled) {
-	    Ti.Geolocation.purpose = 'Get Current Location';
+	    Ti.Geolocation.purpose = L('geo_own_location_purpose', 'Get Current Location');
 	    Ti.Geolocation.accuracy = Ti.Geolocation.ACCURACY_BEST;
 	    Ti.Geolocation.distanceFilter = 10;
 	    Ti.Geolocation.preferredProvider = Ti.Geolocation.PROVIDER_GPS;
 	
 	    Ti.Geolocation.getCurrentPosition(function(e) {
 	        if (e.error) {
-	    		showErrorAlert('To locate yourself we need your location, so turn it on in your phone settings', 'Let me turn it on');
+	    		showErrorAlert(L('geo_no_location_message'), L('geo_no_location_button'));
 	        } else {
 	            setLocation(e.coords);
 	        }

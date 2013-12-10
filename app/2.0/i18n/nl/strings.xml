@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="default_error_title">Snapp...</string>
+    <string name="default_error_message">Er ging iets mis</string>
+    <string name="default_error_button">Laat me nog eens proberen</string>
+    <string name="default_success_title">Snailed it</string>
+    <string name="default_success_message">Helemaal gelukt!</string>
+    <string name="default_success_button">Laat me gaan</string>
+    <string name="geo_no_location_message">Om jezelf te localizeren zal je wel even je locatiebepaling aan moeten zetten bij instellingen</string>
+    <string name="geo_no_location_button">Laat het me aanzetten</string>
+</resources>

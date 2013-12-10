@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="default_error_title">Snapp...</string>
+    <string name="default_error_message">Something went wrong</string>
+    <string name="default_error_button">Let me try again</string>
+    <string name="default_success_title">Snailed it</string>
+    <string name="default_success_message">This was a big success</string>
+    <string name="default_success_button">Let me go</string>
+    <string name="geo_no_location_message">To locate yourself we need your location, so turn it on in your phone settings</string>
+    <string name="geo_no_location_button">Let me turn it on</string>
+</resources>
