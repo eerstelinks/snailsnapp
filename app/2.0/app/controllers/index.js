@@ -1,5 +1,18 @@
-// settings
-var app_version = '2.0';
-var api_url = "https://eerstelinks.nl/snailsnapp/api";
+// Alloy required for Facebook
+var facebook = Alloy.Globals.Facebook;
+facebook.appid = "1417460311823818"; // Facebook App ID
+facebook.permissions = ["email", "user_birthday", "user_location", "publish_actions"]; // Facebook App Permissions
 
-Alloy.createController('map').getView().open();
+// Hide fbButton after login
+facebook.addEventListener('login', function(e) {
+    if (e.success) {
+		Alloy.createController('map').getView().open();
+    }
+    else {
+    	showErrorAlert('Something went wrong');
+    }
+});
+
+$.fbButton.style = facebook.BUTTON_STYLE_WIDE; // Shows 'Connect to Facebook' instead of 'Connect'
+
+$.index.open();
