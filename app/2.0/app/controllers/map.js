@@ -1,7 +1,3 @@
-function report(evt) {
-    alert("Annotation " + evt.title + " clicked, id: " + evt.annotation.myid);
-}
-
 $.mapview.showsPointsOfInterest = false;
 $.mapview.userLocationButton = false;
 $.mapview.traffic = false;
