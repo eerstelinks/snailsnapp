@@ -1,0 +1,9 @@
+<Alloy>
+    <Window>
+        <!-- Use the Alloy.Globals.Map namespace to create a map module view -->
+        <View id="mapview" ns="Alloy.Globals.Map" onClick="report"></View>
+
+        <ImageView onClick="locateMe" image="/images/location-arrow.png" bottom="10" right="15" width="30" height="38" />
+
+    </Window>
+</Alloy>
