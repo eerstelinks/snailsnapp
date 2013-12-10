@@ -18,7 +18,12 @@
 '#logoImage': {
 	width: 320,
 	top: 60,
-	image: "/images/logo_loginscreen.png",
+	image: "/images/logo_smartphone.png",
+},
+'#logoImage[platform=tablet]': {
+	width: 1024,
+	top: 200,
+	image: "/images/logo_tablet.png",
 },
 
 '#snailName': {
