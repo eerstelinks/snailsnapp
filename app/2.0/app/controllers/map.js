@@ -7,8 +7,8 @@ $.mapview.userLocation = true;
 $.mapview.region = {
 	latitude: 52.373056, 
 	longitude: 4.892222,
-	latitudeDelta: 0.01,
-	longitudeDelta: 0.01
+	latitudeDelta: 0.1,
+	longitudeDelta: 0.1
 };
 
 function setLocation(coords){
