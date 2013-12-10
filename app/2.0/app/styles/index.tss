@@ -29,4 +29,5 @@
 
 '#fbButton': {
 	bottom: 50,
+	style: Alloy.Globals.Facebook.BUTTON_STYLE_WIDE,
 }

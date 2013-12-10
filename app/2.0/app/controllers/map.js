@@ -43,5 +43,14 @@ function locateMe() {
 	}
 }
 
+Alloy.Globals.Facebook.addEventListener('logout', function(e) {
+    Alloy.createController('index').getView().open();
+});
+
+
+function fbLogOut() {
+	Alloy.Globals.Facebook.logout();
+}
+
 locateMe();
 

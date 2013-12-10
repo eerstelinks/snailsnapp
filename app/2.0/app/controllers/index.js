@@ -13,6 +13,4 @@ facebook.addEventListener('login', function(e) {
     }
 });
 
-$.fbButton.style = facebook.BUTTON_STYLE_WIDE; // Shows 'Connect to Facebook' instead of 'Connect'
-
 $.index.open();
