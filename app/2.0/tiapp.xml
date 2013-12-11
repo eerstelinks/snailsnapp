@@ -43,7 +43,7 @@
         <module platform="android">facebook</module>
         <module platform="iphone">facebook</module>
     </modules>
-	<property name="ti.facebook.appid">1417460311823818</property>
+    <property name="ti.facebook.appid">1417460311823818</property>
     <deployment-targets>
         <target device="android">true</target>
         <target device="blackberry">false</target>
