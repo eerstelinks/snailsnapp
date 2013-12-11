@@ -1,6 +1,33 @@
 '#postPhoto': {
   width: '100%',
-  height: '100%',
   backgroundColor: Alloy.CFG.grey,
   layout: 'vertical',
+},
+
+'View': {
+  height: Ti.UI.SIZE,
+},
+
+'.left': {
+    left: '5%',
+},
+
+'.right': {
+    right: '5%',
+},
+
+'.italic': {
+    font: {
+        fontStyle: 'italic',
+        fontFamily:'Helvetica',
+        fontSize: '16dp',
+    }
+},
+
+'#submit': {
+  top: 20,
+  color: Alloy.CFG.black,
+  backgroundColor: Alloy.CFG.white,
+  width: "90%",
+  height: 40,
 }
