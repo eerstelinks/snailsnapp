@@ -60,6 +60,7 @@ function snailHome() {
         error:function(e) {
             showErrorAlert(L('camera_error_message'));
         },
+        allowEditing:false,
         saveToPhotoGallery:true,
         //overlay:squareOverlay,
         mediaTypes:[Ti.Media.MEDIA_TYPE_PHOTO]
