@@ -8,31 +8,34 @@
 },
 
 /* View: Loginscreen */
+'#loginWrapper': {
+	width: '100%',
+	height: '100%',
+	backgroundColor: Alloy.CFG.green,
+},
+
 '#loginScreen': {
-	 backgroundColor: Alloy.CFG.green,
-	 width: '100%',
-	 height: '100%',
-	 layout: 'vertical',
+	height: Ti.UI.SIZE,
+    width: Ti.UI.SIZE,
+	layout: 'vertical',
 },
 
 '#logoImage': {
 	width: 320,
-	top: 60,
 	image: "/images/logo_smartphone.png",
 },
 '#logoImage[platform=tablet]': {
 	width: 1024,
-	top: 200,
 	image: "/images/logo_tablet.png",
 },
 
 '#snailName': {
 	font: {
-		fontSize: '20dp',		
+		fontSize: '20dp',
 	}
 },
 
 '#fbButton': {
-	bottom: 50,
+	top: 20,
 	style: Alloy.Globals.Facebook.BUTTON_STYLE_WIDE,
 }
