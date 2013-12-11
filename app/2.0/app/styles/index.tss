@@ -1,41 +1,41 @@
 /* General: Not the army-type */
 'Label': {
-	color: 'white',
+  color: 'white',
     font: {
-        fontFamily:'Helvetica',
-        fontSize: '16dp',
+      fontFamily:'Helvetica',
+      fontSize: '16dp',
     }
 },
 
 /* View: Loginscreen */
 '#loginWrapper': {
-	width: '100%',
-	height: '100%',
-	backgroundColor: Alloy.CFG.green,
+  width: '100%',
+  height: '100%',
+  backgroundColor: Alloy.CFG.green,
 },
 
 '#loginScreen': {
-	height: Ti.UI.SIZE,
-    width: Ti.UI.SIZE,
-	layout: 'vertical',
+  height: Ti.UI.SIZE,
+  width: Ti.UI.SIZE,
+  layout: 'vertical',
 },
 
 '#logoImage': {
-	width: 320,
-	image: "/images/logo_smartphone.png",
+  width: 320,
+  image: "/images/logo_smartphone.png",
 },
 '#logoImage[platform=tablet]': {
-	width: 1024,
-	image: "/images/logo_tablet.png",
+  width: 1024,
+  image: "/images/logo_tablet.png",
 },
 
 '#snailName': {
-	font: {
-		fontSize: '20dp',
-	}
+  font: {
+    fontSize: '20dp',
+  }
 },
 
 '#fbButton': {
-	top: 20,
-	style: Alloy.Globals.Facebook.BUTTON_STYLE_WIDE,
+  top: 20,
+  style: Alloy.Globals.Facebook.BUTTON_STYLE_WIDE,
 }

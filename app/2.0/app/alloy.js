@@ -16,18 +16,18 @@ Alloy.Globals.Facebook = require('facebook');
 
 // simple error alert box with optional messsages
 function showErrorAlert(message, button, title) {
-	dialog = Ti.UI.createAlertDialog({
-    	message: message || L('default_error_message'),
-    	ok: button || L('default_error_button'),
-    	title: title || L('default_error_title')
-	}).show();
+  dialog = Ti.UI.createAlertDialog({
+    message: message || L('default_error_message'),
+    ok: button || L('default_error_button'),
+    title: title || L('default_error_title')
+  }).show();
 }
 
 // simple success alert box with optional messsages
 function showSuccessAlert(message, button, title) {
-	dialog = Ti.UI.createAlertDialog({
-    	message: message || L('default_success_message'),
-    	ok: button || L('default_success_button'),
-    	title: title || L('default_success_title')
-	}).show();
+  dialog = Ti.UI.createAlertDialog({
+    message: message || L('default_success_message'),
+    ok: button || L('default_success_button'),
+    title: title || L('default_success_title')
+  }).show();
 }

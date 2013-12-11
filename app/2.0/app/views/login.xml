@@ -1,11 +1,11 @@
 <Alloy>
-	<Window>
-        <View id="loginWrapper">
-    		<View id="loginScreen">
-    			<ImageView id="logoImage" />
-                <Label id="snailName">Snailsnapp</Label>
-                <LoginButton id="fbButton" ns="Alloy.Globals.Facebook"/>
-            </View>
-		</View>
-	</Window>
+  <Window>
+    <View id="loginWrapper">
+      <View id="loginScreen">
+        <ImageView id="logoImage" />
+        <Label id="snailName">Snailsnapp</Label>
+        <LoginButton id="fbButton" ns="Alloy.Globals.Facebook" />
+      </View>
+    </View>
+  </Window>
 </Alloy>

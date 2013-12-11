@@ -1,27 +1,26 @@
 <Alloy>
-    <Window>
-        <View id="postPhoto">
-
-            <TableView id="table" top="30">
-            	<TableViewSection id="description" headerTitle="Description">
-            		<TableViewRow>
-            			<TextArea id="description" borderWidth="2" borderColor="#bbb" borderRadius="5" color="" width="90%" height="100" />
-					</TableViewRow>
-            	</TableViewSection>
-                <TableViewSection id="facebook" headerTitle="Personal Snailtrail">
-                    <TableViewRow title="Post to Facebook">
-                        <Switch id="postFacebook" value="false" onChange="outputStateFacebook"/>
-                    </TableViewRow>
-                </TableViewSection>
-                <TableViewSection id="explorer" headerTitle="Snail Explorer">
-                    <TableViewRow title="Post to the world">
-                        <Switch id="postPublic" value="false" onChange="outputStatePublic"/>
-                    </TableViewRow>
-                    <TableViewRow title="Post this anonymous">
-                        <Switch id="postAnonymous" value="false" onChange="outputStateAnonymous"/>
-                    </TableViewRow>
-            </TableView>
-
-        </View>
-    </Window>
+  <Window>
+    <View id="postPhoto">
+      <TableView id="table" top="30">
+        <TableViewSection id="description" headerTitle="Description">
+          <TableViewRow>
+            <TextArea id="description" borderWidth="2" borderColor="#bbb" borderRadius="5" color="" width="90%" height="100" />
+          </TableViewRow>
+        </TableViewSection>
+        <TableViewSection id="facebook" headerTitle="Personal Snailtrail">
+          <TableViewRow title="Post to Facebook">
+            <Switch id="postFacebook" value="false" onChange="outputStateFacebook"/>
+          </TableViewRow>
+        </TableViewSection>
+        <TableViewSection id="explorer" headerTitle="Snail Explorer">
+          <TableViewRow title="Post to the world">
+            <Switch id="postPublic" value="false" onChange="outputStatePublic"/>
+          </TableViewRow>
+          <TableViewRow title="Post this anonymous">
+            <Switch id="postAnonymous" value="false" onChange="outputStateAnonymous"/>
+          </TableViewRow>
+        </TableViewSection>
+      </TableView>
+    </View>
+  </Window>
 </Alloy>
