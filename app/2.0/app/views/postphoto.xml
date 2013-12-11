@@ -22,19 +22,19 @@
           <Label class="italic left" text="L('post_photo_public')"></Label>
         </View>
 
-        <View>
+        <View top="5">
           <Label class="left" text="L('post_photo_world')"></Label>
           <Switch id="postPublic" class="right switch" value="false" onChange="outputStatePublic" />
         </View>
 
-        <View>
+        <View top="5">
           <Label class="left" text="L('post_photo_anonymous')"></Label>
           <Switch id="postAnonymous" class="right switch" value="false" onChange="outputStateAnonymous" />
         </View>
 
-        <View>
+        <View bottom="10">
           <Button id="submit" title="L('post_photo_button')" />
-
+        </View>
     </ScrollView>
   </Window>
 </Alloy>
