@@ -1,3 +1,4 @@
+// show map
 $.mapview.showsPointsOfInterest = false;
 $.mapview.userLocationButton = false;
 $.mapview.traffic = false;
@@ -39,13 +40,13 @@ function locateMe() {
   }
 }
 
-Alloy.Globals.Facebook.addEventListener('logout', function(e) {
-  Alloy.createController('login').getView().open();
-});
-
-
 function fbLogOut() {
-  Alloy.Globals.Facebook.logout();
+  if (facebook.getLoggedIn() === false) {
+    Alloy.createController('login').getView().open();
+  }
+  else {
+    facebook.logout();
+  }
 }
 
 locateMe();
@@ -66,4 +67,10 @@ function snailHome() {
   });
 }
 
-$.index.open();
+// go to login screen when user is not logged in
+if (facebook.getLoggedIn() === false) {
+  fbLogOut();
+}
+else {
+  $.index.open();
+}

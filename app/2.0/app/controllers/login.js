@@ -1,14 +1,14 @@
-// Alloy required for Facebook
-var facebook = Alloy.Globals.Facebook;
-facebook.appid = "1417460311823818"; // Facebook App ID
-facebook.permissions = ["email", "user_birthday", "user_location", "publish_actions"]; // Facebook App Permissions
-
 // Hide fbButton after login
+console.log('facebook.getLoggedIn(): ' + facebook.getLoggedIn());
+
+/*
 facebook.addEventListener('login', function(e) {
   if (e.success) {
-    $.login.close();
+    //$.login.close();
+    showSuccessAlert('Facebook login page: You are logged in');
   }
   else {
-    showErrorAlert();
+    showErrorAlert('Facebook login page: You are NOT logged in');
   }
 });
+*/
