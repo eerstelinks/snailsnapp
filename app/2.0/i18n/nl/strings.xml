@@ -8,8 +8,9 @@
     <string name="default_success_button">Laat me gaan</string>
     <string name="geo_no_location_message">Zet locatiebepaling aan in je instellingen</string>
     <string name="geo_no_location_button">Laat het me aanzetten</string>
-    <string name="camera_error_message">Je camera lijkt niet te werken</string>
-    <string name="post_photo_description">Omschrijving:</string>
+    <string name="other_camera_error_message">Je camera lijkt niet te werken</string>
+    <string name="no_camera_error_message">Je hebt geen camera, deze heb je nodig</string>
+    <string name="post_photo_description">Omschrijving</string>
     <string name="post_photo_explanation">Elke foto wordt automatisch toegevoegd aan je persoonlijke snailtrail, wil je graag delen dan kan dat hieronder</string>
     <string name="post_photo_facebook">Deel op Facebook</string>
     <string name="post_photo_public">Deel deze foto publiek op Snailsnapp</string>

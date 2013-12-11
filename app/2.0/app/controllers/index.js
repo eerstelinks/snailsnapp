@@ -49,20 +49,28 @@ function fbLogOut() {
   }
 }
 
-locateMe();
-
 //trigger camera after hitting the snailHome
 function snailHome() {
   Ti.Media.showCamera({
     success:function(e) {
-      Alloy.createController('postphoto').getView().open();
+      Alloy.createController('postphoto', { image: 'Camera success description' }).getView().open();
     },
     error:function(e) {
-      showErrorAlert(L('camera_error_message'));
+
+      if (error.code == Titanium.Media.NO_CAMERA) {
+        console.log('skip camera, use default image');
+        Alloy.createController('postphoto', { image: 'Camera success description' }).getView().open();
+
+        //showErrorAlert(L('other_camera_error_message'));
+      }
+      else {
+        showErrorAlert(L('no_camera_error_message'));
+      }
+
+
     },
-    allowEditing:false,
-    saveToPhotoGallery:true,
-    //overlay:squareOverlay,
+    allowEditing: false,
+    saveToPhotoGallery: true,
     mediaTypes:[Ti.Media.MEDIA_TYPE_PHOTO]
   });
 }
