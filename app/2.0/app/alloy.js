@@ -2,6 +2,7 @@
 Alloy.CFG.green = "#18DB6E";
 Alloy.CFG.grey  = "#DCDCDC";
 Alloy.CFG.white = "#FFFFFF";
+Alloy.CFG.black = "#000000";
 
 // settings
 var app_version = '2.0';
