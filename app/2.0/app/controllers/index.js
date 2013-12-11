@@ -81,6 +81,7 @@ if (facebook.getLoggedIn() === false) {
 }
 else {
   $.index.open();
+  locateMe();
 }
 
 /*

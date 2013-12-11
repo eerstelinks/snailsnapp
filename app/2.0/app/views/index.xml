@@ -4,6 +4,6 @@
 
     <ImageView onClick="locateMe" image="/images/location_arrow.png" bottom="10" right="10" width="28" height="35" />
     <ImageView onClick="fbLogOut" image="/images/unlock_alt.png" bottom="10" right="48" width="22" height="35" />
-    <ImageView onClick="snailHome" image="/images/snailhome.png" bottom="10" />
+    <ImageView id="snailHome" onClick="snailHome" image="/images/snailhome.png" />
   </Window>
 </Alloy>
