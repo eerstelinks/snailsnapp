@@ -27,7 +27,7 @@
           <Switch id="postPublic" class="right switch" value="false" onChange="outputStatePublic" />
         </View>
 
-        <View top="5">
+        <View id="hiddenView" top="5" visible="false">
           <Label class="left" text="L('post_photo_anonymous')"></Label>
           <Switch id="postAnonymous" class="right switch" value="false" onChange="outputStateAnonymous" />
         </View>
