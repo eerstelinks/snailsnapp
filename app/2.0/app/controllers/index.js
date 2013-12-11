@@ -1,4 +1,4 @@
-// show map
+//show map
 $.mapview.showsPointsOfInterest = false;
 $.mapview.userLocationButton = false;
 $.mapview.traffic = false;
@@ -41,15 +41,9 @@ function locateMe() {
 }
 
 function fbLogOut() {
-  if (facebook.getLoggedIn() === false) {
-    Alloy.createController('login').getView().open();
-  }
-  else {
-    facebook.logout();
-  }
+  facebook.logout();
+  Alloy.createController('login').getView().open();
 }
-
-locateMe();
 
 //trigger camera after hitting the snailHome
 function snailHome() {
@@ -67,10 +61,13 @@ function snailHome() {
   });
 }
 
-// go to login screen when user is not logged in
-if (facebook.getLoggedIn() === false) {
-  fbLogOut();
+//go to login screen when user is not logged in
+var has_skipped_login = Ti.App.Properties.getBool('has_skipped_login', false);
+
+if (!has_skipped_login && facebook.getLoggedIn() === false) {
+  Alloy.createController('login').getView().open();
 }
 else {
   $.index.open();
+  locateMe();
 }

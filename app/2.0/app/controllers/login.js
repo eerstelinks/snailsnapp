@@ -1,4 +1,4 @@
-// Hide fbButton after login
+//hide fbButton after login
 facebook.addEventListener('login', function(e) {
   if (e.success) {
     $.login.close();
@@ -7,3 +7,10 @@ facebook.addEventListener('login', function(e) {
     showErrorAlert();
   }
 });
+
+//skip login if asked to do so, then hide the button
+function goHome() {
+  Ti.App.Properties.setBool('has_skipped_login' , true);
+  $.skipLogin.hide();
+  $.login.close();
+}

@@ -16,4 +16,5 @@
   <string name="post_photo_world">Post it the world</string>
   <string name="post_photo_anonymous">Post it anonymous</string>
   <string name="post_photo_button">Post</string>
+  <string name="skip_login">Skip for now...</string>
 </resources>

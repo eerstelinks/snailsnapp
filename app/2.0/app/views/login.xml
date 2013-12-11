@@ -5,6 +5,7 @@
         <ImageView id="logoImage" />
         <Label id="snailName">Snailsnapp</Label>
         <LoginButton id="fbButton" ns="Alloy.Globals.Facebook" />
+        <Label id="skipLogin" onClick="goHome" text="L('skip_login')"></Label>
       </View>
     </View>
   </Window>

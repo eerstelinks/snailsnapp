@@ -16,4 +16,5 @@
     <string name="post_photo_world">Deel met de wereld</string>
     <string name="post_photo_anonymous">Deel anoniem</string>
     <string name="post_photo_button">Plaatsen</string>
+    <string name="skip_login">Even overslaan...</string>
 </resources>
