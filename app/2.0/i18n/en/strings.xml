@@ -11,10 +11,11 @@
   <string name="other_camera_error_message">It looks like your camera is not working</string>
   <string name="no_camera_error_message">It looks like your don't have a camera</string>
   <string name="post_photo_description">Description</string>
-  <string name="post_photo_explanation">Each and every photo will be stored in your personal snailtrail, if you feel like sharing indicate so below</string>
+  <string name="post_photo_explanation">Each and every photo will be stored in your personal snailtrail.</string>
+  <string name="post_photo_share_explanation">If the moment you captured is worth it, share it with the world!</string>
   <string name="post_photo_facebook">Share on Facebook</string>
-  <string name="post_photo_public">Share this photo publicly on Snailsnapp</string>
-  <string name="post_photo_world">Post it the world</string>
-  <string name="post_photo_anonymous">Post it anonymous</string>
+  <string name="post_photo_world">Share on Snailsnapp</string>
+  <string name="post_photo_anonymous">Share anonymous</string>
   <string name="post_photo_button">Post</string>
+  <string name="skip_login">Skip for now...</string>
 </resources>

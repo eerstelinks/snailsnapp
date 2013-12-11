@@ -1,8 +1,9 @@
 <Alloy>
   <Window>
     <ScrollView id="postPhoto">
-      <View>
-        <Label top="20" class="left" text="L('post_photo_description')"></Label>
+
+      <View top="30">
+        <Label class="left" text="L('post_photo_description')"></Label>
       </View>
 
       <View>
@@ -35,6 +36,7 @@
       <View bottom="10">
         <Button id="submit" title="L('post_photo_button')" />
       </View>
+
     </ScrollView>
   </Window>
 </Alloy>

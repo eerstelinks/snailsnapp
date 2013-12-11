@@ -1,4 +1,4 @@
-// show map
+//show map
 $.mapview.showsPointsOfInterest = false;
 $.mapview.userLocationButton = false;
 $.mapview.traffic = false;
@@ -41,12 +41,8 @@ function locateMe() {
 }
 
 function fbLogOut() {
-  if (facebook.getLoggedIn() === false) {
-    Alloy.createController('login').getView().open();
-  }
-  else {
-    facebook.logout();
-  }
+  facebook.logout();
+  Alloy.createController('login').getView().open();
 }
 
 //trigger camera after hitting the snailHome
@@ -75,33 +71,13 @@ function snailHome() {
   });
 }
 
-// go to login screen when user is not logged in
-if (facebook.getLoggedIn() === false) {
-  fbLogOut();
+//go to login screen when user is not logged in
+var has_skipped_login = Ti.App.Properties.getBool('has_skipped_login', false);
+
+if (!has_skipped_login && facebook.getLoggedIn() === false) {
+  Alloy.createController('login').getView().open();
 }
 else {
   $.index.open();
   locateMe();
 }
-
-/*
-Ti.include('/js/upload-to-s3.js');
-
-var name = 'local_overwrite.txt';
-var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, name);
-file.write('bestand 2');
-
-//var name = 'local_overwrite.jpg';
-//var file = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory + 'images/test.jpg');
-//var file = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory + 'images/test_high_res.jpg');
-
-upload(name, file,
-  function(object) {
-    console.log('success upload callback function: ' + object.url);
-  },
-  function(object) {
-    console.log('fail upload callback function');
-    alert(object);
-  }
-);
-*/

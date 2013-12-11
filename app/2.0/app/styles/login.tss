@@ -1,13 +1,11 @@
-/* General: Not the army-type */
 'Label': {
   color: 'white',
-    font: {
-      fontFamily:'Helvetica',
-      fontSize: '16dp',
-    }
+  font: {
+    fontFamily:'Helvetica',
+    fontSize: '16dp',
+  }
 },
 
-/* View: Loginscreen */
 '#loginWrapper': {
   width: '100%',
   height: '100%',
@@ -38,8 +36,16 @@
 '#fbButton': {
   top: 20,
   style: Alloy.Globals.Facebook.BUTTON_STYLE_WIDE,
-}
-
+},
 '#fbLoader': {
   top: 20,
+},
+
+'#skipLogin': {
+  top: 10,
+  font: {
+    fontFamily:'Helvetica',
+    fontSize: '12dp',
+  }
 }
+>>>>>>> 964c378d07ab86946549f8ee377fd892ff2d7eb9
