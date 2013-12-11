@@ -39,9 +39,9 @@
 },
 
 '#skipLogin': {
-  top: 10,
+  top: 15,
   font: {
     fontFamily:'Helvetica',
-    fontSize: '12dp',
+    fontSize: '13dp',
   }
 }
