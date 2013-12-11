@@ -58,7 +58,7 @@ function snailHome() {
       Alloy.createController('postphoto').getView().open();
     },
     error:function(e) {
-        showErrorAlert(L('camera_error_message'));
+      showErrorAlert(L('camera_error_message'));
     },
     allowEditing:false,
     saveToPhotoGallery:true,
