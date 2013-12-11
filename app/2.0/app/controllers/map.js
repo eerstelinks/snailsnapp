@@ -50,3 +50,18 @@ function fbLogOut() {
 
 locateMe();
 
+//trigger camera after hitting the snailHome
+function snailHome() {
+    Ti.Media.showCamera({
+        success:function(e) {
+	       	Alloy.createController('postphoto').getView().open();
+        	$.mapWindow.close();
+        },
+        error:function(e) {
+            showErrorAlert(L('camera_error_message'));
+        },
+        saveToPhotoGallery:true,
+        //overlay:squareOverlay,
+        mediaTypes:[Ti.Media.MEDIA_TYPE_PHOTO]
+    });
+}
