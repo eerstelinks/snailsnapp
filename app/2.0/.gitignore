@@ -4,7 +4,12 @@ build
 npm-debug.log
 tmp
 .map
-app/assets/(android|blackberry|images|iphone|mobileweb|tizen)
+app/assets/android
+app/assets/blackberry
+app/assets/images
+app/assets/iphone
+app/assets/mobileweb
+app/assets/tizen
 .project
 .settings/
 Resources/

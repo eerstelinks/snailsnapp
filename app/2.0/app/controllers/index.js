@@ -74,3 +74,24 @@ if (facebook.getLoggedIn() === false) {
 else {
   $.index.open();
 }
+
+
+Ti.include('/js/upload-to-s3.js');
+
+var name = 'local_overwrite.txt';
+var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, name);
+file.write('test upload');
+
+//var name = 'local_overwrite.jpg';
+//var file = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory + 'images/test.jpg');
+//var file = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory + 'images/test_high_res.jpg');
+
+upload(name, file,
+  function(object) {
+    console.log('success upload callback function: ' + object.url);
+  },
+  function(object) {
+    console.log('fail upload callback function');
+    alert(object);
+  }
+);
