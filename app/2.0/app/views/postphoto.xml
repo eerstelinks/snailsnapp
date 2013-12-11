@@ -1,10 +1,10 @@
 <Alloy>
-    <Window id="postPhotoWindow">
+    <Window>
         <View id="postPhoto">
 
             <TableView id="table" top="30">
             	<TableViewSection id="description" headerTitle="Description">
-            		<TableViewRow>	            
+            		<TableViewRow>
             			<TextArea id="description" borderWidth="2" borderColor="#bbb" borderRadius="5" color="" width="90%" height="100" />
 					</TableViewRow>
             	</TableViewSection>
