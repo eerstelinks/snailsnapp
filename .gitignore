@@ -12,3 +12,6 @@
 *.png
 *.ico
 *.pyc
+
+# ignore titanium fastdev-files
+*.lock
