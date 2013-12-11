@@ -37,6 +37,9 @@
   top: 20,
   style: Alloy.Globals.Facebook.BUTTON_STYLE_WIDE,
 },
+'#fbLoader': {
+  top: 20,
+},
 
 '#skipLogin': {
   top: 15,

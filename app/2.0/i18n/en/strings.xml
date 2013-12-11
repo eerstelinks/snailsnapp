@@ -8,8 +8,9 @@
   <string name="default_success_button">Let me go</string>
   <string name="geo_no_location_message">To locate yourself we need your location, so turn it on in your phone settings</string>
   <string name="geo_no_location_button">Let me turn it on</string>
-  <string name="camera_error_message">It looks like your camera is not working</string>
-  <string name="post_photo_description">Description:</string>
+  <string name="other_camera_error_message">It looks like your camera is not working</string>
+  <string name="no_camera_error_message">It looks like your don't have a camera</string>
+  <string name="post_photo_description">Description</string>
   <string name="post_photo_explanation">Each and every photo will be stored in your personal snailtrail.</string>
   <string name="post_photo_share_explanation">If the moment you captured is worth it, share it with the world!</string>
   <string name="post_photo_facebook">Share on Facebook</string>

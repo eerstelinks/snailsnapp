@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <string name="default_error_title">Snapp...</string>
-    <string name="default_error_message">Er ging iets mis</string>
-    <string name="default_error_button">Laat me nog eens proberen</string>
-    <string name="default_success_title">Snailed it</string>
-    <string name="default_success_message">Helemaal gelukt!</string>
-    <string name="default_success_button">Laat me gaan</string>
-    <string name="geo_no_location_message">Zet locatiebepaling aan in je instellingen</string>
-    <string name="geo_no_location_button">Laat het me aanzetten</string>
-    <string name="camera_error_message">Je camera lijkt niet te werken</string>
-    <string name="post_photo_description">Omschrijving:</string>
-    <string name="post_photo_explanation">Elke foto wordt automatisch toegevoegd aan je persoonlijke snailtrail.</string>
-    <string name="post_photo_share_explanation">Als de foto het waard is, deel hem dan ook met de wereld!</string>
-    <string name="post_photo_facebook">Deel op Facebook</string>
-    <string name="post_photo_world">Deel op Snailsnapp</string>
-    <string name="post_photo_anonymous">Deel anoniem</string>
-    <string name="post_photo_button">Plaatsen</string>
-    <string name="skip_login">Even overslaan...</string>
+  <string name="default_error_title">Snapp...</string>
+  <string name="default_error_message">Er ging iets mis</string>
+  <string name="default_error_button">Laat me nog eens proberen</string>
+  <string name="default_success_title">Snailed it</string>
+  <string name="default_success_message">Helemaal gelukt!</string>
+  <string name="default_success_button">Laat me gaan</string>
+  <string name="geo_no_location_message">Zet locatiebepaling aan in je instellingen</string>
+  <string name="geo_no_location_button">Laat het me aanzetten</string>
+  <string name="other_camera_error_message">Je camera lijkt niet te werken</string>
+  <string name="no_camera_error_message">Je hebt geen camera, deze heb je wel nodig</string>
+  <string name="post_photo_description">Omschrijving</string>
+  <string name="post_photo_description">Omschrijving:</string>
+  <string name="post_photo_explanation">Elke foto wordt automatisch toegevoegd aan je persoonlijke snailtrail.</string>
+  <string name="post_photo_share_explanation">Als de foto het waard is, deel hem dan ook met de wereld!</string>
+  <string name="post_photo_facebook">Deel op Facebook</string>
+  <string name="post_photo_world">Deel op Snailsnapp</string>
+  <string name="post_photo_anonymous">Deel anoniem</string>
+  <string name="post_photo_button">Plaatsen</string>
+  <string name="skip_login">Even overslaan...</string>
 </resources>

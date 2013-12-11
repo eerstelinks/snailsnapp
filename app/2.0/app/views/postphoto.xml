@@ -1,40 +1,42 @@
 <Alloy>
   <Window>
     <ScrollView id="postPhoto">
-        <View top="30">
-          <Label class="left" text="L('post_photo_description')"></Label>
-        </View>
 
-        <View top="10">
-          <TextArea id="description" borderWidth="2" borderColor="#bbb" borderRadius="5" color="" width="90%" height="100" />
-        </View>
+      <View top="30">
+        <Label class="left" text="L('post_photo_description')"></Label>
+      </View>
 
-        <View top="10">
-          <Label class="italic left right" text="L('post_photo_explanation')"></Label>
-        </View>
+      <View top="10">
+        <TextArea id="description" borderWidth="2" borderColor="#bbb" borderRadius="5" color="" width="90%" height="100" />
+      </View>
 
-        <View>
-          <Label top="5" class="italic left right" text="L('post_photo_share_explanation')"></Label>
-        </View>
+      <View top="10">
+        <Label class="italic left right" text="L('post_photo_explanation')"></Label>
+      </View>
 
-        <View top="5">
-          <Label class="left" text="L('post_photo_facebook')"></Label>
-          <Switch id="postFacebook" class="right switch" value="false" onChange="outputStateFacebook" />
-        </View>
+      <View>
+        <Label top="5" class="italic left right" text="L('post_photo_share_explanation')"></Label>
+      </View>
 
-        <View top="5">
-          <Label class="left" text="L('post_photo_world')"></Label>
-          <Switch id="postPublic" class="right switch" value="false" onChange="outputStatePublic" />
-        </View>
+      <View top="5">
+        <Label class="left" text="L('post_photo_facebook')"></Label>
+        <Switch id="postFacebook" class="right switch" value="false" onChange="outputStateFacebook" />
+      </View>
 
-        <View id="hiddenView" top="5" visible="false">
-          <Label class="left" text="L('post_photo_anonymous')"></Label>
-          <Switch id="postAnonymous" class="right switch" value="false" onChange="outputStateAnonymous" />
-        </View>
+      <View top="5">
+        <Label class="left" text="L('post_photo_world')"></Label>
+        <Switch id="postPublic" class="right switch" value="false" onChange="outputStatePublic" />
+      </View>
 
-        <View bottom="10">
-          <Button id="submit" title="L('post_photo_button')" />
-        </View>
+      <View id="hiddenView" top="5" visible="false">
+        <Label class="left" text="L('post_photo_anonymous')"></Label>
+        <Switch id="postAnonymous" class="right switch" value="false" onChange="outputStateAnonymous" />
+      </View>
+
+      <View bottom="10">
+        <Button id="submit" title="L('post_photo_button')" />
+      </View>
+
     </ScrollView>
   </Window>
 </Alloy>

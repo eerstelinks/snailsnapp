@@ -1,3 +1,9 @@
+var args = arguments[0] || {};
+
+console.log(args);
+
+$.description.setValue(args.image || '');
+
 function outputStateFacebook() {
   Ti.API.info('Switch value: ' + $.postFacebook.value);
 }
