@@ -6,6 +6,7 @@
     <string name="default_success_title">Snailed it</string>
     <string name="default_success_message">Helemaal gelukt!</string>
     <string name="default_success_button">Laat me gaan</string>
-    <string name="geo_no_location_message">Om jezelf te localizeren zal je wel even je locatiebepaling aan moeten zetten bij instellingen</string>
+    <string name="geo_no_location_message">Zet locatiebepaling aan in je instellingen</string>
     <string name="geo_no_location_button">Laat het me aanzetten</string>
+    <string name="camera_error_message">Je camera lijkt niet te werken</string>
 </resources>

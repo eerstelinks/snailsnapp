@@ -8,4 +8,5 @@
     <string name="default_success_button">Let me go</string>
     <string name="geo_no_location_message">To locate yourself we need your location, so turn it on in your phone settings</string>
     <string name="geo_no_location_button">Let me turn it on</string>
+    <string name="camera_error_message">It looks like your camera is not working</string>
 </resources>
