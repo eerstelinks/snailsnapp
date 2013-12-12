@@ -1,5 +1,5 @@
 <Alloy>
-  <NavigationWindow platform="ios" id="navWin">
+  <NavigationWindow platform="ios">
     <Window id="postPhotoWindow" title="L('view_photo_title')">
       <LeftNavButton>
         <View id="navWrapper">

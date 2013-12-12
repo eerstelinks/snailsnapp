@@ -1,3 +1,3 @@
 function cancelSnapp() {
-  $.navWin.close();
+  $.viewphoto.close();
 }

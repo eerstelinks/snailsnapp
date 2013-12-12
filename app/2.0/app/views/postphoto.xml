@@ -1,5 +1,5 @@
 <Alloy>
-  <NavigationWindow platform="ios" id="navWin">
+  <NavigationWindow platform="ios">
     <Window id="postPhotoWindow" title="L('post_photo_title')">
 
       <LeftNavButton>
@@ -8,9 +8,11 @@
         </View>
       </LeftNavButton>
 
+      <View id="loadingBar" top="0" />
+
       <ScrollView id="postPhotoSrollView">
 
-        <View id="textAreaView" top="10">
+        <View id="textAreaView" top="15">
           <TextArea id="description" value="L('post_photo_description_placeholder')" />
           <ImageView id="previewImage" />
         </View>

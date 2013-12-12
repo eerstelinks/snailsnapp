@@ -132,5 +132,5 @@ function togglePostAnonymous() {
 }
 
 function cancelSnapp() {
-  $.navWin.close();
+  $.postphoto.close();
 }
