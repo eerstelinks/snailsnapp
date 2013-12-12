@@ -41,8 +41,14 @@ function uploadToS3(name, file, successCallback, errorCallback, progressCallback
 
   xhr.onsendstream = function(e){
 
+    if (typeof debugStartTime != 'number') {
+      debugStartTime = new Date().getTime();
+    }
+
+    debugUploadTime = Math.floor((new Date().getTime() - debugStartTime) / 1000);
+
     var progress = Math.floor(e.progress * 100);
-    Ti.API.info('uploading (' + new Date().getSeconds() + 's): ' + progress + '%');
+    Ti.API.info('uploading (' + debugUploadTime + 's): ' + progress + '%');
 
     // run progressCallback function when available
     if (typeof progressCallback == 'function') {
