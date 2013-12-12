@@ -78,7 +78,7 @@ function locateMe() {
 
 function fbLogOut() {
   facebook.logout();
-  Alloy.createController('login').getView();
+  Alloy.createController('login').getView().open();
 }
 
 // got to controller and trigger camera while hitting the snailHome
