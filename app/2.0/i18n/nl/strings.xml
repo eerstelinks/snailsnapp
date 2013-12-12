@@ -24,7 +24,7 @@
   <!-- postphoto page -->
   <string name="post_photo_backbutton"> Terug</string>
   <string name="post_photo_description">Omschrijving</string>
-  <string name="post_photo_explanation">Elke foto wordt automatisch toegevoegd aan je persoonlijke snailtrail.</string>
+  <!-- <string name="post_photo_explanation">Elke foto wordt automatisch toegevoegd aan je persoonlijke snailtrail.</string> -->
   <string name="post_photo_share_explanation">Als deze foto het waard is, deel haar dan ook met de wereld!</string>
   <string name="post_photo_facebook">Deel op Facebook</string>
   <string name="post_photo_world">Deel op Snailsnapp</string>
