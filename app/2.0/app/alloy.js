@@ -12,6 +12,9 @@ var api_url = "https://eerstelinks.nl/snailsnapp/api";
 Alloy.Globals.Map = require('ti.map');
 Alloy.Globals.Facebook = require('facebook');
 
+// require dialogs builtin
+var dialogs = require('alloy/dialogs');
+
 // facebook var with Titanium module
 var facebook = Alloy.Globals.Facebook;
 facebook.appid = "1417460311823818"; // Facebook App ID
