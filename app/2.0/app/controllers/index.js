@@ -5,6 +5,7 @@ $.mapview.traffic = false;
 
 $.mapview.userLocation = true;
 
+// default map of Amsterdam
 $.mapview.region = {
   latitude: 52.373056,
   longitude: 4.892222,
