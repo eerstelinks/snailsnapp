@@ -11,10 +11,11 @@
   <!-- location alerts -->
   <string name="geo_no_location_message">Zet locatiebepaling aan in je instellingen</string>
   <string name="geo_no_location_button">Laat het me aanzetten</string>
+  <string name="geo_own_location_purpose">Om jou Snapps op de kaart te zetten en andere Snapps om je heen te laten zien hebben we je locatie nodig</string>
 
   <!-- camera alerts -->
   <string name="other_camera_error_message">Je camera lijkt niet te werken</string>
-  <string name="no_camera_error_message">Je hebt geen camera, deze heb je wel nodig</string>
+  <string name="no_camera_error_message">Je hebt geen camera, hoe maak jij foto's?</string>
   <string name="no_camera_error_button">Laat me een nieuwe telefoon kopen</string>
 
   <!-- login page -->

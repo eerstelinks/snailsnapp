@@ -26,7 +26,7 @@ function setLocation(coords){
 
 function locateMe() {
   if (Ti.Geolocation.locationServicesEnabled) {
-    Ti.Geolocation.purpose = L('geo_own_location_purpose', 'Get Current Location');
+    Ti.Geolocation.purpose = L('geo_own_location_purpose');
     Ti.Geolocation.accuracy = Ti.Geolocation.ACCURACY_BEST;
     Ti.Geolocation.distanceFilter = 10;
     Ti.Geolocation.preferredProvider = Ti.Geolocation.PROVIDER_GPS;

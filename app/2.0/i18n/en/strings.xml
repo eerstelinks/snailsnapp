@@ -11,10 +11,11 @@
   <!-- location alerts -->
   <string name="geo_no_location_message">To locate yourself we need your location, so turn it on in your phone settings</string>
   <string name="geo_no_location_button">Let me turn it on</string>
+  <string name="geo_own_location_purpose">To pin your Snapps on the map and show Snapps around you we need your location</string>
 
   <!-- camera alerts -->
   <string name="other_camera_error_message">It looks like your camera is not working</string>
-  <string name="no_camera_error_message">It looks like your don't have a camera</string>
+  <string name="no_camera_error_message">You don't have a camera, how do you make photos?</string>
   <string name="no_camera_error_button">Let me buy a new phone</string>
 
   <!-- login page -->
