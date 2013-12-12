@@ -43,33 +43,17 @@ function locateMe() {
 
 function fbLogOut() {
   facebook.logout();
-  Alloy.createController('login').getView().open();
+  Alloy.createController('login').getView();
 }
 
-//trigger camera after hitting the snailHome
+// got to controller and trigger camera while hitting the snailHome
 function snailHome() {
-  Ti.Media.showCamera({
-    success:function(e) {
-      Alloy.createController('postphoto', { image: 'Camera success description' }).getView().open();
-    },
-    error:function(e) {
-
-      if (e.code == Titanium.Media.NO_CAMERA) {
-        console.log('skip camera, use default image');
-        Alloy.createController('postphoto', { image: 'Camera success description' }).getView().open();
-
-        //showErrorAlert(L('other_camera_error_message'));
-      }
-      else {
-        showErrorAlert(L('no_camera_error_message'));
-      }
-
-
-    },
-    allowEditing: false,
-    saveToPhotoGallery: true,
-    mediaTypes:[Ti.Media.MEDIA_TYPE_PHOTO]
-  });
+  if (Ti.Media.isCameraSupported) {
+    Alloy.createController('postphoto', { showCamera: true }).getView().open();
+  }
+  else {
+    showErrorAlert(L('no_camera_error_message'), L('no_camera_error_button'));
+  }
 }
 
 //go to login screen when user is not logged in

@@ -15,6 +15,7 @@
   <!-- camera alerts -->
   <string name="other_camera_error_message">Je camera lijkt niet te werken</string>
   <string name="no_camera_error_message">Je hebt geen camera, deze heb je wel nodig</string>
+  <string name="no_camera_error_button">Laat me een nieuwe telefoon kopen</string>
 
   <!-- login page -->
   <string name="skip_login">Even overslaan...</string>
