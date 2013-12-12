@@ -29,4 +29,5 @@
   <string name="post_photo_world">Deel op Snailsnapp</string>
   <string name="post_photo_anonymous">Deel anoniem</string>
   <string name="post_photo_button">Plaatsen</string>
+  <string name="post_photo_waiting">bezig met uploaden...</string>
 </resources>

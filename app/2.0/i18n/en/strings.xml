@@ -29,4 +29,5 @@
   <string name="post_photo_world">Share on Snailsnapp</string>
   <string name="post_photo_anonymous">Share anonymous</string>
   <string name="post_photo_button">Post</string>
+  <string name="post_photo_waiting">wait for upload...</string>
 </resources>

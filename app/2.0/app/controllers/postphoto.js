@@ -21,7 +21,7 @@ function makePicture() {
 
       // touchEnabled
       var buttonOrignalTitle = $.submitButton.getTitle();
-      $.submitButton.setTitle(buttonOrignalTitle + ' (' + L('wait_for_upload', 'wait for upload') + ')');
+      $.submitButton.setTitle(buttonOrignalTitle + ' (' + L('post_photo_waiting') + ')');
 
       // crop size
       var squareSize = 2048;
