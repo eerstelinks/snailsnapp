@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
+  <!-- buttons -->
+  <string name="button_back">Terug</string>
+
   <!-- alerts -->
   <string name="default_error_title">Snapp...</string>
   <string name="default_error_message">Er ging iets mis</string>
@@ -23,7 +26,6 @@
 
   <!-- postphoto page -->
   <string name="post_photo_title">Plaats Snapp</string>
-  <string name="post_photo_backbutton"> Terug</string>
   <string name="post_photo_description_placeholder">Geef een omschrijving...</string>
   <string name="post_photo_share_explanation">Als deze Snapp het waard is, deel haar dan ook met de wereld!</string>
   <string name="post_photo_facebook">Deel op Facebook</string>
@@ -34,5 +36,4 @@
 
   <!-- viewphoto page -->
   <string name="view_photo_title">Bekijk Snapp</string>
-  <string name="view_photo_backbutton"> Terug</string>
 </resources>
