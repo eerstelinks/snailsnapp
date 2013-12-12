@@ -101,6 +101,8 @@ function makePicture() {
   });
 }
 
+makePicture();
+
 function outputStateFacebook() {
   Ti.API.info('Switch value: ' + $.postFacebook.value);
 }

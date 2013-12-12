@@ -4,7 +4,7 @@
 
       <LeftNavButton>
         <View id="navWrapper">
-          <Button image="/images/chevron-left.png" title=" Back" id="backButton" onClick="cancelSnapp" />
+          <Button image="/images/chevron_left.png" title="L('post_photo_backbutton')" id="backButton" onClick="cancelSnapp" />
         </View>
       </LeftNavButton>
 
@@ -13,11 +13,8 @@
           <TextArea id="description" value="L('post_photo_description_placeholder')" />
           <ImageView id="previewImage" />
         </View>
-        <View top="10">
-          <Label class="italic left right" text="L('post_photo_explanation')"></Label>
-        </View>
         <View>
-          <Label top="5" class="italic left right" text="L('post_photo_share_explanation')"></Label>
+          <Label top="10" class="italic left right" text="L('post_photo_share_explanation')"></Label>
         </View>
         <View top="10">
           <Label class="left" text="L('post_photo_facebook')"></Label>
