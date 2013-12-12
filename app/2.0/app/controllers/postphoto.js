@@ -22,3 +22,6 @@ function outputStatePublic() {
 function outputStateAnonymous() {
   Ti.API.info('Switch value: ' + $.postAnonymous.value);
 }
+function cancelSnapp() {
+  $.navWin.close();
+}
