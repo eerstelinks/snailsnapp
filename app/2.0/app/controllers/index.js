@@ -33,9 +33,16 @@ var snappURL = ''; // THIS SHOULD REFER TO AMAZON URL!
 cachedImageView('CachedPins', snappURL, snapp);
 
 // open viewPhoto after click on either thumbnail or pin
-$.mapview.addEventListener('click',function(evt) {
+$.mapview.addEventListener('click', function(evt) {
+
   $.mapview.deselectAnnotation(snapp);
-  Alloy.createController('viewphoto').getView().open();
+
+  // open the view only when the user hits the pin
+  // and not when deselectAnnotation()'s fires
+  if (evt.clicksource != null) {
+    Alloy.createController('viewphoto').getView().open();
+  }
+
 });
 
 // add the annotations
