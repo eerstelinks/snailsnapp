@@ -1,9 +1,9 @@
 <Alloy>
-  <NavigationWindow platform="ios" id="navWin">
+  <NavigationWindow platform="ios" id="navWinViewPhoto">
     <Window id="postPhotoWindow" title="L('view_photo_title')">
       <LeftNavButton>
         <View id="navWrapper">
-          <Button image="/images/chevron_left.png" title="L('button_back')" id="backButton" onClick="cancelSnapp" />
+          <Button image="/images/chevron_left.png" title="L('button_back')" id="backButton" onClick="cancelViewSnapp" />
         </View>
       </LeftNavButton>
       <ScrollView id="postPhotoSrollView">
