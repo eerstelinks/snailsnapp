@@ -9,6 +9,7 @@
       </LeftNavButton>
 
       <ScrollView id="postPhotoSrollView">
+
         <View id="textAreaView" top="10">
           <TextArea id="description" value="L('post_photo_description_placeholder')" />
           <ImageView id="previewImage" />
@@ -18,15 +19,15 @@
         </View>
         <View top="10">
           <Label class="left" text="L('post_photo_facebook')"></Label>
-          <Switch id="postFacebook" class="right switch" value="false" onChange="outputStateFacebook" />
+          <Switch id="postFacebook" class="right switch" value="false" />
         </View>
         <View top="10">
           <Label class="left" text="L('post_photo_world')"></Label>
-          <Switch id="postPublic" class="right switch" value="false" onChange="outputStatePublic" />
+          <Switch id="postPublic" class="right switch" value="false" onChange="togglePostAnonymous" />
         </View>
         <View id="hiddenView" top="7" visible="false">
           <Label class="left" text="L('post_photo_anonymous')"></Label>
-          <Switch id="postAnonymous" class="right switch" value="false" onChange="outputStateAnonymous" />
+          <Switch id="postAnonymous" class="right switch" value="false" />
         </View>
 
         <!-- add some spacing for preventing overlap with the button -->

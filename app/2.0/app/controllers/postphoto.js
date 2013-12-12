@@ -103,14 +103,11 @@ function makePicture() {
 
 makePicture();
 
-function outputStateFacebook() {
-  Ti.API.info('Switch value: ' + $.postFacebook.value);
-}
-function outputStatePublic() {
-  Ti.API.info('Switch value: ' + $.postPublic.value);
+function togglePostAnonymous() {
 
-  //toggle post anonymous
   var postPublic = $.postPublic.value;
+
+  // hiddenView is the View around the switch
   if (postPublic === true) {
     $.hiddenView.show();
   }
@@ -118,9 +115,7 @@ function outputStatePublic() {
     $.hiddenView.hide();
   }
 }
-function outputStateAnonymous() {
-  Ti.API.info('Switch value: ' + $.postAnonymous.value);
-}
+
 function cancelSnapp() {
   $.navWin.close();
 }
