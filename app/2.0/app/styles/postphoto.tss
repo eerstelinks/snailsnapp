@@ -18,6 +18,14 @@
   layout: 'vertical',
 },
 
+'#loadingBar': {
+  width: 5,
+  height: 3,
+  left: 0,
+  visible: false,
+  backgroundColor: Alloy.CFG.green,
+},
+
 '#textAreaView': {
   backgroundColor: Alloy.CFG.white,
   width: '90%',

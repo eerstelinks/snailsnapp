@@ -13,6 +13,13 @@ $.description.width = Ti.Platform.displayCaps.platformWidth * 0.9 - 100 - 5;
 // bind placeholder function to description field so it works on iphone
 bindPlaceholder($.description, L('post_photo_description_placeholder'));
 
+// function always after download
+function always() {
+
+  // hide loading bar
+  $.loadingBar.setVisible(false);
+}
+
 // in a function so we can change the picture also with this function
 function makePicture() {
 
@@ -76,12 +83,20 @@ function makePicture() {
               alert('upload success: ' + e.url);
               $.submitButton.setTitle(buttonOrignalTitle);
               $.submitButton.setTouchEnabled(true);
+              always();
             },
             function() {
               alert('failed');
+              always();
             },
             function(progress) {
-              $.description.setValue(progress);
+
+              // show loading bar
+              $.loadingBar.setVisible(true);
+
+              // show progress
+              $.loadingBar.width = progress + '%';
+
             }
           );
         }
