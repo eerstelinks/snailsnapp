@@ -24,7 +24,7 @@
   <!-- postphoto page -->
   <string name="post_photo_backbutton"> Back</string>
   <string name="post_photo_description">Description</string>
-  <string name="post_photo_explanation">Each and every photo will be stored in your personal snailtrail.</string>
+  <!-- <string name="post_photo_explanation">We will store each and every photo in your personal snailtrail.</string> -->
   <string name="post_photo_share_explanation">If the moment you captured is worth it, share it with the world!</string>
   <string name="post_photo_facebook">Share on Facebook</string>
   <string name="post_photo_world">Share on Snailsnapp</string>

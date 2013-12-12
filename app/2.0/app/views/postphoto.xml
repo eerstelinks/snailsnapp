@@ -7,9 +7,9 @@
         </View>
       </LeftNavButton>
       <ScrollView id="postPhotoSrollView">
-        <View top="10">
+        <!-- <View top="10">
           <Label class="italic left right" text="L('post_photo_explanation')"></Label>
-        </View>
+        </View> -->
         <View top="10">
           <Label class="left" text="L('post_photo_description')"></Label>
         </View>
