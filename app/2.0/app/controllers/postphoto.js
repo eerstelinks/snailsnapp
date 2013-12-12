@@ -1,8 +1,26 @@
+var ImageFactory = require('ti.imagefactory');
+
 var args = arguments[0] || {};
 
-console.log(args);
+// show camera only when past controller has said so
+if (args.showCamera === true) {
 
-$.description.setValue(args.image || '');
+  Ti.Media.showCamera({
+    success:function(e) {
+      showSuccessAlert('camera success');
+    },
+    cancel:function(e) {
+      $.postphoto.close();
+    },
+    error:function(e) {
+      showErrorAlert(L('other_camera_error_message'));
+      $.postphoto.close();
+    },
+    allowEditing: false,
+    saveToPhotoGallery: true,
+    mediaTypes:[Ti.Media.MEDIA_TYPE_PHOTO]
+  });
+}
 
 function outputStateFacebook() {
   Ti.API.info('Switch value: ' + $.postFacebook.value);

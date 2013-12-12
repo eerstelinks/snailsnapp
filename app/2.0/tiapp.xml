@@ -42,6 +42,8 @@
         <module platform="iphone">ti.map</module>
         <module platform="android">facebook</module>
         <module platform="iphone">facebook</module>
+        <module platform="iphone">ti.imagefactory</module>
+        <module platform="android">ti.imagefactory</module>
     </modules>
     <property name="ti.facebook.appid">1417460311823818</property>
     <deployment-targets>
