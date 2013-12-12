@@ -43,6 +43,7 @@
 
 '#skipLogin': {
   top: 15,
+  height: 20,
   font: {
     fontFamily:'Helvetica',
     fontSize: '13dp',
