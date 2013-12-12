@@ -34,7 +34,8 @@ cachedImageView('CachedPins', snappURL, snapp);
 
 // open viewPhoto after click on either thumbnail or pin
 $.mapview.addEventListener('click',function(evt) {
-  Alloy.createController('login').getView().open(); // NOW OPENS LOGINSCREEN, HAS TO BE REPLACED WITH VIEWPHOTOSCREEN
+  $.mapview.deselectAnnotation(snapp);
+  Alloy.createController('viewphoto').getView().open();
 });
 
 // add the annotations
