@@ -39,3 +39,14 @@ function showSuccessAlert(message, button, title) {
     title: title || L('default_success_title')
   }).show();
 }
+
+// create just a random string
+function randomString(string_length) {
+  var chars = "0123456789abcdefghiklmnopqrstuvwxyz";
+  var randomstring = '';
+  for (var i=0; i<string_length; i++) {
+    var rnum = Math.floor(Math.random() * chars.length);
+    randomstring += chars.substring(rnum,rnum+1);
+  }
+  return randomstring;
+}
