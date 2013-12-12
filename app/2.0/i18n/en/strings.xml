@@ -22,14 +22,15 @@
   <string name="skip_login">Skip for now...</string>
 
   <!-- postphoto page -->
-  <string name="post_photo_title">Post snapp</string>
+  <string name="post_photo_title">Post Snapp</string>
   <string name="post_photo_backbutton"> Back</string>
-  <string name="post_photo_description">Description</string>
+  <string name="post_photo_description_placeholder">Write a description...</string>
   <string name="post_photo_share_explanation">If the moment you captured is worth it, share it with the world!</string>
   <string name="post_photo_facebook">Share on Facebook</string>
   <string name="post_photo_world">Share on Snailsnapp</string>
   <string name="post_photo_anonymous">Share anonymous</string>
   <string name="post_photo_button">Post</string>
+  <string name="post_photo_waiting">wait for upload...</string>
 
   <!-- viewphoto page -->
   <string name="view_photo_title">View snapp</string>

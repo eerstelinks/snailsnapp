@@ -11,7 +11,7 @@
   <!-- location alerts -->
   <string name="geo_no_location_message">Zet locatiebepaling aan in je instellingen</string>
   <string name="geo_no_location_button">Laat het me aanzetten</string>
-  <string name="geo_own_location_purpose">Om jou Snapps op de kaart te zetten en andere Snapps om je heen te laten zien hebben we je locatie nodig</string>
+  <string name="geo_own_location_purpose">Om jouw Snapps op de kaart te zetten en andere Snapps om je heen te laten zien hebben we je locatie nodig</string>
 
   <!-- camera alerts -->
   <string name="other_camera_error_message">Je camera lijkt niet te werken</string>
@@ -22,16 +22,17 @@
   <string name="skip_login">Even overslaan...</string>
 
   <!-- postphoto page -->
-  <string name="post_photo_title">Plaats snapp</string>
+  <string name="post_photo_title">Plaats Snapp</string>
   <string name="post_photo_backbutton"> Terug</string>
-  <string name="post_photo_description">Omschrijving</string>
-  <string name="post_photo_share_explanation">Als deze foto het waard is, deel haar dan ook met de wereld!</string>
+  <string name="post_photo_description_placeholder">Geef een omschrijving...</string>
+  <string name="post_photo_share_explanation">Als deze Snapp het waard is, deel haar dan ook met de wereld!</string>
   <string name="post_photo_facebook">Deel op Facebook</string>
   <string name="post_photo_world">Deel op Snailsnapp</string>
   <string name="post_photo_anonymous">Deel anoniem</string>
   <string name="post_photo_button">Plaatsen</string>
+  <string name="post_photo_waiting">bezig met uploaden...</string>
 
   <!-- viewphoto page -->
-  <string name="view_photo_title">Bekijk snapp</string>
+  <string name="view_photo_title">Bekijk Snapp</string>
   <string name="view_photo_backbutton"> Terug</string>
 </resources>

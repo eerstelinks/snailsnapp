@@ -1,37 +1,43 @@
 <Alloy>
   <NavigationWindow platform="ios" id="navWin">
     <Window id="postPhotoWindow" title="L('post_photo_title')">
+
       <LeftNavButton>
         <View id="navWrapper">
           <Button image="/images/chevron_left.png" title="L('post_photo_backbutton')" id="backButton" onClick="cancelSnapp" />
         </View>
       </LeftNavButton>
+
       <ScrollView id="postPhotoSrollView">
-        <View top="10">
-          <Label class="left" text="L('post_photo_description')"></Label>
-        </View>
-        <View top="10">
-          <TextArea id="description" borderWidth="2" borderColor="#bbb" borderRadius="5" color="" width="90%" height="100" />
+
+        <View id="textAreaView" top="10">
+          <TextArea id="description" value="L('post_photo_description_placeholder')" />
+          <ImageView id="previewImage" />
         </View>
         <View>
           <Label top="10" class="italic left right" text="L('post_photo_share_explanation')"></Label>
         </View>
-        <View top="7">
+        <View top="10">
           <Label class="left" text="L('post_photo_facebook')"></Label>
-          <Switch id="postFacebook" class="right switch" value="false" onChange="outputStateFacebook" />
+          <Switch id="postFacebook" class="right switch" value="false" />
         </View>
-        <View top="7">
+        <View top="10">
           <Label class="left" text="L('post_photo_world')"></Label>
-          <Switch id="postPublic" class="right switch" value="false" onChange="outputStatePublic" />
+          <Switch id="postPublic" class="right switch" value="false" onChange="togglePostAnonymous" />
         </View>
         <View id="hiddenView" top="7" visible="false">
           <Label class="left" text="L('post_photo_anonymous')"></Label>
-          <Switch id="postAnonymous" class="right switch" value="false" onChange="outputStateAnonymous" />
+          <Switch id="postAnonymous" class="right switch" value="false" />
         </View>
+
+        <!-- add some spacing for preventing overlap with the button -->
+        <View top="60" heigth="0" />
       </ScrollView>
+
       <View id="submitView">
         <Button id="submitButton" title="L('post_photo_button')" />
       </View>
+
     </Window>
   </NavigationWindow>
 </Alloy>

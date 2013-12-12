@@ -1,19 +1,31 @@
 // require modules only where needed2
 var ImageFactory = require('ti.imagefactory');
 
+// get arguments from the previous controller
 var args = arguments[0] || {};
 
+// set object to convert extensions to common used extensions
 var convertExtension = { 'jpeg': 'jpg', 'pjpeg': 'jpg' };
 
-// show camera only when past controller has said so
-if (args.showCamera === true) {
+// set textarea width depending on device with so the previewImage won't overflow the textarea
+$.description.width = Ti.Platform.displayCaps.platformWidth * 0.9 - 100 - 5;
+
+// bind placeholder function to description field so it works on iphone
+bindPlaceholder($.description, L('post_photo_description_placeholder'));
+
+// in a function so we can change the picture also with this function
+function makePicture() {
 
   Ti.Media.showCamera({
     success:function(e) {
 
+      // touchEnabled
+      var buttonOrignalTitle = $.submitButton.getTitle();
+      $.submitButton.setTitle(buttonOrignalTitle + ' (' + L('post_photo_waiting') + ')');
+
       // crop size
-      //var squareSize = 2048;
-      var squareSize = 640;
+      var squareSize = 2048;
+      //var squareSize = 640;
 
       // fetch image
       var blob = e.media;
@@ -34,6 +46,12 @@ if (args.showCamera === true) {
       blob = ImageFactory.imageAsResized(blob, { width: squareSize, height: squareSize, quality: ImageFactory.QUALITY_NONE } );
       blob = ImageFactory.compress(blob, 0.50);
 
+      // create preview blob
+      var previewBlob = blob;
+      previewBlob     = ImageFactory.imageAsResized(previewBlob, { width: 200, height: 200, quality: ImageFactory.QUALITY_NONE } );
+      $.previewImage.image = previewBlob;
+
+      // select usefull extension, convert jpeg to jpg etc.
       var mimeType  = blob.getMimeType();
       var extension = mimeType.split('/')[1];
       extension     = convertExtension[extension] || extension;
@@ -56,6 +74,8 @@ if (args.showCamera === true) {
             blob,
             function(e) {
               alert('upload success: ' + e.url);
+              $.submitButton.setTitle(buttonOrignalTitle);
+              $.submitButton.setTouchEnabled(true);
             },
             function() {
               alert('failed');
@@ -81,14 +101,13 @@ if (args.showCamera === true) {
   });
 }
 
-function outputStateFacebook() {
-  Ti.API.info('Switch value: ' + $.postFacebook.value);
-}
-function outputStatePublic() {
-  Ti.API.info('Switch value: ' + $.postPublic.value);
+makePicture();
 
-  //toggle post anonymous
+function togglePostAnonymous() {
+
   var postPublic = $.postPublic.value;
+
+  // hiddenView is the View around the switch
   if (postPublic === true) {
     $.hiddenView.show();
   }
@@ -96,9 +115,7 @@ function outputStatePublic() {
     $.hiddenView.hide();
   }
 }
-function outputStateAnonymous() {
-  Ti.API.info('Switch value: ' + $.postAnonymous.value);
-}
+
 function cancelSnapp() {
   $.navWin.close();
 }
