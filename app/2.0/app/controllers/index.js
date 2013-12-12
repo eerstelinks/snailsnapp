@@ -53,7 +53,7 @@ function snailHome() {
     },
     error:function(e) {
 
-      if (error.code == Titanium.Media.NO_CAMERA) {
+      if (e.code == Titanium.Media.NO_CAMERA) {
         console.log('skip camera, use default image');
         Alloy.createController('postphoto', { image: 'Camera success description' }).getView().open();
 

@@ -32,11 +32,11 @@
         <Label class="left" text="L('post_photo_anonymous')"></Label>
         <Switch id="postAnonymous" class="right switch" value="false" onChange="outputStateAnonymous" />
       </View>
-
-      <View bottom="10">
-        <Button id="submit" title="L('post_photo_button')" />
-      </View>
-
     </ScrollView>
+
+    <View id="submitView">
+      <Button id="submitButton" title="L('post_photo_button')" />
+    </View>
+
   </Window>
 </Alloy>
