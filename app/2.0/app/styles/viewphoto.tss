@@ -1,0 +1,20 @@
+'Window': {
+  backgroundColor: Alloy.CFG.grey,
+},
+
+'#backButton': {
+  color: Alloy.CFG.green,
+  style: Ti.UI.iPhone.SystemButtonStyle.PLAIN, //for good behavior on iOS6
+},
+
+'#postPhotoSrollView': {
+  width: '100%',
+  height: Ti.UI.SIZE,
+  top: 0,
+  layout: 'vertical',
+},
+
+'View': {
+  height: Ti.UI.SIZE,
+  top: 20,
+}

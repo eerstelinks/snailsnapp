@@ -1,0 +1,28 @@
+<Alloy>
+  <NavigationWindow platform="ios" id="navWin">
+    <Window id="postPhotoWindow" title="L('view_photo_title')">
+      <LeftNavButton>
+        <View id="navWrapper">
+          <Button image="/images/chevron_left.png" title="L('view_photo_backbutton')" id="backButton" onClick="cancelSnapp" />
+        </View>
+      </LeftNavButton>
+      <ScrollView id="postPhotoSrollView">
+        <View>
+          <Label>DISPLAY SNAPP HERE</Label>
+        </View>
+        <View>
+          <Label>DISPLAY SNAPP DESCRIPTION HERE</Label>
+        </View>
+        <View>
+          <Label>DISPLAY USERNAME HERE</Label>
+        </View>
+        <View>
+          <Label>DISPLAY USER PROFILE PIC HERE</Label>
+        </View>
+        <View>
+          <Label>DISPLAY SNAPP DATETIME HERE</Label>
+        </View>
+      </ScrollView>
+    </Window>
+  </NavigationWindow>
+</Alloy>
