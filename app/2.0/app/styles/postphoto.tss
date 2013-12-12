@@ -1,7 +1,18 @@
 'Window': {
   backgroundColor: Alloy.CFG.grey,
 },
-'#postPhoto': {
+
+'#backButton': {
+  color: Alloy.CFG.black,
+  style: Ti.UI.iPhone.SystemButtonStyle.PLAIN, //for good behavior on iOS6
+},
+
+'#navWrapper': {
+  color: Alloy.CFG.black,
+  width: Ti.UI.SIZE,
+},
+
+'#postPhotoSrollView': {
   width: '100%',
   height: Ti.UI.SIZE,
   top: 0,
