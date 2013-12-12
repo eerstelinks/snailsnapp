@@ -7,9 +7,6 @@
         </View>
       </LeftNavButton>
       <ScrollView id="postPhotoSrollView">
-        <!-- <View top="10">
-          <Label class="italic left right" text="L('post_photo_explanation')"></Label>
-        </View> -->
         <View top="10">
           <Label class="left" text="L('post_photo_description')"></Label>
         </View>
@@ -35,7 +32,6 @@
       <View id="submitView">
         <Button id="submitButton" title="L('post_photo_button')" />
       </View>
-
     </Window>
   </NavigationWindow>
 </Alloy>
