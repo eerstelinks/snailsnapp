@@ -18,7 +18,7 @@ function onProgress(e, otherThis, name) {
 // successCallback: callback function get an object with url and stuff
 // errorCallback: speaks for it self
 // (optional) progressCallback: gets progress in %
-function upload(name, file, successCallback, errorCallback, progressCallback) {
+function uploadToS3(name, file, successCallback, errorCallback, progressCallback) {
 
   if (typeof successCallback != 'function') {
     Ti.API.error('successCallback() is not defined');
