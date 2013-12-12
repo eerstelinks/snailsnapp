@@ -3,13 +3,8 @@
 },
 
 '#backButton': {
-  color: Alloy.CFG.black,
+  color: Alloy.CFG.green,
   style: Ti.UI.iPhone.SystemButtonStyle.PLAIN, //for good behavior on iOS6
-},
-
-'#navWrapper': {
-  color: Alloy.CFG.black,
-  width: Ti.UI.SIZE,
 },
 
 '#postPhotoSrollView': {
@@ -24,7 +19,7 @@
     fontFamily: 'Helvetica',
     fontSize: '16dp',
   }
-}
+},
 
 'View': {
   height: Ti.UI.SIZE,
