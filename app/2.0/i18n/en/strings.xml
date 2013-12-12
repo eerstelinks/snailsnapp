@@ -22,7 +22,7 @@
   <string name="skip_login">Skip for now...</string>
 
   <!-- postphoto page -->
-  <string name="post_photo_description">Description</string>
+  <string name="post_photo_description_placeholder">Write a description...</string>
   <string name="post_photo_explanation">Each and every photo will be stored in your personal snailtrail.</string>
   <string name="post_photo_share_explanation">If the moment you captured is worth it, share it with the world!</string>
   <string name="post_photo_facebook">Share on Facebook</string>

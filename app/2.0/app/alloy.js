@@ -50,3 +50,43 @@ function randomString(string_length) {
   }
   return randomstring;
 }
+
+// bindPlaceholder let you create a beautiful placeholder
+// and make your text gray when not active
+function bindPlaceholder(textareaObject, placeholderText) {
+
+  var originalColor = textareaObject.getColor();
+
+  // set placeholder when value is empty
+  if (textareaObject.getValue() == '') {
+    textareaObject.setValue(placeholderText);
+    textareaObject.setColor(Alloy.CFG.grey);
+  }
+  else if (textareaObject.getValue() == placeholderText) {
+    textareaObject.setColor(Alloy.CFG.grey);
+  }
+
+  // set original color when text changes from script (not user)
+  textareaObject.addEventListener('change', function(e) {
+    textareaObject.setColor(originalColor);
+  });
+
+  // delete placeholder when user focus (taps) the textarea
+  textareaObject.addEventListener('focus', function(e) {
+    if (e.source.value == placeholderText) {
+        e.source.value = '';
+    }
+    textareaObject.setColor(originalColor);
+  });
+
+  // add placeholder when user blurs the textarea
+  textareaObject.addEventListener('blur', function(e) {
+    if (e.source.value == '') {
+        e.source.value = placeholderText;
+        textareaObject.setColor(Alloy.CFG.grey);
+    }
+    else {
+      textareaObject.setColor(originalColor);
+    }
+  });
+}

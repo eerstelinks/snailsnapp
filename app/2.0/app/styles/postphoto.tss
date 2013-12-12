@@ -5,6 +5,10 @@
 '#backButton': {
   color: Alloy.CFG.black,
   style: Ti.UI.iPhone.SystemButtonStyle.PLAIN, //for good behavior on iOS6
+  font: {
+    fontFamily: 'Helvetica',
+    fontSize: '16dp',
+  },
 },
 
 '#navWrapper': {
@@ -19,11 +23,23 @@
   layout: 'vertical',
 },
 
-'TextArea': {
+'#textAreaView': {
+  backgroundColor: Alloy.CFG.white,
+  width: '90%',
+},
+'#description': {
   font: {
     fontFamily: 'Helvetica',
     fontSize: '16dp',
-  }
+  },
+  width: '100%',
+  left: 0,
+  height: 100,
+},
+'#previewImage': {
+  width: 100,
+  height: 100,
+  right: 0,
 }
 
 'View': {
@@ -55,4 +71,9 @@
   backgroundColor: Alloy.CFG.green,
   width: '100%',
   height: 60,
+  touchEnabled: false,
+  font: {
+    fontFamily: 'Helvetica',
+    fontSize: '18dp',
+  },
 }
