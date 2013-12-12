@@ -22,6 +22,7 @@
   <string name="skip_login">Even overslaan...</string>
 
   <!-- postphoto page -->
+  <string name="post_photo_backbutton"> Terug</string>
   <string name="post_photo_description">Omschrijving</string>
   <string name="post_photo_explanation">Elke foto wordt automatisch toegevoegd aan je persoonlijke snailtrail.</string>
   <string name="post_photo_share_explanation">Als de foto het waard is, deel haar dan ook met de wereld!</string>

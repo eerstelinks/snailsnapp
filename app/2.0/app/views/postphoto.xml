@@ -4,6 +4,7 @@
       <LeftNavButton>
         <View id="navWrapper">
           <Button image="/images/chevron-left.png" title=" Back" id="backButton" onClick="cancelSnapp" />
+          <Button image="/images/chevron_left.png" title="L('post_photo_backbutton')" id="backButton" onClick="cancelSnapp" />
         </View>
       </LeftNavButton>
       <ScrollView id="postPhotoSrollView">
