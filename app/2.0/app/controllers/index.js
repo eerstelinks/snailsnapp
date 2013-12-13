@@ -95,9 +95,13 @@ function snailHome() {
 var has_skipped_login = Ti.App.Properties.getBool('has_skipped_login', false);
 
 if (!has_skipped_login && facebook.getLoggedIn() === false) {
+  Ti.App.Properties.setBool('showed_map', false);
+
   Alloy.createController('login').getView().open();
 }
 else {
+  Ti.App.Properties.setBool('showed_map', true);
+
   $.index.open();
   locateMe();
 }

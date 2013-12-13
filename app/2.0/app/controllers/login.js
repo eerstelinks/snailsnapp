@@ -1,4 +1,7 @@
-// Hide fbButton after login
+// is the map already loaded?
+var showedMap = Ti.App.Properties.getBool('showed_map', false);
+
+// hide fbButton after login
 $.fbLoader.hide();
 
 facebook.addEventListener('login', function(e) {
@@ -8,7 +11,10 @@ facebook.addEventListener('login', function(e) {
     $.fbButton.hide();
     $.fbLoader.show();
 
-    Alloy.createController('index').getView().open();
+    if (!showedMap) {
+      Alloy.createController('index').getView().open();
+    }
+
     $.login.close();
   }
   else {
@@ -19,6 +25,11 @@ facebook.addEventListener('login', function(e) {
 //skip login if asked to do so, then hide the button
 function goHome() {
   Ti.App.Properties.setBool('has_skipped_login' , true);
-  Alloy.createController('index').getView().open();
+
+
+  if (!showedMap) {
+    Alloy.createController('index').getView().open();
+  }
+
   $.login.close();
 }
