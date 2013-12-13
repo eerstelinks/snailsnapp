@@ -39,6 +39,7 @@
   width: '100%',
   left: 0,
   height: 100,
+  returnKeyType: Titanium.UI.RETURNKEY_DONE,
 },
 
 '#previewImage': {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
   <!-- buttons -->
-  <string name="button_back">Terug</string>
+  <string name="button_back"> Terug</string>
 
   <!-- alerts -->
   <string name="default_error_title">Snapp...</string>
