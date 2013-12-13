@@ -37,7 +37,7 @@
       </ScrollView>
 
       <View id="submitView">
-        <Button id="submitButton" title="L('post_photo_button')" />
+        <Button id="submitButton" onClick="postSnapp" title="L('post_photo_button')" />
       </View>
 
     </Window>

@@ -22,7 +22,7 @@ facebook.addEventListener('login', function(e) {
     // show indicator of loading
     $.fbLoader.show();
 
-    if (!showedMap) {
+    if (!showedMap && Ti.App.Properties.getBool('send_back_to_post_photo', false) === false) {
       Alloy.createController('index').getView().open();
     }
 
