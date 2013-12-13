@@ -22,12 +22,18 @@
   </head>
 
   <body>
+
     <div class="container">
       <div class="row">
-        <div class="iphone-green">
-          <iframe src="/app/iframe" ></iframe>
+        <div class="col-lg-4 col-md-4 col-md-offset-1 col-xs-12">
+          <h1 class="header">Snailsnapp is coming!</h1>
+          <h2 class="explanation">Use this phone as if it was yours: Scroll down to read more about Snailsnapp...</h2>
         </div>
-        <h1 class="header">Snailsnapp is coming!</h1>
+        <div class="col-md-offset-1 col-md-5 col-xs-12">
+          <div class="iphone-green">
+            <iframe src="http://snailsnapp.com/app/iframe" ></iframe>
+          </div>
+        </div>
       </div>
     </div>
     <!-- Google analytics tracker -->
