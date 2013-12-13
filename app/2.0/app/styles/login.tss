@@ -38,10 +38,11 @@
   style: Alloy.Globals.Facebook.BUTTON_STYLE_WIDE,
 },
 '#fbLoader': {
-  top: 0,
+  top: 20,
 },
 
 '#skipLogin': {
+  visible: false,
   top: 15,
   height: 20,
   font: {
