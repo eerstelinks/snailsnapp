@@ -5,10 +5,13 @@ $.mapview.traffic = false;
 
 $.mapview.userLocation = true;
 
+// when location services are off, get user city location from facebook, default to amsterdam
+var showGeolocation = Ti.App.Properties.getObject('user_city_geolocation', { latitude: 52.373056, longitude: 4.892222 });
+
 // default map of Amsterdam
 $.mapview.region = {
-  latitude: 52.373056,
-  longitude: 4.892222,
+  latitude: showGeolocation.latitude,
+  longitude: showGeolocation.longitude,
   latitudeDelta: 0.1,
   longitudeDelta: 0.1
 };
