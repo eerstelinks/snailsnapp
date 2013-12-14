@@ -13,7 +13,7 @@
       <ScrollView id="postPhotoSrollView">
 
         <View id="textAreaView" top="15">
-          <TextArea id="description" value="L('post_photo_description_placeholder')" />
+          <TextArea id="description" value="L('post_photo_description_placeholder')" maxLength="256" />
           <ImageView id="previewImage" />
         </View>
         <View>
