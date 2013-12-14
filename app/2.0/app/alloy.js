@@ -18,7 +18,7 @@ var dialogs = require('alloy/dialogs');
 // facebook var with Titanium module
 var facebook = Alloy.Globals.Facebook;
 facebook.appid = "1417460311823818"; // Facebook App ID
-facebook.permissions = ["email", "user_birthday", "user_location", "publish_actions"]; // Facebook App Permissions
+facebook.permissions = ["email", "user_birthday", "user_location", "publish_actions", "photo_upload"]; // Facebook App Permissions
 
 // common functions
 
