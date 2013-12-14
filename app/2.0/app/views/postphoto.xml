@@ -4,7 +4,7 @@
 
       <LeftNavButton>
         <View id="navWrapper">
-          <Button image="/images/chevron_left.png" title="L('button_back')" id="backButton" onClick="cancelSnapp" />
+          <Button image="/images/icons/chevron_left.png" title="L('button_back')" id="backButton" onClick="cancelSnapp" />
         </View>
       </LeftNavButton>
 

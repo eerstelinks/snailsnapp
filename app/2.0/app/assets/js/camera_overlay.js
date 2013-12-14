@@ -26,7 +26,7 @@ function createCameraOverlay(backFunction, captureFunction) {
 
   var backButton = Titanium.UI.createButton({
     color: Alloy.CFG.green,
-    image: '/images/chevron_left.png',
+    image: '/images/icons/chevron_left.png',
     title: L('button_back'),
     left: 10,
     style: Ti.UI.iPhone.SystemButtonStyle.PLAIN, // for good behavior on iOS6
