@@ -178,13 +178,7 @@ function makePicture() {
       previewBlob     = ImageFactory.imageAsResized(previewBlob, { width: 200, height: 200, quality: ImageFactory.QUALITY_NONE } );
       $.previewImage.image = previewBlob;
 
-      // upload only when we hit 'Yes'
-      dialogs.confirm({
-        message: 'Would you like to upload it to Amazon? (only for developers)',
-        callback: function() {
-          startUpload(blob);
-        }
-      });
+      startUpload(blob);
     },
     cancel:function(e) {
       $.postphoto.close();
