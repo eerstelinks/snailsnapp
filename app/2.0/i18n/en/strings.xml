@@ -10,8 +10,8 @@
   <string name="default_success_title">Snailed it</string>
   <string name="default_success_message">This was a big success</string>
   <string name="default_success_button">Let me go</string>
-  <string name="not_logged_in_message">Sorry, you are not logged in, please do this first</string>
-  <string name="not_logged_in_button">Let me log in</string>
+  <string name="default_not_logged_in_message">Sorry, you are not logged in, please do this first</string>
+  <string name="default_not_logged_in_button">Let me log in</string>
 
 
   <!-- location alerts -->
