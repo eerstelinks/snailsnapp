@@ -10,6 +10,8 @@
   <string name="default_success_title">Snailed it</string>
   <string name="default_success_message">Helemaal gelukt!</string>
   <string name="default_success_button">Laat me gaan</string>
+  <string name="default_not_logged_in_message">Sorry, je bent niet ingelogd, doe dit eerst</string>
+  <string name="default_not_logged_in_button">Laat me inloggen</string>
 
   <!-- location alerts -->
   <string name="geo_no_location_message">Zet locatiebepaling aan in je instellingen</string>

@@ -75,7 +75,8 @@ function checkIfBothAreFinished() {
   if (areAllUploadsFinished && isUserFinished) {
     // post to snailsnapp.com
     //$.postphoto.show();
-    alert('going to post to snailsnapp & facebook');
+    postSnapp();
+
     mapView.loadingBar.setVisible(false);
     $.postphoto.close();
   }
@@ -169,7 +170,6 @@ function makePicture() {
           startUpload(blob);
         }
       });
-
     },
     cancel:function(e) {
       $.postphoto.close();
@@ -204,4 +204,36 @@ function togglePostAnonymous() {
 
 function cancelSnapp() {
   $.postphoto.hide();
+}
+
+function postSnapp() {
+  // do the funky facebook shizzle
+  if (!facebook.loggedIn) {
+    // go to login screen when user is not logged in
+    // postphotowindow is not closed because the user returns after logging in
+    showErrorAlert('L("default_not_logged_in_message")','L("default_not_logged_in_button")');
+    Ti.App.Properties.setBool('send_back_to_post_photo', true);
+    Alloy.createController('login').getView().open();
+  }
+  else if ($.postFacebook.value === true) {
+    var snappDescription = 'Testing Snailsnapp'; // should be replaced by user description
+    var snappUrl = 'http://static.guim.co.uk/sys-images/Money/Pix/pictures/2010/7/2/1278082389926/palm-tree-beach-006.jpg'; // should be replaced by Amazon URL
+
+    var snappData = {
+      message: snappDescription,
+      url: snappUrl
+    }
+
+    facebook.requestWithGraphPath('me/photos', snappData, 'POST', function(e) {
+      if (e.success) {
+        alert("Success!  From FB: " + e.result);
+      }
+      else {
+        alert(e.error);
+      }
+    });
+  }
+  else {
+    // post this shizzle somewhere, ehm... adriaan?
+  }
 }
