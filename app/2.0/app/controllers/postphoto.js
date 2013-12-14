@@ -139,12 +139,29 @@ function postSnapp() {
   if (!facebook.loggedIn) {
     // go to login screen when user is not logged in
     // postphotowindow is not closed because the user returns after logging in
-    showErrorAlert('L("defaul_not_logged_in_message")','L("default_not_logged_in_button")');
+    showErrorAlert('L("default_not_logged_in_message")','L("default_not_logged_in_button")');
     Ti.App.Properties.setBool('send_back_to_post_photo', true);
     Alloy.createController('login').getView().open();
   }
-  else {
-  // post this shizzle somewhere, ehm... adriaan?
+  else if ($.postFacebook.value === true) {
+    var snappDescription = 'Testing Snailsnapp'; // should be replaced by user description
+    var snappUrl = 'http://static.guim.co.uk/sys-images/Money/Pix/pictures/2010/7/2/1278082389926/palm-tree-beach-006.jpg'; // should be replaced by Amazon URL
 
+    var snappData = {
+      message: snappDescription,
+      url: snappUrl
+    }
+
+    facebook.requestWithGraphPath('me/photos', snappData, 'POST', function(e) {
+      if (e.success) {
+        alert("Success!  From FB: " + e.result);
+      }
+      else {
+        alert(e.error);
+      }
+    });
+  }
+  else {
+    // post this shizzle somewhere, ehm... adriaan?
   }
 }
