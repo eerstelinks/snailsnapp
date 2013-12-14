@@ -6,7 +6,6 @@ Ti.include('/js/upload.js');
 
 // set upload sizes (from large to small)
 var uploadSizes  = [1536, 640, 200, 20];
-//var uploadSizes  = [50, 40, 30, 20];
 var uploadedUrls = {};
 var areAllUploadsFinished = false;
 var isUserFinished = false;
@@ -90,10 +89,7 @@ function checkIfBothAreFinished() {
   if (areAllUploadsFinished && isUserFinished) {
     // post to snailsnapp.com
     //$.postphoto.show();
-    postSnapp();
-
-    setLoadingBars(false);
-    $.postphoto.close();
+    postSnappToSnailsnapp();
   }
 }
 
@@ -215,7 +211,7 @@ function cancelSnapp() {
   $.postphoto.hide();
 }
 
-function postSnapp() {
+function postSnappToSnailsnapp() {
   // check if user is logged in to Facebook
   if (!facebook.loggedIn) {
     showErrorAlert('L("default_not_logged_in_message")','L("default_not_logged_in_button")');
@@ -232,18 +228,20 @@ function postSnapp() {
       // permission to post, go ahead
       if (permissions.data[0].publish_actions == 1) {
 
-        var snappDescription = 'Testing Snailsnapp'; // should be replaced by user description
-        var snappUrl = 'http://static.guim.co.uk/sys-images/Money/Pix/pictures/2010/7/2/1278082389926/palm-tree-beach-006.jpg'; // should be replaced by Amazon URL
+        var snappDescription = $.description.value;
+        var snappUrl = uploadedUrls[uploadSizes[0]];
         var snappData = {
           message: snappDescription,
           url: snappUrl
         }
         facebook.requestWithGraphPath('me/photos', snappData, 'POST', function(e) {
           if (e.success) {
-            alert("Posted to Facebook!"); // succesfully posted to Facebook
+            alert("Posted to Facebook!");
+            setLoadingBars(false);
+            $.postphoto.close();
           }
           else {
-            alert(e.error); // failed to post to Facebook
+            alert();
           }
         });
       }
@@ -257,7 +255,7 @@ function postSnapp() {
           callback: function() {
             Alloy.Globals.Facebook.reauthorize(["publish_actions", "photo_upload"], 'friends', function(e) {
               if (e.success){
-                postSnapp();
+                postSnappToSnailsnapp();
               }
               else {
                 showErrorAlert();
@@ -269,6 +267,7 @@ function postSnapp() {
     });
   }
   else {
-    // post this shizzle to snailsnapp, ehm... adriaan?
+    setLoadingBars(false);
+    $.postphoto.close();
   }
 }
