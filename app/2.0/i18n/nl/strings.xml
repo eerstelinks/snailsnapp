@@ -2,6 +2,8 @@
 <resources>
   <!-- buttons -->
   <string name="button_back"> Terug</string>
+  <string name="button_yes">Ja</string>
+  <string name="button_no">Nee</string>
 
   <!-- alerts -->
   <string name="default_error_title">Snapp...</string>
@@ -44,6 +46,8 @@
   <string name="post_photo_anonymous">Deel anoniem</string>
   <string name="post_photo_button">Plaatsen</string>
   <string name="post_photo_waiting">bezig met uploaden...</string>
+  <string name="post_photo_no_permission_title">Geen toestemming om te delen op Facebook</string>
+  <string name="post_photo_no_permission_message">Wil je nu toestemming te geven?</string>
 
   <!-- viewphoto page -->
   <string name="view_photo_title">Bekijk Snapp</string>

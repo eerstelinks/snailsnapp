@@ -2,6 +2,8 @@
 <resources>
   <!-- buttons -->
   <string name="button_back"> Back</string>
+  <string name="button_yes">Yes</string>
+  <string name="button_no">No</string>
 
   <!-- alerts -->
   <string name="default_error_title">Snapp...</string>
@@ -12,7 +14,6 @@
   <string name="default_success_button">Let me go</string>
   <string name="default_not_logged_in_message">Sorry, you are not logged in, please do this first</string>
   <string name="default_not_logged_in_button">Let me log in</string>
-
 
   <!-- location alerts -->
   <string name="geo_no_location_message">To locate yourself we need your location, so turn it on in your phone settings</string>
@@ -45,6 +46,8 @@
   <string name="post_photo_anonymous">Share anonymous</string>
   <string name="post_photo_button">Post</string>
   <string name="post_photo_waiting">wait for upload...</string>
+  <string name="post_photo_no_permission_title">No permission to share on Facebook</string>
+  <string name="post_photo_no_permission_message">Would you like to give permission?</string>
 
   <!-- viewphoto page -->
   <string name="view_photo_title">View snapp</string>

@@ -216,33 +216,59 @@ function cancelSnapp() {
 }
 
 function postSnapp() {
-  // do the funky facebook shizzle
+  // check if user is logged in to Facebook
   if (!facebook.loggedIn) {
-    // go to login screen when user is not logged in
-    // postphotowindow is not closed because the user returns after logging in
     showErrorAlert('L("default_not_logged_in_message")','L("default_not_logged_in_button")');
     Ti.App.Properties.setBool('send_back_to_post_photo', true);
+    // go to login screen when user is not logged in
     Alloy.createController('login').getView().open();
+    // postphotowindow is not closed because the user returns after logging in
   }
+  // if share-on-facebook is checked go here
   else if ($.postFacebook.value === true) {
-    var snappDescription = 'Testing Snailsnapp'; // should be replaced by user description
-    var snappUrl = 'http://static.guim.co.uk/sys-images/Money/Pix/pictures/2010/7/2/1278082389926/palm-tree-beach-006.jpg'; // should be replaced by Amazon URL
+    // check for posting permissions
+    facebook.requestWithGraphPath('me/permissions', {}, 'GET', function(p) {
+      var permissions = JSON.parse(p.result);
+      // permission to post, go ahead
+      if (permissions.data[0].publish_actions == 1) {
 
-    var snappData = {
-      message: snappDescription,
-      url: snappUrl
-    }
-
-    facebook.requestWithGraphPath('me/photos', snappData, 'POST', function(e) {
-      if (e.success) {
-        alert("Success!  From FB: " + e.result);
+        var snappDescription = 'Testing Snailsnapp'; // should be replaced by user description
+        var snappUrl = 'http://static.guim.co.uk/sys-images/Money/Pix/pictures/2010/7/2/1278082389926/palm-tree-beach-006.jpg'; // should be replaced by Amazon URL
+        var snappData = {
+          message: snappDescription,
+          url: snappUrl
+        }
+        facebook.requestWithGraphPath('me/photos', snappData, 'POST', function(e) {
+          if (e.success) {
+            alert("Posted to Facebook!"); // succesfully posted to Facebook
+          }
+          else {
+            alert(e.error); // failed to post to Facebook
+          }
+        });
       }
       else {
-        alert(e.error);
+        // no permission to post, ask for re-log in
+        dialogs.confirm({
+          title: L("post_photo_no_permission_title"),
+          message: L("post_photo_no_permission_message"),
+          yes: L("button_yes"),
+          no: L("button_no"),
+          callback: function() {
+            Alloy.Globals.Facebook.reauthorize(["publish_actions", "photo_upload"], 'friends', function(e) {
+              if (e.success){
+                postSnapp();
+              }
+              else {
+                showErrorAlert();
+              }
+            });
+          }
+        });
       }
     });
   }
   else {
-    // post this shizzle somewhere, ehm... adriaan?
+    // post this shizzle to snailsnapp, ehm... adriaan?
   }
 }
