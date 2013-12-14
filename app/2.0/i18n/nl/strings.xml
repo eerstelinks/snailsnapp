@@ -21,6 +21,15 @@
   <string name="no_camera_error_message">Je hebt geen camera, hoe maak jij foto's?</string>
   <string name="no_camera_error_button">Laat me een nieuwe telefoon kopen</string>
 
+  <!-- camera overlay -->
+  <string name="camera_title">Smile!</string>
+  <string name="camera_selfie_title">Serieus?</string>
+  <string name="camera_selfie_message">Je gaat me toch niet vertellen dat je een selfie gaat maken he!</string>
+  <string name="camera_selfie_button">Sttt, niets zeggen...</string>
+  <string name="camera_flash_on">aan</string>
+  <string name="camera_flash_off">uit</string>
+  <string name="camera_flash_auto">auto</string>
+
   <!-- login page -->
   <string name="skip_login">Even overslaan...</string>
 

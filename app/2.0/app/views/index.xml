@@ -1,9 +1,10 @@
 <Alloy>
   <Window>
+    <View id="loadingBar" top="0" />
     <View id="mapview" ns="Alloy.Globals.Map"></View>
 
-    <ImageView onClick="locateMe" image="/images/location_arrow.png" bottom="10" right="10" width="28" height="35" />
-    <ImageView onClick="fbLogOut" image="/images/unlock_alt.png" bottom="10" right="48" width="22" height="35" />
+    <ImageView onClick="locateMe" image="/images/icons/location.png" bottom="10" right="10" width="28" height="35" />
+    <ImageView onClick="fbLogOut" image="/images/icons/unlock.png" bottom="10" right="48" width="22" height="35" />
     <ImageView id="snailHome" onClick="snailHome" image="/images/snailhome.png" />
   </Window>
 </Alloy>

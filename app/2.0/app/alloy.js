@@ -90,3 +90,12 @@ function bindPlaceholder(textareaObject, placeholderText) {
     }
   });
 }
+
+// function .size() for counting elements in an object
+Object.size = function(obj) {
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};

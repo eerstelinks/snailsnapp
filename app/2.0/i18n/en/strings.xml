@@ -21,6 +21,15 @@
   <string name="no_camera_error_message">You don't have a camera, how do you make photos?</string>
   <string name="no_camera_error_button">Let me buy a new phone</string>
 
+  <!-- camera overlay -->
+  <string name="camera_title">Smile!</string>
+  <string name="camera_selfie_title">Really?</string>
+  <string name="camera_selfie_message">Don't tell me you are going to make a selfie!</string>
+  <string name="camera_selfie_button">Sttt, show front camera</string>
+  <string name="camera_flash_on">on</string>
+  <string name="camera_flash_off">off</string>
+  <string name="camera_flash_auto">auto</string>
+
   <!-- login page -->
   <string name="skip_login">Skip for now...</string>
 

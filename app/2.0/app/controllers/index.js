@@ -84,7 +84,14 @@ function fbLogOut() {
 // got to controller and trigger camera while hitting the snailHome
 function snailHome() {
   if (Ti.Media.isCameraSupported) {
-    Alloy.createController('postphoto', {}).getView().open();
+
+    if (typeof postView != 'object') {
+      postView = Alloy.createController('postphoto', { mapView: $ }).getView();
+      postView.open();
+    }
+    else {
+      postView.show();
+    }
   }
   else {
     showErrorAlert(L('no_camera_error_message'), L('no_camera_error_button'));

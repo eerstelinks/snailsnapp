@@ -8,8 +8,6 @@
         </View>
       </LeftNavButton>
 
-      <View id="loadingBar" top="0" />
-
       <ScrollView id="postPhotoSrollView">
 
         <View id="textAreaView" top="15">
@@ -37,7 +35,7 @@
       </ScrollView>
 
       <View id="submitView">
-        <Button id="submitButton" title="L('post_photo_button')" />
+        <Button id="submitButton" title="L('post_photo_button')" onClick="userIsFinished" />
       </View>
 
     </Window>
