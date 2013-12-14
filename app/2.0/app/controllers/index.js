@@ -93,7 +93,15 @@ function snailHome() {
       postView.open();
     }
     else {
-      postView.show();
+
+      // check if postView is closed (not an elegant way)
+      if ($.loadingBar.getVisible()) {
+        postView.show();
+      }
+      else {
+        postView = Alloy.createController('postphoto', { mapView: $ }).getView();
+        postView.open();
+      }
     }
   }
   else {

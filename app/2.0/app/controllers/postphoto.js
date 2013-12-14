@@ -21,11 +21,26 @@ $.description.width = Ti.Platform.displayCaps.platformWidth * 0.9 - 100 - 5;
 // bind placeholder function to description field so it works on iphone
 bindPlaceholder($.description, L('post_photo_description_placeholder'));
 
+function setLoadingBars(booleanOrProcent) {
+  if (booleanOrProcent === false) {
+    mapView.loadingBar.setVisible(false);
+    $.loadingBar.setVisible(false);
+  }
+  else if (booleanOrProcent === true) {
+    mapView.loadingBar.setVisible(true);
+    $.loadingBar.setVisible(true);
+  }
+  else {
+    mapView.loadingBar.setWidth(booleanOrProcent + '%');
+    $.loadingBar.setWidth(booleanOrProcent + '%');
+  }
+}
+
 // function always after download
 function always() {
 
-  // hide loading bar
-  mapView.loadingBar.setVisible(false);
+  // hide loading bars
+  setLoadingBars(false);
 }
 
 Ti.include('/js/camera_overlay.js');
@@ -46,7 +61,7 @@ function updateProgress(totalProgress) {
   // set max uploadprogress to 90%
   total = total / 4 * 0.9;
 
-  mapView.loadingBar.setWidth(total + '%');
+  setLoadingBars(total);
 }
 
 // only called when all uploads are done
@@ -60,7 +75,7 @@ function allUploadsAreFinished() {
 function userIsFinished() {
 
   // view progressbar
-  mapView.loadingBar.setVisible(true);
+  setLoadingBars(true);
 
   // hide and keep running in background
   $.postphoto.hide();
@@ -77,7 +92,7 @@ function checkIfBothAreFinished() {
     //$.postphoto.show();
     postSnapp();
 
-    mapView.loadingBar.setVisible(false);
+    setLoadingBars(false);
     $.postphoto.close();
   }
 }
@@ -89,7 +104,7 @@ function startUpload(largeBlob) {
   uploadedUrls = {};
   areAllUploadsFinished = false;
   isUserFinished = false;
-  mapView.loadingBar.setWidth(5);
+  setLoadingBars(5);
 
   // set object to convert extensions to common used extensions
   var convertExtension = { 'jpeg': 'jpg', 'pjpeg': 'jpg' };

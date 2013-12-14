@@ -8,6 +8,8 @@
         </View>
       </LeftNavButton>
 
+      <View id="loadingBar" top="0" />
+
       <ScrollView id="postPhotoSrollView">
 
         <View id="textAreaView" top="15">

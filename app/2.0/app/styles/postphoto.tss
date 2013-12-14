@@ -11,6 +11,15 @@
   },
 },
 
+'#loadingBar': {
+  width: 5,
+  height: 3,
+  left: 0,
+  zIndex: 1020,
+  visible: false,
+  backgroundColor: Alloy.CFG.green,
+},
+
 '#postPhotoSrollView': {
   width: '100%',
   height: Ti.UI.SIZE,
