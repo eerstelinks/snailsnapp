@@ -28,12 +28,12 @@ var snapp = Alloy.Globals.Map.createAnnotation({
   latitude: snappLatitude,
   longitude: snappLongtitude,
   image: '', // image-thumbnail or pin
-  title: 'Loading...',
+  title: L('loading') + '...',
 });
 
 // replace image-annotation with cached thumbnail
 var snappURL = ''; // THIS SHOULD REFER TO AMAZON URL!
-cachedImageView('CachedPins', snappURL, snapp);
+cachedImageView('cached_pins', snappURL, snapp);
 
 // open viewPhoto after click on either thumbnail or pin
 $.mapview.addEventListener('click', function(evt) {
@@ -41,7 +41,7 @@ $.mapview.addEventListener('click', function(evt) {
   $.mapview.deselectAnnotation(snapp);
 
   // open the view only when the user hits the pin
-  // and not when deselectAnnotation()'s fires
+  // and not when deselectAnnotation() fires
   if (evt.clicksource != null) {
     Alloy.createController('viewphoto').getView().open();
   }
@@ -95,7 +95,7 @@ function snailHome() {
     else {
 
       // check if postView is closed (not an elegant way)
-      if ($.loadingBar.getVisible()) {
+      if (Ti.App.Properties.getBool('is_upload_active', false)) {
         postView.show();
       }
       else {

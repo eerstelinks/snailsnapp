@@ -4,14 +4,21 @@ var ImageFactory = require('ti.imagefactory');
 // include amazon upload script
 Ti.include('/js/upload.js');
 
+// always destroy login when closed
+$.postphoto.addEventListener('close', function() {
+  $.destroy();
+});
+
 // set upload sizes (from large to small)
 var uploadSizes  = [1536, 640, 200, 20];
 var uploadedUrls = {};
+var xhrRequests  = {};
 var areAllUploadsFinished = false;
-var isUserFinished = false;
+var isUserFinished        = false;
+var cancelledAllUploads   = false;
 
 // get arguments from the previous controller
-var args = arguments[0] || {};
+var args    = arguments[0] || {};
 var mapView = args.mapView;
 
 // set textarea width depending on device with so the previewImage won't overflow the textarea
@@ -32,6 +39,17 @@ function setLoadingBars(booleanOrProcent) {
   else {
     mapView.loadingBar.setWidth(booleanOrProcent + '%');
     $.loadingBar.setWidth(booleanOrProcent + '%');
+  }
+}
+
+function setUploadActive(isActive) {
+  if (isActive) {
+    mapView.activeUploadIcon.setVisible(true);
+    Ti.App.Properties.setBool('is_upload_active', true);
+  }
+  else {
+    mapView.activeUploadIcon.setVisible(false);
+    Ti.App.Properties.setBool('is_upload_active', false);
   }
 }
 
@@ -57,8 +75,8 @@ function updateProgress(totalProgress) {
     total += totalProgress[key];
   }
 
-  // set max uploadprogress to 90%
-  total = total / 4 * 0.9;
+  // set max uploadprogress to 70%
+  total = total * 0.7;
 
   setLoadingBars(total);
 }
@@ -66,30 +84,122 @@ function updateProgress(totalProgress) {
 // only called when all uploads are done
 function allUploadsAreFinished() {
 
+  // delete local file for uploading again which isn't necessary anymore after success
+  Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'lastimage').deleteFile();
+
   areAllUploadsFinished = true;
   checkIfBothAreFinished();
 }
 
+function setEditableTo(editable) {
+  if (editable) {
+    $.postPhotoSrollView.setTouchEnabled(true);
+    $.postPhotoSrollView.setOpacity(1);
+    $.submitButton.setTitle(L('post_photo_button'));
+  }
+  else {
+    // disable user input
+    $.postPhotoSrollView.setTouchEnabled(false);
+    $.postPhotoSrollView.setOpacity(0.5);
+    $.submitButton.setTitle(L('post_photo_button_edit'));
+  }
+}
+
 // has user hit post button jet?
-function userIsFinished() {
+function userSubmits() {
 
-  // view progressbar
-  setLoadingBars(true);
+  // check if user is clicking on posting or edit
+  if (this.title == L('post_photo_button')) {
 
-  // hide and keep running in background
-  $.postphoto.hide();
+    setEditableTo(false);
 
-  isUserFinished = true;
-  checkIfBothAreFinished();
+    // view progressbar
+    setLoadingBars(true);
+
+    // hide and keep running in background
+    $.postphoto.hide();
+
+    // try to upload again when uploads are cancelled
+    if (cancelledAllUploads === true) {
+
+      // start upload again and use blob from local files
+      startUpload(false);
+    }
+
+    // check if user is logged in to Facebook
+    if (!facebook.loggedIn) {
+
+      showErrorAlert(L("default_not_logged_in_message"), L("default_not_logged_in_button"));
+
+      // go to login screen when user is not logged in
+      Ti.App.Properties.setBool('send_back_to_post_photo', true);
+      Alloy.createController('login', { data: 'iets' } ).getView().open();
+
+      // postphotowindow is not closed because the user returns after logging in
+    }
+    else {
+      isUserFinished = true;
+      checkIfBothAreFinished();
+    }
+  }
+  else if (this.title == L('post_photo_button_edit')) {
+
+    isUserFinished = false;
+    setEditableTo(true);
+
+    // view progressbar
+    setLoadingBars(false);
+  }
 }
 
 // this function checks if userIsFinished && allUploadsAreFinished
 function checkIfBothAreFinished() {
 
   if (areAllUploadsFinished && isUserFinished) {
-    // post to snailsnapp.com
-    //$.postphoto.show();
     postSnappToSnailsnapp();
+  }
+}
+
+// this is called for every upload fail (uploadSizes.length)
+function cancelAllUploads(e) {
+
+  // excute this script part once
+  if (cancelledAllUploads === false) {
+
+    // let user control input
+    setEditableTo(true);
+
+    // abort all xhrRequests
+    for (key in xhrRequests) {
+      xhrRequests[key].abort();
+    }
+
+    // upload function returns object when fails
+    // show no message when just the function is called
+    if (typeof e == 'object') {
+
+      setLoadingBars(false);
+
+      // ask user to upload again
+      dialogs.confirm({
+        title: L('default_error_title'),
+        message: L('confirm_upload_again'),
+        no: L('button_no'),
+        yes: L('button_yes'),
+        callback: function() {
+
+          // start upload again and use blob from local files
+          startUpload(false);
+        }
+      });
+
+    }
+    else {
+      setLoadingBars(false);
+      setUploadActive(false);
+    }
+
+    cancelledAllUploads = true;
   }
 }
 
@@ -100,7 +210,21 @@ function startUpload(largeBlob) {
   uploadedUrls = {};
   areAllUploadsFinished = false;
   isUserFinished = false;
-  setLoadingBars(5);
+  cancelledAllUploads = false;
+  setLoadingBars(0);
+  setUploadActive(true);
+
+  // largeBlob is set to false when user is trying to upload the same file again (probably after an error)
+  if (largeBlob === false) {
+    var localBlob = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'lastimage');
+    if (localBlob.exists()) {
+      largeBlob = localBlob.read();
+    }
+    else {
+      showErrorAlert(L('upload_again_failed'));
+      $.postphoto.close();
+    }
+  }
 
   // set object to convert extensions to common used extensions
   var convertExtension = { 'jpeg': 'jpg', 'pjpeg': 'jpg' };
@@ -115,7 +239,11 @@ function startUpload(largeBlob) {
   // create an unique name
   var currentSeconds = Math.floor(new Date().getTime() / 1000);
 
+  // save blob to local folder so when upload fails the user can try again
+  Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'lastimage').write(largeBlob);
+
   var resizeBlob = largeBlob;
+  var sumSizes   = uploadSizes.reduce(function(a, b) { return a + b });
 
   // upload to amazon
   uploadSizes.forEach(function(size) {
@@ -136,7 +264,11 @@ function startUpload(largeBlob) {
       }
     }
 
-    uploadToS3(name, resizeBlob, successFunction, function() { alert('upload failed') }, function(progress) { totalProgress[size] = progress; updateProgress(totalProgress) });
+    xhrRequests[size] = uploadToS3(name, resizeBlob, successFunction, cancelAllUploads, function(progress) {
+      relativeProgress = progress / 100 * size * 100 / sumSizes;
+      totalProgress[size] = relativeProgress;
+      updateProgress(totalProgress);
+    });
 
   });
 }
@@ -207,67 +339,115 @@ function togglePostAnonymous() {
   }
 }
 
-function cancelSnapp() {
-  $.postphoto.hide();
+// what to do with the backbutton
+function cancelButton() {
+  cancelAllUploads();
+  $.postphoto.close();
+}
+
+var isFacebookPostFinished   = false;
+var isSnailsnappPostFinished = false;
+
+function checkIfFbAndSsAreFinished() {
+  if (isFacebookPostFinished && isSnailsnappPostFinished) {
+
+    // close window and shizzle is done...
+    setLoadingBars(false);
+    setUploadActive(false);
+    $.postphoto.close();
+  }
 }
 
 function postSnappToSnailsnapp() {
-  // check if user is logged in to Facebook
-  if (!facebook.loggedIn) {
-    showErrorAlert('L("default_not_logged_in_message")','L("default_not_logged_in_button")');
-    Ti.App.Properties.setBool('send_back_to_post_photo', true);
-    // go to login screen when user is not logged in
-    Alloy.createController('login').getView().open();
-    // postphotowindow is not closed because the user returns after logging in
-  }
-  // if share-on-facebook is checked go here
-  else if ($.postFacebook.value === true) {
-    // check for posting permissions
-    facebook.requestWithGraphPath('me/permissions', {}, 'GET', function(p) {
-      var permissions = JSON.parse(p.result);
-      // permission to post, go ahead
-      if (permissions.data[0].publish_actions == 1) {
 
-        var snappDescription = $.description.value;
-        var snappUrl = uploadedUrls[uploadSizes[0]];
-        var snappData = {
-          message: snappDescription,
-          url: snappUrl
-        }
-        facebook.requestWithGraphPath('me/photos', snappData, 'POST', function(e) {
-          if (e.success) {
-            alert("Posted to Facebook!");
-            setLoadingBars(false);
-            $.postphoto.close();
-          }
-          else {
-            alert();
-          }
-        });
-      }
-      else {
-        // no permission to post, ask for re-log in
-        dialogs.confirm({
-          title: L("post_photo_no_permission_title"),
-          message: L("post_photo_no_permission_message"),
-          yes: L("button_yes"),
-          no: L("button_no"),
-          callback: function() {
-            Alloy.Globals.Facebook.reauthorize(["publish_actions", "photo_upload"], 'friends', function(e) {
-              if (e.success){
-                postSnappToSnailsnapp();
-              }
-              else {
-                showErrorAlert();
-              }
-            });
-          }
-        });
-      }
-    });
+  // set text to uploading to facebook, no edit anymore
+  $.submitButton.setTitle(L('post_photo_button_posting'));
+
+  // if share-on-facebook is checked go here
+  if ($.postFacebook.value === true) {
+    postToFacebook();
   }
   else {
-    setLoadingBars(false);
-    $.postphoto.close();
+    isFacebookPostFinished = true;
   }
+
+  postToSnailsnapp();
+
+}
+
+function postToSnailsnapp() {
+
+  // upload shizzle to snailsnapp
+  // api_url + '/balbal'
+  alert('post to snailsnapp!');
+
+}
+
+
+function postToFacebook() {
+
+  // set text to uploading to facebook, no edit anymore
+  $.submitButton.setTitle(L('post_photo_button_facebook'));
+
+  // check for posting permissions
+  facebook.requestWithGraphPath('me/permissions', {}, 'GET', function(response) {
+
+    var hasPostPermission = false;
+
+    // try and ignore errors
+    try {
+        var permissions = JSON.parse(response.result);
+        if (permissions.data[0].publish_actions == 1) {
+          hasPostPermission = true;
+        }
+    } catch(e) {}
+
+    // permission to post, go ahead
+    if (hasPostPermission) {
+
+      var snappDescription = $.description.value;
+      var snappUrl = uploadedUrls[uploadSizes[0]];
+      var snappData = {
+        message: snappDescription,
+        url: snappUrl
+      }
+      facebook.requestWithGraphPath('me/photos', snappData, 'POST', function(e) {
+
+        if (e.success) {
+          // show nothing
+        }
+        else {
+          showErrorAlert(L('post_photo_facebook_error'));
+        }
+
+        isFacebookPostFinished = true;
+        checkIfFbAndSsAreFinished();
+
+      });
+    }
+    else {
+      // no permission to post, ask for re-log in
+      dialogs.confirm({
+        title: L('post_photo_no_permission_title'),
+        message: L('post_photo_no_permission_message'),
+        no: L('button_no'),
+        yes: L('button_yes'),
+        callback: function() {
+
+          Alloy.Globals.Facebook.reauthorize(['publish_actions', 'photo_upload'], 'friends', function(e) {
+            if (e.success){
+              postToFacebook();
+            }
+            else {
+              $.postFacebook.setValue(false);
+              showErrorAlert();
+              isFacebookPostFinished = true;
+              checkIfFbAndSsAreFinished();
+            }
+          });
+
+        }
+      });
+    }
+  });
 }

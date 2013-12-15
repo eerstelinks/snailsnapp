@@ -11,3 +11,7 @@
   visible: false,
   backgroundColor: Alloy.CFG.green,
 },
+
+'#activeUploadIcon': {
+  visible: false,
+}

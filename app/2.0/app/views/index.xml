@@ -3,8 +3,12 @@
     <View id="loadingBar" top="0" />
     <View id="mapview" ns="Alloy.Globals.Map"></View>
 
-    <ImageView onClick="locateMe" image="/images/icons/location.png" bottom="10" right="10" width="28" height="35" />
-    <ImageView onClick="fbLogOut" image="/images/icons/unlock.png" bottom="10" right="48" width="22" height="35" />
+    <!-- temp logout button for dev -->
+    <Button onClick="fbLogOut" image="/images/icons/unlock.png" bottom="10" left="10" width="35" height="35" />
+
+    <Button onClick="locateMe" image="/images/icons/location.png" bottom="5" right="5" width="40" height="40" />
+    <Button onClick="snailHome" id="activeUploadIcon" image="/images/icons/cloud_upload.png" bottom="50" right="5" width="40" height="40" />
+
     <ImageView id="snailHome" onClick="snailHome" image="/images/snailhome.png" />
   </Window>
 </Alloy>

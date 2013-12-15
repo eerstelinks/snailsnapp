@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
+
+  <!-- general -->
+  <string name="loading">Loading</string>
+
   <!-- buttons -->
   <string name="button_back"> Back</string>
   <string name="button_yes">Yes</string>
   <string name="button_no">No</string>
+  <string name="button_left_cancel"> Cancel</string>
 
   <!-- alerts -->
   <string name="default_error_title">Snapp...</string>
@@ -45,9 +50,14 @@
   <string name="post_photo_world">Share on Snailsnapp</string>
   <string name="post_photo_anonymous">Share anonymous</string>
   <string name="post_photo_button">Post</string>
-  <string name="post_photo_waiting">wait for upload...</string>
+  <string name="post_photo_button_edit">Posting... Tap to edit</string>
+  <string name="post_photo_button_posting">Posting...</string>
+  <string name="post_photo_button_facebook">Posting to Facebook...</string>
   <string name="post_photo_no_permission_title">No permission to share on Facebook</string>
   <string name="post_photo_no_permission_message">Would you like to give permission?</string>
+  <string name="post_photo_facebook_error">Sorry, we can't post this photo to your Facebook</string>
+  <string name="confirm_upload_again">While uplaoding the snapp, something went wrong. Do you want to try again?</string>
+  <string name="upload_again_failed">Can't upload the files again, sorry about that, go capture a new moment</string>
 
   <!-- viewphoto page -->
   <string name="view_photo_title">View snapp</string>

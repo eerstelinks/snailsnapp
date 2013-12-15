@@ -1,10 +1,34 @@
+Ti.include('/js/update_user_info.js');
+
 // is the map already loaded?
 var showedMap = Ti.App.Properties.getBool('showed_map', false);
 
+// get arguments from the previous controller
+var args = arguments[0] || {};
+
+// always destroy login when closed
+$.login.addEventListener('close', function() {
+  $.destroy();
+});
+
 function goToMapView() {
+
   if (!showedMap && Ti.App.Properties.getBool('send_back_to_post_photo', false) === false) {
     Alloy.createController('index').getView().open();
   }
+  else if (Ti.App.Properties.hasProperty('send_back_to_post_photo')) {
+
+    //var postphotoView = Ti.App.Properties.getObject('send_back_to_post_photo');
+    Ti.App.Properties.removeProperty('send_back_to_post_photo');
+
+    //postphotoView.open();
+    alert('send to post photo: ' + args.data);
+  }
+
+  // set timeout so the indicater will show
+  setTimeout(function(){
+    $.login.close();
+  }, 1500);
 }
 
 // show skip button when user has not skipped before
@@ -19,6 +43,8 @@ else {
 facebook.addEventListener('login', function(e) {
 
   if (e.success) {
+
+    checkUserData();
 
     // hide logout button
     $.fbButton.hide();
@@ -54,17 +80,18 @@ facebook.addEventListener('login', function(e) {
       }
 
     });
-
-    // set timeout so the indicater will show
-    setTimeout(function(){
-      $.login.close();
-    }, 1500);
-
   }
   else {
     showErrorAlert(e.error);
+    $.fbButton.show();
+    $.fbLoader.hide();
   }
 });
+
+if (!facebook.getLoggedIn()) {
+  $.fbButton.show();
+  $.fbLoader.hide();
+}
 
 //skip login if asked to do so
 function goHome() {

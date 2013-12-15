@@ -1,0 +1,4 @@
+'Button': {
+  style: Ti.UI.iPhone.SystemButtonStyle.PLAIN,
+  color: Alloy.CFG.green,
+}

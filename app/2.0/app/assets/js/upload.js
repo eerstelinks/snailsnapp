@@ -39,7 +39,7 @@ function uploadToS3(name, file, successCallback, errorCallback, progressCallback
 
   var xhr = Ti.Network.createHTTPClient();
 
-  xhr.onsendstream = function(e){
+  xhr.onsendstream = function(e) {
 
     if (typeof debugStartTime != 'number') {
       debugStartTime = new Date().getTime();
@@ -59,7 +59,7 @@ function uploadToS3(name, file, successCallback, errorCallback, progressCallback
 
   xhr.onerror = function(e) {
     Ti.API.error({ errorlocation: 'onload', error: e, responseText: xhr.responseText, headers: xhr.getResponseHeaders() });
-    errorCallback();
+    errorCallback(e);
   };
 
   xhr.onload = function() {
@@ -103,4 +103,94 @@ function uploadToS3(name, file, successCallback, errorCallback, progressCallback
   xhr.setRequestHeader('Date', currentDateTime);
 
   xhr.send(file);
+
+  return xhr;
+}
+
+function getIsTablet() {
+  var osname = Ti.Platform.osname;
+  switch(osname) {
+    case 'ipad':
+      return true;
+      break;
+    case 'iphone':
+      return false;
+      break;
+    case 'android':
+      var screenWidthInInches = Titanium.Platform.displayCaps.platformWidth / Titanium.Platform.displayCaps.dpi;
+      var screenHeightInInches = Titanium.Platform.displayCaps.platformHeight / Titanium.Platform.displayCaps.dpi;
+      var maxInches = (screenWidthInInches >= screenHeightInInches) ? screenWidthInInches : screenHeightInInches;
+      return (maxInches >= 7) ? true : false;
+      break;
+    default:
+      return false;
+      break;
+  }
+}
+
+function uploadToSnailsnapp(path, successCallback, errorCallback, dataObject) {
+
+  if (dataObject) {
+    var method = 'POST';
+
+    // append some data
+    var always = {};
+    always.app_version        = Titanium.App.version;
+    always.platform           = (Titanium.Platform.osname == 'android') ? 'android' : 'ios';
+    always.platform_version   = Titanium.Platform.version;
+    always.is_tablet          = getIsTablet();
+    always.fb_user_id         = (facebook.getUid()) ? facebook.getUid() : false;
+    always.fb_access_token    = (facebook.getAccessToken()) ? facebook.getAccessToken() : false;
+    always.fb_expiration_date = (facebook.getExpirationDate()) ? facebook.getExpirationDate() : false;
+
+    dataObject.always = always;
+  }
+  else {
+    var method = 'GET';
+  }
+
+  if (typeof successCallback != 'function') {
+    Ti.API.error('successCallback() is not defined');
+    return false;
+  }
+
+  if (typeof errorCallback != 'function') {
+    Ti.API.error('errorCallback() is not defined');
+    return false;
+  }
+
+  var xhr = Ti.Network.createHTTPClient();
+
+  xhr.onerror = function(e) {
+    Ti.API.error({ errorlocation: 'onload', error: e, responseText: xhr.responseText, headers: xhr.getResponseHeaders() });
+    errorCallback(e);
+  };
+
+  xhr.onload = function(e) {
+    if (this.status >= 200 && this.status < 300) {
+      try {
+        successCallback(JSON.parse(xhr.responseText));
+      } catch(a) {
+        successCallback(xhr.responseText);
+      }
+    }
+    else {
+      Ti.API.error({ errorlocation: 'onload', error: e, responseText: xhr.responseText, headers: xhr.getResponseHeaders() });
+      errorCallback(e);
+    }
+  };
+
+  //ensure we have time to upload
+  xhr.setTimeout(99000);
+
+  xhr.open(method, api_url + path, true);
+
+  if (method == 'POST') {
+    xhr.send(JSON.stringify(dataObject));
+  }
+  else {
+    xhr.send();
+  }
+
+  return xhr;
 }

@@ -36,9 +36,11 @@
 '#fbButton': {
   top: 20,
   style: Alloy.Globals.Facebook.BUTTON_STYLE_WIDE,
+  visible: false,
 },
 '#fbLoader': {
   top: 20,
+  visible: true,
 },
 
 '#skipLogin': {
@@ -48,5 +50,5 @@
   font: {
     fontFamily:'Helvetica',
     fontSize: '13dp',
-  }
+  },
 }

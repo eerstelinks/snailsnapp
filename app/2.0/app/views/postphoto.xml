@@ -4,7 +4,7 @@
 
       <LeftNavButton>
         <View id="navWrapper">
-          <Button image="/images/chevron_left.png" title="L('button_back')" id="backButton" onClick="cancelSnapp" />
+          <Button image="/images/chevron_left.png" title="L('button_left_cancel')" id="backButton" onClick="cancelButton" />
         </View>
       </LeftNavButton>
 
@@ -37,7 +37,7 @@
       </ScrollView>
 
       <View id="submitView">
-        <Button id="submitButton" title="L('post_photo_button')" onClick="userIsFinished" />
+        <Button id="submitButton" title="L('post_photo_button')" onClick="userSubmits" />
       </View>
 
     </Window>

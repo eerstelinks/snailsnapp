@@ -5,7 +5,6 @@ Alloy.CFG.white = "#FFFFFF";
 Alloy.CFG.black = "#000000";
 
 // settings
-var app_version = '2.0';
 var api_url = "https://eerstelinks.nl/snailsnapp/api";
 
 // require map module
