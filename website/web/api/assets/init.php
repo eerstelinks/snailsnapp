@@ -15,7 +15,10 @@ if (session_id() == '') {
 }
 
 setlocale(LC_ALL, 'NL_nl');
-date_default_timezone_set('Europe/Amsterdam');
+
+// set timezone to UTC time (0000)
+date_default_timezone_set('UTC');
+
 mb_internal_encoding('UTF-8');
 
 // this is the Ortelius address
@@ -89,6 +92,9 @@ if ($mysqli->connect_error) {
 // source: http://stackoverflow.com/a/1566908
 $mysqli->query('SET NAMES utf8');
 $mysqli->query('SET CHARACTER SET utf8');
+
+// set default timezone to UTC
+$mysqli->query("SET time_zone = '+00:00'");
 
 
 ?>
