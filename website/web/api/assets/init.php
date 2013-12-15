@@ -1,8 +1,11 @@
 <?php
+require(dirname(__FILE__).'/functions.php');
+
 // variables for getting page load time
 $debugLoading = false;
 $startTime    = microtime(true);
 $lastTime     = 0;
+
 
 if (session_id() == '') {
     session_start();
