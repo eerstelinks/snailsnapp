@@ -4,17 +4,167 @@
 
 '#backButton': {
   color: Alloy.CFG.green,
-  style: Ti.UI.iPhone.SystemButtonStyle.PLAIN, //for good behavior on iOS6
+  style: Ti.UI.iPhone.SystemButtonStyle.PLAIN,
 },
 
 '#postPhotoSrollView': {
-  width: '100%',
   height: Ti.UI.SIZE,
-  top: 0,
   layout: 'vertical',
+  top: 0,
+  disableBounce: true,
 },
+
+'#snapp': {
+  width: '100%',
+  image: 'http://wallpaperscraft.com/image/8200/640x640.jpg?orig=1', // snapp
+},
+
+'#image_love': {
+  top: 0,
+  right: 5,
+  image: '/images/icons/heart.png',
+  text: '0 x',
+  color: Alloy.CFG.green,
+  style: Ti.UI.iPhone.SystemButtonStyle.PLAIN,
+}
+
+'#image_love_times': {
+  bottom: 5,
+  right: 5,
+  text: '0 x',
+  color: Alloy.CFG.green,
+}
 
 'View': {
   height: Ti.UI.SIZE,
-  top: 20,
+  top: 5,
+},
+
+'#snapp_info': {
+  layout: 'horizontal',
+  horizontalWrap: true,
+  width: '100%',
+},
+
+'#comment_info': {
+  layout: 'horizontal',
+  horizontalWrap: true,
+  width: '100%',
+},
+
+'#user_profile_pic': {
+  top: 0,
+  left: 5,
+  image: 'http://graph.facebook.com/christianvanommeren/picture?width=200&height=200', // facebook profile pic
+  widht: '100dp',
+  height: '100dp',
+},
+
+'#comment_user_profile_pic': {
+  top: 0,
+  left: 5,
+  image: 'http://graph.facebook.com/adriaan.vanrossum.5/picture?width=200&height=200', // facebook profile pic
+  widht: '100dp',
+  height: '100dp',
+},
+
+'#user_name': {
+  font: {
+    fontFamily: 'Helvetica',
+    fontWeight: 'bold',
+    fontSize: '16dp'
+  },
+  text: 'Christian van Ommeren', // facebook first & last name
+  top: 0,
+  left: 0,
+},
+
+'#comment_user_name': {
+  font: {
+    fontFamily: 'Helvetica',
+    fontWeight: 'bold',
+    fontSize: '16dp'
+  },
+  text: 'Adriaan van Rossum', // facebook first & last name
+  top: 0,
+  left: 0,
+},
+
+'#love_info': {
+  layout: 'horizontal',
+  horizontalWrap: true,
+  left: 0
+},
+
+'#snapp_datetime': {
+  font: {
+    fontFamily: 'Helvetica',
+    fontSize: '15dp'
+  },
+  text: '09:10 11/12/13', // snapp datetime
+  left: 0,
+},
+
+'#love': {
+  color: Alloy.CFG.green,
+  style: Ti.UI.iPhone.SystemButtonStyle.PLAIN,
+  visible: true,
+  top: 0,
+  left: 0,
+},
+
+'#how_much_love': {
+  text: '100 x',
+  color: Alloy.CFG.green,
+  bottom: 5,
+  left: 5,
+  font: {
+    fontFamily: 'Helvetica',
+    fontSize: '15dp'
+  }
+},
+
+'#snapp_description': {
+  left: 5,
+  right: 5,
+},
+
+'#comment': {
+  left: 5,
+  right: 5,
+},
+
+'#separator': {
+  height: 1,
+  bottom: 10,
+  top: 11,
+  left: 5,
+  right: 5,
+  borderWidth: 1,
+  borderColor: Alloy.CFG.green,
+},
+
+'#new_comment': {
+  font: {
+    fontFamily: 'Helvetica',
+    fontSize: '16dp',
+  },
+  width: '100%',
+  height: 100,
+  returnKeyType: Titanium.UI.RETURNKEY_DONE,
+},
+
+'#submitView': {
+  bottom: 0,
+  height: Ti.UI.SIZE,
+},
+'#submitButton': {
+  color: Alloy.CFG.white,
+  backgroundColor: Alloy.CFG.green,
+  width: '100%',
+  height: 60,
+  font: {
+    fontFamily: 'Helvetica',
+    fontSize: '18dp',
+  },
 }

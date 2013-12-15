@@ -61,4 +61,6 @@
 
   <!-- viewphoto page -->
   <string name="view_photo_title">Bekijk Snapp</string>
+  <string name="view_photo_comment_placeholder">Geef een reactie...</string>
+  <string name="view_photo_comment">Plaats reactie</string>
 </resources>
