@@ -182,11 +182,12 @@ function uploadToSnailsnapp(path, successCallback, errorCallback, dataObject) {
 
   //ensure we have time to upload
   xhr.setTimeout(99000);
+  xhr.setRequestHeader('Content-Type', 'application/json');
 
   xhr.open(method, api_url + path, true);
 
   if (method == 'POST') {
-    xhr.send(JSON.stringify(dataObject));
+    xhr.send({ data: JSON.stringify(dataObject) });
   }
   else {
     xhr.send();
