@@ -12,7 +12,7 @@ $.login.addEventListener('close', function() {
 });
 
 // show skip button when user has not skipped before
-if (!Ti.App.Properties.getBool('has_skipped_login', true)) {
+if (!Ti.App.Properties.getBool('has_skipped_login', false)) {
   $.skipLogin.show();
 }
 else {
