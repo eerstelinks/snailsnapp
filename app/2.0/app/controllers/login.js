@@ -26,15 +26,11 @@ facebook.addEventListener('login', function(e) {
 
     // hide logout button
     $.fbButton.hide();
-
-    // hide skip, because you will get there sowieso
     $.skipLogin.hide();
-
-    // show indicator of loading
     $.fbLoader.show();
 
     // update user data with callback function
-    var loginSucceeded = checkUserData(
+    checkUserData(
       function() {
         if (!showedMap && Ti.App.Properties.getBool('send_back_to_post_photo', false) === false) {
           Alloy.createController('index').getView().open();
@@ -44,16 +40,14 @@ facebook.addEventListener('login', function(e) {
         setTimeout(function(){
           $.login.close();
         }, 500);
+      },
+      function () {
+        // let user login again
+        $.fbButton.show();
+        $.skipLogin.show();
+        $.fbLoader.hide();
       }
     );
-
-    if (!loginSucceeded) {
-
-      // let user login again
-      $.fbButton.show();
-      $.skipLogin.show();
-      $.fbLoader.hide();
-    }
 
   }
   else {

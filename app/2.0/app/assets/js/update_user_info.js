@@ -1,10 +1,14 @@
 // default upload function
 Ti.include('/js/upload.js');
 
-function checkUserData(callback) {
+function checkUserData(callback, errorCallback) {
 
   // check only when user is logged and is connected
   if (!facebook.loggedIn || !Titanium.Network.online) {
+
+    if (typeof errorCallback == 'function') {
+      errorCallback();
+    }
     return false;
   }
 
