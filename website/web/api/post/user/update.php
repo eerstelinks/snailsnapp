@@ -2,40 +2,9 @@
 require(dirname(__FILE__).'/../../assets/init.php');
 require(dirname(__FILE__).'/../../assets/json_header.php');
 
-$return['status'] = 'error';
-
-if (isset($_POST['data'])) {
-  $app = json_decode(stripslashes($_POST['data']), true);
-}
-else {
-  $return['debug'] = 'No post data';
-  die(json_encode($return));
-}
-
-// check data from the app
-if (empty($app['always']['facebook'])) {
-  $return['debug']  = 'no data';
-  die(json_encode($return));
-}
-
-// required items
-$requiredItems = array(
-  $app['always']['facebook']['user_id'],
-  $app['always']['facebook']['access_token'],
-  $app['always']['facebook']['expiration_date'],
-);
-
-// check for fb_user_id, fb_access_token, fb_expiration_date
-foreach ($requiredItems as $key => $item) {
-  if (empty($item)) {
-    $return['debug'] = 'no '.$key; // THIS RETURNS A NUMBER, ADRIAAN?
-  }
-}
-
-if (!empty($error)) {
-  $return['debug']  = implode(', ', $error);
-  die(json_encode($return));
-}
+// do not verify user, because it does not excist yet
+$verifyUser = false;
+require(dirname(__FILE__).'/../../assets/verify_user.php');
 
 unset($insert);
 $checkKeys = array(
@@ -90,7 +59,7 @@ if ($result->num_rows == 1) {
   // update record
   if (empty($app['fb_last_modified']) || (isset($app['fb_last_modified']) && date('Y-m-d H:i:s', strtotime($app['fb_last_modified'])) != $row['fb_last_modified'])) {
 
-    $query = "UPDATE `users` SET ".cf_implode_mysqli($insert).", `last_modified` = NOW() WHERE `fb_user_id` = '".$app['always']['facebook']['user_id']."'";
+    $query = "UPDATE `users` SET ".cf_implode_mysqli($insert).", `last_modified` = NOW() WHERE `fb_user_id` = ".cf_quotevalue($app['always']['facebook']['user_id']);
     if ($mysqli->query($query)) {
       $return['status'] = 'success';
       die(json_encode($return));
