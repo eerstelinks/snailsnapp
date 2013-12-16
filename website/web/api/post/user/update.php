@@ -6,6 +6,70 @@ require(dirname(__FILE__).'/../../assets/json_header.php');
 $verifyUser = false;
 require(dirname(__FILE__).'/../../assets/verify_user.php');
 
+function registerDevice($ss_user_id, $app) {
+  global $mysqli;
+
+  // insert user id
+  $insert['ss_user_id'] = $ss_user_id;
+
+  // left database column, right post name from app
+  $checkDeviceValue = array(
+    'hash'             => 'hash',
+    'platform'         => 'platform',
+    'platform_version' => 'platform_version',
+    'is_tablet'        => 'is_tablet',
+  );
+
+  // check if values exist, yes? add to insert
+  foreach ($checkDeviceValue as $databaseColumn => $receivedValue) {
+    if (!empty($app['always']['device'][$checkDeviceValue[$receivedValue]])) {
+      $insert[$databaseColumn] = $app['always']['device'][$checkDeviceValue[$receivedValue]];
+    }
+  }
+
+  // insert values from data about the app (other sub array)
+  if (!empty($app['always']['app']['version'])) {
+    $insert['app_version'] = $app['always']['app']['version'];
+  }
+  if (!empty($app['always']['app']['lang'])) {
+    $insert['lang'] = $app['always']['app']['lang'];
+  }
+
+  // check if there is a apple_device_token_id
+  if (!empty($app['apple_device_token_id'])) {
+    $insert['apple_device_token_id'] = $app['apple_device_token_id'];
+  }
+
+  if (!empty($app['always']['device']['hash'])) {
+
+    // select all devices with same apple_device_token_id
+    $query  = "SELECT `user_device_id`
+      FROM `user_devices`
+      WHERE `hash` = ".cf_quotevalue($app['always']['device']['hash'])."
+        AND `ss_user_id` = ".cf_quotevalue($ss_user_id);
+    $result = $mysqli->query($query);
+
+    // results found, update device row
+    if ($result->num_rows == 1) {
+      $row = $result->fetch_assoc();
+
+      $query = "UPDATE `user_devices`
+        SET ".cf_implode_mysqli($insert).", `last_modified` = NOW()
+        WHERE `user_device_id` = ".cf_quotevalue($row['user_device_id']);
+      return $mysqli->query($query);
+    }
+    // more than one row found, error!
+    elseif ($result->num_rows > 1) {
+      return false;
+    }
+    // put new row when nothing found
+    else {
+      $query = "INSERT INTO `user_devices` SET ".cf_implode_mysqli($insert).", `last_modified` = NOW()";
+      return $mysqli->query($query);
+    }
+  }
+}
+
 unset($insert);
 $checkKeys = array(
   'fb_first_name'         => 'first_name',
@@ -106,6 +170,10 @@ else {
   $query = "INSERT INTO `users` SET ".cf_implode_mysqli($insert).", `last_modified` = NOW()";
 
   if ($mysqli->query($query)) {
+
+    $lastInsertId = $mysqli->insert_id;
+    registerDevice($lastInsertId, $app);
+
     $return['status'] = 'success';
     die(json_encode($return));
   }
