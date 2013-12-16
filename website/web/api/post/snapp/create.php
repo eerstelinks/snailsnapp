@@ -70,7 +70,7 @@ $insert['url_phone']      = $app['url_phone'];
 $insert['url_tablet']     = $app['url_tablet'];
 $insert['latitude']       = $app['latitude'];
 $insert['longitude']      = $app['longitude'];
-$insert['user_id']        = $snailsnappUserID;
+$insert['user_id']        = $snailsnappUserID; // SHOULD ALWAYS BE THERE
 
 // check if the record already exists
 $checkExisting = $insert;
@@ -91,7 +91,7 @@ if ($mysqli->query($query)) {
   die(json_encode($return));
 }
 else {
-  $return['debug']  = 'MySql: query error while inserting user';
+  $return['debug']  = 'MySql: query error while inserting snapp';
   die(json_encode($return));
 }
 
