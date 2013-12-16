@@ -2,6 +2,7 @@
 require(dirname(__FILE__).'/../../assets/init.php');
 require(dirname(__FILE__).'/../../assets/json_header.php');
 
+
 $return['status'] = 'error';
 
 if (isset($_POST['data'])) {
@@ -39,19 +40,15 @@ if (!empty($error)) {
 
 unset($insert);
 $checkKeys = array(
-  'fb_first_name'         => 'fb_first_name',
-  'fb_full_name'          => 'fb_full_name',
-  'fb_birthday'           => 'fb_birthday',
-  'fb_email'              => 'fb_email',
-  'fb_gender'             => 'fb_gender',
-  'fb_location_id'        => 'fb_location_id',
-  'fb_location_latitude'  => 'fb_location_latitude',
-  'fb_location_longitude' => 'fb_location_longitude',
-  'fb_timezone'           => 'fb_timezone',
-  'fb_locale'             => 'fb_locale',
-  'fb_last_modified'      => 'fb_last_modified',
+  'fb_first_name'         => 'first_name',
+  'fb_full_name'          => 'name',
+  'fb_birthday'           => 'birthday',
+  'fb_email'              => 'email',
+  'fb_gender'             => 'gender',
+  'fb_timezone'           => 'timezone',
+  'fb_locale'             => 'locale',
+  'fb_last_modified'      => 'updated_time',
 );
-
 
 foreach ($checkKeys as $databaseKey => $appKey) {
   if (!empty($app[$appKey])) {
@@ -62,6 +59,10 @@ foreach ($checkKeys as $databaseKey => $appKey) {
       $insert[$databaseKey] = $app[$appKey];
     }
   }
+}
+
+if (!empty($app['location']['id'])) {
+  $insert['fb_location_id'] = $app['location']['id'];
 }
 
 $insert['fb_user_id']         = $app['always']['facebook']['user_id'];
