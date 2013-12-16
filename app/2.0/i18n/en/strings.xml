@@ -64,7 +64,7 @@
   <string name="post_photo_no_permission_title">No permission to share on Facebook</string>
   <string name="post_photo_no_permission_message">Would you like to give permission?</string>
   <string name="post_photo_facebook_error">Sorry, we can't post this photo to your Facebook</string>
-  <string name="confirm_upload_again">While uplaoding the snapp, something went wrong. Do you want to try again?</string>
+  <string name="confirm_upload_again">While uploading the snapp, something went wrong. Do you want to try again?</string>
   <string name="upload_again_failed">Can't upload the files again, sorry about that, go capture a new moment</string>
 
   <!-- viewphoto page -->

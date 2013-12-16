@@ -190,6 +190,7 @@ function cancelAllUploads(e) {
 
           // start upload again and use blob from local files
           startUpload(false);
+          $.postphoto.show();
         }
       });
 
@@ -377,12 +378,29 @@ function postSnappToSnailsnapp() {
 
 function postToSnailsnapp() {
 
-  // upload shizzle to snailsnapp
-  // api_url + '/balbal'
-  alert('post to snailsnapp!');
-
+  // upload data to snailsnapp
+  uploadToSnailsnapp(
+    '/post/snapp/create',
+    function() {
+      //success
+      isSnailsnappPostFinished = true;
+      checkIfFbAndSsAreFinished();
+    },
+    function(e) {
+      //error
+      showErrorAlert(e);
+    },
+    {
+      uploaded_urls:      uploadedUrls,
+      geolocation:        JSON.parse(Ti.Geolocation.getLastGeolocation()),
+      description:        $.description.value,
+      shared_facebook:    $.postFacebook.value,
+      shared_snailsnapp:  $.postPublic.value,
+      shared_anonymous:   $.postAnonymous.value,
+      created:            new Date()
+    }
+  );
 }
-
 
 function postToFacebook() {
 
