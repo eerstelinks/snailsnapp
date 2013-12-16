@@ -34,7 +34,7 @@ facebook.addEventListener('login', function(e) {
     $.fbLoader.show();
 
     // update user data with callback function
-    checkUserData(
+    var loginSucceeded = checkUserData(
       function() {
         if (!showedMap && Ti.App.Properties.getBool('send_back_to_post_photo', false) === false) {
           Alloy.createController('index').getView().open();
@@ -46,6 +46,14 @@ facebook.addEventListener('login', function(e) {
         }, 500);
       }
     );
+
+    if (!loginSucceeded) {
+
+      // let user login again
+      $.fbButton.show();
+      $.skipLogin.show();
+      $.fbLoader.hide();
+    }
 
   }
   else {
