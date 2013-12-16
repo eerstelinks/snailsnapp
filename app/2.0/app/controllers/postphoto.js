@@ -389,6 +389,8 @@ function postToSnailsnapp() {
     function(e) {
       //error
       showErrorAlert(e);
+      setEditableTo(true);
+      $.postphoto.show();
     },
     {
       uploaded_urls:      uploadedUrls,
