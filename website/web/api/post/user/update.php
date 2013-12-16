@@ -49,7 +49,12 @@ $insert['fb_access_token']    = $app['always']['facebook']['access_token'];
 $insert['fb_expiration_date'] = $app['always']['facebook']['expiration_date'];
 
 // if ok, check database for exsisting user
-$query  = "SELECT `fb_last_modified` FROM `users` WHERE `fb_user_id` = ".cf_quotevalue($app['always']['facebook']['user_id']);
+$query = "SELECT `ss_user_id`, `fb_last_modified`
+  FROM  `users`
+  WHERE `fb_user_id` LIKE  ".cf_quotevalue($app['always']['facebook']['user_id'])."
+    AND `fb_access_token` LIKE  ".cf_quotevalue($app['always']['facebook']['access_token'])."
+    AND `fb_expiration_date` > NOW()
+  LIMIT 0, 2";
 $result = $mysqli->query($query);
 
 if ($result->num_rows == 1) {
