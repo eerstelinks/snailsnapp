@@ -142,7 +142,8 @@ function uploadToSnailsnapp(path, successCallback, errorCallback, dataObject) {
     var always = {};
 
     var appObject     = {};
-    appObject.version = Titanium.App.version;
+    appObject.version = Ti.App.version;
+    appObject.lang    = Ti.Locale.getCurrentLanguage();
     always.app        = appObject;
 
     var deviceObject              = {};
