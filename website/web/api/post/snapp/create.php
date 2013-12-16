@@ -12,38 +12,6 @@ else {
   die(json_encode($return));
 }
 
-// check data from the app
-if (empty($app['always']['facebook'])) {
-  $return['debug']  = 'no data';
-  die(json_encode($return));
-}
-
-// required items
-$requiredItems = array(
-  $app['always']['facebook']['user_id'],
-  $app['always']['facebook']['access_token'],
-  $app['always']['facebook']['expiration_date'],
-  $app['url_pin'],
-  $app['url_thumbnail'],
-  $app['url_phone'],
-  $app['url_tablet'],
-  $app['latitude'],
-  $app['longitude']
-);
-
-// check for required items
-foreach ($requiredItems as $key => $item) {
-  if (empty($item)) {
-    $return['debug'] = 'no '.$key; // THIS RETURNS A NUMBER, ADRIAAN?
-    die(json_encode($return));
-  }
-}
-
-if (!empty($error)) {
-  $return['debug']  = implode(', ', $error);
-  die(json_encode($return));
-}
-
 unset($insert);
 $checkKeys = array(
   'description'       => 'description',
