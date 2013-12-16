@@ -190,6 +190,7 @@ function cancelAllUploads(e) {
 
           // start upload again and use blob from local files
           startUpload(false);
+          $.postphoto.show();
         }
       });
 
