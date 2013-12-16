@@ -42,7 +42,8 @@ function updateUserData(callback) {
 
     if (e.success) {
 
-      var fbUserData = JSON.parse(e.result);
+      var sendData = JSON.parse(e.result);
+      sendData.apple_device_token_id = Ti.App.Properties.getString('apple_device_token_id', false);
 
       uploadToSnailsnapp(
 
@@ -53,8 +54,8 @@ function updateUserData(callback) {
         function(response) {
 
           if (response.status == 'success') {
-            if (fbUserData.updated_time) {
-              Ti.App.Properties.setString('fb_user_last_modified', fbUserData.updated_time);
+            if (sendData.updated_time) {
+              Ti.App.Properties.setString('fb_user_last_modified', sendData.updated_time);
             }
             if (response.show_latitude && response.show_longitude) {
               Ti.App.Properties.setObject('user_city_geolocation', { latitude: response.show_latitude, longitude: response.show_longitude });
@@ -81,7 +82,7 @@ function updateUserData(callback) {
         },
 
         // data to be send
-        fbUserData
+        sendData
       );
 
 

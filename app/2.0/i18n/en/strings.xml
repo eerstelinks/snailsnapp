@@ -27,6 +27,12 @@
   <string name="geo_no_location_button">Let me turn it on</string>
   <string name="geo_own_location_purpose">To pin your Snapps on the map and show Snapps around you we need your location</string>
 
+  <!-- push notifications -->
+  <string name="push_reason_title">Short explanation</string>
+  <string name="push_reason_message">You'll be asked to give permission for our push notifications. In our app, you decide what kind of notifications you get. We won't abuse your decicion. We promise!</string>
+  <string name="push_reason_button_yes">Go ahead</string>
+  <string name="push_reason_button_no">Nope</string>
+
   <!-- camera alerts -->
   <string name="other_camera_error_message">It looks like your camera is not working</string>
   <string name="no_camera_error_message">You don't have a camera, how do you make photos?</string>

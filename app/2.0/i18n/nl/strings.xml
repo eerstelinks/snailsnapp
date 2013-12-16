@@ -27,6 +27,12 @@
   <string name="geo_no_location_button">Laat het me aanzetten</string>
   <string name="geo_own_location_purpose">Om jouw Snapps op de kaart te zetten en andere Snapps om je heen te laten zien hebben we je locatie nodig</string>
 
+  <!-- push notifications -->
+  <string name="push_reason_title">Korte uitleg</string>
+  <string name="push_reason_message">In het volgende scherm wordt je gevraagd om toestemming te geven voor push notificaties. Wij maken hier geen misbruik van en zullen jou altijd laten instellen waarvan je notificaties wilt ontvangen. Beloofd!</string>
+  <string name="push_reason_button_yes">Vooruit</string>
+  <string name="push_reason_button_no">Nee</string>
+
   <!-- camera alerts -->
   <string name="other_camera_error_message">Je camera lijkt niet te werken</string>
   <string name="no_camera_error_message">Je hebt geen camera, hoe maak jij foto's?</string>

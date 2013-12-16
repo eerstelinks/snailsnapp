@@ -103,3 +103,29 @@ Object.size = function(obj) {
     }
     return size;
 };
+
+if (Ti.Platform.osname == 'iphone' || Ti.Platform.osname == 'ipad') {
+
+  if (!Ti.App.Properties.getBool('asked_for_push_notifications', false) && !Ti.Network.getRemoteNotificationsEnabled()) {
+
+    // ask only one time
+    Ti.App.Properties.setBool('asked_for_push_notifications', true);
+
+    // ask user to upload again
+    dialogs.confirm({
+      title: L('push_reason_title'),
+      message: L('push_reason_message'),
+      no: L('push_reason_button_no'),
+      yes: L('push_reason_button_yes'),
+      callback: function() {
+
+        require('push_notifications');
+
+      }
+    });
+  }
+  else {
+    require('push_notifications');
+  }
+
+}
