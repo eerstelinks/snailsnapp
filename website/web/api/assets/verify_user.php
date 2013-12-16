@@ -31,8 +31,8 @@ if (!isset($verifyUser) || (isset($verifyUser) && $verifyUser === true)) {
   $query = "SELECT `ss_user_id`
     FROM  `users`
     WHERE `fb_user_id` LIKE  ".cf_quotevalue($app['always']['facebook']['user_id'])."
-      AND `access_token` LIKE  ".cf_quotevalue($app['always']['facebook']['access_token'])."
-      AND `expiration_date` > NOW()
+      AND `fb_access_token` LIKE  ".cf_quotevalue($app['always']['facebook']['access_token'])."
+      AND `fb_expiration_date` > NOW()
     LIMIT 0, 2";
 
   $result = $mysqli->query($query);
