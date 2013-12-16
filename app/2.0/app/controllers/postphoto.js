@@ -132,9 +132,10 @@ function userSubmits() {
 
       showErrorAlert(L("default_not_logged_in_message"), L("default_not_logged_in_button"));
 
+      setEditableTo(true);
+
       // go to login screen when user is not logged in
-      Ti.App.Properties.setBool('send_back_to_post_photo', true);
-      Alloy.createController('login', { data: 'iets' } ).getView().open();
+      Alloy.createController('login').getView().open();
 
       // postphotowindow is not closed because the user returns after logging in
     }
