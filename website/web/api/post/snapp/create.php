@@ -1,16 +1,7 @@
 <?php
 require(dirname(__FILE__).'/../../assets/init.php');
 require(dirname(__FILE__).'/../../assets/json_header.php');
-
-$return['status'] = 'error';
-
-if (isset($_POST['data'])) {
-  $app = json_decode(stripslashes($_POST['data']), true);
-}
-else {
-  $return['debug'] = 'No post data';
-  die(json_encode($return));
-}
+require(dirname(__FILE__).'/../../assets/verify_user.php');
 
 unset($insert);
 $checkKeys = array(
@@ -26,19 +17,52 @@ foreach ($checkKeys as $databaseKey => $appKey) {
     $insert[$databaseKey] = $app[$appKey];
   }
   // if created is not received from app, use current datetime UTC
-  else if ($databaseKey = 'created' && empty($app['created'])) {
-    $app['created']    = date("Y-m-d H:i:s");
-    $insert['created'] = $app['created'];
+  else if ($databaseKey == 'created' && empty($app['created'])) {
+    $insert['created'] = date("Y-m-d H:i:s");
   }
 }
 
-$insert['url_pin']        = $app['uploaded_urls']['20'];
-$insert['url_thumbnail']  = $app['uploaded_urls']['200'];
-$insert['url_phone']      = $app['uploaded_urls']['640'];
-$insert['url_tablet']     = $app['uploaded_urls']['1536'];
-$insert['latitude']       = $app['geolocation']['latitude'];
-$insert['longitude']      = $app['geolocation']['longitude'];
-$insert['ss_user_id']     = $ss_user_id; // SHOULD ALWAYS BE THERE
+// set convert sizes, the may change in the future
+$convertSizes = array(
+  '20'   => 'url_pin',
+  '200'  => 'url_thumbnail',
+  '640'  => 'url_phone',
+  '1536' => 'url_tablet'
+);
+
+// trow error when urls received are unequal to urls expected
+if (!isset($app['uploaded_urls']) || (isset($app['uploaded_urls']) && (count($app['uploaded_urls']) != count($convertSizes)))) {
+  $return['debug'] = 'Expected '.count($convertSizes).' urls in uploaded_urls';
+  die(json_encode($return));
+}
+
+// add urls to insert when they excist
+foreach ($convertSizes as $pixels => $columnName) {
+  if (!empty($app['uploaded_urls'][$pixels])) {
+    $insert[$columnName] = $app['uploaded_urls'][$pixels];
+  }
+  else {
+    $urlErrors[] = $pixels.'px ('.$columnName.')';
+  }
+}
+
+// trow error whitch url are empty
+if (isset($urlErrors)) {
+  $return['debug'] = 'Did not found this sizes of the url: '.implode($urlErrors);
+  die(json_encode($return));
+}
+
+// check for geo coordinates
+if (empty($app['geolocation']['latitude']) || empty($app['geolocation']['longitude'])) {
+  $return['debug'] = 'No geolocation provided';
+  die(json_encode($return));
+}
+else {
+  $insert['latitude']  = $app['geolocation']['latitude'];
+  $insert['longitude'] = $app['geolocation']['longitude'];
+}
+
+$insert['ss_user_id'] = $ss_user_id;
 
 // check if the record already exists
 $checkExisting = $insert;
@@ -52,7 +76,7 @@ if ($result->num_rows > 0) {
 }
 
 // all ok, create a database entry for the new snapp!
-$query = "INSERT INTO `snapps` SET ".cf_implode_mysqli($insert)."";
+$query = "INSERT INTO `snapps` SET ".cf_implode_mysqli($insert);
 
 if ($mysqli->query($query)) {
   $return['status'] = 'success';
