@@ -2,15 +2,6 @@
   backgroundColor: Alloy.CFG.grey,
 },
 
-'#backButton': {
-  color: Alloy.CFG.green,
-  style: Ti.UI.iPhone.SystemButtonStyle.PLAIN, //for good behavior on iOS6
-  font: {
-    fontFamily: 'Helvetica',
-    fontSize: '16dp',
-  },
-},
-
 '#loadingBar': {
   width: 5,
   height: 3,

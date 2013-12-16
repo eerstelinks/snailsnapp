@@ -3,10 +3,15 @@
     <Window id="postPhotoWindow" title="L('post_photo_title')">
 
       <LeftNavButton>
-        <View id="navWrapper">
-          <Button image="/images/icons/chevron_left.png" title="L('button_back')" id="backButton" onClick="cancelButton" />
+        <View>
+          <Button image="/images/icons/chevron_left.png" title="L('button_back')" onClick="backButton" />
         </View>
       </LeftNavButton>
+      <RightNavButton>
+        <View>
+          <Button image="/images/icons/trash.png" onClick="cancelButton" />
+        </View>
+      </RightNavButton>
 
       <View id="loadingBar" top="0" />
 

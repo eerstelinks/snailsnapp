@@ -342,9 +342,24 @@ function togglePostAnonymous() {
 }
 
 // what to do with the backbutton
+function backButton() {
+  $.postphoto.hide();
+}
+
+// what to do with the cancelbutton
 function cancelButton() {
-  cancelAllUploads();
-  $.postphoto.close();
+
+  dialogs.confirm({
+    title: L('confirm_delete_snapp_title'),
+    message: L('confirm_delete_snapp_message'),
+    no: L('button_no'),
+    yes: L('button_yes'),
+    callback: function() {
+
+      cancelAllUploads();
+      $.postphoto.close();
+    }
+  });
 }
 
 var isFacebookPostFinished   = false;

@@ -64,8 +64,12 @@
   <string name="post_photo_no_permission_title">No permission to share on Facebook</string>
   <string name="post_photo_no_permission_message">Would you like to give permission?</string>
   <string name="post_photo_facebook_error">Sorry, we can't post this photo to your Facebook</string>
-  <string name="confirm_upload_again">While uploading the snapp, something went wrong. Do you want to try again?</string>
+
+  <string name="confirm_upload_again">We already started uploading the image. It failed, maybe your clock isn't set right. Would you like to try again?</string>
   <string name="upload_again_failed">Can't upload the files again, sorry about that, go capture a new moment</string>
+
+  <string name="confirm_delete_snapp_title">Delete this snapp</string>
+  <string name="confirm_delete_snapp_message">You are about to delete this snapp, we think it's beautiful! But ok, you're the master. Delete it?</string>
 
   <!-- viewphoto page -->
   <string name="view_photo_title">View snapp</string>

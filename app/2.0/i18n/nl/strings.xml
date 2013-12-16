@@ -64,8 +64,12 @@
   <string name="post_photo_no_permission_title">Geen toestemming om te delen op Facebook</string>
   <string name="post_photo_no_permission_message">Wil je nu toestemming te geven?</string>
   <string name="post_photo_facebook_error">Sorry, we kunnen je foto niet plaatsen op je Facebook</string>
-  <string name="confirm_upload_again">Het uploaden van de snapp is niet gelukt, wil je het opnieuw proberen?</string>
+
+  <string name="confirm_upload_again">We zijn al begonnen met het uploaden van de foto. Dit is mislukt, mogelijk staat je klok niet goed. Wil je het opnieuw proberen?</string>
   <string name="upload_again_failed">Het is niet gelukt de foto's opnieuw te uploaden, sorry, maak maar snel een nieuwe!</string>
+
+  <string name="confirm_delete_snapp_title">Snapp verwijderen</string>
+  <string name="confirm_delete_snapp_message">Wij vinden deze snapp wel de moeite waard. Maar ja, klant is koning. Wil je de snapp echt verwijderen?</string>
 
   <!-- viewphoto page -->
   <string name="view_photo_title">Bekijk Snapp</string>
