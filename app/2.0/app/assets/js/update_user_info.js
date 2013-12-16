@@ -18,9 +18,11 @@ function checkUserData(callback) {
     facebook.requestWithGraphPath('me', {}, 'GET', function(e) {
       if (e.success) {
         var user_data = JSON.parse(e.result);
-        alert('check fb');
         if (user_data.updated_time != Ti.App.Properties.getString('fb_user_last_modified')) {
           updateUserData(callback);
+        }
+        else {
+          callback();
         }
       }
     });
@@ -50,7 +52,15 @@ function updateUserData(callback) {
         // succe callback
         function(response) {
 
-          if (response.status != 'success') {
+          if (response.status == 'success') {
+            if (fbUserData.updated_time) {
+              Ti.App.Properties.setString('fb_user_last_modified', fbUserData.updated_time);
+            }
+            if (response.show_latitude && response.show_longitude) {
+              Ti.App.Properties.setObject('user_city_geolocation', { latitude: response.show_latitude, longitude: response.show_longitude });
+            }
+          }
+          else {
             showErrorAlert(L('update_user_failed_message'), L('update_user_failed_button'));
           }
 

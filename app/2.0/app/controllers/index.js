@@ -16,25 +16,6 @@ $.mapview.region = {
   longitudeDelta: 0.1
 };
 
-// include js library for caching thumbnails
-Ti.include('/js/lib/cachedImageView.js');
-
-// give annotations to the map
-// Rabat: 34.033333, -6.833333
-var snappLatitude    = 34.033333;
-var snappLongtitude  = -6.833333;
-
-var snapp = Alloy.Globals.Map.createAnnotation({
-  latitude: snappLatitude,
-  longitude: snappLongtitude,
-  image: '', // image-thumbnail or pin
-  title: L('loading') + '...',
-});
-
-// replace image-annotation with cached thumbnail
-var snappURL = ''; // THIS SHOULD REFER TO AMAZON URL!
-cachedImageView('cached_pins', snappURL, snapp);
-
 // open viewPhoto after click on either thumbnail or pin
 $.mapview.addEventListener('click', function(evt) {
 
@@ -48,8 +29,30 @@ $.mapview.addEventListener('click', function(evt) {
 
 });
 
-// add the annotations
-$.mapview.addAnnotation(snapp);
+// include js library for caching thumbnails
+Ti.include('/js/lib/cachedImageView.js');
+
+if (false) {
+
+  // give annotations to the map
+  // Rabat: 34.033333, -6.833333
+  var snappLatitude    = 34.033333;
+  var snappLongtitude  = -6.833333;
+
+  var snapp = Alloy.Globals.Map.createAnnotation({
+    latitude: snappLatitude,
+    longitude: snappLongtitude,
+    image: '', // image-thumbnail or pin
+    title: L('loading') + '...',
+  });
+
+  // replace image-annotation with cached thumbnail
+  var snappURL = ''; // THIS SHOULD REFER TO AMAZON URL!
+  cachedImageView('cached_pins', snappURL, snapp);
+
+  // add the annotations
+  $.mapview.addAnnotation(snapp);
+}
 
 function setLocation(coords){
   var region = {

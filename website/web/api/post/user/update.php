@@ -2,7 +2,6 @@
 require(dirname(__FILE__).'/../../assets/init.php');
 require(dirname(__FILE__).'/../../assets/json_header.php');
 
-
 $return['status'] = 'error';
 
 if (isset($_POST['data'])) {
@@ -63,6 +62,17 @@ foreach ($checkKeys as $databaseKey => $appKey) {
 
 if (!empty($app['location']['id'])) {
   $insert['fb_location_id'] = $app['location']['id'];
+
+  $locationUrl = 'https://graph.facebook.com/'.$app['location']['id'];
+  $content = file_get_contents($locationUrl);
+
+  if ($content) {
+    $fbLocationArray = json_decode($content, true);
+    if (!empty($fbLocationArray['location']['latitude']) && !empty($fbLocationArray['location']['longitude'])) {
+      $insert['fb_location_latitude']  = $return['show_latitude']  = $fbLocationArray['location']['latitude'];
+      $insert['fb_location_longitude'] = $return['show_longitude'] = $fbLocationArray['location']['longitude'];
+    }
+  }
 }
 
 $insert['fb_user_id']         = $app['always']['facebook']['user_id'];
