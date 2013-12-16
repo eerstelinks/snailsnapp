@@ -63,6 +63,7 @@ function always() {
 Ti.include('/js/camera_overlay.js');
 var cameraOverlay = createCameraOverlay(
   function() {
+    setUploadActive(false);
     Ti.Media.hideCamera();
     $.postphoto.close();
   }
