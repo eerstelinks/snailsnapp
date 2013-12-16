@@ -2,7 +2,7 @@
 require(dirname(__FILE__).'/../../assets/init.php');
 require(dirname(__FILE__).'/../../assets/json_header.php');
 
-// do not verify user, because it does not excist yet
+// do not verify user, because it does not exist yet
 $verifyUser = false;
 require(dirname(__FILE__).'/../../assets/verify_user.php');
 
