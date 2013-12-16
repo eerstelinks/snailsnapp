@@ -41,10 +41,10 @@ if (!empty($error)) {
 
 unset($insert);
 $checkKeys = array(
-  'platform'         => 'platform',
-  'platform_version' => 'platform_version',
-  'is_tablet'        => 'is_tablet',
-  'app_version'      => 'app_version'
+  'platform'              => 'platform',
+  'platform_version'      => 'platform_version',
+  'is_tablet'             => 'is_tablet',
+  'app_version'           => 'app_version'
   'apple_device_token_id' => 'apple_device_token_id'
 );
 
