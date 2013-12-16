@@ -13,7 +13,7 @@ $message = 'Slik, dat ben ik!';
 ////////////////////////////////////////////////////////////////////////////////
 
 $ctx = stream_context_create();
-stream_context_set_option($ctx, 'ssl', 'local_cert', dirname(__FILE__).'/apns-dev.pem');
+stream_context_set_option($ctx, 'ssl', 'local_cert', dirname(__FILE__).'/../assets/apns-dev.pem');
 stream_context_set_option($ctx, 'ssl', 'passphrase', $passphrase);
 
 // Open a connection to the APNS server
