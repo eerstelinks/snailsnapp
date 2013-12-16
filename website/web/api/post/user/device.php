@@ -8,20 +8,8 @@ if (isset($_POST['data'])) {
   $app = json_decode(stripslashes($_POST['data']), true);
 }
 else {
-  // SAMPLE DATA!
-
-  $app['always']['facebook']['user_id'] = '1';
-  $app['always']['facebook']['access_token'] = '2';
-  $app['always']['facebook']['expiration_date'] = '3';
-  $snailsnappUserID = '4';
-  //$app['platform'] = 'ios';
-  //$app['platform_version'] = '7.0.3';
-  //$app['is_tablet'] = false;
-  //$app['app_version'] = '2.0';
-
-
-  //$return['debug'] = 'No post data';
-  //die(json_encode($return));
+  $return['debug'] = 'No post data';
+  die(json_encode($return));
 }
 
 // check data from the app
@@ -35,6 +23,7 @@ $requiredItems = array(
   $app['always']['facebook']['user_id'],
   $app['always']['facebook']['access_token'],
   $app['always']['facebook']['expiration_date'],
+  $app['hash'] // hash is required for device identification
 );
 
 // check for required items
@@ -64,23 +53,31 @@ foreach ($checkKeys as $databaseKey => $appKey) {
   }
 }
 
-$insert['user_id'] = $snailsnappUserID; // SHOULD ALWAYS BE THERE
+$insert['device_hash'] = $app['hash'];
+$insert['user_id']     = $snailsnappUserID; // SHOULD ALWAYS BE THERE
+
 if (count($insert) == 1) {
   $return['debug'] = 'Only 1 element in Array';
   die(json_encode($return));
 }
 
-// check if the record already exists
-// I NEED SOMETHING UNIQUE HERE, DEVICE ID???
-$checkExisting = $insert;
-unset($checkExisting['user_id']);
-$query  = "SELECT `user_device_id` FROM `user_devices` WHERE ".cf_implode_mysqli($checkExisting, null, ' AND ');
+// check if the record already exists on hash and user id
+$query  = "SELECT `user_device_id` FROM `user_devices` WHERE `device_hash` = '".$app['hash']."' AND `user_id` = ".$snailsnappUserID."";
 $result = $mysqli->query($query);
 
-if ($result->num_rows > 0) {
+if ($result->num_rows == 1) {
+
+  $row = $result->fetch_assoc();
   // update record
-  $return['debug']  = 'MySql: record already exists!';
-  die(json_encode($return));
+  $query = "UPDATE `user_devices` SET ".cf_implode_mysqli($insert)." WHERE `device_hash` = '".$app['hash']."' AND `user_id` = ".$snailsnappUserID."";
+  if ($mysqli->query($query)) {
+    $return['status'] = 'success';
+    die(json_encode($return));
+  }
+  else {
+    $return['debug']  = 'MySql: query error while updating user';
+    die(json_encode($return));
+  }
 }
 
 // create a database entry for the new device
@@ -94,7 +91,6 @@ else {
   $return['debug']  = 'MySql: query error while inserting snapp';
   die(json_encode($return));
 }
-
 
 // return data back to the app
 $return['debug']  = 'Script has reached the end of file';
