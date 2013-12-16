@@ -29,7 +29,7 @@
 
   <!-- push notifications -->
   <string name="push_reason_title">Korte uitleg</string>
-  <string name="push_reason_message">In het volgende scherm wordt je gevraagd om toestemming te geven voor push notificaties. Wij maken hier geen misbruik van en zullen jou altijd laten instellen waarvan je notificaties wilt ontvangen. Beloofd!</string>
+  <string name="push_reason_message">In het volgende scherm wordt je gevraagd om toestemming te geven voor pushberichten. Wij maken hier geen misbruik van en zullen jou altijd laten instellen waarvan je berichten wilt ontvangen. Beloofd!</string>
   <string name="push_reason_button_yes">Vooruit</string>
   <string name="push_reason_button_no">Nee</string>
 
