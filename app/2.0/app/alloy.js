@@ -7,6 +7,11 @@ Alloy.CFG.black = "#000000";
 // settings
 var api_url = "https://eerstelinks.nl/snailsnapp/api";
 
+// set device hash
+if (!Ti.App.Properties.hasProperty('device_hash')) {
+  Ti.App.Properties.setString('device_hash', randomString(20));
+}
+
 // require map module
 Alloy.Globals.Map = require('ti.map');
 Alloy.Globals.Facebook = require('facebook');

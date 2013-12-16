@@ -116,5 +116,5 @@ else {
 
 // return data back to the app
 $return['debug']  = 'Script has reached the end of file';
-die(json_encode($return));
+echo json_encode($return);
 ?>

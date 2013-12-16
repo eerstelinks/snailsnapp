@@ -1,37 +1,80 @@
 // default upload function
 Ti.include('/js/upload.js');
 
-function checkUserData() {
-
-  // check last time you checked
+function checkUserData(callback) {
 
 
-  // update when old with updateUserData()
-  //updateUserData();
+  // check only when user is logged and is connected
+  if (!facebook.loggedIn || !Titanium.Network.online) {
+    return;
+  }
+
+  // check last time you checked and refresh user data
+  if (!Ti.App.Properties.hasProperty('fb_user_last_modified')) {
+    updateUserData(callback);
+  }
+  else {
+    // get facebook user updated_time
+    facebook.requestWithGraphPath('me', {}, 'GET', function(e) {
+      if (e.success) {
+        var user_data = JSON.parse(e.result);
+        alert('check fb');
+        if (user_data.updated_time != Ti.App.Properties.getString('fb_user_last_modified')) {
+          updateUserData(callback);
+        }
+      }
+    });
+  }
 
 }
 
-function updateUserData() {
 
-  uploadToSnailsnapp(
-    '/post/user/update',
-    // succesCallback
-    function(response) {
+function updateUserData(callback) {
 
-      alert(JSON.stringify(response));
+  if (typeof callback == 'function') {
+    var timeout = setTimeout(callback, 30 * 1000);
+  }
 
-      if (response.status == 'success') {
-        // set new time checked to now
-      }
-      else {
-        // log error (later)
-      }
-    },
-    function(e) {
-      alert(JSON.stringify(e));
-      // log error (later)
-    },
-    {} // empty object (function will auto fill in the user data in variable always)
-  );
+  // get all facebook user updated_time
+  facebook.requestWithGraphPath('me', {}, 'GET', function(e) {
 
+    if (e.success) {
+
+      var fbUserData = JSON.parse(e.result);
+
+      uploadToSnailsnapp(
+
+        // path to post to
+        '/post/user/update',
+
+        // succe callback
+        function(response) {
+
+          if (response.status != 'success') {
+            showErrorAlert(L('update_user_failed_message'), L('update_user_failed_button'));
+          }
+
+          if (typeof callback == 'function') {
+            clearTimeout(timeout);
+            callback();
+          }
+        },
+
+        // error callback
+        function(e) {
+          showErrorAlert(L('update_user_failed_message'), L('update_user_failed_button'));
+
+          if (typeof callback == 'function') {
+            clearTimeout(timeout);
+            callback();
+          }
+        },
+
+        // data to be send
+        fbUserData
+      );
+
+
+    }
+  });
 }

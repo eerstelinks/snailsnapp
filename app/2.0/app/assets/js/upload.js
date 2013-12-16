@@ -130,23 +130,35 @@ function getIsTablet() {
 
 function uploadToSnailsnapp(path, successCallback, errorCallback, dataObject) {
 
+  // default get method
+  var method = 'GET';
+
+  // if there is data, make a post request
   if (dataObject) {
-    var method = 'POST';
+
+    method = 'POST';
 
     // append some data
     var always = {};
-    always.app_version        = Titanium.App.version;
-    always.platform           = (Titanium.Platform.osname == 'android') ? 'android' : 'ios';
-    always.platform_version   = Titanium.Platform.version;
-    always.is_tablet          = getIsTablet();
-    always.fb_user_id         = (facebook.getUid()) ? facebook.getUid() : false;
-    always.fb_access_token    = (facebook.getAccessToken()) ? facebook.getAccessToken() : false;
-    always.fb_expiration_date = (facebook.getExpirationDate()) ? facebook.getExpirationDate() : false;
+
+    var appObject     = {};
+    appObject.version = Titanium.App.version;
+    always.app        = appObject;
+
+    var deviceObject              = {};
+    deviceObject.platform         = (Titanium.Platform.osname == 'android') ? 'android' : 'ios';
+    deviceObject.platform_version = Titanium.Platform.version;
+    deviceObject.is_tablet        = getIsTablet();
+    deviceObject.hash             = Ti.App.Properties.getString('device_hash', false);
+    always.device                 = deviceObject;
+
+    var fbObject             = {};
+    fbObject.user_id         = (facebook.getUid()) ? facebook.getUid() : false;
+    fbObject.access_token    = (facebook.getAccessToken()) ? facebook.getAccessToken() : false;
+    fbObject.expiration_date = (facebook.getExpirationDate()) ? facebook.getExpirationDate() : false;
+    always.facebook          = fbObject;
 
     dataObject.always = always;
-  }
-  else {
-    var method = 'GET';
   }
 
   if (typeof successCallback != 'function') {

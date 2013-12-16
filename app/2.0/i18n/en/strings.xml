@@ -19,6 +19,8 @@
   <string name="default_success_button">Let me go</string>
   <string name="default_not_logged_in_message">Sorry, you are not logged in, please do this first</string>
   <string name="default_not_logged_in_button">Let me log in</string>
+  <string name="update_user_failed_message">Login failed, the app maybe does not work like expected</string>
+  <string name="update_user_failed_button">Let me explore</string>
 
   <!-- location alerts -->
   <string name="geo_no_location_message">To locate yourself we need your location, so turn it on in your phone settings</string>
