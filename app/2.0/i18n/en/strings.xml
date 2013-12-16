@@ -21,6 +21,8 @@
   <string name="default_not_logged_in_button">Let me log in</string>
   <string name="update_user_failed_message">Login failed, the app maybe does not work like expected</string>
   <string name="update_user_failed_button">Let me explore</string>
+  <string name="not_online_message">This snail needs to connect to his home, it feels so lonely right now. Show her the way into the darkness</string>
+  <string name="not_online_button">Ok I'll turn on internet</string>
 
   <!-- location alerts -->
   <string name="geo_no_location_message">To locate yourself we need your location, so turn it on in your phone settings</string>

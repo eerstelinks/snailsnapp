@@ -12,7 +12,7 @@ $.login.addEventListener('close', function() {
 });
 
 // show skip button when user has not skipped before
-if (!Ti.App.Properties.getBool('has_skipped_login', false)) {
+if (!Ti.App.Properties.getBool('has_skipped_login', false) || !Titanium.Network.online) {
   $.skipLogin.show();
 }
 else {

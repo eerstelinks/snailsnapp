@@ -21,6 +21,8 @@
   <string name="default_not_logged_in_button">Laat me inloggen</string>
   <string name="update_user_failed_message">Login mislukt, de app werkt mogelijk niet zoals je verwacht</string>
   <string name="update_user_failed_button">Laat het me proberen</string>
+  <string name="not_online_message">Wat is een slak zonder huis? Ze voelt zich helemaal alleen, maar jij kan er iets aan doen</string>
+  <string name="not_online_button">Laat me internet aanzetten</string>
 
   <!-- location alerts -->
   <string name="geo_no_location_message">Zet locatiebepaling aan in je instellingen</string>

@@ -109,8 +109,13 @@ function setEditableTo(editable) {
 // has user hit post button jet?
 function userSubmits() {
 
+  if (!Titanium.Network.online) {
+    showErrorAlert(L('not_online_message'), L('not_online_button'));
+    setEditableTo(true);
+    setUploadActive(true);
+  }
   // check if user is clicking on posting or edit
-  if (this.title == L('post_photo_button')) {
+  else if (this.title == L('post_photo_button')) {
 
     setEditableTo(false);
 
@@ -133,6 +138,7 @@ function userSubmits() {
       showErrorAlert(L("default_not_logged_in_message"), L("default_not_logged_in_button"));
 
       setEditableTo(true);
+      setLoadingBars(false);
 
       // go to login screen when user is not logged in
       Alloy.createController('login').getView().open();
@@ -148,8 +154,6 @@ function userSubmits() {
 
     isUserFinished = false;
     setEditableTo(true);
-
-    // view progressbar
     setLoadingBars(false);
   }
 }
@@ -309,7 +313,9 @@ function makePicture() {
       previewBlob     = ImageFactory.imageAsResized(previewBlob, { width: 200, height: 200, quality: ImageFactory.QUALITY_NONE } );
       $.previewImage.image = previewBlob;
 
-      startUpload(blob);
+      if (Titanium.Network.online) {
+        startUpload(blob);
+      }
     },
     cancel:function(e) {
       $.postphoto.close();
