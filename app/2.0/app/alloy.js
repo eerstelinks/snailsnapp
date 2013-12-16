@@ -12,6 +12,14 @@ if (!Ti.App.Properties.hasProperty('device_hash')) {
   Ti.App.Properties.setString('device_hash', randomString(20));
 }
 
+// check for updates
+if (!Ti.App.Properties.hasProperty('previous_version')) {
+  Ti.App.Properties.setString('previous_version', Ti.App.version);
+}
+else if (Ti.App.Properties.getString('previous_version') != Ti.App.version) {
+  // do some updating because the app version has changed
+}
+
 // require map module
 Alloy.Globals.Map = require('ti.map');
 Alloy.Globals.Facebook = require('facebook');
