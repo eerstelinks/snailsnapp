@@ -52,8 +52,6 @@ $insert['fb_expiration_date'] = $app['always']['facebook']['expiration_date'];
 $query = "SELECT `ss_user_id`, `fb_last_modified`
   FROM  `users`
   WHERE `fb_user_id` LIKE  ".cf_quotevalue($app['always']['facebook']['user_id'])."
-    AND `fb_access_token` LIKE  ".cf_quotevalue($app['always']['facebook']['access_token'])."
-    AND `fb_expiration_date` > NOW()
   LIMIT 0, 2";
 $result = $mysqli->query($query);
 
@@ -61,18 +59,36 @@ if ($result->num_rows == 1) {
 
   $row = $result->fetch_assoc();
 
+  registerDevice($row['ss_user_id'], $app);
+
   // update record
   if (empty($app['fb_last_modified']) || (isset($app['fb_last_modified']) && date('Y-m-d H:i:s', strtotime($app['fb_last_modified'])) != $row['fb_last_modified'])) {
 
-    $query = "UPDATE `users` SET ".cf_implode_mysqli($insert).", `last_modified` = NOW() WHERE `fb_user_id` = ".cf_quotevalue($app['always']['facebook']['user_id']);
-    if ($mysqli->query($query)) {
-      $return['status'] = 'success';
-      die(json_encode($return));
+    // update only when access token is correct
+    // check on facebook
+    $checkTokenUrl = 'https://graph.facebook.com/me?access_token='.$app['always']['facebook']['access_token'];
+    $contentToken  = file_get_contents($checkTokenUrl);
+
+    if ($contentToken) {
+
+      $tokenArray = json_decode($contentToken, true);
+
+      if (isset($tokenArray['id']) && $tokenArray['id'] == $app['always']['facebook']['user_id']) {
+
+        $query = "UPDATE `users` SET ".cf_implode_mysqli($insert).", `last_modified` = NOW() WHERE `fb_user_id` = ".cf_quotevalue($app['always']['facebook']['user_id']);
+        if ($mysqli->query($query)) {
+          $return['status'] = 'success';
+          die(json_encode($return));
+        }
+        else {
+          $return['debug']  = 'MySql: query error while updating user';
+          die(json_encode($return));
+        }
+      }
     }
-    else {
-      $return['debug']  = 'MySql: query error while updating user';
-      die(json_encode($return));
-    }
+
+    $return['debug'] = 'Access token is invalid';
+    die(json_encode($return));
   }
   else {
     $return['status'] = 'success';
