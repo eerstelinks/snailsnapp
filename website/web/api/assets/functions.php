@@ -1,10 +1,10 @@
 <?php
 
-function cf_implode_mysqli($array, $specialchars = true) {
+function cf_implode_mysqli($array, $specialchars = true, $separator = ', ') {
     foreach ($array as $key => $value) {
         $fields[] = '`'.$key.'` = '.cf_quotevalue($value, $specialchars);
     }
-    return implode(", ", $fields);
+    return implode($separator, $fields);
 }
 
 function cf_quotevalue($value, $specialchars = true) {
