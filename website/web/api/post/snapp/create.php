@@ -32,13 +32,13 @@ foreach ($checkKeys as $databaseKey => $appKey) {
   }
 }
 
-$insert['url_pin']        = $app['url_pin'];
-$insert['url_thumbnail']  = $app['url_thumbnail'];
-$insert['url_phone']      = $app['url_phone'];
-$insert['url_tablet']     = $app['url_tablet'];
-$insert['latitude']       = $app['latitude'];
-$insert['longitude']      = $app['longitude'];
-$insert['user_id']        = $snailsnappUserID; // SHOULD ALWAYS BE THERE
+$insert['url_pin']        = $app['uploaded_urls']['20'];
+$insert['url_thumbnail']  = $app['uploaded_urls']['200'];
+$insert['url_phone']      = $app['uploaded_urls']['640'];
+$insert['url_tablet']     = $app['uploaded_urls']['1536'];
+$insert['latitude']       = $app['geolocation']['latitude'];
+$insert['longitude']      = $app['geolocation']['longitude'];
+$insert['ss_user_id']     = $ss_user_id; // SHOULD ALWAYS BE THERE
 
 // check if the record already exists
 $checkExisting = $insert;
@@ -62,7 +62,6 @@ else {
   $return['debug']  = 'MySql: query error while inserting snapp';
   die(json_encode($return));
 }
-
 
 // return data back to the app
 $return['debug']  = 'Script has reached the end of file';
