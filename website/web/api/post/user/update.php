@@ -28,7 +28,7 @@ $requiredItems = array(
 // check for fb_user_id, fb_access_token, fb_expiration_date
 foreach ($requiredItems as $key => $item) {
   if (empty($item)) {
-    $error[] = 'no '.$key;
+    $return['debug'] = 'no '.$key; // THIS RETURNS A NUMBER, ADRIAAN?
   }
 }
 
