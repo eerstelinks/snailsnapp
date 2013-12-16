@@ -8,6 +8,8 @@ if (isset($_POST['data'])) {
   $app = json_decode(stripslashes($_POST['data']), true);
 }
 else {
+  // SAMPLE DATA!
+
   $app['always']['facebook']['user_id'] = '1';
   $app['always']['facebook']['access_token'] = '2';
   $app['always']['facebook']['expiration_date'] = '3';
