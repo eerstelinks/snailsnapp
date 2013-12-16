@@ -5,7 +5,9 @@ Ti.Network.registerForPushNotifications({
   ],
   success:function(e) {
     // save device token
-    Ti.App.Properties.setString('apple_device_token_id', e.deviceToken);
+    if (e.deviceToken) {
+      Ti.App.Properties.setString('apple_device_token_id', e.deviceToken);
+    }
   },
   error:function(e) {
     //alert("Error during registration: "+e.error);
