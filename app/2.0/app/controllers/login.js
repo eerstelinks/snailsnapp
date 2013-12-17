@@ -11,15 +11,6 @@ $.login.addEventListener('close', function() {
   $.destroy();
 });
 
-// show skip button when user has not skipped before
-if (!Ti.App.Properties.getBool('has_skipped_login', false) || !Titanium.Network.online) {
-  $.skipLogin.show();
-}
-else {
-  $.skipLogin.text = $.skipLogin.getText() + ' (only for dev)';
-  $.skipLogin.show();
-}
-
 facebook.addEventListener('login', function(e) {
 
   if (e.success) {

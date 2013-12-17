@@ -44,7 +44,7 @@
 },
 
 '#skipLogin': {
-  visible: false,
+  visible: true,
   top: 15,
   height: 20,
   font: {
