@@ -154,3 +154,17 @@ function mayUserSend() {
 
   return true;
 }
+
+// enable background service
+var service;
+
+Ti.App.addEventListener('resumed',function(e){
+  if (service!=null){
+    service.stop();
+    service.unregister();
+  }
+});
+
+Ti.App.addEventListener('pause',function(e){
+  service = Ti.App.iOS.registerBackgroundService({url:'bg.js'});
+});
