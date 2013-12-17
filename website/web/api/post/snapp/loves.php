@@ -33,7 +33,7 @@ if ($result = $mysqli->query($query)) {
   }
   // if > 1, error
   elseif ($result->num_rows > 1) {
-    $retun['debug'] = 'Duplicate love rows';
+    $return['debug'] = 'Duplicate love rows';
     die(json_encode($return));
   }
   // insert row
@@ -44,17 +44,17 @@ if ($result = $mysqli->query($query)) {
   }
 
   if ($mysqli->query($query)) {
-    $retun['status'] = 'success';
+    $return['status'] = 'success';
     die(json_encode($return));
   }
   else {
-    $retun['debug'] = 'Query failed: '.$query;
+    $return['debug'] = 'Query failed: '.$query;
     die(json_encode($return));
   }
 
 }
 else {
-  $retun['debug'] = 'Can not run query: '.$query;
+  $return['debug'] = 'Can not run query: '.$query;
   die(json_encode($return));
 }
 
