@@ -29,17 +29,10 @@
 '#image_love': {
   top: 0,
   right: 5,
-  image: '/images/icons/heart.png',
+  image: '/images/icons/heart-empty.png',
   text: '0 x',
   color: Alloy.CFG.green,
   style: Ti.UI.iPhone.SystemButtonStyle.PLAIN
-},
-
-'#image_love_times': {
-  bottom: 5,
-  right: 5,
-  text: '0 x',
-  color: Alloy.CFG.green
 },
 
 // snapp_info tss
@@ -82,35 +75,6 @@
   text: '09:10 11/12/13', // snapp datetime
   left: 0,
   color: Alloy.CFG.darkgrey
-},
-
-'#love_info': {
-  layout: 'horizontal',
-  horizontalWrap: true,
-  left: 0
-},
-
-'#love': {
-  color: Alloy.CFG.green,
-  style: Ti.UI.iPhone.SystemButtonStyle.PLAIN,
-  visible: true,
-  top: 0,
-  left: 0,
-  height: Ti.UI.SIZE,
-  image: '/images/icons/heart-empty.png'
-},
-
-'#how_much_love': {
-  text: '100 x',
-  color: Alloy.CFG.green,
-  bottom: 5,
-  left: 5,
-  top: 5,
-  height: Ti.UI.SIZE,
-  font: {
-    fontFamily: 'Helvetica',
-    fontSize: '13dp'
-  }
 },
 
 '#snapp_description': {
