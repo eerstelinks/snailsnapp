@@ -222,9 +222,8 @@ function giveLove(event, type) {
 function toggleLove(event, type) {
   var rating;
   var heart     = event.source;
-  var title     = heart.getTitle();
   var image     = heart.getImage();
-  var loveCount = parseInt(title);
+  var loveCount = parseInt(heart.getTitle());
 
   if (image == '/images/icons/heart-empty.png') {
     heart.setTitle(' ' + (loveCount + 1) +' x');
@@ -239,22 +238,26 @@ function toggleLove(event, type) {
 
   if (type == 'comment') {
     var id = heart.snapp_comment_id;
+    var elementId = heart;
   }
   else if (type == 'snapp') {
     var id = snapp.snapp_id;
+    var elementId = $.image_love;
   }
   else {
     showErrorAlert();
   }
 
-  uploadLoveToSnailsnapp(rating, type, id);
+  uploadLoveToSnailsnapp(elementId, rating, type, id);
 }
 
-function uploadLoveToSnailsnapp(rating, type, id) {
+function uploadLoveToSnailsnapp(elementId, rating, type, id) {
   uploadToSnailsnapp(
     '/post/snapp/loves',
-    function() {
-      // successCallback
+    function(json) {
+      if (json.sum_rating) {
+        elementId.setTitle(' ' + json.sum_rating +' x');
+      }
     },
     function(e) {
       //errorCallback
