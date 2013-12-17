@@ -2,7 +2,7 @@
 Ti.include('/js/upload.js');
 
 // TESTING DATA
-snapp_id = '1'; // Should load the right snapp
+snapp.snapp_id = '1'; // Should load the right snapp
 
 // always destroy login when closed
 $.viewphoto.addEventListener('close', function() {
@@ -11,6 +11,32 @@ $.viewphoto.addEventListener('close', function() {
 
 // bind placeholder function to description field so it works on iphone
 bindPlaceholder($.new_comment, L('view_photo_comment_placeholder'));
+
+// get the comments that belong to this snapp
+uploadToSnailsnapp(
+  '/get/snapp/comment',
+  function(json) {
+
+    if (json.status == 'success') {
+      $.new_comment.setValue('');
+      addNewComment(json);
+    }
+    else if (json.message) {
+      showErrorAlert(json.message);
+    }
+    else {
+      showErrorAlert();
+    }
+  },
+  function(e) {
+
+    showErrorAlert();
+  },
+  {
+    snapp_id: snapp.snapp_id,
+  }
+);
+
 
 function userSubmitsComment () {
   if (mayUserSend()) {
