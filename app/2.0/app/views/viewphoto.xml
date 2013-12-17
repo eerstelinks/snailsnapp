@@ -15,58 +15,38 @@
             <Button id="image_love" />
           </View>
         </View>
-
+        <!-- START OF SNAPP_INFO -->
         <View id="snapp_info">
-          <ImageView id="user_profile_pic" width="100dp" />
+          <ImageView id="user_profile_pic" />
 
           <View layout="vertical" left="5">
             <Label id="user_name"></Label>
             <Label id="snapp_datetime"></Label>
 
             <View id="love_info">
-              <Button id="love" image="/images/icons/heart.png" />
+              <Button id="love" />
               <Label id="how_much_love"></Label>
             </View>
 
           </View>
         </View>
 
-        <View id="snapp_description">
-          <Label>Lorem ipsum dolor sit amet, nonummy ligula volutpat hac integer nonummy. Suspendisse ultricies, congue etiam tellus, erat libero, nulla eleifend, mauris pellentesque. Suspendisse integer praesent vel, integer gravida mauris, fringilla vehicula lacinia non!</Label>
-        </View>
+        <Label id="snapp_description">Lorem ipsum dolor sit amet, nonummy ligula volutpat hac integer nonummy. Suspendisse ultricies, congue etiam tellus, erat libero, nulla eleifend, mauris pellentesque. Suspendisse integer praesent vel, integer gravida mauris, fringilla vehicula lacinia non!</Label>
 
         <!-- FIRST SEPARATOR = END OF SNAPP INFORMATION -->
         <View id="separator"></View>
 
         <!-- IF COMMENTS ARE AVAILABLE PLACE THEM HERE -->
-        <View id="comment_info">
-          <ImageView id="comment_user_profile_pic" width="100dp" />
-
-          <View layout="vertical" left="5">
-            <Label id="comment_user_name"></Label>
-            <Label id="snapp_datetime"></Label>
-
-            <View id="love_info">
-              <Button id="love" image="/images/icons/heart.png" />
-              <Label id="how_much_love"></Label>
-            </View>
-
-          </View>
+        <View id="comment_wrapper">
         </View>
-
-        <View id="comment">
-          <Label>Lorem ipsum dolor sit amet, nonummy ligula volutpat hac integer nonummy. Suspendisse ultricies, congue etiam tellus, erat libero, nulla eleifend, mauris pellentesque. Suspendisse integer praesent vel, integer gravida mauris, fringilla vehicula lacinia non!</Label>
-        </View>
-
-        <View id="separator"></View>
 
         <!-- NEW COMMENT AREA -->
-        <View left="5" right="5">
+        <View id="new_comment_wrapper" left="5" right="5">
           <TextArea id="new_comment" value="L('view_photo_comment_placeholder')" maxLength="256" />
         </View>
 
         <View id="submitView">
-          <Button id="submitButton" title="L('view_photo_comment')" />
+          <Button id="submitButton" title="L('view_photo_comment')" onClick="userSubmitsComment" />
         </View>
 
       </ScrollView>

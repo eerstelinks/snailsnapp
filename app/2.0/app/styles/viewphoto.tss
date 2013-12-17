@@ -1,22 +1,29 @@
+// general tss
 'Window': {
   backgroundColor: Alloy.CFG.grey,
 },
 
 '#backButton': {
   color: Alloy.CFG.green,
-  style: Ti.UI.iPhone.SystemButtonStyle.PLAIN,
+  style: Ti.UI.iPhone.SystemButtonStyle.PLAIN
 },
 
 '#postPhotoSrollView': {
   height: Ti.UI.SIZE,
   layout: 'vertical',
   top: 0,
-  disableBounce: true,
+  disableBounce: true
 },
 
+'View': {
+  height: Ti.UI.SIZE,
+  top: 5
+},
+
+// snapp tss
 '#snapp': {
   width: '100%',
-  image: 'http://wallpaperscraft.com/image/8200/640x640.jpg?orig=1', // snapp
+  image: 'http://wallpaperscraft.com/image/8200/640x640.jpg?orig=1' // snapp
 },
 
 '#image_love': {
@@ -25,47 +32,29 @@
   image: '/images/icons/heart.png',
   text: '0 x',
   color: Alloy.CFG.green,
-  style: Ti.UI.iPhone.SystemButtonStyle.PLAIN,
-}
+  style: Ti.UI.iPhone.SystemButtonStyle.PLAIN
+},
 
 '#image_love_times': {
   bottom: 5,
   right: 5,
   text: '0 x',
-  color: Alloy.CFG.green,
-}
-
-'View': {
-  height: Ti.UI.SIZE,
-  top: 5,
+  color: Alloy.CFG.green
 },
 
+// snapp_info tss
 '#snapp_info': {
   layout: 'horizontal',
   horizontalWrap: true,
-  width: '100%',
-},
-
-'#comment_info': {
-  layout: 'horizontal',
-  horizontalWrap: true,
-  width: '100%',
+  width: '100%'
 },
 
 '#user_profile_pic': {
   top: 0,
   left: 5,
-  image: 'http://graph.facebook.com/christianvanommeren/picture?width=200&height=200', // facebook profile pic
-  widht: '100dp',
-  height: '100dp',
-},
-
-'#comment_user_profile_pic': {
-  top: 0,
-  left: 5,
-  image: 'http://graph.facebook.com/adriaan.vanrossum.5/picture?width=200&height=200', // facebook profile pic
-  widht: '100dp',
-  height: '100dp',
+  image: 'http://graph.facebook.com/christianvanommeren/picture?width=100&height=100', // facebook profile pic
+  width: '50dp',
+  height: '50dp'
 },
 
 '#user_name': {
@@ -76,23 +65,6 @@
   },
   text: 'Christian van Ommeren', // facebook first & last name
   top: 0,
-  left: 0,
-},
-
-'#comment_user_name': {
-  font: {
-    fontFamily: 'Helvetica',
-    fontWeight: 'bold',
-    fontSize: '16dp'
-  },
-  text: 'Adriaan van Rossum', // facebook first & last name
-  top: 0,
-  left: 0,
-},
-
-'#love_info': {
-  layout: 'horizontal',
-  horizontalWrap: true,
   left: 0
 },
 
@@ -102,7 +74,13 @@
     fontSize: '15dp'
   },
   text: '09:10 11/12/13', // snapp datetime
-  left: 0,
+  left: 0
+},
+
+'#love_info': {
+  layout: 'horizontal',
+  horizontalWrap: true,
+  left: 0
 },
 
 '#love': {
@@ -111,6 +89,7 @@
   visible: true,
   top: 0,
   left: 0,
+  image: '/images/icons/heart-empty.png'
 },
 
 '#how_much_love': {
@@ -127,13 +106,17 @@
 '#snapp_description': {
   left: 5,
   right: 5,
+  height: Ti.UI.SIZE
 },
 
-'#comment': {
-  left: 5,
-  right: 5,
+// comment_wrapper tss
+'#comment_wrapper': {
+  height: Ti.UI.SIZE,
+  layout: 'vertical',
+  top: 0
 },
 
+// separator tss
 '#separator': {
   height: 1,
   bottom: 10,
@@ -141,9 +124,10 @@
   left: 5,
   right: 5,
   borderWidth: 1,
-  borderColor: Alloy.CFG.green,
+  borderColor: Alloy.CFG.green
 },
 
+// new_comment tss
 '#new_comment': {
   font: {
     fontFamily: 'Helvetica',
@@ -151,13 +135,14 @@
   },
   width: '100%',
   height: 100,
-  returnKeyType: Titanium.UI.RETURNKEY_DONE,
+  returnKeyType: Titanium.UI.RETURNKEY_DONE
 },
 
 '#submitView': {
   bottom: 0,
-  height: Ti.UI.SIZE,
+  height: Ti.UI.SIZE
 },
+
 '#submitButton': {
   color: Alloy.CFG.white,
   backgroundColor: Alloy.CFG.green,
@@ -165,6 +150,6 @@
   height: 60,
   font: {
     fontFamily: 'Helvetica',
-    fontSize: '18dp',
+    fontSize: '18dp'
   },
 }
