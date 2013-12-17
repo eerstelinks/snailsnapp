@@ -77,4 +77,9 @@
   <string name="view_photo_title">View snapp</string>
   <string name="view_photo_comment_placeholder">Write a comment...</string>
   <string name="view_photo_comment">Post comment</string>
+
+  <!-- connections -->
+  <string name="upload_failed">Upload failed</string>
+  <string name="no_200_response_code">It lookt like our server is not online</string>
+
 </resources>

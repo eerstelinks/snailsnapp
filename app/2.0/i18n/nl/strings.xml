@@ -77,4 +77,9 @@
   <string name="view_photo_title">Bekijk Snapp</string>
   <string name="view_photo_comment_placeholder">Geef een reactie...</string>
   <string name="view_photo_comment">Plaats reactie</string>
+
+  <!-- connections -->
+  <string name="upload_failed">Versturen mislukt</string>
+  <string name="no_200_response_code">Het lijkt erop dat onze server niet online is</string>
+
 </resources>

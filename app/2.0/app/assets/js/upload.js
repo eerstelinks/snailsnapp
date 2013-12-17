@@ -183,11 +183,28 @@ function uploadToSnailsnapp(path, successCallback, errorCallback, dataObject) {
     if (this.status >= 200 && this.status < 300) {
       var responseText = xhr.responseText;
       var jsonResponse = JSON.parse(responseText);
-      successCallback(jsonResponse);
+
+      if (jsonResponse.status == 'success') {
+        successCallback(jsonResponse);
+      }
+      else if (Ti.App.deployType != 'production' && jsonResponse.debug) {
+        if (jsonResponse.message) {
+          errorCallback('debug: ' + jsonResponse.debug + ' (message to user: ' + jsonResponse.message + ')');
+        }
+        else {
+          errorCallback('debug: ' + jsonResponse.debug);
+        }
+      }
+      else if (jsonResponse.message) {
+        errorCallback(jsonResponse.message);
+      }
+      else {
+        errorCallback(L('default_error_message'));
+      }
     }
     else {
       Ti.API.error({ errorlocation: 'onload', error: e, responseText: xhr.responseText, headers: xhr.getResponseHeaders() });
-      errorCallback(e);
+      errorCallback(L('no_200_response_code'));
     }
   };
 
