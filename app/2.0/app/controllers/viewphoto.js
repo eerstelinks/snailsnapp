@@ -36,7 +36,12 @@ function postCommentToSnailsnapp() {
     },
     function(e) {
       //error
-      showErrorAlert(e);
+      if (e.message) {
+        showErrorAlert(e.message);
+      }
+      else {
+        showErrorAlert();
+      }
     },
     {
       comment: $.new_comment.value,
@@ -49,7 +54,7 @@ function postCommentToSnailsnapp() {
 
 function addNewComment(response) {
   // commentWrapper holds all comments
-  var commentWrapper   = $.comment_wrapper;
+  var commentWrapper = $.comment_wrapper;
 
   // newCommentView will hold the new comment
   var newCommentView = Ti.UI.createView({
