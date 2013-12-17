@@ -498,3 +498,14 @@ function postToFacebook() {
     }
   });
 }
+
+// explanation alerts
+function explainFacebook() {
+  showSuccesAlert(L('explain_facebook_message'), L('explain_facebook_button'), L('explain_facebook_title'));
+}
+function explainSnailsnapp() {
+  showSuccesAlert(L('explain_snailsnapp_message'), L('explain_snailsnapp_button'), L('explain_snailsnapp_title'));
+}
+function explainAnonymous() {
+  showSuccesAlert(L('explain_anonymous_message'), L('explain_anonymous_button'), L('explain_anonymous_title'));
+}

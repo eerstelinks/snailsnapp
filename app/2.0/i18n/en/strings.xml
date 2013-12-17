@@ -73,6 +73,14 @@
   <string name="confirm_delete_snapp_title">Delete this snapp</string>
   <string name="confirm_delete_snapp_message">You are about to delete this snapp, we think it's beautiful! But ok, you're the master. Delete it?</string>
 
+  <!-- posphoto explanations -->
+  <string name="explain_facebook_title">Share on Facebook</string>
+  <string name="explain_facebook_message">This option will post your snapp to your Facebook timeline</string>
+  <string name="explain_snailsnapp_title">Share on Snailsnapp</string>
+  <string name="explain_snailsnapp_message">Each and every picture will be stored in your personal snailtrail, for your eyes only. This option allows you to publicly share your snapp on Snailsnapp. Contribute to the world!</string>
+  <string name="explain_anonymous_title">Share Anonymous</string>
+  <string name="explain_anonymous_message">You might not want your name and picture publicly displayed next to this snapp. If so, enable this option</string>
+
   <!-- viewphoto page -->
   <string name="view_photo_title">View snapp</string>
   <string name="view_photo_comment_placeholder">Write a comment...</string>

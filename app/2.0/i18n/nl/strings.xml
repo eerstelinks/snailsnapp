@@ -73,6 +73,14 @@
   <string name="confirm_delete_snapp_title">Snapp verwijderen</string>
   <string name="confirm_delete_snapp_message">Wij vinden deze snapp wel de moeite waard. Maar ja, klant is koning. Wil je de snapp echt verwijderen?</string>
 
+  <!-- posphoto explanations -->
+  <string name="explain_facebook_title">Deel op Facebook</string>
+  <string name="explain_facebook_message">Zet deze optie aan om je snapp te delen op jouw Facebook timeline</string>
+  <string name="explain_snailsnapp_title">Deel op Snailsnapp</string>
+  <string name="explain_snailsnapp_message">Elke snapp wordt opgeslagen in je persoonlijke snailtrail, alleen jij kunt deze bekijken. Met deze optie deel je jouw snapp publiek. Draag bij aan het wereldnieuws!</string>
+  <string name="explain_anonymous_title">Deel Anoniem</string>
+  <string name="explain_anonymous_message">Misschien wil je jouw snapp wel publiekelijk delen, maar niet met je name en profielfoto er bij. Zet dan deze optie aan</string>
+
   <!-- viewphoto page -->
   <string name="view_photo_title">Bekijk Snapp</string>
   <string name="view_photo_comment_placeholder">Geef een reactie...</string>
