@@ -187,6 +187,54 @@ function addNewComment(response) {
   commentWrapper.add(separator);
 }
 
+// this shit makes the loving work --> love u fran!
+function giveLove(event) {
+  toggleLove(event);
+}
+
+function toggleLove(event) {
+  var rating;
+  var heart     = event.source;
+  var title     = heart.getTitle();
+  var image     = heart.getImage();
+  var loveCount = parseInt(title);
+
+  // this might need a check on whether the var exist
+  var snapp_comment_id = event.snapp_comment_id;
+  var snapp_id = event.snapp_id; // is not send from server yet
+
+  if (image == '/images/icons/heart-empty.png') {
+    heart.setTitle(' ' + (loveCount + 1) +' x');
+    heart.setImage('/images/icons/heart.png');
+    rating = 1;
+  }
+  else {
+    heart.setTitle(' '+ (loveCount - 1) +' x');
+    heart.setImage('/images/icons/heart-empty.png');
+    rating = 0;
+  }
+  uploadLoveToSnailsnapp(rating,heart);
+}
+
+function uploadLoveToSnailsnapp(rating,heart) {
+  uploadToSnailsnapp(
+    '/mail', // should be changed to '/post/snapp/loves',
+    function() {
+      // successCallback
+      alert('success');
+    },
+    function() {
+      //errorCallback
+      showErrorAlert(e);
+    },
+    {
+      rating: rating,
+      snapp_id: snapp_id,
+      snapp_comment_id: snapp_comment_id
+    }
+  );
+}
+
 function closeViewPhoto() {
   $.viewphoto.close();
 }
