@@ -10,16 +10,16 @@
             	<View class="arrow" id="timerArrow"></View>
 	            <View id="explanationBox" top="50">
 	            	<Label class="bold text">The coolest power of the snail is that it leaves something behind where-ever it goes.</Label>
-					<Label class="text">Wouldn't it be awesome if you could do the same? If you could leave a memory of that very special moment on that exact spot?</Label> 
+					<Label class="text">Wouldn't it be awesome if you could do the same? If you could leave a memory of that very special moment on that exact spot?</Label>
 					<ImageView class="inline" image="/images/snailtrail.png" />
 					<Label class="text">Snailsnapp does just that. It is the new way to take, share and store your memories on the locations where they belong.</Label>
-					<Label class="text">You will soon be able to start your personal snailtrail!</Label> 
+					<Label class="text">You will soon be able to start your personal snailtrail!</Label>
 					<ImageView class="inline" image="/images/snailexplorer.png" />
-					<Label class="text">If you do snap a pic that is worth sharing to the world, do not hesitate!</Label>	
+					<Label class="text">If you do snap a pic that is worth sharing to the world, do not hesitate!</Label>
 					<Label class="text">One of Snailsnapp's coolest features is your ability to publicly share and explore spotlight news broadcasted on-site!</Label>
 					<Label class="bold text">Why you want snailpower</Label>
 					<Label class="text smallTopMargin">\u2022 It will enable you to leave and find back your memories on a map</Label>
-					<Label class="text smallTopMargin">\u2022 By exploring publicly shared pictures you're abe to get you a view on when, what, happened where</Label>
+					<Label class="text smallTopMargin">\u2022 By exploring publicly shared pictures you're able to get a view of what happened, when and where</Label>
 					<Label class="bold text">Our mission</Label>
 					<Label class="text smallTopMargin">\u2022 Give snailpower to the world!</Label>
 					<Label class="text smallTopMargin">\u2022 Privacy first, nothing will ever be shared without permission</Label>
@@ -30,14 +30,14 @@
             	<View class="arrow" id="inviteArrow"></View>
             	<View id="inviteBox">
             		<Label class="inviteText releaseText">Only 1000 invites available for the first release!</Label>
-            		
+
             		<Label class="inviteText" top="40">Get yourself an invite now:</Label>
-            		
+
             		<TextField id="emailMe" class="inviteField" hintText="your email" />
-            		
+
             		<Label class="inviteText">Invite 1 friend:</Label>
             		<TextField id="emailFriend" class="inviteField" hintText="your friends email" />
-            		
+
             		<Button id="submit" onClick="submitForm" title="Give me this awesomeness!" />
             	</View>
             	<Label class="byText">by Christian &amp; Adriaan</Label>
