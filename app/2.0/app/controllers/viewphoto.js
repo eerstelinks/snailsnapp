@@ -147,32 +147,20 @@ function addNewComment(response) {
         // loveButton
         var loveButton = Ti.UI.createButton({
           image: '/images/icons/heart-empty.png',
+          title: ' 0 x',
           color: Alloy.CFG.green,
           style: Ti.UI.iPhone.SystemButtonStyle.PLAIN,
           visible: true,
-          top: 0,
+          top: 5,
           left: 0,
-          height: Ti.UI.SIZE
-        }); // ID AND ONCLICK HAVE TO BE ADDED LATER
-
-        loveInfo.add(loveButton);
-
-        // loveCounter
-        var loveCounter = Ti.UI.createLabel({
-            text: '0 x',
-            color: Alloy.CFG.green,
-            bottom: 5,
-            left: 5,
-            top: 5,
-            height: Ti.UI.SIZE,
-            font: {
-              fontFamily: 'Helvetica',
-              fontSize: '13dp'
-            }
+          height: Ti.UI.SIZE,
           snapp_comment_id: response.snapp_comment_id
         });
+        loveButton.addEventListener('click',function(event) {
+          giveLove(event);
+        });
 
-        loveInfo.add(loveCounter);
+        loveInfo.add(loveButton);
 
   // comment holds the actual comment and is added under commentWrapper
   var comment = Ti.UI.createLabel({
