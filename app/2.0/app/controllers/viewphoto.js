@@ -173,7 +173,7 @@ function addNewComment(response) {
         // loveButton
         var loveButton = Ti.UI.createButton({
           image: '/images/icons/heart-empty.png',
-          title: ' 0 x',
+          title: ' ' + response.total_comment_loves + ' x',
           color: Alloy.CFG.green,
           style: Ti.UI.iPhone.SystemButtonStyle.PLAIN,
           visible: true,
