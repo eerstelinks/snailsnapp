@@ -41,7 +41,7 @@ if ($mysqli->query($query)) {
 
   if ($res = $mysqli->query($query)) {
 
-    $return = $res;
+    $return = $res->fetch_assoc();
     $return['status'] = 'success';
     die(json_encode($return));
   }

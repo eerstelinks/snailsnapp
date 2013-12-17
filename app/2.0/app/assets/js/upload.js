@@ -181,11 +181,9 @@ function uploadToSnailsnapp(path, successCallback, errorCallback, dataObject) {
 
   xhr.onload = function(e) {
     if (this.status >= 200 && this.status < 300) {
-      try {
-        successCallback(JSON.parse(xhr.responseText));
-      } catch(a) {
-        errorCallback();
-      }
+      var responseText = xhr.responseText;
+      var jsonResponse = JSON.parse(responseText);
+      successCallback(jsonResponse);
     }
     else {
       Ti.API.error({ errorlocation: 'onload', error: e, responseText: xhr.responseText, headers: xhr.getResponseHeaders() });
