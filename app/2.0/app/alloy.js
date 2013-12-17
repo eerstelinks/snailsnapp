@@ -139,10 +139,18 @@ if (Ti.Platform.osname == 'iphone' || Ti.Platform.osname == 'ipad') {
 }
 
 // check if user is logged in to Facebook
-function checkFacebookLogin() {
-  if (!facebook.loggedIn) {
+function mayUserSend() {
+  if (!Ti.Network.online) {
+    showErrorAlert(L('not_online_message'), L('not_online_button'));
+    return false;
+  }
+  else if (!facebook.loggedIn) {
     showErrorAlert(L("default_not_logged_in_message"), L("default_not_logged_in_button"));
     // go to login screen when user is not logged in
     Alloy.createController('login').getView().open();
+
+    return false;
   }
+
+  return true;
 }

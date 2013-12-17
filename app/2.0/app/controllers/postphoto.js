@@ -109,10 +109,8 @@ function setEditableTo(editable) {
 // has user hit post button jet?
 function userSubmits() {
 
-  if (!Titanium.Network.online) {
-    showErrorAlert(L('not_online_message'), L('not_online_button'));
+  if (!mayUserSend()) {
     setEditableTo(true);
-    setUploadActive(true);
   }
   // check if user is clicking on posting or edit
   else if (this.title == L('post_photo_button')) {
@@ -132,23 +130,8 @@ function userSubmits() {
       startUpload(false);
     }
 
-    // check if user is logged in to Facebook
-    if (!facebook.loggedIn) {
-
-      showErrorAlert(L("default_not_logged_in_message"), L("default_not_logged_in_button"));
-
-      setEditableTo(true);
-      setLoadingBars(false);
-
-      // go to login screen when user is not logged in
-      Alloy.createController('login').getView().open();
-
-      // postphotowindow is not closed because the user returns after logging in
-    }
-    else {
-      isUserFinished = true;
-      checkIfBothAreFinished();
-    }
+    isUserFinished = true;
+    checkIfBothAreFinished();
   }
   else if (this.title == L('post_photo_button_edit')) {
 

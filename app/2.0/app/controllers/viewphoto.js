@@ -13,11 +13,12 @@ $.viewphoto.addEventListener('close', function() {
 bindPlaceholder($.new_comment, L('view_photo_comment_placeholder'));
 
 function userSubmitsComment () {
-  checkFacebookLogin();
-  postCommentToSnailsnapp();
-  $.submitButton.setTitle(L('post_photo_button_posting'));
-  $.new_comment.setTouchEnabled(false);
-  $.new_comment_wrapper.setOpacity(0.5);
+  if (mayUserSend()) {
+    postCommentToSnailsnapp();
+    $.submitButton.setTitle(L('post_photo_button_posting'));
+    $.new_comment.setTouchEnabled(false);
+    $.new_comment_wrapper.setOpacity(0.5);
+  }
 }
 
 function enableTextArea() {
