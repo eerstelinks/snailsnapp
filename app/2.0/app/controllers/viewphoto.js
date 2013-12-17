@@ -38,15 +38,27 @@ uploadToSnailsnapp(
   }
 );
 
-$.snapp.setImage(snapp.url_phone);
+$.snapp_image.setImage(snapp.url_phone);
+$.snapp_description.setText(snapp.description);
 
 // Add event listener to snapp love button
 $.image_love.addEventListener('click',function(event) {
   giveLove(event, 'snapp');
 });
 
+$.fb_profile_pic.setImage('http://graph.facebook.com/' + snapp.fb_user_id + '/picture?width=150&height=150');
+$.fb_full_name.setText(snapp.fb_full_name);
+$.snapp_created.setText(snapp.created);
+
 // set total snapp loves
 $.image_love.setTitle(' ' + snapp.total_snapp_loves + ' x');
+
+if (snapp.current_user_rating == 1) {
+  $.image_love.setImage('/images/icons/heart.png');
+}
+else {
+  $.image_love.setImage('/images/icons/heart-empty.png');
+}
 
 function userSubmitsComment () {
   if (mayUserSend()) {
