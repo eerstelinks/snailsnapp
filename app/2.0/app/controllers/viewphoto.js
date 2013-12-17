@@ -44,6 +44,8 @@ $.snapp.setImage(snapp.url_phone);
 $.image_love.addEventListener('click',function(event) {
   giveLove(event, 'snapp');
 });
+// set total snapp loves
+$.image_love.setTitle(' ' + response.total_snapp_loves + ' x');
 
 function userSubmitsComment () {
   if (mayUserSend()) {
