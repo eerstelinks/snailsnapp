@@ -11,19 +11,30 @@ else {
 }
 
 // required items
-if (empty($app['always']['facebook']['user_id'])) {
+if (!isset($app['always']['facebook']['is_logged_in'])) {
+  $error[] = 'always.facebook.is_logged_in not received';
+}
+if (!isset($app['always']['facebook']['user_id'])) {
   $error[] = 'always.facebook.user_id not received';
 }
-if (empty($app['always']['facebook']['access_token'])) {
+if (!isset($app['always']['facebook']['access_token'])) {
   $error[] = 'always.facebook.access_token not received';
 }
-if (empty($app['always']['facebook']['expiration_date'])) {
+if (!isset($app['always']['facebook']['expiration_date'])) {
   $error[] = 'always.facebook.expiration_date not received';
 }
 
 if (!empty($error)) {
-  $return['debug']  = implode(', ', $error);
+  $return['debug'] = implode(', ', $error);
   die(json_encode($return));
+}
+
+if ((isset($loginNotRequired) && $loginNotRequired === true) && !$app['always']['facebook']['is_logged_in']) {
+  $verifyUser = false;
+
+  if (!isset($ss_user_id)) {
+    $ss_user_id = 0;
+  }
 }
 
 if (!isset($verifyUser) || (isset($verifyUser) && $verifyUser === true)) {

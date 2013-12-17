@@ -154,6 +154,7 @@ function uploadToSnailsnapp(path, successCallback, errorCallback, dataObject) {
     always.device                 = deviceObject;
 
     var fbObject             = {};
+    fbObject.is_logged_in    = facebook.getLoggedIn();
     fbObject.user_id         = (facebook.getUid()) ? facebook.getUid() : false;
     fbObject.access_token    = (facebook.getAccessToken()) ? facebook.getAccessToken() : false;
     fbObject.expiration_date = (facebook.getExpirationDate()) ? facebook.getExpirationDate() : false;
