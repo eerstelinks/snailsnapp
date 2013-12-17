@@ -215,7 +215,9 @@ function addNewComment(response) {
 
 // this shit makes the loving work --> love u fran!
 function giveLove(event) {
+  if (mayUserSend()) {
   toggleLove(event);
+  }
 }
 
 function toggleLove(event) {
