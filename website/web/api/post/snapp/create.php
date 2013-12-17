@@ -24,7 +24,7 @@ foreach ($checkKeys as $databaseKey => $appKey) {
 
 // set convert sizes, the may change in the future
 $convertSizes = array(
-  '40'   => 'url_pin',
+  '80'   => 'url_pin',
   '200'  => 'url_thumbnail',
   '640'  => 'url_phone',
   '1536' => 'url_tablet'

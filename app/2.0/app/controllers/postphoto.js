@@ -10,7 +10,7 @@ $.postphoto.addEventListener('close', function() {
 });
 
 // set upload sizes (from large to small)
-var uploadSizes  = [1536, 640, 200, 40];
+var uploadSizes  = [1536, 640, 200, 80];
 var uploadedUrls = {};
 var xhrRequests  = {};
 var areAllUploadsFinished = false;

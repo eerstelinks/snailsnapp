@@ -48,8 +48,8 @@ if (true) {
 
   var newView = Ti.UI.createView({
     backgroundColor: 'white',
-    width: 50,
-    height: 50,
+    width: 48,
+    height: 48,
     borderRadius: 3,
     borderColor: 'black',
     borderWidth: 0.5,
