@@ -23,21 +23,11 @@ bindPlaceholder($.new_comment, L('view_photo_comment_placeholder'));
 uploadToSnailsnapp(
   '/get/snapp/comment',
   function(json) {
-
-    if (json.status == 'success') {
-      $.new_comment.setValue('');
-      addNewComment(json);
-    }
-    else if (json.message) {
-      showErrorAlert(json.message);
-    }
-    else {
-      showErrorAlert();
-    }
+    $.new_comment.setValue('');
+    addNewComment(json);
   },
-  function(e) {
-
-    showErrorAlert();
+  function(alert) {
+    showErrorAlert(alert);
   },
   {
     snapp_id: snapp.snapp_id,
@@ -70,22 +60,13 @@ function postCommentToSnailsnapp() {
     function(json) {
 
       enableTextArea();
-
-      if (json.status == 'success') {
-        $.new_comment.setValue('');
-        addNewComment(json);
-      }
-      else if (json.message) {
-        showErrorAlert(json.message);
-      }
-      else {
-        showErrorAlert();
-      }
+      $.new_comment.setValue('');
+      addNewComment(json);
     },
-    function(e) {
-      enableTextArea();
+    function(message) {
 
-      showErrorAlert();
+      enableTextArea();
+      showErrorAlert(message);
     },
     {
       comment: $.new_comment.value,
