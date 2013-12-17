@@ -3,8 +3,13 @@ require(dirname(__FILE__).'/../../assets/init.php');
 require(dirname(__FILE__).'/../../assets/json_header.php');
 require(dirname(__FILE__).'/../../assets/verify_user.php');
 
-if (empty($app['snapp_id']) || empty($app['comment'])) {
-  $return['debug'] = 'no snapp_id or comment';
+if (empty($app['snapp_id'])) {
+  $return['debug'] = 'no snapp_id';
+  die(json_encode($return));
+}
+
+if (empty($app['comment'])) {
+  $return['message'] = L('fill_in_message'); //SERVER: vul wel een bericht in.';
   die(json_encode($return));
 }
 
@@ -18,7 +23,7 @@ $query  = "SELECT `snapp_comment_id` FROM `snapp_comments` WHERE ".cf_implode_my
 $result = $mysqli->query($query);
 
 if ($result->num_rows > 0) {
-  $return['message'] = 'Bericht bestaat al, je kan niet twee keer precies hetzelfde reageren';
+  $return['message'] = L('double_comment');
   $return['debug']   = 'MySql: record already exists!';
   die(json_encode($return));
 }

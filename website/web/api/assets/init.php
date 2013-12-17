@@ -97,4 +97,31 @@ $mysqli->query('SET CHARACTER SET utf8');
 $mysqli->query("SET time_zone = '+00:00'");
 
 
+function L($langName) {
+  global $displayLang;
+
+  if (!isset($displayLang) || (isset($displayLang) && !in_array($displayLang, array('nl', 'en')))) {
+    $displayLang = 'en';
+  }
+
+  $messages = array(
+
+    'fill_in_message' => array(
+      'en' => 'Fill in a message',
+      'nl' => 'Vul wel een bericht in',
+    ),
+    'login_to_facebook' => array(
+      'en' => 'You have to login with Facebook to gain access to Snailsnapp',
+      'nl' => 'Je zal opnieuw moeten inloggen via Facebook om toegang te krijgen tot Snailsnapp',
+    ),
+    'double_comment' => array(
+      'en' => 'Your message already exists, it is not possible to comment the same comment twice',
+      'nl' => 'Bericht bestaat al, je kan niet twee keer precies dezelfde reactie plaatsen',
+    ),
+
+  );
+
+  return $messages[$langName][$displayLang];
+}
+
 ?>

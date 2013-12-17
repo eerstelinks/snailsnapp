@@ -4,6 +4,10 @@ $return['status'] = 'error';
 
 if (isset($_POST['data'])) {
   $app = json_decode(stripslashes($_POST['data']), true);
+
+  if (!empty($app['always']['app']['lang'])) {
+    $displayLang = $app['always']['app']['lang'];
+  }
 }
 else {
   $return['debug'] = 'No post data';
@@ -53,7 +57,7 @@ if (!isset($verifyUser) || (isset($verifyUser) && $verifyUser === true)) {
     $ss_user_id = $row['ss_user_id'];
   }
   else {
-    $return['message'] = 'You have to login with Facebook to gain access to Snailsnapp';
+    $return['message'] = L('log_in_to_facebook');
     die(json_encode($return));
   }
 }
