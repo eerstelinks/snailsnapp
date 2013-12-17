@@ -391,33 +391,43 @@ function postSnappToSnailsnapp() {
 
 function postToSnailsnapp() {
 
-  setLoadingBars(getLoadingBars() + 5);
+  Ti.Geolocation.getCurrentPosition(function(currentLocation) {
 
-  // upload data to snailsnapp
-  uploadToSnailsnapp(
-    '/post/snapp/create',
-    function() {
-      //success
-      setLoadingBars(getLoadingBars() + 10);
-      isSnailsnappPostFinished = true;
-      checkIfFbAndSsAreFinished();
-    },
-    function(e) {
-      //error
-      showErrorAlert(e);
-      setEditableTo(true);
-      $.postphoto.show();
-    },
-    {
+    if (!currentLocation) {
+      showErrorAlert(L('geo_no_location_message'), L('geo_no_location_button'));
+      return false;
+    }
+
+    setLoadingBars(getLoadingBars() + 5);
+
+    sendObject = {
       uploaded_urls:      uploadedUrls,
-      geolocation:        JSON.parse(Ti.Geolocation.getLastGeolocation()),
       description:        $.description.value,
       shared_facebook:    $.postFacebook.value,
       shared_snailsnapp:  $.postPublic.value,
       shared_anonymous:   $.postAnonymous.value,
-      created:            new Date()
+      created:            new Date(),
+      geolocation:        currentLocation.coords
     }
-  );
+
+    // upload data to snailsnapp
+    uploadToSnailsnapp(
+      '/post/snapp/create',
+      function(json) {
+        //success
+        setLoadingBars(getLoadingBars() + 10);
+        isSnailsnappPostFinished = true;
+        checkIfFbAndSsAreFinished();
+      },
+      function() {
+        //error
+        showErrorAlert();
+        setEditableTo(true);
+        $.postphoto.show();
+      },
+      sendObject
+    );
+  });
 }
 
 function postToFacebook() {
