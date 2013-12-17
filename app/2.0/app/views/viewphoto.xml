@@ -11,15 +11,15 @@
         <View layout="composite" top="0">
           <ImageView id="snapp" />
           <View layout="horizontal" top="5" right="0" width="Ti.UI.SIZE">
-            <Label id="image_love_times" />
             <Button id="image_love" />
+            <Label id="image_love_times" />
           </View>
         </View>
         <!-- START OF SNAPP_INFO -->
         <View id="snapp_info">
           <ImageView id="user_profile_pic" />
 
-          <View layout="vertical" left="5">
+          <View id="verticalAlign">
             <Label id="user_name"></Label>
             <Label id="snapp_datetime"></Label>
 

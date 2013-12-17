@@ -1,8 +1,9 @@
 // Colors
-Alloy.CFG.green = "#18DB6E";
-Alloy.CFG.grey  = "#DCDCDC";
-Alloy.CFG.white = "#FFFFFF";
-Alloy.CFG.black = "#000000";
+Alloy.CFG.green    = "#18DB6E";
+Alloy.CFG.grey     = "#DCDCDC";
+Alloy.CFG.white    = "#FFFFFF";
+Alloy.CFG.black    = "#000000";
+Alloy.CFG.darkgrey = "#555555";
 
 // settings
 var api_url = "https://eerstelinks.nl/snailsnapp/api";

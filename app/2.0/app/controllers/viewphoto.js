@@ -88,9 +88,9 @@ function addNewComment(response) {
     var commenterProfilePic = Ti.UI.createImageView({
       top: 0,
       left: 5,
-      image: 'http://graph.facebook.com/' + response.fb_user_id + '/picture?width=100&height=100',
-      width: '50dp',
-      height: '50dp'
+      image: 'http://graph.facebook.com/' + response.fb_user_id + '/picture?width=150&height=150',
+      width: '75dp',
+      height: '75dp'
     });
 
     newCommentInfo.add(commenterProfilePic);
@@ -99,7 +99,8 @@ function addNewComment(response) {
     var verticalAlign = Ti.UI.createView({
       height: Ti.UI.SIZE,
       layout: 'vertical',
-      left: '5'
+      top: 0,
+      left: 5
     });
 
     newCommentInfo.add(verticalAlign);
@@ -123,9 +124,10 @@ function addNewComment(response) {
       var commentDateTime = Ti.UI.createLabel({
         font: {
           fontFamily: 'Helvetica',
-          fontSize: '15dp'
+          fontSize: '14dp'
         },
         text: response.created,
+        color: Alloy.CFG.darkgrey,
         left: 0,
         height: Ti.UI.SIZE
       });
@@ -161,10 +163,11 @@ function addNewComment(response) {
             color: Alloy.CFG.green,
             bottom: 5,
             left: 5,
+            top: 5,
             height: Ti.UI.SIZE,
             font: {
               fontFamily: 'Helvetica',
-              fontSize: '15dp'
+              fontSize: '13dp'
             }
         });
 
@@ -175,6 +178,7 @@ function addNewComment(response) {
     height: Ti.UI.SIZE,
     left: 5,
     right: 5,
+    top: 5,
     text: response.comment
   });
 
@@ -183,8 +187,8 @@ function addNewComment(response) {
   // finally add a new separator
   var separator = Ti.UI.createView({
     height: 1,
-    bottom: 10,
-    top: 11,
+    bottom: 5,
+    top: 6,
     left: 5,
     right: 5,
     borderWidth: 1,
