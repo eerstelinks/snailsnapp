@@ -55,8 +55,14 @@ $.image_love.addEventListener('click',function(event) {
   giveLove(event, 'snapp');
 });
 
-$.fb_profile_pic.setImage('http://graph.facebook.com/' + snapp.fb_user_id + '/picture?width=150&height=150');
-$.fb_full_name.setText(snapp.fb_full_name);
+if (snapp.shared_anonymous == 0) {
+  $.fb_profile_pic.setImage('http://graph.facebook.com/' + snapp.fb_user_id + '/picture?width=150&height=150');
+  $.fb_full_name.setText(snapp.fb_full_name);
+}
+else {
+  $.fb_profile_pic.setImage('/images/henkie.png');
+  $.fb_full_name.setText('Henkie the Snail');
+}
 $.snapp_created.setText(snapp.created);
 
 // set profile user on comment box
