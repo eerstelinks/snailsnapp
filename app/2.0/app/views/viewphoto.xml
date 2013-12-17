@@ -9,14 +9,6 @@
 
       <ScrollView id="postPhotoSrollView">
 
-        <View layout="composite" top="0">
-          <ActivityIndicator id="activityIndicator" />
-          <ImageView id="snapp_image" load="stopIndicator" />
-          <View layout="horizontal" top="5" right="0" width="Ti.UI.SIZE">
-            <Button id="image_love" title=" 0 x"/>
-          </View>
-        </View>
-
         <!-- START OF SNAPP_INFO -->
         <View id="snapp_info" class="detailsView">
           <ImageView id="fb_profile_pic" class="avatar" />
@@ -28,10 +20,12 @@
           </View>
         </View>
 
+
         <View layout="composite" top="0">
-          <ImageView id="snapp_image" />
+          <ActivityIndicator id="activityIndicator" />
+          <ImageView id="snapp_image" load="stopIndicator" />
           <View layout="horizontal" top="5" right="0" width="Ti.UI.SIZE">
-            <Button id="image_love" />
+            <Button id="image_love" title=" 0 x"/>
           </View>
         </View>
 

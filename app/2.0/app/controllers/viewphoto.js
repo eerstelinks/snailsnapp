@@ -89,14 +89,14 @@ function userSubmitsComment () {
     postCommentToSnailsnapp();
     $.submitButton.setTitle(L('post_photo_button_posting'));
     $.new_comment.setTouchEnabled(false);
-    $.new_comment_wrapper.setOpacity(0.5);
+    $.textareaView.setOpacity(0.5);
   }
 }
 
 function enableTextArea() {
   $.new_comment.setTouchEnabled(true);
   $.submitButton.setTitle(L('view_photo_comment'));
-  $.new_comment_wrapper.setOpacity(1);
+  $.textareaView.setOpacity(1);
 }
 
 // post comments to snailsnapp
@@ -108,7 +108,7 @@ function postCommentToSnailsnapp() {
     function(json) {
 
       enableTextArea();
-      $.new_comment.setValue('');
+      $.new_comment.setValue(L('view_photo_comment_placeholder'));
       addNewComment(json);
     },
     function(message) {
