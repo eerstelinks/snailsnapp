@@ -9,7 +9,7 @@ Ti.include('/js/upload.js');
 var args = arguments[0] || {};
 
 if (args.snapp) {
-  snapp = args.snapp;
+  var snapp = args.snapp;
 }
 else {
   showErrorAlert('no snap found!');
