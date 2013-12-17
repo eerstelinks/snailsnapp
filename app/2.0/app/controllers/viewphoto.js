@@ -253,9 +253,8 @@ function uploadLoveToSnailsnapp(rating, type, id) {
     '/post/snapp/loves',
     function() {
       // successCallback
-      alert('success');
     },
-    function() {
+    function(e) {
       //errorCallback
       showErrorAlert(e);
     },
