@@ -61,7 +61,7 @@ if (snapp.shared_anonymous == 0) {
 }
 else {
   $.fb_profile_pic.setImage('/images/henkie.png');
-  $.fb_full_name.setText('Henkie the Snail');
+  $.fb_full_name.setText('Henkie Snailman');
 }
 $.snapp_created.setText(snapp.created);
 
