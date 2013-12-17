@@ -16,7 +16,7 @@ $query  = "SELECT
   `snapp_comments`.`total_comment_loves`,
   `users`.`fb_user_id`,
   `users`.`fb_full_name`,
-  `loves`.`rating` AS `current_user_rating`
+  IFNULL(`loves`.`rating`, 0) AS `current_user_rating`
  FROM `snapp_comments`
  LEFT JOIN `users` ON `users`.`ss_user_id` = `snapp_comments`.`ss_user_id`
  LEFT JOIN `loves` ON `loves`.`type_id` = `snapp_comments`.`snapp_comment_id` AND `loves`.`type` = 'comment' AND `loves`.`ss_user_id` = ".cf_quotevalue($ss_user_id)."
