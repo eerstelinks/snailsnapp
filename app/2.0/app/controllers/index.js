@@ -33,7 +33,6 @@ $.mapview.addEventListener('click', function(evt) {
 
 function snailSwitch() {
   var mapType = $.snailSwitch.getMapType();
-  alert(mapType);
   if (mapType = 'public') {
     $.snailSwitch.setImage('/images/icons/user.png');
     $.snailSwitch.setMapType('personal';
