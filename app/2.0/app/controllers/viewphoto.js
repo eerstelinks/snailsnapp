@@ -56,21 +56,22 @@ $.image_love.addEventListener('click',function(event) {
 });
 
 if (snapp.shared_anonymous == 0) {
-  $.fb_profile_pic.setImage('http://graph.facebook.com/' + snapp.fb_user_id + '/picture?width=150&height=150');
+  $.fb_profile_pic.setImage('http://graph.facebook.com/' + snapp.fb_user_id + '/picture?width=120&height=120');
   $.fb_full_name.setText(snapp.fb_full_name);
 }
 else {
   $.fb_profile_pic.setImage('/images/henkie.png');
   $.fb_full_name.setText('Henkie the Snail');
 }
+
 $.snapp_created.setText(snapp.created);
 
 // set profile user on comment box
 if (facebook.getUid()) {
-  var commentBoxAvatar = 'http://graph.facebook.com/' + facebook.getUid() + '/picture?width=150&height=150';
+  var commentBoxAvatar = 'http://graph.facebook.com/' + facebook.getUid() + '/picture?width=120&height=120';
 }
 else {
-  var commentBoxAvatar = 'http://placehold.it/150/18DB6E/FFFFFF&text=YOU!';
+  var commentBoxAvatar = 'http://placehold.it/120/18DB6E/FFFFFF&text=YOU!';
 }
 $.current_user_avatar.setImage(commentBoxAvatar);
 
@@ -134,7 +135,7 @@ function addNewComment(response) {
 
     // profilePic holds the commenter's profile pic
     var commenterProfilePic = Ti.UI.createImageView({
-      image: 'http://graph.facebook.com/' + response.fb_user_id + '/picture?width=150&height=150',
+      image: 'http://graph.facebook.com/' + response.fb_user_id + '/picture?width=120&height=120',
     });
     $.addClass(commenterProfilePic, 'avatar');
     newCommentInfo.add(commenterProfilePic);
