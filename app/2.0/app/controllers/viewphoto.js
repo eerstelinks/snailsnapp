@@ -44,8 +44,9 @@ $.snapp.setImage(snapp.url_phone);
 $.image_love.addEventListener('click',function(event) {
   giveLove(event, 'snapp');
 });
+
 // set total snapp loves
-$.image_love.setTitle(' ' + response.total_snapp_loves + ' x');
+$.image_love.setTitle(' ' + snapp.total_snapp_loves + ' x');
 
 function userSubmitsComment () {
   if (mayUserSend()) {
@@ -81,8 +82,7 @@ function postCommentToSnailsnapp() {
     },
     {
       comment: $.new_comment.value,
-      snapp_id: snapp.snapp_id,
-      created: new Date()
+      snapp_id: snapp.snapp_id
     }
   );
 }
