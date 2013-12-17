@@ -13,9 +13,15 @@ $query = "SELECT
   `latitude`,
   `longitude`,
   `created`,
-  `total_snapp_loves`
+  `shared_anonymous`,
+  `total_snapp_loves`,
+  `users`.`fb_user_id`,
+  `users`.`fb_full_name`,
+  IFNULL(`loves`.`rating`, 0) AS `current_user_rating`
 FROM
   `snapps`
+LEFT JOIN `loves` ON `loves`.`type_id` = `snapps`.`snapp_id` AND `loves`.`type` = 'snapp' AND `loves`.`ss_user_id` = ".cf_quotevalue($ss_user_id)."
+LEFT JOIN `users` ON `users`.`ss_user_id` = `snapps`.`ss_user_id`
 WHERE `status` = 'visible'
 ORDER BY `created` DESC
 LIMIT 0, 5";
@@ -29,6 +35,11 @@ if (!$res = $mysqli->query($query)) {
 $return['result_count'] = $res->num_rows;
 
 while ($row = $res->fetch_assoc()) {
+
+  if ($row['shared_anonymous'] == 1) {
+    unset($row['fb_user_id']);
+    unset($row['fb_full_name']);
+  }
 
   $return['annotations'][] = $row;
 }

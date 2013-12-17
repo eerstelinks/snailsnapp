@@ -169,9 +169,16 @@ function addNewComment(response) {
 
       verticalAlign.add(loveInfo);
 
+        if (response.current_user_rating == 1) {
+          var image = '/images/icons/heart.png';
+        }
+        else {
+          var image = '/images/icons/heart-empty.png';
+        }
+
         // loveButton
         var loveButton = Ti.UI.createButton({
-          image: '/images/icons/heart-empty.png',
+          image: image,
           title: ' ' + response.total_comment_loves + ' x',
           color: Alloy.CFG.green,
           style: Ti.UI.iPhone.SystemButtonStyle.PLAIN,
