@@ -41,7 +41,7 @@ uploadToSnailsnapp(
 $.snapp.setImage(snapp.url_phone);
 
 // Add event listener to snapp love button
-$imageLove.addEventListener('click',function(event) {
+$.image_love.addEventListener('click',function(event) {
   giveLove(event, 'snapp');
 });
 
