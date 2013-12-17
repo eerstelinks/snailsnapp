@@ -29,6 +29,13 @@ $.mapview.addEventListener('click', function(evt) {
 
 });
 
+// open viewPhoto after click on either thumbnail or pin
+$.mapview.addEventListener('regionchanged', function(evt) {
+
+  //alert('region changed: '+ JSON.stringify(evt));
+
+});
+
 // include js library for caching thumbnails
 Ti.include('/js/lib/cachedImageView.js');
 
