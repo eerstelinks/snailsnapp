@@ -38,6 +38,15 @@ uploadToSnailsnapp(
   }
 );
 
+// show indicator for loading image
+showIndicator();
+function showIndicator() {
+  var screenWidth = Ti.Platform.displayCaps.platformWidth;
+  $.activityIndicator.show();
+  $.activityIndicator.setWidth('100%');
+  $.activityIndicator.setHeight(screenWidth);
+  $.activityIndicator.setStyle('BIG');
+}
 $.snapp_image.setImage(snapp.url_phone);
 $.snapp_description.setText(snapp.description);
 
