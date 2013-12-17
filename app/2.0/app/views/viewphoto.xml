@@ -9,22 +9,22 @@
 
       <ScrollView id="postPhotoSrollView">
         <View layout="composite" top="0">
-          <ImageView id="snapp" />
+          <ImageView id="snapp_image" />
           <View layout="horizontal" top="5" right="0" width="Ti.UI.SIZE">
             <Button id="image_love" title=" 0 x"/>
           </View>
         </View>
         <!-- START OF SNAPP_INFO -->
         <View id="snapp_info">
-          <ImageView id="user_profile_pic" />
+          <ImageView id="fb_profile_pic" />
 
           <View id="verticalAlign">
-            <Label id="user_name"></Label>
-            <Label id="snapp_datetime"></Label>
+            <Label id="fb_full_name"></Label>
+            <Label id="snapp_created"></Label>
           </View>
         </View>
 
-        <Label id="snapp_description">Lorem ipsum dolor sit amet, nonummy ligula volutpat hac integer nonummy. Suspendisse ultricies, congue etiam tellus, erat libero, nulla eleifend, mauris pellentesque. Suspendisse integer praesent vel, integer gravida mauris, fringilla vehicula lacinia non!</Label>
+        <Label id="snapp_description"></Label>
 
         <!-- FIRST SEPARATOR = END OF SNAPP INFORMATION -->
         <View id="separator"></View>

@@ -45,7 +45,6 @@
 '#user_profile_pic': {
   top: 0,
   left: 5,
-  image: 'http://graph.facebook.com/christianvanommeren/picture?width=150&height=150', // facebook profile pic
   width: '75dp',
   height: '75dp'
 },
