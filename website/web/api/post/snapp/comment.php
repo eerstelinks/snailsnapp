@@ -31,6 +31,7 @@ if ($mysqli->query($query)) {
   $lastInsertId = $mysqli->insert_id;
 
   $query = "SELECT
+      `snapp_comments`.`snapp_comment_id`,
       `snapp_comments`.`created`,
       `snapp_comments`.`comment`,
       `users`.`fb_user_id`,

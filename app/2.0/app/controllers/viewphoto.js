@@ -169,6 +169,7 @@ function addNewComment(response) {
               fontFamily: 'Helvetica',
               fontSize: '13dp'
             }
+          snapp_comment_id: response.snapp_comment_id
         });
 
         loveInfo.add(loveCounter);
