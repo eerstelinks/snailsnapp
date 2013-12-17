@@ -93,13 +93,23 @@ if ($result->num_rows == 1) {
       $return['debug']  = 'Not specified where love should be given #4';
       die(json_encode($return));
     }
-
     if ($mysqli->query($query)) {
+      // update total_loves
+      if (isset($app['snapp_id'])) {
+        $query = "UPDATE `snapps` SET `total_snapp_loves` = (SELECT SUM(`rating`) FROM `snapp_loves` WHERE `snapp_id` = '".$app['snapp_id']."')";
+      }
+      elseif (isset($app['snapp_comment_id'])) {
+        $query = "UPDATE `snapp_comments` SET `total_snapp_comment_loves` = (SELECT SUM(`rating`) FROM `snapp_comment_loves` WHERE `snapp_comment_id` = '".$app['snapp_comment_id']."'";
+      }
+      else {
+        $return['debug']  = 'Failed to update total_snapp/comment_loves';
+        die(json_encode($return));
+      }
       $return['status'] = 'success';
       die(json_encode($return));
     }
     else {
-      $return['debug']  = 'MySql: query error while updating snapplove';
+      $return['debug']  = 'MySql: query error while updating love';
       die(json_encode($return));
     }
   }
@@ -117,9 +127,15 @@ else {
   // create record
   if (isset($app['snapp_id'])) {
     $query = "INSERT INTO `snapp_loves` SET ".cf_implode_mysqli($insert).", `modified` = NOW()";
+
+    // update total_snapp_loves
+    $query = "UPDATE `snapps` SET `total_snapp_loves` = (SELECT SUM(`rating`) FROM `snapp_loves` WHERE `snapp_id` = '".$app['snapp_id']."')";
   }
   elseif (isset($app['snapp_comment_id'])) {
     $query = "INSERT INTO `snapp_comment_loves` SET ".cf_implode_mysqli($insert).", `modified` = NOW()";
+
+    // update total_comment_loves
+    $query = "UPDATE `snapp_comments` SET `total_snapp_comment_loves` = (SELECT SUM(`rating`) FROM `snapp_comment_loves` WHERE `snapp_comment_id` = '".$app['snapp_comment_id']."'";
   }
   else {
     $retun['debug'] = 'Not specified where love should be given';
@@ -130,7 +146,7 @@ else {
     die(json_encode($return));
   }
   else {
-    $return['debug']  = 'MySql: query error while inserting snapplove';
+    $return['debug']  = 'MySql: query error while inserting love or while updating total loves';
     die(json_encode($return));
   }
 }
