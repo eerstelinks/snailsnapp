@@ -1,3 +1,6 @@
+Ti.include('/js/upload.js');
+Ti.include('/js/lib/cachedImageView.js');
+
 //show map
 $.mapview.showsPointsOfInterest = false;
 $.mapview.userLocationButton = true;
@@ -8,7 +11,6 @@ $.mapview.userLocation = true;
 // when location services are off, get user city location from facebook, default to amsterdam
 var showGeolocation = Ti.App.Properties.getObject('user_city_geolocation', { latitude: 52.373056, longitude: 4.892222 });
 
-// default map of Amsterdam
 $.mapview.region = {
   latitude: showGeolocation.latitude,
   longitude: showGeolocation.longitude,
@@ -19,12 +21,12 @@ $.mapview.region = {
 // open viewPhoto after click on either thumbnail or pin
 $.mapview.addEventListener('click', function(evt) {
 
-  $.mapview.deselectAnnotation(snapp);
+  $.mapview.deselectAnnotation(evt.annotation);
 
   // open the view only when the user hits the pin
   // and not when deselectAnnotation() fires
   if (evt.clicksource != null) {
-    Alloy.createController('viewphoto', { snapp: { snapp_id: evt.annotation.snappId } }).getView().open();
+    Alloy.createController('viewphoto', { snapp: evt.annotation.snapp }).getView().open();
   }
 
 });
@@ -32,52 +34,61 @@ $.mapview.addEventListener('click', function(evt) {
 // open viewPhoto after click on either thumbnail or pin
 $.mapview.addEventListener('regionchanged', function(evt) {
 
-  //alert('region changed: '+ JSON.stringify(evt));
+  // upload data to snailsnapp
+  uploadToSnailsnapp(
+    '/get/map/snapps',
+    function(json) {
+      if (json.result_count > 0) {
+        showAnnotations(json.annotations);
+      }
+    },
+    function(e) {
+      alert(JSON.stringify(e));
+    },
+    {
+      latitude: evt.latitude,
+      latitude_delta: evt.latitudeDelta,
+      longitude: evt.longitude,
+      longitude_delta: evt.longitudeDelta,
+    }
+  );
 
 });
 
-// include js library for caching thumbnails
-Ti.include('/js/lib/cachedImageView.js');
+function showAnnotations(annotations) {
 
-if (true) {
+  for (key in annotations) {
 
-  // give annotations to the map
-  // Rabat: 34.033333, -6.833333
-  var snappLatitude    = 34.033333;
-  var snappLongtitude  = -6.833333;
+    var annotation = annotations[key];
 
-  var newView = Ti.UI.createView({
-    backgroundColor: 'white',
-    width: 48,
-    height: 48,
-    borderRadius: 3,
-    borderColor: 'black',
-    borderWidth: 0.5,
-  });
+    var pinView = Ti.UI.createView({
+      backgroundColor: Alloy.CFG.white,
+      width: 48,
+      height: 48,
+      borderRadius: 3,
+      borderColor: Alloy.CFG.black,
+      borderWidth: 0.5,
+    });
 
-  var newImageView = Ti.UI.createImageView({
-    width: 40,
-    height: 40
-  });
+    var pinImageView = Ti.UI.createImageView({
+      width: 40,
+      height: 40,
+      image: annotation.url_pin
+    });
 
-  // replace image-annotation with cached thumbnail
-  //var snappURL = 'https://snapps.s3.amazonaws.com/users/adriaan/20/1387250014_vx1t64.jpg?versionId=GYX7EYL8wPTptuDDi5uug1vEJc0jsPRw';
-  var snappURL = 'https://snapps.s3.amazonaws.com/users/adriaan/200/1387250014_dt5ia5.jpg?versionId=tQMEs3AwsMnBq3DzyPgOaIFW5rTYS3Jw';
-  cachedImageView('cached_pins', snappURL, newImageView);
+    pinView.add(pinImageView);
 
-  newView.add(newImageView);
+    var snapp = Alloy.Globals.Map.createAnnotation({
+      latitude: annotation.latitude,
+      longitude: annotation.longitude,
+      title: L('loading') + '...',
+      snapp: annotation,
+      customView: pinView
+    });
 
-  var snapp = Alloy.Globals.Map.createAnnotation({
-    latitude: snappLatitude,
-    longitude: snappLongtitude,
-    title: L('loading') + '...',
-    snappId: 1,
-    customView: newView
-  });
-
-
-  // add the annotations
-  $.mapview.addAnnotation(snapp);
+    // add the annotations
+    $.mapview.addAnnotation(snapp);
+  }
 }
 
 function setLocation(coords){

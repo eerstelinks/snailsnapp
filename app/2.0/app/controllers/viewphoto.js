@@ -1,13 +1,20 @@
-// include snailsnapp upload script
-Ti.include('/js/upload.js');
-
-// TESTING DATA
-snapp.snapp_id = '1'; // Should load the right snapp
-
 // always destroy login when closed
 $.viewphoto.addEventListener('close', function() {
   $.destroy();
 });
+
+// include snailsnapp upload script
+Ti.include('/js/upload.js');
+
+var args = arguments[0] || {};
+
+if (args.snapp) {
+  snapp = args.snapp;
+}
+else {
+  showErrorAlert('no snap found!');
+  $.viewphoto.close();
+}
 
 // bind placeholder function to description field so it works on iphone
 bindPlaceholder($.new_comment, L('view_photo_comment_placeholder'));
@@ -37,6 +44,7 @@ uploadToSnailsnapp(
   }
 );
 
+$.snapp.setImage(snapp.url_phone);
 
 function userSubmitsComment () {
   if (mayUserSend()) {

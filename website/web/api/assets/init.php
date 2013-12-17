@@ -23,7 +23,7 @@ mb_internal_encoding('UTF-8');
 
 // this is the Ortelius address
 // $ourIP = '24.132.29.137'; // ortelius
-$ourIP = '105.158.220.214'; // morocco
+$ourIP = '41.140.32.217'; // morocco
 
 $isDeveloper   = false;
 $isLocalhost   = false;

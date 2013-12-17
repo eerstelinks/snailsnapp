@@ -23,7 +23,7 @@
 // snapp tss
 '#snapp': {
   width: '100%',
-  image: 'http://wallpaperscraft.com/image/8200/640x640.jpg?orig=1' // snapp
+  height: Ti.UI.SIZE,
 },
 
 '#image_love': {
