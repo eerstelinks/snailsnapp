@@ -10,8 +10,8 @@
 cachedImageView = function(imageDirectoryName, url, imageViewObject)
 {
         // Grab the filename
-        var filename = url.split('/');
-        filename = filename[filename.length - 1];
+        var filename = url.replace(/http(s|):\/\//gi, "").replace(/[^0-9a-zA-Z]/g, "_");
+
         // Try and get the file that has been previously cached
         var file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, imageDirectoryName, filename);
 

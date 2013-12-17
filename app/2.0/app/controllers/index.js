@@ -24,7 +24,7 @@ $.mapview.addEventListener('click', function(evt) {
   // open the view only when the user hits the pin
   // and not when deselectAnnotation() fires
   if (evt.clicksource != null) {
-    Alloy.createController('viewphoto').getView().open();
+    Alloy.createController('viewphoto', { snapp: { snapp_id: evt.annotation.snappId } }).getView().open();
   }
 
 });
@@ -46,16 +46,35 @@ if (true) {
   var snappLatitude    = 34.033333;
   var snappLongtitude  = -6.833333;
 
-  var snapp = Alloy.Globals.Map.createAnnotation({
-    latitude: snappLatitude,
-    longitude: snappLongtitude,
-    image: '', // image-thumbnail or pin
-    title: L('loading') + '...',
+  var newView = Ti.UI.createView({
+    backgroundColor: 'white',
+    width: 50,
+    height: 50,
+    borderRadius: 3,
+    borderColor: 'black',
+    borderWidth: 0.5,
+  });
+
+  var newImageView = Ti.UI.createImageView({
+    width: 40,
+    height: 40
   });
 
   // replace image-annotation with cached thumbnail
-  var snappURL = ''; // THIS SHOULD REFER TO AMAZON URL!
-  cachedImageView('cached_pins', snappURL, snapp);
+  //var snappURL = 'https://snapps.s3.amazonaws.com/users/adriaan/20/1387250014_vx1t64.jpg?versionId=GYX7EYL8wPTptuDDi5uug1vEJc0jsPRw';
+  var snappURL = 'https://snapps.s3.amazonaws.com/users/adriaan/200/1387250014_dt5ia5.jpg?versionId=tQMEs3AwsMnBq3DzyPgOaIFW5rTYS3Jw';
+  cachedImageView('cached_pins', snappURL, newImageView);
+
+  newView.add(newImageView);
+
+  var snapp = Alloy.Globals.Map.createAnnotation({
+    latitude: snappLatitude,
+    longitude: snappLongtitude,
+    title: L('loading') + '...',
+    snappId: 1,
+    customView: newView
+  });
+
 
   // add the annotations
   $.mapview.addAnnotation(snapp);
@@ -104,7 +123,7 @@ function snailHome() {
     }
     else {
 
-      // check if postView is closed (not an elegant way)
+      // check if postView is closed
       if (Ti.App.Properties.getBool('is_upload_active', false)) {
         postView.show();
       }
