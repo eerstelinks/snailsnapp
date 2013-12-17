@@ -21,7 +21,7 @@
 },
 
 // snapp tss
-'#snapp': {
+'#snapp_image': {
   width: '100%',
   height: Ti.UI.SIZE,
 },
@@ -42,7 +42,7 @@
   width: '100%'
 },
 
-'#user_profile_pic': {
+'#fb_profile_pic': {
   top: 0,
   left: 5,
   width: '75dp',
@@ -55,7 +55,7 @@
   left: 5
 },
 
-'#user_name': {
+'#fb_full_name': {
   font: {
     fontFamily: 'Helvetica',
     fontWeight: 'bold',
@@ -66,7 +66,7 @@
   left: 0
 },
 
-'#snapp_datetime': {
+'#snapp_created': {
   font: {
     fontFamily: 'Helvetica',
     fontSize: '14dp'
