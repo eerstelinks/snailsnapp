@@ -23,8 +23,12 @@ bindPlaceholder($.new_comment, L('view_photo_comment_placeholder'));
 uploadToSnailsnapp(
   '/get/snapp/comment',
   function(json) {
-    $.new_comment.setValue('');
-    addNewComment(json);
+    if (json.result_count > 0) {
+      for (key in json.comments) {
+        var commentData = json.comments[key];
+        addNewComment(commentData);
+      }
+    }
   },
   function(alert) {
     showErrorAlert(alert);
@@ -35,6 +39,11 @@ uploadToSnailsnapp(
 );
 
 $.snapp.setImage(snapp.url_phone);
+
+// Add event listener to snapp love button
+$.image_love.addEventListener('click',function(event) {
+  giveLove(event, 'snapp');
+});
 
 function userSubmitsComment () {
   if (mayUserSend()) {
@@ -70,12 +79,11 @@ function postCommentToSnailsnapp() {
     },
     {
       comment: $.new_comment.value,
-      snapp_id: snapp_id,
+      snapp_id: snapp.snapp_id,
       created: new Date()
     }
   );
 }
-
 
 function addNewComment(response) {
   // commentWrapper holds all comments
@@ -172,7 +180,7 @@ function addNewComment(response) {
           snapp_comment_id: response.snapp_comment_id
         });
         loveButton.addEventListener('click',function(event) {
-          giveLove(event);
+          giveLove(event, 'comment');
         });
 
         loveInfo.add(loveButton);
@@ -203,22 +211,18 @@ function addNewComment(response) {
 }
 
 // this shit makes the loving work --> love u fran!
-function giveLove(event) {
+function giveLove(event, type) {
   if (mayUserSend()) {
-  toggleLove(event);
+    toggleLove(event, type);
   }
 }
 
-function toggleLove(event) {
+function toggleLove(event, type) {
   var rating;
   var heart     = event.source;
   var title     = heart.getTitle();
   var image     = heart.getImage();
   var loveCount = parseInt(title);
-
-  // this might need a check on whether the var exist
-  var snapp_id = event.snapp_id; // is not send from server yet
-  var snapp_comment_id = event.snapp_comment_id;
 
   if (image == '/images/icons/heart-empty.png') {
     heart.setTitle(' ' + (loveCount + 1) +' x');
@@ -230,10 +234,21 @@ function toggleLove(event) {
     heart.setImage('/images/icons/heart-empty.png');
     rating = 0;
   }
-  uploadLoveToSnailsnapp(rating,snapp_id,snapp_comment_id);
+
+  if (type == 'comment') {
+    var id = heart.snapp_comment_id;
+  }
+  else if (type == 'snapp') {
+    var id = snapp.snapp_id;
+  }
+  else {
+    showErrorAlert();
+  }
+
+  uploadLoveToSnailsnapp(rating, type, id);
 }
 
-function uploadLoveToSnailsnapp(rating,snapp_id,snapp_comment_id) {
+function uploadLoveToSnailsnapp(rating, type, id) {
   uploadToSnailsnapp(
     '/post/snapp/loves',
     function() {
@@ -246,8 +261,8 @@ function uploadLoveToSnailsnapp(rating,snapp_id,snapp_comment_id) {
     },
     {
       rating: rating,
-      snapp_id: snapp_id,
-      snapp_comment_id: snapp_comment_id
+      type: type,
+      id: id
     }
   );
 }

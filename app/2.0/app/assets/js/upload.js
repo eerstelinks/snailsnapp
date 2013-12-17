@@ -182,7 +182,12 @@ function uploadToSnailsnapp(path, successCallback, errorCallback, dataObject) {
   xhr.onload = function(e) {
     if (this.status >= 200 && this.status < 300) {
       var responseText = xhr.responseText;
-      var jsonResponse = JSON.parse(responseText);
+
+      var jsonResponse = { debug: 'Failed to parse this into JSON: ' + responseText };
+
+      try {
+        jsonResponse = JSON.parse(responseText);
+      } catch(e) {}
 
       if (jsonResponse.status == 'success') {
         successCallback(jsonResponse);
