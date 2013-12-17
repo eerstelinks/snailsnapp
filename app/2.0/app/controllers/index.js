@@ -32,7 +32,7 @@ $.mapview.addEventListener('click', function(evt) {
 // include js library for caching thumbnails
 Ti.include('/js/lib/cachedImageView.js');
 
-if (false) {
+if (true) {
 
   // give annotations to the map
   // Rabat: 34.033333, -6.833333
