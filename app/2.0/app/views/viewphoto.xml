@@ -11,8 +11,7 @@
         <View layout="composite" top="0">
           <ImageView id="snapp" />
           <View layout="horizontal" top="5" right="0" width="Ti.UI.SIZE">
-            <Button id="image_love" />
-            <Label id="image_love_times" />
+            <Button id="image_love" onClick="giveLove" title=" 0 x"/>
           </View>
         </View>
         <!-- START OF SNAPP_INFO -->
@@ -22,12 +21,6 @@
           <View id="verticalAlign">
             <Label id="user_name"></Label>
             <Label id="snapp_datetime"></Label>
-
-            <View id="love_info">
-              <Button id="love" />
-              <Label id="how_much_love"></Label>
-            </View>
-
           </View>
         </View>
 
