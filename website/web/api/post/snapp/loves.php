@@ -1,6 +1,7 @@
 <?php
 require(dirname(__FILE__).'/../../assets/init.php');
 require(dirname(__FILE__).'/../../assets/json_header.php');
+require(dirname(__FILE__).'/../../assets/verify_user.php');
 
 $return['status'] = 'error';
 
@@ -12,145 +13,50 @@ else {
   die(json_encode($return));
 }
 
-// love can be given to either a snapp or a snapp_comment
-unset($loveGivenTo);
-if (isset($app['snapp_id']) && isset($app['snapp_comment_id'])) {
-  $return['debug'] = 'Not specified where love should be given #1';
-  die(json_encode($return));
-}
-elseif (isset($app['snapp_id'])) {
-  $loveGivenTo = 'snapp_id';
-}
-elseif (isset($app['snapp_comment_id'])) {
-  $loveGivenTo = 'snapp_comment_id';
-}
-else {
-  $retun['debug'] = 'Not specified where love should be given #2';
+if (empty($app['type']) || empty($app['id']) || !isset($app['rating'])) {
+  $return['debug'] = 'Type, id nor rating are not received';
   die(json_encode($return));
 }
 
-// check data from the app
-if (empty($app['always']['facebook'])) {
-  $return['debug']  = 'no data';
-  die(json_encode($return));
-}
+$checkExisting['ss_user_id'] = $ss_user_id;
+$checkExisting['type']       = $app['type'];
+$checkExisting['type_id']    = $app['id'];
 
-// required items
-$requiredItems = array(
-  $app['always']['facebook']['user_id'],
-  $app['always']['facebook']['access_token'],
-  $app['always']['facebook']['expiration_date'],
-  $app[$loveGivenTo]
-);
+$query = "SELECT `love_id` FROM `loves` WHERE ".cf_implode_mysqli($checkExisting, null, ' AND ');
 
-// check for required items
-foreach ($requiredItems as $key => $item) {
-  if (empty($item)) {
-    $return['debug'] = 'no '.$key; // THIS RETURNS A NUMBER, ADRIAAN?
+if ($result = $mysqli->query($query)) {
+
+  // if is 1, update the row
+  if ($result->num_rows == 1) {
+    $row = $result->fetch_assoc();
+    $query = "UPDATE `loves` SET `rating` = ".$app['rating'].", `modified` = NOW() WHERE `love_id` = ".cf_quotevalue($row['love_id']);
+  }
+  // if > 1, error
+  elseif ($result->num_rows > 1) {
+    $retun['debug'] = 'Duplicate love rows';
     die(json_encode($return));
   }
-}
-
-if (!empty($error)) {
-  $return['debug']  = implode(', ', $error);
-  die(json_encode($return));
-}
-
-unset($insert);
-
-$insert['user_id']    = $snailsnappUserID;
-$insert[$loveGivenTo] = $app[$loveGivenTo];
-$insert['rating']     = (int)$app['rating']; // converts to interval for mysql
-
-// check if the record already exists
-$checkExisting = $insert;
-unset($checkExisting['rating']);
-
-if (isset($app['snapp_id'])) {
-  $query  = "SELECT `snapp_love_id`, `rating` FROM `snapp_loves` WHERE ".cf_implode_mysqli($checkExisting, null, ' AND ');
-}
-elseif (isset($app['snapp_comment_id'])) {
-    $query  = "SELECT `snapp_comment_love_id`, `rating` FROM `snapp_comment_loves` WHERE ".cf_implode_mysqli($checkExisting, null, ' AND ');
-}
-else {
-  $return['debug']  = 'Not specified where love should be given #3';
-  die(json_encode($return));
-}
-
-$result = $mysqli->query($query);
-
-if ($result->num_rows == 1) {
-  $row = $result->fetch_assoc();
-  // update the record, cause it already exists
-  if ($app['rating'] != $row['rating']) {
-    if (isset($app['snapp_id'])) {
-      $query = "UPDATE `snapp_loves` SET ".cf_implode_mysqli($insert).", `modified` = NOW() WHERE `snapp_love_id` = '".$row['snapp_love_id']."'";
-    }
-    elseif (isset($app['snapp_comment_id'])) {
-      $query = "UPDATE `snapp_comment_loves` SET ".cf_implode_mysqli($insert).", `modified` = NOW() WHERE `snapp_comment_love_id` = '".$row['snapp_comment_love_id']."'";
-    }
-    else {
-      $return['debug']  = 'Not specified where love should be given #4';
-      die(json_encode($return));
-    }
-    if ($mysqli->query($query)) {
-      // update total_loves
-      if (isset($app['snapp_id'])) {
-        $query = "UPDATE `snapps` SET `total_snapp_loves` = (SELECT SUM(`rating`) FROM `snapp_loves` WHERE `snapp_id` = '".$app['snapp_id']."')";
-      }
-      elseif (isset($app['snapp_comment_id'])) {
-        $query = "UPDATE `snapp_comments` SET `total_snapp_comment_loves` = (SELECT SUM(`rating`) FROM `snapp_comment_loves` WHERE `snapp_comment_id` = '".$app['snapp_comment_id']."'";
-      }
-      else {
-        $return['debug']  = 'Failed to update total_snapp/comment_loves';
-        die(json_encode($return));
-      }
-      $return['status'] = 'success';
-      die(json_encode($return));
-    }
-    else {
-      $return['debug']  = 'MySql: query error while updating love';
-      die(json_encode($return));
-    }
-  }
+  // insert row
   else {
-    $return['status'] = 'success';
-    $return['debug']  = 'MySql: nothing updated';
-    die(json_encode($return));
+    $insert = $checkExisting;
+    $insert['rating'] = $app['rating'];
+    $query = "INSERT INTO `loves` SET ".cf_implode_mysqli($insert).", `modified` = NOW()";
   }
-}
-elseif ($result->num_rows > 1) {
-  $return['debug']  = 'MySql: Duplicate record of snapplove';
-  die(json_encode($return));
-}
-else {
-  // create record
-  if (isset($app['snapp_id'])) {
-    $query = "INSERT INTO `snapp_loves` SET ".cf_implode_mysqli($insert).", `modified` = NOW()";
 
-    // update total_snapp_loves
-    $query = "UPDATE `snapps` SET `total_snapp_loves` = (SELECT SUM(`rating`) FROM `snapp_loves` WHERE `snapp_id` = '".$app['snapp_id']."')";
-  }
-  elseif (isset($app['snapp_comment_id'])) {
-    $query = "INSERT INTO `snapp_comment_loves` SET ".cf_implode_mysqli($insert).", `modified` = NOW()";
-
-    // update total_comment_loves
-    $query = "UPDATE `snapp_comments` SET `total_snapp_comment_loves` = (SELECT SUM(`rating`) FROM `snapp_comment_loves` WHERE `snapp_comment_id` = '".$app['snapp_comment_id']."'";
-  }
-  else {
-    $retun['debug'] = 'Not specified where love should be given';
-    die(json_encode($return));
-  }
   if ($mysqli->query($query)) {
-    $return['status'] = 'success';
+    $retun['status'] = 'success';
     die(json_encode($return));
   }
   else {
-    $return['debug']  = 'MySql: query error while inserting love or while updating total loves';
+    $retun['debug'] = 'Query failed: '.$query;
     die(json_encode($return));
   }
-}
 
+}
+else {
+  $retun['debug'] = 'Can not run query: '.$query;
+  die(json_encode($return));
+}
 
 // return data back to the app
 $return['debug']  = 'Script has reached the end of file';
