@@ -22,7 +22,14 @@ $query  = "SELECT
 
 if ($res = $mysqli->query($query)) {
 
-  $return = $res->fetch_assoc();
+  // get all comments
+  while($row = $res->fetch_assoc()) {
+    $return['comments'][] = $row;
+  }
+
+  // show comment count, even when it is 0
+  $return['result_count'] = $res->num_rows;
+
   $return['status'] = 'success';
   die(json_encode($return));
 }
