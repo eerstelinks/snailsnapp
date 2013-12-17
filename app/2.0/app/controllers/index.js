@@ -31,6 +31,19 @@ $.mapview.addEventListener('click', function(evt) {
 
 });
 
+function snailSwitch() {
+  var mapType = $.snailSwitch.getMapType();
+  alert(mapType);
+  if (mapType = 'public') {
+    $.snailSwitch.setImage('/images/icons/user.png');
+    $.snailSwitch.setMapType('personal';
+  }
+  else {
+    $.snailSwitch.setImage('/images/icons/group.png');
+    $.snailSwitch.setMapType('public');
+  }
+}
+
 // open viewPhoto after click on either thumbnail or pin
 $.mapview.addEventListener('regionchanged', function(evt) {
 
