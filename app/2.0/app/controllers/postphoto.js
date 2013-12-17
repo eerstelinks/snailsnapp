@@ -110,6 +110,7 @@ function setEditableTo(editable) {
 function userSubmits() {
 
   if (!mayUserSend()) {
+    setUploadActive(true);
     setEditableTo(true);
   }
   // check if user is clicking on posting or edit
@@ -333,6 +334,7 @@ function togglePostAnonymous() {
 
 // what to do with the backbutton
 function backButton() {
+  setUploadActive(true);
   $.postphoto.hide();
 }
 
