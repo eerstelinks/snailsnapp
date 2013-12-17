@@ -3,6 +3,28 @@ require(dirname(__FILE__).'/../../assets/init.php');
 require(dirname(__FILE__).'/../../assets/json_header.php');
 require(dirname(__FILE__).'/../../assets/verify_user.php');
 
+function updateTotalLoves($type, $typeId) {
+  global $mysqli;
+
+  // get the total counts
+  $query = "SELECT SUM(`rating`) AS `total_rating` FROM `loves` WHERE `type` = ".cf_quotevalue($type)." AND `type_id` = ".cf_quotevalue($typeId);
+  $res = $mysqli->query($query);
+  $row = $res->fetch_assoc();
+  $totalRating = $row['total_rating'];
+
+  // update the total counts
+  if ($type == 'comment') {
+    $query = "UPDATE `snapp_comments` SET `total_comment_loves` = ".cf_quotevalue($totalRating)." WHERE `snapp_comment_id` = ".cf_quotevalue($typeId);
+  }
+  elseif ($type == 'snapp') {
+    $query = "UPDATE `snapps` SET `total_snapp_loves` = ".cf_quotevalue($totalRating)." WHERE `snapp_id` = ".cf_quotevalue($typeId);
+  }
+
+  $mysqli->query($query);
+
+  return $totalRating;
+}
+
 $return['status'] = 'error';
 
 if (isset($_POST['data'])) {
@@ -44,7 +66,8 @@ if ($result = $mysqli->query($query)) {
   }
 
   if ($mysqli->query($query)) {
-    $return['status'] = 'success';
+    $return['sum_rating'] = updateTotalLoves($app['type'], $app['id']);
+    $return['status']     = 'success';
     die(json_encode($return));
   }
   else {
