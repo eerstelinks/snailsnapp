@@ -17,7 +17,6 @@
 
 'View': {
   height: Ti.UI.SIZE,
-  top: 5
 },
 
 // snapp tss
@@ -30,61 +29,69 @@
   top: 0,
   right: 5,
   image: '/images/icons/heart-empty.png',
-  text: '0 x',
+  title: '0 x',
   color: Alloy.CFG.green,
   style: Ti.UI.iPhone.SystemButtonStyle.PLAIN
 },
 
-// snapp_info tss
 '#snapp_info': {
+  top: 7,
+},
+
+// snapp_info tss
+
+'.detailsView': {
   layout: 'horizontal',
   horizontalWrap: true,
-  width: '100%'
+  top: 0.5,
+  left: 8,
+  right: 8,
+  backgroundColor: Alloy.CFG.white,
 },
 
-'#fb_profile_pic': {
-  top: 0,
-  left: 5,
-  width: '75dp',
-  height: '75dp'
+'.avatar': {
+  top: 8,
+  left: 8,
+  bottom: 8,
+  width: 60,
+  height: 60
 },
 
-'#verticalAlign': {
+'.detailsContainer': {
   layout: 'vertical',
-  top: 0,
-  left: 5
+  top: 8,
+  left: 8
 },
 
-'#fb_full_name': {
+'.name': {
   font: {
     fontFamily: 'Helvetica',
     fontWeight: 'bold',
     fontSize: '16dp'
   },
-  text: 'Christian van Ommeren', // facebook first & last name
   top: 0,
   left: 0
 },
 
-'#snapp_created': {
+'.date': {
   font: {
     fontFamily: 'Helvetica',
-    fontSize: '14dp'
+    fontSize: '12dp'
   },
-  text: '09:10 11/12/13', // snapp datetime
   left: 0,
-  color: Alloy.CFG.darkgrey
+  color: Alloy.CFG.grey
 },
 
-'#snapp_description': {
-  left: 5,
-  right: 5,
-  top: 5,
+'.text': {
   font: {
     fontFamily: 'Helvetica',
     fontWeight: 'normal',
     fontSize: '15dp'
   },
+  top: 5,
+  left: 0,
+  right: 8,
+  bottom: 8,
   height: Ti.UI.SIZE
 },
 
@@ -95,15 +102,10 @@
   top: 0
 },
 
-// separator tss
-'#separator': {
-  height: 1,
-  bottom: 5,
-  top: 6,
-  left: 5,
-  right: 5,
-  borderWidth: 1,
-  borderColor: Alloy.CFG.green
+'#textareaView': {
+  //bottom: 8,
+  height: Ti.UI.SIZE,
+  layout: 'horizontal',
 },
 
 // new_comment tss
@@ -112,15 +114,14 @@
     fontFamily: 'Helvetica',
     fontSize: '15dp',
   },
-  width: '100%',
-  height: 100,
+  height: 120,
   top: 0,
-  bottom: 5,
+  left: 2,
   returnKeyType: Titanium.UI.RETURNKEY_DONE
 },
 
 '#submitView': {
-  bottom: 0,
+  bottom: 10,
   height: Ti.UI.SIZE
 },
 

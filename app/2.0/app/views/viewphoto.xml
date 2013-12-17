@@ -8,37 +8,35 @@
       </LeftNavButton>
 
       <ScrollView id="postPhotoSrollView">
+
+        <!-- START OF SNAPP_INFO -->
+        <View id="snapp_info" class="detailsView">
+          <ImageView id="fb_profile_pic" class="avatar" />
+
+          <View class="detailsContainer">
+            <Label id="fb_full_name" class="name"></Label>
+            <Label id="snapp_created" class="date"></Label>
+            <Label id="snapp_description" class="text"></Label>
+          </View>
+        </View>
+
         <View layout="composite" top="0">
           <ImageView id="snapp_image" />
           <View layout="horizontal" top="5" right="0" width="Ti.UI.SIZE">
-            <Button id="image_love" title=" 0 x"/>
+            <Button id="image_love" />
           </View>
         </View>
-        <!-- START OF SNAPP_INFO -->
-        <View id="snapp_info">
-          <ImageView id="fb_profile_pic" />
-
-          <View id="verticalAlign">
-            <Label id="fb_full_name"></Label>
-            <Label id="snapp_created"></Label>
-          </View>
-        </View>
-
-        <Label id="snapp_description"></Label>
-
-        <!-- FIRST SEPARATOR = END OF SNAPP INFORMATION -->
-        <View id="separator"></View>
 
         <!-- IF COMMENTS ARE AVAILABLE PLACE THEM HERE -->
         <View id="comment_wrapper">
         </View>
 
-        <!-- NEW COMMENT AREA -->
-        <View id="new_comment_wrapper" left="5" right="5">
+        <View id="textareaView" class="detailsView">
+          <ImageView id="current_user_avatar" class="avatar" />
           <TextArea id="new_comment" value="L('view_photo_comment_placeholder')" maxLength="256" />
         </View>
 
-        <View id="submitView">
+        <View id="submitView" class="detailsView">
           <Button id="submitButton" title="L('view_photo_comment')" onClick="userSubmitsComment" />
         </View>
 

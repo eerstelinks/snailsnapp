@@ -50,6 +50,15 @@ $.fb_profile_pic.setImage('http://graph.facebook.com/' + snapp.fb_user_id + '/pi
 $.fb_full_name.setText(snapp.fb_full_name);
 $.snapp_created.setText(snapp.created);
 
+// set profile user on comment box
+if (facebook.getUid()) {
+  var commentBoxAvatar = 'http://graph.facebook.com/' + facebook.getUid() + '/picture?width=150&height=150';
+}
+else {
+  var commentBoxAvatar = 'http://placehold.it/150/18DB6E/FFFFFF&text=YOU!';
+}
+$.current_user_avatar.setImage(commentBoxAvatar);
+
 // set total snapp loves
 $.image_love.setTitle(' ' + snapp.total_snapp_loves + ' x');
 
@@ -103,74 +112,38 @@ function addNewComment(response) {
   // commentWrapper holds all comments
   var commentWrapper = $.comment_wrapper;
 
-  // newCommentView will hold the new comment
-  var newCommentView = Ti.UI.createView({
-    height: Ti.UI.SIZE,
-    top: 5
-  });
-
-  commentWrapper.add(newCommentView);
-
   // newCommentInfo holds the new comment's information
-  var newCommentInfo = Ti.UI.createView({
-      layout: 'horizontal',
-      horizontalWrap: true,
-      width: '100%',
-      height: Ti.UI.SIZE
-  });
-
-  newCommentView.add(newCommentInfo);
+  var newCommentInfo = Ti.UI.createView();
+  $.addClass(newCommentInfo, 'detailsView');
+  commentWrapper.add(newCommentInfo);
 
     // profilePic holds the commenter's profile pic
     var commenterProfilePic = Ti.UI.createImageView({
-      top: 0,
-      left: 5,
       image: 'http://graph.facebook.com/' + response.fb_user_id + '/picture?width=150&height=150',
-      width: '75dp',
-      height: '75dp'
     });
-
+    $.addClass(commenterProfilePic, 'avatar');
     newCommentInfo.add(commenterProfilePic);
 
     // verticalAlign aligns the following three elements vertical
-    var verticalAlign = Ti.UI.createView({
-      height: Ti.UI.SIZE,
-      layout: 'vertical',
-      top: 0,
-      left: 5
-    });
-
+    var verticalAlign = Ti.UI.createView();
+    $.addClass(verticalAlign, 'detailsContainer');
     newCommentInfo.add(verticalAlign);
 
       // commenterUser holds new user name
       var commentUser = Ti.UI.createLabel({
-        font: {
-          fontFamily: 'Helvetica',
-          fontWeight: 'bold',
-          fontSize: '16dp'
-        },
         text: response.fb_full_name,
-        top: 0,
-        left: 0,
-        height: Ti.UI.SIZE
       });
-
+      $.addClass(commentUser, 'name');
       verticalAlign.add(commentUser);
 
       // commentDateTime holds the datetime of the comment
       var commentDateTime = Ti.UI.createLabel({
-        font: {
-          fontFamily: 'Helvetica',
-          fontSize: '14dp'
-        },
         text: response.created,
-        color: Alloy.CFG.darkgrey,
-        left: 0,
-        height: Ti.UI.SIZE
       });
-
+      $.addClass(commentDateTime, 'date');
       verticalAlign.add(commentDateTime);
 
+      /*
       // loveInfo holds the love elements
       var loveInfo = Ti.UI.createView({
         layout: 'horizontal',
@@ -205,30 +178,16 @@ function addNewComment(response) {
         });
 
         loveInfo.add(loveButton);
+        */
 
-  // comment holds the actual comment and is added under commentWrapper
-  var comment = Ti.UI.createLabel({
-    height: Ti.UI.SIZE,
-    left: 5,
-    right: 5,
-    top: 5,
-    text: response.comment
-  });
+      // comment holds the actual comment and is added under commentWrapper
+      var comment = Ti.UI.createLabel({
+        text: response.comment
+      });
+      $.addClass(comment, 'text');
+      verticalAlign.add(comment);
 
-  commentWrapper.add(comment);
-
-  // finally add a new separator
-  var separator = Ti.UI.createView({
-    height: 1,
-    bottom: 5,
-    top: 6,
-    left: 5,
-    right: 5,
-    borderWidth: 1,
-    borderColor: Alloy.CFG.green
-  });
-
-  commentWrapper.add(separator);
+  //commentWrapper.add(newCommentInfo);
 }
 
 // this shit makes the loving work --> love u fran!
