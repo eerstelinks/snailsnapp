@@ -217,8 +217,8 @@ function toggleLove(event) {
   var loveCount = parseInt(title);
 
   // this might need a check on whether the var exist
-  var snapp_comment_id = event.snapp_comment_id;
   var snapp_id = event.snapp_id; // is not send from server yet
+  var snapp_comment_id = event.snapp_comment_id;
 
   if (image == '/images/icons/heart-empty.png') {
     heart.setTitle(' ' + (loveCount + 1) +' x');
@@ -230,12 +230,12 @@ function toggleLove(event) {
     heart.setImage('/images/icons/heart-empty.png');
     rating = 0;
   }
-  uploadLoveToSnailsnapp(rating,heart);
+  uploadLoveToSnailsnapp(rating,snapp_id,snapp_comment_id);
 }
 
-function uploadLoveToSnailsnapp(rating,heart) {
+function uploadLoveToSnailsnapp(rating,snapp_id,snapp_comment_id) {
   uploadToSnailsnapp(
-    '/mail', // should be changed to '/post/snapp/loves',
+    '/post/snapp/loves',
     function() {
       // successCallback
       alert('success');
