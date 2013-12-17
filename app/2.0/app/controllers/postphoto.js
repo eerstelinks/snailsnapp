@@ -42,6 +42,10 @@ function setLoadingBars(booleanOrProcent) {
   }
 }
 
+function getLoadingBars() {
+  return $.loadingBar.getWidth();
+}
+
 function setUploadActive(isActive) {
   if (isActive) {
     mapView.activeUploadIcon.setVisible(true);
@@ -377,6 +381,7 @@ function postSnappToSnailsnapp() {
     postToFacebook();
   }
   else {
+    setLoadingBars(getLoadingBars() + 15);
     isFacebookPostFinished = true;
   }
 
@@ -386,11 +391,14 @@ function postSnappToSnailsnapp() {
 
 function postToSnailsnapp() {
 
+  setLoadingBars(getLoadingBars() + 5);
+
   // upload data to snailsnapp
   uploadToSnailsnapp(
     '/post/snapp/create',
     function() {
       //success
+      setLoadingBars(getLoadingBars() + 10);
       isSnailsnappPostFinished = true;
       checkIfFbAndSsAreFinished();
     },
@@ -416,6 +424,7 @@ function postToFacebook() {
 
   // set text to uploading to facebook, no edit anymore
   $.submitButton.setTitle(L('post_photo_button_facebook'));
+  setLoadingBars(getLoadingBars() + 5);
 
   // check for posting permissions
   facebook.requestWithGraphPath('me/permissions', {}, 'GET', function(response) {
@@ -442,7 +451,7 @@ function postToFacebook() {
       facebook.requestWithGraphPath('me/photos', snappData, 'POST', function(e) {
 
         if (e.success) {
-          // show nothing
+          setLoadingBars(getLoadingBars() + 10);
         }
         else {
           showErrorAlert(L('post_photo_facebook_error'));
