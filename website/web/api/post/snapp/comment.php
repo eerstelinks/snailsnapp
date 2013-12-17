@@ -58,7 +58,7 @@ foreach ($checkKeys as $databaseKey => $appKey) {
 
 $insert['snapp_id'] = $app['snapp_id'];
 $insert['comment']  = $app['comment'];
-$insert['user_id']  = $snailsnappUserID; // SHOULD ALWAYS BE THERE
+$insert['ss_user_id']  = $ss_user_id; // SHOULD ALWAYS BE THERE
 
 // check if the record already exists
 $checkExisting = $insert;
@@ -71,12 +71,32 @@ if ($result->num_rows > 0) {
   die(json_encode($return));
 }
 
-// all ok, create a database entry for the new snapp!
+// all ok, create a database entry for the new comment!
 $query = "INSERT INTO `snapp_comments` SET ".cf_implode_mysqli($insert)."";
 
 if ($mysqli->query($query)) {
-  $return['status'] = 'success';
-  die(json_encode($return));
+
+  $lastInsertId = $mysqli->insert_id;
+
+  $query = "SELECT
+      `snapp_comments`.`created`,
+      `snapp_comments`.`comment`,
+      `users`.`fb_user_id`,
+      `users`.`fb_full_name`
+    FROM `snapp_comments`
+    LEFT JOIN `users` ON `users`.`ss_user_id` = `snapp_comments`.`ss_user_id`
+    WHERE `snapp_comment_id` = ".cf_quotevalue($lastInsertId);
+
+  if ($res = $mysqli->query($query)) {
+
+    $return = $res;
+    $return['status'] = 'success';
+    die(json_encode($return));
+  }
+  else {
+    $return['debug'] = 'Could not get data back from database';
+    die(json_encode($return));
+  }
 }
 else {
   $return['debug']  = 'MySql: query error while inserting snapp comment';
