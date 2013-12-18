@@ -243,7 +243,6 @@ function uploadLoveToSnailsnapp(elementId, rating, type, id) {
       }
     },
     function(e) {
-      //errorCallback
       showErrorAlert(e);
     },
     {
