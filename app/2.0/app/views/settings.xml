@@ -34,6 +34,11 @@
             </TableViewRow>
             <TableViewRow title="Somebody loves a comment on my comment" onClick="toggleSwitch">
               <Switch id="loves_comment_my_comment" value="true" onChange="toggleSwitch" />
+            <TableViewRow title="L('notifications_snailsnapp_updates')" onClick="toggleSwitch">
+              <Switch id="snailsnapp_updates" value="true" onChange="toggleSwitch" />
+            </TableViewRow>
+            <TableViewRow title="L('notifications_special_occasions')" onClick="toggleSwitch">
+              <Switch id="special_occasions" value="true" onChange="toggleSwitch" />
             </TableViewRow>
           </TableViewSection>
         </TableView>

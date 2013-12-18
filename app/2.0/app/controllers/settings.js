@@ -14,7 +14,8 @@ function toggleSwitch(event) {
     $.comments_my_comment.setValue(false);
     $.loves_comment_my_snapp.setValue(false);
     $.loves_comment_my_comment.setValue(false);
-    //return;
+    $.snailsnapp_updates.setValue(false);
+    $.special_occasions.setValue(false);
   }
   else if ($.never.value === true && toggleValue === true) {
     $.never.setValue(false);
