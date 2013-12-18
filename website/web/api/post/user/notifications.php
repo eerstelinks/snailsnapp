@@ -3,15 +3,6 @@ require(dirname(__FILE__).'/../../assets/api_init.php');
 require(dirname(__FILE__).'/../../assets/verify_user.php');
 
 // this script is updating notification preferences altered in appsettings by the user
-$return['status'] = 'error';
-
-if (isset($_POST['data'])) {
-  $app = json_decode(stripslashes($_POST['data']), true);
-}
-else {
-  $return['debug'] = 'No post data';
-  die(json_encode($return));
-}
 
 unset($insert);
 $checkKeys = array(
@@ -31,6 +22,8 @@ foreach ($checkKeys as $databaseKey => $appKey) {
     $insert[$databaseKey] = $app[$appKey];
   }
 }
+
+$insert[$ss_user_id] = $ss_user_id;
 
 $query = "SELECT `permission_id` FROM `notification_permissions` WHERE `ss_user_id` = ".cf_quotevalue($ss_user_id);
 
