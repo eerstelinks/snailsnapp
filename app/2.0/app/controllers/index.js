@@ -36,7 +36,7 @@ function snailSwitch() {
   var mapType = $.snailSwitch.getMapType();
   if (mapType == 'public') {
     $.snailSwitch.setImage('/images/icons/user.png');
-    $.snailSwitch.setMapType('personal');
+    $.snailSwitch.setMapType('private');
   }
   else {
     $.snailSwitch.setImage('/images/icons/group.png');
