@@ -156,16 +156,20 @@ function mayUserSend() {
   return true;
 }
 
-// enable background service
-var service;
+if (Ti.Platform.osname == 'iphone' || Ti.Platform.osname == 'ipad') {
 
-Ti.App.addEventListener('resumed',function(e){
-  if (service!=null){
-    service.stop();
-    service.unregister();
-  }
-});
+  // enable background service
+  var service;
 
-Ti.App.addEventListener('pause',function(e){
-  service = Ti.App.iOS.registerBackgroundService({url:'bg.js'});
+  Ti.App.addEventListener('resumed',function(e){
+    if (service!=null){
+      service.stop();
+      service.unregister();
+    }
+  });
+
+  Ti.App.addEventListener('pause',function(e){
+    service = Ti.App.iOS.registerBackgroundService({url:'bg.js'});
+  });
+
 });
