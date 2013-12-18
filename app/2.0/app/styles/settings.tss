@@ -38,7 +38,7 @@
     fontSize: '13dp'
   },
   height: 50,
-  backgroundSelectedColor: Alloy.CFG.green
+  selectedBackgroundColor: Alloy.CFG.green
 },
 
 '.header': {
