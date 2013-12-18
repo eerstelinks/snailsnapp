@@ -61,7 +61,7 @@ if (snapp.shared_anonymous == 0) {
 }
 else {
   $.fb_profile_pic.setImage('/images/henkie.png');
-  $.fb_full_name.setText('Henkie Snailman');
+  $.fb_full_name.setText(L('henkie_name'));
 }
 $.snapp_created.setText(snapp.created);
 
@@ -70,7 +70,7 @@ if (facebook.getUid()) {
   var commentBoxAvatar = 'http://graph.facebook.com/' + facebook.getUid() + '/picture?width=150&height=150';
 }
 else {
-  var commentBoxAvatar = 'http://placehold.it/150/18DB6E/FFFFFF&text=YOU!';
+  var commentBoxAvatar = '/images/henkie.png';
 }
 $.current_user_avatar.setImage(commentBoxAvatar);
 
