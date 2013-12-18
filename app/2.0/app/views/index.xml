@@ -10,6 +10,8 @@
     <Button onClick="locateMe" image="/images/icons/location.png" bottom="10" right="10" width="40" height="40" />
     <Button onClick="snailHome" id="activeUploadIcon" image="/images/icons/cloud_upload.png" bottom="50" right="10" width="40" height="40" />
 
+    <Label id="timeoutMessage" />
+
     <ImageView id="snailHome" onClick="snailHome" image="/images/snailhome.png" />
   </Window>
 </Alloy>

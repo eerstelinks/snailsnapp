@@ -31,12 +31,19 @@ $.mapview.addEventListener('click', function(evt) {
 
 });
 
-function snailSwitch() {
+function timeOutMessage(text) {
+  $.timeoutMessage.text = '  ' + text + '  ';
+  $.timeoutMessage.show();
 
-  if (!Ti.App.Properties.getBool('explained_maptype_switch', false)) {
-    Ti.App.Properties.setBool('explained_maptype_switch', true);
-    showSuccessAlert(L('explain_maptype_message'), L('default_understand_button'), L('explain_maptype_title'));
-  }
+  setTimeout(function() {
+    animation.fadeOut($.timeoutMessage, 500, function() {
+      $.timeoutMessage.hide();
+      $.timeoutMessage.setOpacity(0.8);
+    });
+  }, 1000);
+}
+
+function snailSwitch() {
 
   var mapType = $.snailSwitch.getMapType();
   if (mapType == 'public') {
@@ -47,6 +54,9 @@ function snailSwitch() {
     $.snailSwitch.setImage('/images/icons/group.png');
     $.snailSwitch.setMapType('public');
   }
+
+  var message = String.format(L('change_maptype_timeout_message'), L('maptype_' + $.snailSwitch.getMapType()));
+  timeOutMessage(message);
 
   $.mapview.removeAllAnnotations();
   $.mapview.fireEvent('regionchanged');

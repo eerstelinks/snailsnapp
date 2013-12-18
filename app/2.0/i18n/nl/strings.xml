@@ -37,8 +37,9 @@
   <string name="geo_own_location_purpose">Om jouw snapps op de kaart te zetten en andere snapps om je heen te laten zien hebben we je locatie nodig</string>
 
   <!-- map explanation icons -->
-  <string name="explain_maptype_title">Je switcht naar jouw snapps</string>
-  <string name="explain_maptype_message">We leggen het nu een keertje uit. Wanneer je de 1 persoons icon ziet kan je alle persoonlijke snapps bekijken. Zie je het groepsicon, dan zie je alle publieke snapps van jou en van anderen</string>
+  <string name="change_maptype_timeout_message" formatted="false">%s snapps zijn zichtbaar</string>
+  <string name="maptype_private">Persoonlijke</string>
+  <string name="maptype_public">Publieke</string>
 
   <!-- push notifications -->
   <string name="push_reason_title">Korte uitleg</string>

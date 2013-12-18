@@ -14,4 +14,16 @@
 
 '#activeUploadIcon': {
   visible: false,
+},
+
+'#timeoutMessage': {
+  visible: false,
+  height: 30,
+  bottom: 100,
+  borderRadius: 5,
+  touchEnabled: false,
+  backgroundColor: Alloy.CFG.green,
+  color: Alloy.CFG.white,
+  zIndex: 1050,
+  opacity: 0.8,
 }

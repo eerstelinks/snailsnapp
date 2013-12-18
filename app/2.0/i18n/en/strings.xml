@@ -37,8 +37,9 @@
   <string name="geo_own_location_purpose">To pin your snapps on the map and to show snapps around you we need your location</string>
 
   <!-- map explanation icons -->
-  <string name="explain_maptype_title">You hit the map toggle</string>
-  <string name="explain_maptype_message">Don't you worry, we explain this one time only. When you see the 1 user icon, you see only you own snapps. When you see the group icon you see all public snapps from you and others</string>
+  <string name="change_maptype_timeout_message" formatted="false">%s snapps are visible</string>
+  <string name="maptype_private">Personal</string>
+  <string name="maptype_public">Public</string>
 
   <!-- push notifications -->
   <string name="push_reason_title">Short explanation</string>

@@ -25,8 +25,9 @@ else if (Ti.App.Properties.getString('previous_version') != Ti.App.version) {
 Alloy.Globals.Map = require('ti.map');
 Alloy.Globals.Facebook = require('facebook');
 
-// require dialogs builtin
-var dialogs = require('alloy/dialogs');
+// require builtins
+var dialogs   = require('alloy/dialogs');
+var animation = require('alloy/animation');
 
 // facebook var with Titanium module
 var facebook = Alloy.Globals.Facebook;
