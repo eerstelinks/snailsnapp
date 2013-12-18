@@ -2,6 +2,30 @@ function closeSettings() {
   $.settings.close();
 }
 
+// get this user's notification preferences
+uploadToSnailsnapp(
+  '/get/user/notification_settings',
+  function(json) {
+    if (json.has_result) {
+      for (key in json.notification_settings) {
+        updateSwitches(key, json.notification_settings[key]);
+      }
+    }
+    else {
+      // remove opacity
+    }
+  },
+  function(alert) {
+    showErrorAlert(alert);
+  },
+  {
+  }
+);
+
+function updateSwitches(notificationName, value) {
+  $[notificationName].setValue(value);
+}
+
 function toggleSwitch(event) {
   var toggle         = event.source;
   var toggleId       = toggle.id;
@@ -24,7 +48,7 @@ function toggleSwitch(event) {
 
 function sendSettingsToSnailSnapp() {
   uploadToSnailsnapp(
-    '/post/user/notifications',
+    '/post/user/notification_settings',
     function() {
       showSuccessAlert();
     },
