@@ -12,10 +12,10 @@
         <TableView>
           <TableViewSection>
             <TableViewRow>
-              <Label class="header" text="L('settings_notification_header')..." />
+              <Label class="header" text="L('settings_notification_header')" />
             </TableViewRow>
             <TableViewRow title="L('notifications_never')" onClick="toggleSwitch">
-              <Switch id="never" onChange="toggleSwitch" />
+              <Switch id="never" value="false" onChange="toggleSwitch" />
             </TableViewRow>
             <TableViewRow title="L('notifications_loves_my_snapp')" onClick="toggleSwitch">
               <Switch id="loves_my_snapp" value="true" onChange="toggleSwitch" />
@@ -58,7 +58,7 @@
           </TableViewSection>
         </TableView>
         <View id="submitView">
-          <Button id="submitButton" title="L('settings_save')" />
+          <Button id="submitButton" title="L('settings_save')" onClick="sendSettingsToSnailSnapp" />
         </View>
 
       </ScrollView>
