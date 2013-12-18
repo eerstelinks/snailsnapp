@@ -1,6 +1,5 @@
-'#snailHome': {
-  width: 100,
-  bottom: -20,
+'#mapview': {
+  bottom: 60,
 },
 
 '#loadingBar': {
@@ -10,10 +9,6 @@
   zIndex: 1020,
   visible: false,
   backgroundColor: Alloy.CFG.green,
-},
-
-'#activeUploadIcon': {
-  visible: false,
 },
 
 '#timeoutMessage': {
@@ -26,4 +21,47 @@
   color: Alloy.CFG.white,
   zIndex: 1050,
   opacity: 0.8,
+},
+
+'#dashboard': {
+  bottom: 0,
+  height: 60,
+  backgroundColor: Alloy.CFG.white,
+  width: '100%',
+  zIndex: 1010,
+},
+'Button': {
+  zIndex: 1020,
+  bottom: 15,
+},
+'#openSettings': {
+  image: '/images/icons/cog.png',
+  left: 20,
+},
+'#activeUploadIcon': {
+  visible: true,
+  image: '/images/icons/cloud_upload.png',
+  left: 70,
+},
+'#snailSwitch': {
+  image: '/images/icons/user.png',
+  right: 70,
+},
+'#locateMe': {
+  image: '/images/icons/location.png',
+  right: 20,
+},
+
+'#snailHomeWrapper': {
+  bottom: -20,
+  zIndex: 1020,
+  width: 100,
+  height: 100,
+  borderRadius: 50,
+  borderColor: Alloy.CFG.white,
+  backgroundColor: Alloy.CFG.white,
+},
+'#snailHome': {
+  width: 100,
+  image: '/images/snailhome.png',
 }

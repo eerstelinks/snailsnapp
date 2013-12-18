@@ -3,15 +3,18 @@
     <View id="loadingBar" top="0" />
     <View id="mapview" ns="Alloy.Globals.Map"></View>
 
-    <!-- temp logout button for dev -->
-    <Button onClick="fbLogOut" image="/images/icons/unlock.png" bottom="10" left="10" width="40" height="40" />
-    <Button id="snailSwitch" mapType='public' onClick="snailSwitch" image="/images/icons/user.png" bottom="10" left="50" width="40" height="40" />
-    <Button onClick="openSettings" image="/images/icons/cog.png" bottom="10" right="50" width="40" height="40" />
-    <Button onClick="locateMe" image="/images/icons/location.png" bottom="10" right="10" width="40" height="40" />
-    <Button onClick="snailHome" id="activeUploadIcon" image="/images/icons/cloud_upload.png" bottom="50" right="10" width="40" height="40" />
-
     <Label id="timeoutMessage" />
 
-    <ImageView id="snailHome" onClick="snailHome" image="/images/snailhome.png" />
+    <View id="dashboard">
+        <Button onClick="snailSwitch" id="snailSwitch" mapType='public' />
+        <Button onClick="openSettings" id="openSettings" />
+        <Button onClick="locateMe" id="locateMe" />
+        <Button onClick="snailHome" id="activeUploadIcon" />
+    </View>
+
+    <View id="snailHomeWrapper">
+        <ImageView id="snailHome" onClick="snailHome" />
+    </View>
+
   </Window>
 </Alloy>
