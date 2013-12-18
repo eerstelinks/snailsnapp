@@ -1,5 +1,4 @@
 Ti.include('/js/upload.js');
-Ti.include('/js/lib/cachedImageView.js');
 
 //show map
 $.mapview.showsPointsOfInterest = false;
