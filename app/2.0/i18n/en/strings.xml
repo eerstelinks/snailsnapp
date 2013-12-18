@@ -100,10 +100,22 @@
   <!-- settings -->
   <string name="settings_title">Settings</string>
   <string name="settings_save">Save changes</string>
-  <string name="settings_language">Preferred language</string>
+  <string name="settings_notification_header">Notify me when</string>
+  <string name="settings_user_settings">User settings</string>
 
   <!-- connections -->
   <string name="upload_failed">Upload failed</string>
   <string name="no_200_response_code">It looks like our server is not online, try again later</string>
+
+  <!-- notifications -->
+  <string name="notifications_never">Never</string>
+  <string name="notifications_loves_my_snapp">Somebody loves my snapp</string>
+  <string name="notifications_loves_my_comment">Somebody loves my comment</string>
+  <string name="notifications_comments_my_snapp">Somebody comments on my snapp</string>
+  <string name="notifications_comments_my_comment">Somebody comments on my comment</string>
+  <string name="notifications_loves_comment_my_snapp">Somebody loves a comment on my snapp</string>
+  <string name="notifications_loves_comment_my_comment">Somebody loves a comment on my comment</string>
+  <string name="notifications_snailsnapp_updates">An update of Snailsnapp is available</string>
+  <string name="notifications_special_occasions">When to take a snapp. You will get this notification no more than once a month and only on very special occasions that deserve to be memorizied.</string>
 
 </resources>

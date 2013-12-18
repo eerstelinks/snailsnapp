@@ -12,28 +12,29 @@
         <TableView>
           <TableViewSection>
             <TableViewRow>
-              <Label class="header" text="Notify me when..." />
+              <Label class="header" text="L('settings_notification_header')..." />
             </TableViewRow>
-            <TableViewRow title="Never" onClick="toggleSwitch">
+            <TableViewRow title="L('notifications_never')" onClick="toggleSwitch">
               <Switch id="never" onChange="toggleSwitch" />
             </TableViewRow>
-            <TableViewRow title="Somebody loves my snapp" onClick="toggleSwitch">
+            <TableViewRow title="L('notifications_loves_my_snapp')" onClick="toggleSwitch">
               <Switch id="loves_my_snapp" value="true" onChange="toggleSwitch" />
             </TableViewRow>
-            <TableViewRow title="Somebody loves my comment" onClick="toggleSwitch">
+            <TableViewRow title="L('notifications_loves_my_comment')" onClick="toggleSwitch">
               <Switch id="loves_my_comment" value="true" onChange="toggleSwitch" />
             </TableViewRow>
-            <TableViewRow title="Somebody comments on my snapp" onClick="toggleSwitch">
+            <TableViewRow title="L('notifications_comments_my_snapp')" onClick="toggleSwitch">
               <Switch id="comments_my_snapp" value="true" onChange="toggleSwitch" />
             </TableViewRow>
-            <TableViewRow title="Somebody comments on my comment" onClick="toggleSwitch">
-              <Switch id="comments_my_comment" value="true" onChange="toggleSwitch" />
+            <TableViewRow title="L('notifications_comments_my_comment')" onClick="toggleSwitch">
+              <Switch id="comments_my_comment" value="false" onChange="toggleSwitch" />
             </TableViewRow>
-            <TableViewRow title="Somebody loves a comment on my snapp" onClick="toggleSwitch">
-              <Switch id="loves_comment_my_snapp" value="true" onChange="toggleSwitch" />
+            <TableViewRow title="L('notifications_loves_comment_my_snapp')" onClick="toggleSwitch">
+              <Switch id="loves_comment_my_snapp" value="false" onChange="toggleSwitch" />
             </TableViewRow>
-            <TableViewRow title="Somebody loves a comment on my comment" onClick="toggleSwitch">
-              <Switch id="loves_comment_my_comment" value="true" onChange="toggleSwitch" />
+            <TableViewRow title="L('notifications_loves_comment_my_comment')" onClick="toggleSwitch">
+              <Switch id="loves_comment_my_comment" value="false" onChange="toggleSwitch" />
+            </TableViewRow>
             <TableViewRow title="L('notifications_snailsnapp_updates')" onClick="toggleSwitch">
               <Switch id="snailsnapp_updates" value="true" onChange="toggleSwitch" />
             </TableViewRow>
@@ -49,7 +50,7 @@
           </TableViewSection>
           <TableViewSection>
               <TableViewRow>
-                <Label class="header" text="User settings" />
+                <Label class="header" text="L('settings_user_settings')" />
               </TableViewRow>
               <TableViewRow>
                 <LoginButton id="fbButton" ns="Alloy.Globals.Facebook" style="Alloy.Globals.Facebook.BUTTON_STYLE_WIDE" />
