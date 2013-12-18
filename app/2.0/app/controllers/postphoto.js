@@ -1,4 +1,4 @@
-// require modules only where needed2
+0// require modules only where needed2
 var ImageFactory = require('ti.imagefactory');
 
 // include amazon upload script
@@ -240,6 +240,11 @@ function startUpload(largeBlob) {
   var resizeBlob = largeBlob;
   var sumSizes   = uploadSizes.reduce(function(a, b) { return a + b });
 
+  var foldername = 'unkown';
+  if (facebook.getUid()) {
+    foldername = facebook.getUid();
+  }
+
   // upload to amazon
   uploadSizes.forEach(function(size) {
 
@@ -247,7 +252,8 @@ function startUpload(largeBlob) {
       resizeBlob = ImageFactory.imageAsResized(resizeBlob, { width: size, height: size, quality: ImageFactory.QUALITY_NONE } );
     }
 
-    var name = 'users/adriaan/' + size + '/' + currentSeconds + '_' + randomString(6) + '.' + extension;
+    // detect if user is logged in, if so, use facebook user id
+    var name = 'users/' + foldername + '/' + size + '/' + currentSeconds + '_' + randomString(6) + '.' + extension;
 
     // create funtion for every success
     var successFunction = function(e) {
