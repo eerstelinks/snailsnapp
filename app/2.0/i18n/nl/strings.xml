@@ -100,10 +100,22 @@
   <!-- settings -->
   <string name="settings_title">Instellingen</string>
   <string name="settings_save">Wijzigingen opslaan</string>
-  <string name="settings_language">Voorkeurstaal</string>
+  <string name="settings_notification_header">Stuur me een bericht als</string>
+  <string name="settings_user_settings">Gebruikersinstellingen</string>
 
   <!-- connections -->
   <string name="upload_failed">Versturen mislukt</string>
   <string name="no_200_response_code">Het lijkt erop dat onze server niet online is, probeer het later opnieuw</string>
+
+  <!-- notifications -->
+  <string name="notifications_never">Nooit</string>
+  <string name="notifications_loves_my_snapp">Iemand mijn snapp loved</string>
+  <string name="notifications_loves_my_comment">Iemand mijn reactie loved</string>
+  <string name="notifications_comments_my_snapp">Iemand reageerd op mijn snapp</string>
+  <string name="notifications_comments_my_comment">Iemand reageerd op mijn reactie</string>
+  <string name="notifications_loves_comment_my_snapp">Iemand een reactie loved op mijn snapp</string>
+  <string name="notifications_loves_comment_my_comment">Iemand een reactie op mijn reactie loved</string>
+  <string name="notifications_snailsnapp_updates">Er een update van Snailsnapp beschikbaar is</string>
+  <string name="notifications_special_occasions">Ik een snapp moet maken. Dit bericht krijg je maximaal eens per maand en alleen op de meest speciale momenten</string>
 
 </resources>
