@@ -100,7 +100,7 @@
   <!-- settings -->
   <string name="settings_title">Instellingen</string>
   <string name="settings_save">Wijzigingen opslaan</string>
-  <string name="settings_notification_header">Stuur me een bericht als</string>
+  <string name="settings_notification_header">Stuur me een bericht als...</string>
   <string name="settings_user_settings">Gebruikersinstellingen</string>
 
   <!-- connections -->
@@ -116,6 +116,6 @@
   <string name="notifications_loves_comment_my_snapp">Iemand een reactie loved op mijn snapp</string>
   <string name="notifications_loves_comment_my_comment">Iemand een reactie op mijn reactie loved</string>
   <string name="notifications_snailsnapp_updates">Er een update van Snailsnapp beschikbaar is</string>
-  <string name="notifications_special_occasions">Ik een snapp moet maken. Dit bericht krijg je maximaal eens per maand en alleen op de meest speciale momenten</string>
+  <string name="notifications_special_occasions">Op speciale momenten</string>
 
 </resources>

@@ -100,7 +100,7 @@
   <!-- settings -->
   <string name="settings_title">Settings</string>
   <string name="settings_save">Save changes</string>
-  <string name="settings_notification_header">Notify me when</string>
+  <string name="settings_notification_header">Notify me when...</string>
   <string name="settings_user_settings">User settings</string>
 
   <!-- connections -->
@@ -116,6 +116,6 @@
   <string name="notifications_loves_comment_my_snapp">Somebody loves a comment on my snapp</string>
   <string name="notifications_loves_comment_my_comment">Somebody loves a comment on my comment</string>
   <string name="notifications_snailsnapp_updates">An update of Snailsnapp is available</string>
-  <string name="notifications_special_occasions">When to take a snapp. You will get this notification no more than once a month and only on very special occasions that deserve to be memorizied.</string>
+  <string name="notifications_special_occasions">On special occasions</string>
 
 </resources>
