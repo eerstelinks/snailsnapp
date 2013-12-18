@@ -7,6 +7,10 @@
         </View>
       </LeftNavButton>
 
+      <View id="loader">
+        <ActivityIndicator id="indicator" />
+      </View>
+
       <ScrollView id="settingsScrollView">
         <TableView>
           <TableViewSection>
@@ -42,22 +46,13 @@
             </TableViewRow>
           </TableViewSection>
         </TableView>
-        <TableView>
-          <TableViewSection>
-            <TableViewRow class="separator" />
-          </TableViewSection>
-          <TableViewSection>
-              <TableViewRow>
-                <Label class="header" text="L('settings_user_settings')" />
-              </TableViewRow>
-              <TableViewRow>
-                <LoginButton id="fbButton" ns="Alloy.Globals.Facebook" style="Alloy.Globals.Facebook.BUTTON_STYLE_WIDE" />
-              </TableViewRow>
-          </TableViewSection>
-        </TableView>
+
         <View id="submitView">
           <Button id="submitButton" title="L('settings_save')" onClick="sendSettingsToSnailSnapp" />
         </View>
+
+        <LoginButton id="fbButton" ns="Alloy.Globals.Facebook" style="Alloy.Globals.Facebook.BUTTON_STYLE_WIDE" />
+
       </ScrollView>
     </Window>
   </NavigationWindow>

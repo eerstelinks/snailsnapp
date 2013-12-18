@@ -1,6 +1,27 @@
+// always destroy window when closed
+$.settings.addEventListener('close', function() {
+  $.destroy();
+});
+
+facebook.addEventListener('logout', function(e) {
+  Alloy.createController('login').getView().open();
+  closeSettings();
+});
+
 function closeSettings() {
   $.settings.close();
 }
+
+function showBusy(boolean) {
+  if (boolean === true) {
+    $.loader.show();
+  }
+  else if (boolean === false) {
+    $.loader.hide();
+  }
+}
+
+showBusy(true);
 
 // get this user's notification preferences
 uploadToSnailsnapp(
@@ -11,15 +32,12 @@ uploadToSnailsnapp(
         updateSwitches(key, json.notification_settings[key]);
       }
     }
-    else {
-
-    }
+    showBusy(false);
   },
-  function(alert) {
-    showErrorAlert(alert);
+  function() {
+    showBusy(false);
   },
-  {
-  }
+  {}
 );
 
 function updateSwitches(notificationName, value) {
@@ -47,24 +65,30 @@ function toggleSwitch(event) {
 }
 
 function sendSettingsToSnailSnapp() {
-  uploadToSnailsnapp(
-    '/post/user/notification_settings',
-    function() {
-      showSuccessAlert();
-    },
-    function(e) {
-      showErrorAlert(e);
-    },
-    {
-      never: $.never.value,
-      loves_my_snapp: $.loves_my_snapp.value,
-      loves_my_comment: $.loves_my_comment.value,
-      comments_my_snapp: $.comments_my_snapp.value,
-      comments_my_comment: $.comments_my_comment.value,
-      loves_comment_my_snapp: $.loves_comment_my_snapp.value,
-      loves_comment_my_comment: $.loves_comment_my_comment.value,
-      snailsnapp_updates: $.snailsnapp_updates.value,
-      special_occasions: $.special_occasions.value
-    }
-  );
+
+  if (mayUserSend()) {
+    showBusy(true);
+
+    uploadToSnailsnapp(
+      '/post/user/notification_settings',
+      function() {
+        showBusy(false);
+      },
+      function(e) {
+        showErrorAlert(e);
+        showBusy(false);
+      },
+      {
+        never: $.never.value,
+        loves_my_snapp: $.loves_my_snapp.value,
+        loves_my_comment: $.loves_my_comment.value,
+        comments_my_snapp: $.comments_my_snapp.value,
+        comments_my_comment: $.comments_my_comment.value,
+        loves_comment_my_snapp: $.loves_comment_my_snapp.value,
+        loves_comment_my_comment: $.loves_comment_my_comment.value,
+        snailsnapp_updates: $.snailsnapp_updates.value,
+        special_occasions: $.special_occasions.value
+      }
+    );
+  }
 }

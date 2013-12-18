@@ -1,4 +1,4 @@
-0// require modules only where needed2
+// require modules only where needed2
 var ImageFactory = require('ti.imagefactory');
 
 // include amazon upload script
