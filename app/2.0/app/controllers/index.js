@@ -33,7 +33,7 @@ $.mapview.addEventListener('click', function(evt) {
 
 function snailSwitch() {
 
-  if (Ti.App.Properties.getBool('explained_maptype_switch', false) {
+  if (!Ti.App.Properties.getBool('explained_maptype_switch', false)) {
     Ti.App.Properties.setBool('explained_maptype_switch', true);
     showSuccessAlert(L('explain_maptype_message'), L('default_understand_button'), L('explain_maptype_title'));
   }
