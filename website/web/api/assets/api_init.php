@@ -13,4 +13,24 @@ if (isset($_POST['data'])) {
   }
 }
 
+
+// check if required keys are set and exists
+if (isset($api_init_required_keys) && is_array($api_init_required_keys)) {
+
+  if (!isset($app)) {
+
+    $return['debug'] = 'api_init_required_keys set, but no app data';
+    die(json_encode($return));
+  }
+
+  foreach ($api_init_required_keys as $key) {
+
+    // error when required key does not exists
+    if (empty($app[$key])) {
+      $return['debug'] = 'api_init_required_keys set, required: '.$key;
+      die(json_encode($return));
+    }
+  }
+}
+
 ?>
