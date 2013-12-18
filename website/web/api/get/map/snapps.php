@@ -19,7 +19,7 @@ if ($app['type'] == 'private') {
   $where = " AND `snapps`.`ss_user_id` = ".cf_quotevalue($ss_user_id);
 }
 else {
-  $where = " AND `snapps`.`shared_snailsnapp` = 1";
+  $where = " AND `shared_snailsnapp` = 1";
 }
 
 $query = "SELECT
