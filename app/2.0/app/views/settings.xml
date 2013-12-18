@@ -9,38 +9,52 @@
 
       <ScrollView id="settingsSrollView">
 
-        <View class="container">
-          <Label class="header">Snap settings</Label>
-          <View class="switchList">
-            <Label class="left" text="Always post to Facebook" /><Switch class="right" />
-            <Label class="left" text="Always share public on Snailsnapp" /><Switch class="right" />
-            <Label class="left" text="Always share anonymous" /><Switch class="right" />
-          </View>
-        </View>
+        <TableView>
+          <TableViewSection>
+            <TableViewRow>
+              <Label class="header" text="Notify me when..." />
+            </TableViewRow>
+            <TableViewRow title="Never" onClick="toggleSwitch">
+              <Switch id="never" onChange="toggleSwitch" />
+            </TableViewRow>
+            <TableViewRow title="Somebody loves my snapp" onClick="toggleSwitch">
+              <Switch id="loves_my_snapp" value="true" onChange="toggleSwitch" />
+            </TableViewRow>
+            <TableViewRow title="Somebody loves my comment" onClick="toggleSwitch">
+              <Switch id="loves_my_comment" value="true" onChange="toggleSwitch" />
+            </TableViewRow>
+            <TableViewRow title="Somebody comments on my snapp" onClick="toggleSwitch">
+              <Switch id="comments_my_snapp" value="true" onChange="toggleSwitch" />
+            </TableViewRow>
+            <TableViewRow title="Somebody comments on my comment" onClick="toggleSwitch">
+              <Switch id="comments_my_comment" value="true" onChange="toggleSwitch" />
+            </TableViewRow>
+            <TableViewRow title="Somebody loves a comment on my snapp" onClick="toggleSwitch">
+              <Switch id="loves_comment_my_snapp" value="true" onChange="toggleSwitch" />
+            </TableViewRow>
+            <TableViewRow title="Somebody loves a comment on my comment" onClick="toggleSwitch">
+              <Switch id="loves_comment_my_comment" value="true" onChange="toggleSwitch" />
+            </TableViewRow>
+          </TableViewSection>
+        </TableView>
 
-        <View class="container">
-          <Label class="header">Notifications</Label>
-          <Label class="subheader">Notify me when...</Label>
-          <View class="switchList">
-            <Label class="left" text="Never" /><Switch class="right" />
-            <Label class="left" text="Somebody loves my snapp" /><Switch class="right" />
-            <Label class="left" text="Somebody comments on my snapp" /><Switch class="right" />
-            <Label class="left" text="Somebody loves a comment on my snapp" /><Switch class="right" />
-            <Label class="left" text="Somebody loves my comment on another snapp" /><Switch class="right" />
-            <Label class="left" text="Somebody comments on my comment on another snapp" /><Switch class="right" />
-            <Label class="left" text="Sombodey loves a comment on my comment on another snapp" /><Switch class="right" />
-          </View>
-        </View>
-
-        <View class="container">
-          <Label class="header">Verified user</Label>
-          <TextField width="90%" />
-          <LoginButton id="fbButton" ns="Alloy.Globals.Facebook" style="Alloy.Globals.Facebook.BUTTON_STYLE_WIDE" />
-        </View>
-
+        <TableView>
+          <TableViewSection>
+            <TableViewRow class="separator" />
+          </TableViewSection>
+          <TableViewSection>
+              <TableViewRow>
+                <Label class="header" text="User settings" />
+              </TableViewRow>
+              <TableViewRow>
+                <LoginButton id="fbButton" ns="Alloy.Globals.Facebook" style="Alloy.Globals.Facebook.BUTTON_STYLE_WIDE" />
+              </TableViewRow>
+          </TableViewSection>
+        </TableView>
         <View id="submitView">
           <Button id="submitButton" title="L('settings_save')" />
         </View>
+
       </ScrollView>
     </Window>
   </NavigationWindow>

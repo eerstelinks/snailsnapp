@@ -1,13 +1,7 @@
+// general tss
 'Window': {
   backgroundColor: Alloy.CFG.darkgrey,
 },
-
-'Label': {
-  font: {
-    fontFamily: 'Helvetica',
-    fontSize: '13dp'
-  }
-}
 
 '#backButton': {
   color: Alloy.CFG.green,
@@ -24,53 +18,40 @@
   layout: 'vertical'
 },
 
-'Label': {
+// table tss
+'Switch': {
+  right: 10,
+  value: false
+},
+
+'TableView': {
   height: Ti.UI.SIZE
 },
 
+'TableViewSection': {
+  height: Ti.UI.SIZE
+},
+
+'TableViewRow': {
+  font: {
+    fontFamily: 'Helvetica',
+    fontSize: '12dp'
+  },
+  height: 50,
+  touchEnabled: false
+},
+
 '.header': {
-  font: {
-    fontFamily: 'Helvetica',
-    fontWeight: 'bold',
-    fontSize: '16dp'
-  },
-  left: 0
-}
-
-'.subheader': {
-  font: {
-    fontFamily: 'Helvetica',
-    fontStyle: 'italic',
-    fontSize: '16dp'
-  },
-  left: 0
-}
-
-'.container': {
-  layout: 'vertical',
-  top: 8,
-  left: 8,
-  right: 8,
-  height: Ti.UI.SIZE,
-  backgroundColor: Alloy.CFG.white
+  color:'#999',
+  textAlign:'center'
 },
 
-'.switchList': {
-  layout: 'horizontal',
-  horizontalWrap: 'true'
+'.separator': {
+  backgroundColor: Alloy.CFG.grey,
+  height: 30
 },
 
-'.left': {
-  top: 0,
-  left: 5,
-  width: '80%'
-},
-
-'.right': {
-  top: 0,
-  right: 5
-},
-
+// submit tss
 '#submitView': {
   bottom: 0,
   height: Ti.UI.SIZE
