@@ -60,7 +60,6 @@ $.mapview.addEventListener('regionchanged', function(evt) {
     },
     function(error) {
       // do nothing
-      alert(error);
     },
     {
       type: $.snailSwitch.getMapType(),
