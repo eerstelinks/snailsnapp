@@ -3,6 +3,7 @@
 
   <!-- general -->
   <string name="loading">Laden</string>
+  <string name="henkie_name">Henkie Snailman (Anoniem)</string>
 
   <!-- buttons -->
   <string name="button_back"> Terug</string>
@@ -19,19 +20,19 @@
   <string name="default_success_button">Laat me gaan</string>
   <string name="default_not_logged_in_message">Sorry, je bent niet ingelogd, doe dit eerst</string>
   <string name="default_not_logged_in_button">Laat me inloggen</string>
-  <string name="update_user_failed_message">Login mislukt, de app werkt mogelijk niet zoals je verwacht</string>
+  <string name="update_user_failed_message">Inloggen is mislukt, de app werkt mogelijk niet zoals je verwacht</string>
   <string name="update_user_failed_button">Laat het me proberen</string>
   <string name="not_online_message">Wat is een slak zonder huis? Ze voelt zich helemaal alleen, maar jij kan er iets aan doen</string>
   <string name="not_online_button">Laat me internet aanzetten</string>
 
   <!-- location alerts -->
-  <string name="geo_no_location_message">Zet locatiebepaling aan in je instellingen</string>
+  <string name="geo_no_location_message">Om jezelf te vinden heb je locatiebepaling nodig, zet het aan in je instellingen</string>
   <string name="geo_no_location_button">Laat het me aanzetten</string>
-  <string name="geo_own_location_purpose">Om jouw Snapps op de kaart te zetten en andere Snapps om je heen te laten zien hebben we je locatie nodig</string>
+  <string name="geo_own_location_purpose">Om jouw snapps op de kaart te zetten en andere snapps om je heen te laten zien hebben we je locatie nodig</string>
 
   <!-- push notifications -->
   <string name="push_reason_title">Korte uitleg</string>
-  <string name="push_reason_message">In het volgende scherm wordt je gevraagd om toestemming te geven voor pushberichten. Wij maken hier geen misbruik van en zullen jou altijd laten instellen waarvan je berichten wilt ontvangen. Beloofd!</string>
+  <string name="push_reason_message">In het volgende scherm wordt je gevraagd om toestemming te geven voor onze pushberichten. Eenmaal in de app kun je zelf instellen welke berichten je wilt ontvangen. Wij zullen nooit misbruik maken van jouw keuze. Beloofd!</string>
   <string name="push_reason_button_yes">Vooruit</string>
   <string name="push_reason_button_no">Nee</string>
 
@@ -43,7 +44,7 @@
   <!-- camera overlay -->
   <string name="camera_title">Smile!</string>
   <string name="camera_selfie_title">Serieus?</string>
-  <string name="camera_selfie_message">Je gaat me toch niet vertellen dat je een selfie gaat maken he!</string>
+  <string name="camera_selfie_message">Je gaat me toch niet vertellen dat je een selfie gaat maken he?!</string>
   <string name="camera_selfie_button">Sttt, niets zeggen...</string>
   <string name="camera_flash_on">aan</string>
   <string name="camera_flash_off">uit</string>
@@ -55,7 +56,7 @@
   <!-- postphoto page -->
   <string name="post_photo_title">Plaats Snapp</string>
   <string name="post_photo_description_placeholder">Geef een omschrijving...</string>
-  <string name="post_photo_share_explanation">Als deze Snapp het waard is, deel haar dan ook met de wereld!</string>
+  <string name="post_photo_share_explanation">Als deze Snapp het waard is, deel haar dan ook met de rest van wereld!</string>
   <string name="post_photo_facebook">Deel op Facebook</string>
   <string name="post_photo_world">Deel op Snailsnapp</string>
   <string name="post_photo_anonymous">Deel anoniem</string>
@@ -65,21 +66,21 @@
   <string name="post_photo_button_facebook">Plaatsen op Facebook...</string>
   <string name="post_photo_no_permission_title">Geen toestemming om te delen op Facebook</string>
   <string name="post_photo_no_permission_message">Wil je nu toestemming te geven?</string>
-  <string name="post_photo_facebook_error">Sorry, we kunnen je foto niet plaatsen op je Facebook</string>
+  <string name="post_photo_facebook_error">Sorry, we kunnen deze foto niet plaatsen op je Facebook timeline</string>
 
-  <string name="confirm_upload_again">We zijn al begonnen met het uploaden van de foto. Dit is mislukt, mogelijk staat je klok niet goed. Wil je het opnieuw proberen?</string>
-  <string name="upload_again_failed">Het is niet gelukt de foto's opnieuw te uploaden, sorry, maak maar snel een nieuwe!</string>
+  <string name="confirm_upload_again">Het verwerken van jouw snapp is mislukt, mogelijk loopt je klok niet gelijk. Wil je het opnieuw proberen?</string>
+  <string name="upload_again_failed">Helaas, het is ons niet gelukt om de snapp te uploaden, sorry, maak maar snel een nieuwe!</string>
 
   <string name="confirm_delete_snapp_title">Snapp verwijderen</string>
-  <string name="confirm_delete_snapp_message">Wij vinden deze snapp wel de moeite waard. Maar ja, klant is koning. Wil je de snapp echt verwijderen?</string>
+  <string name="confirm_delete_snapp_message">Wij vinden deze snapp wel tof. Maar ja, jij bent de baas. Wil je de snapp echt verwijderen?</string>
 
   <!-- posphoto explanations -->
   <string name="explain_facebook_title">Deel op Facebook</string>
-  <string name="explain_facebook_message">Zet deze optie aan om je snapp te delen op jouw Facebook timeline</string>
+  <string name="explain_facebook_message">Zet deze optie aan om jouw snapp te delen op je Facebook timeline</string>
   <string name="explain_snailsnapp_title">Deel op Snailsnapp</string>
   <string name="explain_snailsnapp_message">Elke snapp wordt opgeslagen in je persoonlijke snailtrail, alleen jij kunt deze bekijken. Met deze optie deel je jouw snapp publiek. Draag bij aan het wereldnieuws!</string>
   <string name="explain_anonymous_title">Deel Anoniem</string>
-  <string name="explain_anonymous_message">Misschien wil je jouw snapp wel publiekelijk delen, maar niet met je name en profielfoto er bij. Zet dan deze optie aan</string>
+  <string name="explain_anonymous_message">Misschien wil je jouw snapp wel publiek delen, maar niet met je naam en profielfoto er naast. Zet dan deze optie aan</string>
 
   <!-- viewphoto page -->
   <string name="view_photo_title">Bekijk Snapp</string>
@@ -88,6 +89,6 @@
 
   <!-- connections -->
   <string name="upload_failed">Versturen mislukt</string>
-  <string name="no_200_response_code">Het lijkt erop dat onze server niet online is</string>
+  <string name="no_200_response_code">Het lijkt erop dat onze server niet online is, probeer het later opnieuw</string>
 
 </resources>

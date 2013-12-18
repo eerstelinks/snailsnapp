@@ -16,10 +16,9 @@
           <View class="detailsContainer">
             <Label id="fb_full_name" class="name"></Label>
             <Label id="snapp_created" class="date"></Label>
-            <Label id="snapp_description" class="text"></Label>
+            <Label id="snapp_description" class="text bottomMargin"></Label>
           </View>
         </View>
-
 
         <View layout="composite" top="0">
           <ActivityIndicator id="activityIndicator" />

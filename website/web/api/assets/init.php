@@ -107,16 +107,16 @@ function L($langName) {
   $messages = array(
 
     'fill_in_message' => array(
-      'en' => 'Fill in a message',
+      'en' => 'Please enter a message',
       'nl' => 'Vul wel een bericht in',
     ),
     'login_to_facebook' => array(
-      'en' => 'You have to login with Facebook to gain access to Snailsnapp',
-      'nl' => 'Je zal opnieuw moeten inloggen via Facebook om toegang te krijgen tot Snailsnapp',
+      'en' => 'Re-login with Facebook to access Snailsnapp',
+      'nl' => 'Log opnieuw in via Facebook om Snailsnapp te gebruiken',
     ),
     'double_comment' => array(
-      'en' => 'Your message already exists, it is not possible to comment the same comment twice',
-      'nl' => 'Bericht bestaat al, je kan niet twee keer precies dezelfde reactie plaatsen',
+      'en' => 'Your message already exists, you cannot place the same comment twice',
+      'nl' => 'Je bericht bestaat al, je kan niet twee keer precies dezelfde reactie plaatsen',
     ),
 
   );

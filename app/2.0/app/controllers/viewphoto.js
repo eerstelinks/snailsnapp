@@ -61,7 +61,7 @@ if (snapp.shared_anonymous == 0) {
 }
 else {
   $.fb_profile_pic.setImage('/images/henkie.png');
-  $.fb_full_name.setText('Henkie the Snail');
+  $.fb_full_name.setText(L('henkie_name'));
 }
 
 $.snapp_created.setText(snapp.created);
@@ -71,7 +71,7 @@ if (facebook.getUid()) {
   var commentBoxAvatar = 'http://graph.facebook.com/' + facebook.getUid() + '/picture?width=120&height=120';
 }
 else {
-  var commentBoxAvatar = 'http://placehold.it/120/18DB6E/FFFFFF&text=YOU!';
+  var commentBoxAvatar = '/images/henkie.png';
 }
 $.current_user_avatar.setImage(commentBoxAvatar);
 
@@ -82,7 +82,7 @@ if (snapp.current_user_rating == 1) {
   $.image_love.setImage('/images/icons/heart.png');
 }
 else {
-  $.image_love.setImage('/images/icons/heart-empty.png');
+  $.image_love.setImage('/images/icons/heart_empty.png');
 }
 
 function userSubmitsComment () {
@@ -159,51 +159,38 @@ function addNewComment(response) {
       $.addClass(commentDateTime, 'date');
       verticalAlign.add(commentDateTime);
 
-      /*
-      // loveInfo holds the love elements
-      var loveInfo = Ti.UI.createView({
-        layout: 'horizontal',
-        horizontalWrap: true,
-        left: 0,
-        height: Ti.UI.SIZE
-      });
-
-      verticalAlign.add(loveInfo);
-
-        if (response.current_user_rating == 1) {
-          var image = '/images/icons/heart.png';
-        }
-        else {
-          var image = '/images/icons/heart-empty.png';
-        }
-
-        // loveButton
-        var loveButton = Ti.UI.createButton({
-          image: image,
-          title: ' ' + response.total_comment_loves + ' x',
-          color: Alloy.CFG.green,
-          style: Ti.UI.iPhone.SystemButtonStyle.PLAIN,
-          visible: true,
-          top: 5,
-          left: 0,
-          height: Ti.UI.SIZE,
-          snapp_comment_id: response.snapp_comment_id
-        });
-        loveButton.addEventListener('click',function(event) {
-          giveLove(event, 'comment');
-        });
-
-        loveInfo.add(loveButton);
-        */
-
       // comment holds the actual comment and is added under commentWrapper
       var comment = Ti.UI.createLabel({
-        text: response.comment
+        text: response.comment,
+        bottom: 5,
       });
       $.addClass(comment, 'text');
       verticalAlign.add(comment);
 
-  //commentWrapper.add(newCommentInfo);
+      if (response.current_user_rating == 1) {
+        var image = '/images/icons/heart_small.png';
+      }
+      else {
+        var image = '/images/icons/heart_small_empty.png';
+      }
+
+      // loveButton
+      var loveButton = Ti.UI.createButton({
+        image: image,
+        title: ' ' + response.total_comment_loves + ' x',
+        color: Alloy.CFG.green,
+        style: Ti.UI.iPhone.SystemButtonStyle.PLAIN,
+        visible: true,
+        left: 0,
+        snapp_comment_id: response.snapp_comment_id
+      });
+      $.addClass(loveButton, 'bottomMargin');
+
+      loveButton.addEventListener('click', function(event) {
+        giveLove(event, 'comment');
+      });
+
+      verticalAlign.add(loveButton);
 }
 
 // this shit makes the loving work --> love u fran!
@@ -219,27 +206,29 @@ function toggleLove(event, type) {
   var image     = heart.getImage();
   var loveCount = parseInt(heart.getTitle());
 
-  if (image == '/images/icons/heart-empty.png') {
-    heart.setTitle(' ' + (loveCount + 1) +' x');
-    heart.setImage('/images/icons/heart.png');
-    rating = 1;
-  }
-  else {
-    heart.setTitle(' '+ (loveCount - 1) +' x');
-    heart.setImage('/images/icons/heart-empty.png');
-    rating = 0;
-  }
-
   if (type == 'comment') {
     var id = heart.snapp_comment_id;
     var elementId = heart;
+    var file_prefix = 'heart_small';
   }
   else if (type == 'snapp') {
     var id = snapp.snapp_id;
     var elementId = $.image_love;
+    var file_prefix = 'heart';
   }
   else {
     showErrorAlert();
+  }
+
+  if (image == '/images/icons/' + file_prefix + '_empty.png') {
+    heart.setTitle(' ' + (loveCount + 1) +' x');
+    heart.setImage('/images/icons/' + file_prefix + '.png');
+    rating = 1;
+  }
+  else {
+    heart.setTitle(' '+ (loveCount - 1) +' x');
+    heart.setImage('/images/icons/' + file_prefix + '_empty.png');
+    rating = 0;
   }
 
   uploadLoveToSnailsnapp(elementId, rating, type, id);

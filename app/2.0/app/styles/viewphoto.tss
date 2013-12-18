@@ -38,7 +38,9 @@
   top: 7,
 },
 
-// snapp_info tss
+'.bottomMargin': {
+  bottom: 8,
+},
 
 '.detailsView': {
   layout: 'horizontal',
@@ -91,7 +93,6 @@
   top: 5,
   left: 0,
   right: 8,
-  bottom: 8,
   height: Ti.UI.SIZE
 },
 
