@@ -3,6 +3,7 @@
 
   <!-- general -->
   <string name="loading">Laden</string>
+  <string name="henkie_name">Henkie Snailman (Anoniem)</string>
 
   <!-- buttons -->
   <string name="button_back"> Terug</string>
