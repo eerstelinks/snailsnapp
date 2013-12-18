@@ -32,7 +32,7 @@ foreach ($checkKeys as $databaseKey => $appKey) {
   }
 }
 
-$query = "SELECT `permission_id` FROM `notification_permissions` WHERE `ss_user_id` = '".cf_quotevalue($ss_user_id);
+$query = "SELECT `permission_id` FROM `notification_permissions` WHERE `ss_user_id` = ".cf_quotevalue($ss_user_id);
 
 if ($result = $mysqli->query($query)) {
 
