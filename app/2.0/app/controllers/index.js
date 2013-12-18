@@ -55,15 +55,14 @@ function snailSwitch() {
     $.snailSwitch.setMapType('public');
   }
 
+  $.mapview.removeAllAnnotations();
+  getSnappsForRegion($.mapview.getRegion());
+
   var message = String.format(L('change_maptype_timeout_message'), L('maptype_' + $.snailSwitch.getMapType()));
   timeOutMessage(message);
-
-  $.mapview.removeAllAnnotations();
-  $.mapview.fireEvent('regionchanged');
 }
 
-// open viewPhoto after click on either thumbnail or pin
-$.mapview.addEventListener('regionchanged', function(evt) {
+function getSnappsForRegion(region) {
 
   // upload data to snailsnapp
   uploadToSnailsnapp(
@@ -78,13 +77,17 @@ $.mapview.addEventListener('regionchanged', function(evt) {
     },
     {
       type: $.snailSwitch.getMapType(),
-      latitude: evt.latitude,
-      latitude_delta: evt.latitudeDelta,
-      longitude: evt.longitude,
-      longitude_delta: evt.longitudeDelta,
+      latitude: region.latitude,
+      latitude_delta: region.latitudeDelta,
+      longitude: region.longitude,
+      longitude_delta: region.longitudeDelta,
     }
   );
+}
 
+// open viewPhoto after click on either thumbnail or pin
+$.mapview.addEventListener('regionchanged', function(evt) {
+  getSnappsForRegion(evt);
 });
 
 function showAnnotations(annotations) {
