@@ -3,19 +3,6 @@ require(dirname(__FILE__).'/../../assets/api_init.php');
 require(dirname(__FILE__).'/../../assets/verify_user.php');
 
 // this script is updating notification preferences altered in appsettings by the user
-
-function updateNotificationPreferences($type, $typeId) {
-  global $mysqli;
-
-  // get the notification preferences
-  $query = "SELECT * FROM `notification_permissions` WHERE `ss_user_id` = ".cf_quotevalue($ss_user_id);
-  $res = $mysqli->query($query);
-  $row = $res->fetch_assoc();
-  $currentPreferences = $row;
-
-  return $currentPreferences;
-}
-
 $return['status'] = 'error';
 
 if (isset($_POST['data'])) {
