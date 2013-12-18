@@ -39,7 +39,7 @@
   left: 20,
 },
 '#activeUploadIcon': {
-  visible: true,
+  visible: false,
   image: '/images/icons/cloud_upload.png',
   left: 70,
 },
