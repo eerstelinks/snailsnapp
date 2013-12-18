@@ -7,8 +7,7 @@
         </View>
       </LeftNavButton>
 
-      <ScrollView id="settingsSrollView">
-
+      <ScrollView id="settingsScrollView">
         <TableView>
           <TableViewSection>
             <TableViewRow>
@@ -43,7 +42,6 @@
             </TableViewRow>
           </TableViewSection>
         </TableView>
-
         <TableView>
           <TableViewSection>
             <TableViewRow class="separator" />
@@ -60,7 +58,6 @@
         <View id="submitView">
           <Button id="submitButton" title="L('settings_save')" onClick="sendSettingsToSnailSnapp" />
         </View>
-
       </ScrollView>
     </Window>
   </NavigationWindow>

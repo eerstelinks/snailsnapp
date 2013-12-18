@@ -8,7 +8,7 @@
   style: Ti.UI.iPhone.SystemButtonStyle.PLAIN
 },
 
-'#settingsSrollView': {
+'#settingsScrollView': {
   disableBounce: true,
   layout: 'vertical'
 },

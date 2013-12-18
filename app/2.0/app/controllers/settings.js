@@ -12,7 +12,7 @@ uploadToSnailsnapp(
       }
     }
     else {
-      // remove opacity
+
     }
   },
   function(alert) {
