@@ -27,17 +27,17 @@
         <View top="10">
           <Label class="left" text="L('post_photo_facebook')"></Label>
           <Switch id="postFacebook" right="40" class="switch" value="false" />
-          <Button class="right" onClick="explainFacebook" image="/images/icons/question.png" />
+          <Button class="right" width="20" onClick="explainFacebook" image="/images/icons/question.png" />
         </View>
         <View top="10">
           <Label class="left" text="L('post_photo_world')"></Label>
           <Switch id="postPublic" right="40" class="switch" value="false" onChange="togglePostAnonymous" />
-          <Button class="right" onClick="explainSnailsnapp" image="/images/icons/question.png" />
+          <Button class="right" width="20" onClick="explainSnailsnapp" image="/images/icons/question.png" />
         </View>
         <View id="hiddenView" top="7" visible="false">
           <Label class="left" text="L('post_photo_anonymous')"></Label>
           <Switch id="postAnonymous" right="40" class="switch" value="false" />
-          <Button class="right" onClick="explainAnonymous" image="/images/icons/question.png" />
+          <Button class="right" width="20" onClick="explainAnonymous" image="/images/icons/question.png" />
         </View>
 
         <!-- add some spacing for preventing overlap with the button -->
