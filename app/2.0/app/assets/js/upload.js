@@ -144,6 +144,7 @@ function uploadToSnailsnapp(path, successCallback, errorCallback, dataObject) {
     var appObject     = {};
     appObject.version = Ti.App.version;
     appObject.lang    = Ti.Locale.getCurrentLanguage();
+    appObject.deploy  = Ti.App.deployType;
     always.app        = appObject;
 
     var deviceObject              = {};
