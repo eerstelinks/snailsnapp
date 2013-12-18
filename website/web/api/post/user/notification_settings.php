@@ -23,7 +23,7 @@ foreach ($checkKeys as $databaseKey => $appKey) {
   }
 }
 
-$insert[$ss_user_id] = $ss_user_id;
+$insert['ss_user_id'] = $ss_user_id;
 
 $query = "SELECT `permission_id` FROM `notification_permissions` WHERE `ss_user_id` = ".cf_quotevalue($ss_user_id);
 
