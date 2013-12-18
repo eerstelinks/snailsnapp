@@ -116,7 +116,7 @@
   <string name="notifications_comments_my_comment">Iemand reageerd op mijn reactie</string>
   <string name="notifications_loves_comment_my_snapp">Iemand een reactie loved op mijn snapp</string>
   <string name="notifications_loves_comment_my_comment">Iemand een reactie op mijn reactie loved</string>
-  <string name="notifications_snailsnapp_updates">Er een update van Snailsnapp beschikbaar is</string>
+  <string name="notifications_snailsnapp_updates">Er een update van Snailsnapp is</string>
   <string name="notifications_special_occasions">Op speciale momenten</string>
 
 </resources>
