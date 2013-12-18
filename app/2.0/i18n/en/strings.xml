@@ -16,23 +16,23 @@
   <string name="default_error_message">Something went wrong</string>
   <string name="default_error_button">Let me try again</string>
   <string name="default_success_title">Snailed it</string>
-  <string name="default_success_message">This was a big success</string>
+  <string name="default_success_message">This was a great success</string>
   <string name="default_success_button">Let me go</string>
   <string name="default_not_logged_in_message">Sorry, you are not logged in, please do this first</string>
   <string name="default_not_logged_in_button">Let me log in</string>
-  <string name="update_user_failed_message">Login failed, the app maybe does not work like expected</string>
+  <string name="update_user_failed_message">Login failed, the app might not work as expected</string>
   <string name="update_user_failed_button">Let me explore</string>
-  <string name="not_online_message">This snail needs to connect to his home, it feels so lonely right now. Show her the way into the darkness</string>
-  <string name="not_online_button">Ok I'll turn on internet</string>
+  <string name="not_online_message">This snail needs to connect to his home, it feels so lonely right now. Show her the way home</string>
+  <string name="not_online_button">Ok I'll turn on my internet</string>
 
   <!-- location alerts -->
-  <string name="geo_no_location_message">To locate yourself we need your location, so turn it on in your phone settings</string>
+  <string name="geo_no_location_message">You need location services to locate yourself, so turn it on in phone settings</string>
   <string name="geo_no_location_button">Let me turn it on</string>
-  <string name="geo_own_location_purpose">To pin your Snapps on the map and show Snapps around you we need your location</string>
+  <string name="geo_own_location_purpose">To pin your snapps on the map and to show snapps around you we need your location</string>
 
   <!-- push notifications -->
   <string name="push_reason_title">Short explanation</string>
-  <string name="push_reason_message">You'll be asked to give permission for our push notifications. In our app, you decide what kind of notifications you get. We won't abuse your decision. We promise!</string>
+  <string name="push_reason_message">In the next dialogue you will be asked to give permission for our push notifications. Once in the app, you can decide for yourself which notifications you wish to receive. We will never misuse your decision, promised!</string>
   <string name="push_reason_button_yes">Go ahead</string>
   <string name="push_reason_button_no">Nope</string>
 
@@ -44,8 +44,8 @@
   <!-- camera overlay -->
   <string name="camera_title">Smile!</string>
   <string name="camera_selfie_title">Really?</string>
-  <string name="camera_selfie_message">Don't tell me you are going to make a selfie!</string>
-  <string name="camera_selfie_button">Sttt, show front camera</string>
+  <string name="camera_selfie_message">Don't tell me you thought of making a selfie?!</string>
+  <string name="camera_selfie_button">Sttt, turn on front camera</string>
   <string name="camera_flash_on">on</string>
   <string name="camera_flash_off">off</string>
   <string name="camera_flash_auto">auto</string>
@@ -66,10 +66,10 @@
   <string name="post_photo_button_facebook">Posting to Facebook...</string>
   <string name="post_photo_no_permission_title">No permission to share on Facebook</string>
   <string name="post_photo_no_permission_message">Would you like to give permission?</string>
-  <string name="post_photo_facebook_error">Sorry, we can't post this photo to your Facebook</string>
+  <string name="post_photo_facebook_error">Sorry, we can't post this photo to your Facebook timeline</string>
 
-  <string name="confirm_upload_again">We already started uploading the image. It failed, maybe your clock isn't set right. Would you like to try again?</string>
-  <string name="upload_again_failed">Can't upload the files again, sorry about that, go capture a new moment</string>
+  <string name="confirm_upload_again">We failed to process your snapp, maybe your clock is a bit off. Would you like to try again?</string>
+  <string name="upload_again_failed">Failed to upload the snapp. Again.., sorry about that, try to capture a new moment</string>
 
   <string name="confirm_delete_snapp_title">Delete this snapp</string>
   <string name="confirm_delete_snapp_message">You are about to delete this snapp, we think it's beautiful! But ok, you're the master. Delete it?</string>
@@ -89,6 +89,6 @@
 
   <!-- connections -->
   <string name="upload_failed">Upload failed</string>
-  <string name="no_200_response_code">It lookt like our server is not online</string>
+  <string name="no_200_response_code">It looks like our server is not online, try again later</string>
 
 </resources>
