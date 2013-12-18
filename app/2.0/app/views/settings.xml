@@ -1,0 +1,47 @@
+<Alloy>
+  <NavigationWindow platform="ios">
+    <Window id="postPhotoWindow" title="L('settings_title')">
+      <LeftNavButton>
+        <View id="navWrapper">
+          <Button image="/images/icons/chevron_left.png" title="L('button_back')" id="backButton" onClick="closeSettings" />
+        </View>
+      </LeftNavButton>
+
+      <ScrollView id="settingsSrollView">
+
+        <View class="container">
+          <Label class="header">Snap settings</Label>
+          <View class="switchList">
+            <Label class="left" text="Always post to Facebook" /><Switch class="right" />
+            <Label class="left" text="Always share public on Snailsnapp" /><Switch class="right" />
+            <Label class="left" text="Always share anonymous" /><Switch class="right" />
+          </View>
+        </View>
+
+        <View class="container">
+          <Label class="header">Notifications</Label>
+          <Label class="subheader">Notify me when...</Label>
+          <View class="switchList">
+            <Label class="left" text="Never" /><Switch class="right" />
+            <Label class="left" text="Somebody loves my snapp" /><Switch class="right" />
+            <Label class="left" text="Somebody comments on my snapp" /><Switch class="right" />
+            <Label class="left" text="Somebody loves a comment on my snapp" /><Switch class="right" />
+            <Label class="left" text="Somebody loves my comment on another snapp" /><Switch class="right" />
+            <Label class="left" text="Somebody comments on my comment on another snapp" /><Switch class="right" />
+            <Label class="left" text="Sombodey loves a comment on my comment on another snapp" /><Switch class="right" />
+          </View>
+        </View>
+
+        <View class="container">
+          <Label class="header">Verified user</Label>
+          <TextField width="90%" />
+          <LoginButton id="fbButton" ns="Alloy.Globals.Facebook" style="Alloy.Globals.Facebook.BUTTON_STYLE_WIDE" />
+        </View>
+
+        <View id="submitView">
+          <Button id="submitButton" title="L('settings_save')" />
+        </View>
+      </ScrollView>
+    </Window>
+  </NavigationWindow>
+</Alloy>

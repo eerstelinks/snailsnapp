@@ -60,10 +60,10 @@
   <string name="camera_flash_off">uit</string>
   <string name="camera_flash_auto">auto</string>
 
-  <!-- login page -->
+  <!-- login -->
   <string name="skip_login">Even overslaan...</string>
 
-  <!-- postphoto page -->
+  <!-- postphoto -->
   <string name="post_photo_title">Plaats Snapp</string>
   <string name="post_photo_description_placeholder">Geef een omschrijving...</string>
   <string name="post_photo_share_explanation">Als deze Snapp het waard is, deel haar dan ook met de rest van wereld!</string>
@@ -92,10 +92,15 @@
   <string name="explain_anonymous_title">Deel Anoniem</string>
   <string name="explain_anonymous_message">Misschien wil je jouw snapp wel publiek delen, maar niet met je naam en profielfoto er naast. Zet dan deze optie aan</string>
 
-  <!-- viewphoto page -->
+  <!-- viewphoto -->
   <string name="view_photo_title">Bekijk Snapp</string>
   <string name="view_photo_comment_placeholder">Geef een reactie...</string>
   <string name="view_photo_comment">Plaats reactie</string>
+
+  <!-- settings -->
+  <string name="settings_title">Instellingen</string>
+  <string name="settings_save">Wijzigingen opslaan</string>
+  <string name="settings_language">Voorkeurstaal</string>
 
   <!-- connections -->
   <string name="upload_failed">Versturen mislukt</string>

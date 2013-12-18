@@ -1,0 +1,3 @@
+function closeSettings() {
+  $.settings.close();
+}

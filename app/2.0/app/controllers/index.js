@@ -185,3 +185,13 @@ else {
   $.index.open();
   locateMe();
 }
+
+function openSettings() {
+  if (!facebook.loggedIn) {
+    showErrorAlert(L("default_not_logged_in_message"), L("default_not_logged_in_button"));
+    Alloy.createController('login').getView().open();
+  }
+  else {
+  Alloy.createController('settings').getView().open();
+  }
+}

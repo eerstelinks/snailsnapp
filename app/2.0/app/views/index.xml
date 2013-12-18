@@ -4,11 +4,11 @@
     <View id="mapview" ns="Alloy.Globals.Map"></View>
 
     <!-- temp logout button for dev -->
-    <Button onClick="fbLogOut" image="/images/icons/unlock.png" bottom="10" left="10" width="35" height="35" />
+    <Button onClick="fbLogOut" image="/images/icons/unlock.png" bottom="10" left="10" width="40" height="40" />
     <Button id="snailSwitch" mapType='public' onClick="snailSwitch" image="/images/icons/group.png" bottom="10" left="50" width="40" height="40" />
-
-    <Button onClick="locateMe" image="/images/icons/location.png" bottom="5" right="5" width="40" height="40" />
-    <Button onClick="snailHome" id="activeUploadIcon" image="/images/icons/cloud_upload.png" bottom="50" right="5" width="40" height="40" />
+    <Button onClick="openSettings" image="/images/icons/cog.png" bottom="10" right="50" width="40" height="40" />
+    <Button onClick="locateMe" image="/images/icons/location.png" bottom="10" right="10" width="40" height="40" />
+    <Button onClick="snailHome" id="activeUploadIcon" image="/images/icons/cloud_upload.png" bottom="50" right="10" width="40" height="40" />
 
     <ImageView id="snailHome" onClick="snailHome" image="/images/snailhome.png" />
   </Window>
