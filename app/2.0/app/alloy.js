@@ -172,4 +172,4 @@ if (Ti.Platform.osname == 'iphone' || Ti.Platform.osname == 'ipad') {
     service = Ti.App.iOS.registerBackgroundService({url:'bg.js'});
   });
 
-});
+}
