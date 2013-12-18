@@ -28,7 +28,13 @@ function updateUserData(callback) {
     if (e.success) {
 
       var sendData = JSON.parse(e.result);
-      sendData.apple_device_token_id = Ti.App.Properties.getString('apple_device_token_id', false);
+
+      if (Ti.App.Properties.getString('apple_device_token_id', false)) {
+        sendData.apple_device_token_id = Ti.App.Properties.getString('apple_device_token_id');
+      }
+      else if (Ti.Network.getRemoteDeviceUUID()) {
+        sendData.apple_device_token_id = Ti.Network.getRemoteDeviceUUID();
+      }
 
       uploadToSnailsnapp(
 

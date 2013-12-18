@@ -1,6 +1,5 @@
 <?php
-require(dirname(__FILE__).'/../../assets/init.php');
-require(dirname(__FILE__).'/../../assets/json_header.php');
+require(dirname(__FILE__).'/../../assets/api_init.php');
 
 // do not verify user, because it does not exist yet
 $verifyUser = false;

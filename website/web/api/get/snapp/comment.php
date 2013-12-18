@@ -1,6 +1,5 @@
 <?php
-require(dirname(__FILE__).'/../../assets/init.php');
-require(dirname(__FILE__).'/../../assets/json_header.php');
+require(dirname(__FILE__).'/../../assets/api_init.php');
 
 $loginNotRequired = true;  // watch out, user id can be 0!!!
 require(dirname(__FILE__).'/../../assets/verify_user.php');

@@ -1,14 +1,14 @@
 <?php
 
 // Put your device token here (without spaces):
-//$deviceToken = '89bd59d378bbce6c3103aec24c28c9706207af321349f5169385c29f49b3090f'; // adriaan
-$deviceToken = '51afe72a4c47f918f596928696b3e30ccd56f791a76cf9cae4844a3673aab2b1'; // chris
+$deviceToken = '89bd59d378bbce6c3103aec24c28c9706207af321349f5169385c29f49b3090f'; // adriaan
+//$deviceToken = '51afe72a4c47f918f596928696b3e30ccd56f791a76cf9cae4844a3673aab2b1'; // chris
 
 // Put your private key's passphrase here:
 $passphrase = 'itgaat';
 
 // Put your alert message here:
-$message = 'Slik, dat ben ik!';
+$message = 'Adriaan: ik ga naar huis!';
 
 ////////////////////////////////////////////////////////////////////////////////
 

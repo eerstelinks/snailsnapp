@@ -1,9 +1,26 @@
 <?php
-require(dirname(__FILE__).'/../../assets/init.php');
-require(dirname(__FILE__).'/../../assets/json_header.php');
+require(dirname(__FILE__).'/../../assets/api_init.php');
 
-$loginNotRequired = true;  // watch out, user id can be 0!!!
+// first we check if there is a type
+if (empty($app['type'])) {
+  $app['type'] = 'public';
+}
+
+// if it is public, then a facebook login is not required
+if ($app['type'] == 'public') {
+  $loginNotRequired = true;  // watch out, user id can be 0!!!
+}
+
+// go verify the user, when it is logged in
 require(dirname(__FILE__).'/../../assets/verify_user.php');
+
+// if type if private, show only private snapps
+if ($app['type'] == 'private') {
+  $where = " AND `ss_user_id` = ".cf_quotevalue($ss_user_id);
+}
+else {
+  $where = " AND `shared_snailsnapp` = 1";
+}
 
 $query = "SELECT
   `snapp_id`,
@@ -24,9 +41,9 @@ FROM
   `snapps`
 LEFT JOIN `loves` ON `loves`.`type_id` = `snapps`.`snapp_id` AND `loves`.`type` = 'snapp' AND `loves`.`ss_user_id` = ".cf_quotevalue($ss_user_id)."
 LEFT JOIN `users` ON `users`.`ss_user_id` = `snapps`.`ss_user_id`
-WHERE `status` = 'visible'
+ WHERE `status` = 'visible' ".$where."
 ORDER BY `created` DESC
-LIMIT 0, 5";
+LIMIT 0, 20";
 
 if (!$res = $mysqli->query($query)) {
 

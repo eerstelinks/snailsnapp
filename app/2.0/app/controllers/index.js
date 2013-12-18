@@ -32,8 +32,9 @@ $.mapview.addEventListener('click', function(evt) {
 });
 
 function snailSwitch() {
+
   var mapType = $.snailSwitch.getMapType();
-  if (mapType = 'public') {
+  if (mapType == 'public') {
     $.snailSwitch.setImage('/images/icons/user.png');
     $.snailSwitch.setMapType('personal');
   }
@@ -41,6 +42,9 @@ function snailSwitch() {
     $.snailSwitch.setImage('/images/icons/group.png');
     $.snailSwitch.setMapType('public');
   }
+
+  $.mapview.removeAllAnnotations();
+  $.mapview.fireEvent('regionchanged');
 }
 
 // open viewPhoto after click on either thumbnail or pin
@@ -54,10 +58,12 @@ $.mapview.addEventListener('regionchanged', function(evt) {
         showAnnotations(json.annotations);
       }
     },
-    function(e) {
-      alert(JSON.stringify(e));
+    function(error) {
+      // do nothing
+      alert(error);
     },
     {
+      type: $.snailSwitch.getMapType(),
       latitude: evt.latitude,
       latitude_delta: evt.latitudeDelta,
       longitude: evt.longitude,

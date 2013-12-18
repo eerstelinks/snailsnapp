@@ -1,15 +1,6 @@
 <?php
 
-$return['status'] = 'error';
-
-if (isset($_POST['data'])) {
-  $app = json_decode(stripslashes($_POST['data']), true);
-
-  if (!empty($app['always']['app']['lang'])) {
-    $displayLang = $app['always']['app']['lang'];
-  }
-}
-else {
+if (!isset($app)) {
   $return['debug'] = 'No post data';
   die(json_encode($return));
 }
@@ -57,7 +48,7 @@ if (!isset($verifyUser) || (isset($verifyUser) && $verifyUser === true)) {
     $ss_user_id = $row['ss_user_id'];
   }
   else {
-    $return['message'] = L('log_in_to_facebook');
+    $return['message'] = L('login_to_facebook');
     die(json_encode($return));
   }
 }
