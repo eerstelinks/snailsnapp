@@ -16,10 +16,10 @@ require(dirname(__FILE__).'/../../assets/verify_user.php');
 
 // if type if private, show only private snapps
 if ($app['type'] == 'private') {
-  $where = " AND `ss_user_id` = ".cf_quotevalue($ss_user_id);
+  $where = " AND `snapps`.`ss_user_id` = ".cf_quotevalue($ss_user_id);
 }
 else {
-  $where = " AND `shared_snailsnapp` = 1";
+  $where = " AND `snapps`.`shared_snailsnapp` = 1";
 }
 
 $query = "SELECT
