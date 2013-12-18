@@ -24,7 +24,7 @@ function toggleSwitch(event) {
 
 function sendSettingsToSnailSnapp() {
   uploadToSnailsnapp(
-    '/mail',
+    '/post/user/notifications',
     function() {
       showSuccessAlert();
     },
