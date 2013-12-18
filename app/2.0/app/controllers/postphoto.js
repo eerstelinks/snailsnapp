@@ -501,11 +501,11 @@ function postToFacebook() {
 
 // explanation alerts
 function explainFacebook() {
-  showSuccessAlert(L('explain_facebook_message'), null, L('explain_facebook_title'));
+  showSuccessAlert(L('explain_facebook_message'), L('default_understand_button'), L('explain_facebook_title'));
 }
 function explainSnailsnapp() {
-  showSuccessAlert(L('explain_snailsnapp_message'), null, L('explain_snailsnapp_title'));
+  showSuccessAlert(L('explain_snailsnapp_message'), L('default_understand_button'), L('explain_snailsnapp_title'));
 }
 function explainAnonymous() {
-  showSuccessAlert(L('explain_anonymous_message'), null, L('explain_anonymous_title'));
+  showSuccessAlert(L('explain_anonymous_message'), L('default_understand_button'), L('explain_anonymous_title'));
 }

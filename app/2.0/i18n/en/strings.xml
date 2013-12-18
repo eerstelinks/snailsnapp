@@ -15,13 +15,19 @@
   <string name="default_error_title">Snapp...</string>
   <string name="default_error_message">Something went wrong</string>
   <string name="default_error_button">Let me try again</string>
+
   <string name="default_success_title">Snailed it</string>
   <string name="default_success_message">This was a great success</string>
   <string name="default_success_button">Let me go</string>
+
+  <string name="default_understand_button">I understand</string>
+
   <string name="default_not_logged_in_message">Sorry, you are not logged in, please do this first</string>
   <string name="default_not_logged_in_button">Let me log in</string>
+
   <string name="update_user_failed_message">Login failed, the app might not work as expected</string>
   <string name="update_user_failed_button">Let me explore</string>
+
   <string name="not_online_message">This snail needs to connect to his home, it feels so lonely right now. Show her the way home</string>
   <string name="not_online_button">Ok I'll turn on my internet</string>
 
@@ -29,6 +35,10 @@
   <string name="geo_no_location_message">You need location services to locate yourself, so turn it on in phone settings</string>
   <string name="geo_no_location_button">Let me turn it on</string>
   <string name="geo_own_location_purpose">To pin your snapps on the map and to show snapps around you we need your location</string>
+
+  <!-- map explanation icons -->
+  <string name="explain_maptype_title">You hit the map toggle</string>
+  <string name="explain_maptype_message">Don't you worry, we explain this one time only. When you see the 1 user icon, you see only you own snapps. When you see the group icon you see all public snapps from you and others</string>
 
   <!-- push notifications -->
   <string name="push_reason_title">Short explanation</string>
