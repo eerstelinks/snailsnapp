@@ -35,10 +35,10 @@
 'TableViewRow': {
   font: {
     fontFamily: 'Helvetica',
-    fontSize: '12dp'
+    fontSize: '13dp'
   },
   height: 50,
-  touchEnabled: false
+  backgroundSelectedColor: Alloy.CFG.green
 },
 
 '.header': {
