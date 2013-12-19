@@ -406,9 +406,14 @@ function postToSnailsnapp() {
 
     setLoadingBars(getLoadingBars() + 5);
 
+    var description = $.description.value;
+    if (description == L('post_photo_description_placeholder')) {
+      description = '';
+    }
+
     sendObject = {
       uploaded_urls:      uploadedUrls,
-      description:        $.description.value,
+      description:        description,
       shared_facebook:    $.postFacebook.value,
       shared_snailsnapp:  $.postPublic.value,
       shared_anonymous:   $.postAnonymous.value,

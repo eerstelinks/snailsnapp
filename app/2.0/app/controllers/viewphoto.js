@@ -114,6 +114,11 @@ function enableTextArea() {
 // post comments to snailsnapp
 function postCommentToSnailsnapp() {
 
+  var comment = $.new_comment.value;
+  if (comment == L('view_photo_comment_placeholder')) {
+    comment = '';
+  }
+
   // upload data to snailsnapp
   uploadToSnailsnapp(
     '/post/snapp/comment',
@@ -129,7 +134,7 @@ function postCommentToSnailsnapp() {
       showErrorAlert(message);
     },
     {
-      comment: $.new_comment.value,
+      comment: comment,
       snapp_id: snapp.snapp_id
     }
   );
