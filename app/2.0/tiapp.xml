@@ -2,7 +2,7 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.snailsnapp</id>
     <name>Snailsnapp</name>
-    <version>2.0</version>
+    <version>1.0</version>
     <publisher>eerstelinks.nl</publisher>
     <url>http://snailsnapp.com</url>
     <description>Leave a trail of your photos!</description>
@@ -58,4 +58,7 @@
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>
+    <ios>
+        <min-ios-ver>7.0</min-ios-ver>
+    </ios>
 </ti:app>
