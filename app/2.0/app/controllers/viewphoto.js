@@ -21,8 +21,13 @@ bindPlaceholder($.new_comment, L('view_photo_comment_placeholder'));
 
 // get the comments that belong to this snapp
 uploadToSnailsnapp(
-  '/get/snapp/comment',
+  '/get/snapp/metadata',
   function(json) {
+
+    if (json.total_snapp_loves && json.current_user_rating) {
+      updateCurrentUserSnappRating(json.current_user_rating, json.total_snapp_loves);
+    }
+
     if (json.result_count > 0) {
       for (key in json.comments) {
         var commentData = json.comments[key];
@@ -31,7 +36,7 @@ uploadToSnailsnapp(
     }
   },
   function(alert) {
-    showErrorAlert(alert);
+    // not showing an alert
   },
   {
     snapp_id: snapp.snapp_id,
@@ -77,13 +82,18 @@ else {
 $.current_user_avatar.setImage(commentBoxAvatar);
 
 // set total snapp loves
-$.image_love.setTitle(' ' + snapp.total_snapp_loves + ' x');
+updateCurrentUserSnappRating(snapp.current_user_rating, snapp.total_snapp_loves);
 
-if (snapp.current_user_rating == 1) {
-  $.image_love.setImage('/images/icons/heart.png');
-}
-else {
-  $.image_love.setImage('/images/icons/heart_empty.png');
+function updateCurrentUserSnappRating(userRating, totalLoves) {
+
+  $.image_love.setTitle(' ' + totalLoves + ' x');
+
+  if (userRating == 1) {
+    $.image_love.setImage('/images/icons/heart.png');
+  }
+  else {
+    $.image_love.setImage('/images/icons/heart_empty.png');
+  }
 }
 
 function userSubmitsComment () {
