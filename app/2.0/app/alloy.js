@@ -128,6 +128,22 @@ Object.size = function(obj) {
     return size;
 };
 
+function pad(number, length){
+  var str = "" + number
+  while (str.length < length) {
+    str = '0'+str
+  }
+  return str
+}
+
+function getOffsetAsInteger() {
+  var offset = new Date().getTimezoneOffset()
+  offset = ((offset<0? '+':'-')+ // Note the reversed sign!
+           pad(parseInt(Math.abs(offset/60)), 2)+
+           pad(Math.abs(offset%60), 2));
+  return offset;
+}
+
 if (Ti.Platform.osname == 'iphone' || Ti.Platform.osname == 'ipad') {
 
   if (!Ti.App.Properties.getBool('asked_for_push_notifications', false) && !Ti.Network.getRemoteNotificationsEnabled()) {

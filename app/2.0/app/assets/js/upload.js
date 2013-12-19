@@ -35,7 +35,8 @@ function uploadToS3(name, file, successCallback, errorCallback, progressCallback
   var AWSBucketName      = 'snapps';
   var AWSHost            = AWSBucketName + '.s3.amazonaws.com';
 
-  var currentDateTime = formatDate(new Date(),'E, d MMM yyyy HH:mm:ss') + ' -0000';
+
+  var currentDateTime = formatDate(new Date(),'E, d MMM yyyy HH:mm:ss') + ' ' + getOffsetAsInteger();
 
   var xhr = Ti.Network.createHTTPClient();
 
