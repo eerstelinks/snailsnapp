@@ -64,7 +64,8 @@ else {
   $.fb_full_name.setText(L('henkie_name'));
 }
 
-$.snapp_created.setText(snapp.created);
+var date = showLocalDateTime(snapp.created);
+$.snapp_created.setText(date);
 
 // set profile user on comment box
 if (facebook.getUid()) {
@@ -153,8 +154,9 @@ function addNewComment(response) {
       verticalAlign.add(commentUser);
 
       // commentDateTime holds the datetime of the comment
+      var dateTimeCreated = showLocalDateTime(response.created);
       var commentDateTime = Ti.UI.createLabel({
-        text: response.created,
+        text: dateTimeCreated,
       });
       $.addClass(commentDateTime, 'date');
       verticalAlign.add(commentDateTime);

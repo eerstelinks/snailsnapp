@@ -105,6 +105,20 @@ function bindPlaceholder(textareaObject, placeholderText) {
   });
 }
 
+function showLocalDateTime(datebaseUTC) {
+
+  // convert database time (UTC) to local time
+  var t = datebaseUTC.split(/[- :]/);
+  var dateObject = new Date(Date.UTC(t[0], t[1]-1, t[2], t[3], t[4], t[5]));
+
+  // get month, so we can use it in the locale function
+  var thisMonth = 'month_' + (dateObject.getMonth() + 1);
+  var dateOnly = String.format(L('headingDate'), dateObject.getDate(), L(thisMonth), dateObject.getFullYear())
+
+  // return it with hours and minutes
+  return dateOnly + ' ' + dateObject.getHours() + ':' + dateObject.getMinutes();
+}
+
 // function .size() for counting elements in an object
 Object.size = function(obj) {
     var size = 0, key;
