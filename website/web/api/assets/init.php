@@ -111,12 +111,16 @@ function L($langName) {
       'nl' => 'Vul wel een bericht in',
     ),
     'login_to_facebook' => array(
-      'en' => 'Re-login with Facebook to access Snailsnapp',
-      'nl' => 'Log opnieuw in via Facebook om Snailsnapp te gebruiken',
+      'en' => 'Re-login with Facebook to access Snailsnapp (click on the cog icon and scroll down to log out and back in)',
+      'nl' => 'Log opnieuw in via Facebook om Snailsnapp te gebruiken (via het tandwiel en dan naar beneden scrollen en even uit en inloggen)',
     ),
     'double_comment' => array(
       'en' => 'Your message already exists, you cannot place the same comment twice',
       'nl' => 'Je bericht bestaat al, je kan niet twee keer precies dezelfde reactie plaatsen',
+    ),
+    'no_geolocation_provided' => array(
+      'en' => 'No geolocation provided, turn it on in your phone settings',
+      'nl' => 'Geen locatiegegevens beschikbaar, zet ze aan in je telefooninstellingen',
     ),
 
   );

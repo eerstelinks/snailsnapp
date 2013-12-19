@@ -53,6 +53,7 @@ if (isset($urlErrors)) {
 
 // check for geo coordinates
 if (empty($app['geolocation']['latitude']) || empty($app['geolocation']['longitude'])) {
+  $return['message'] = L('no_geolocation_provided');
   $return['debug'] = 'No geolocation provided';
   die(json_encode($return));
 }

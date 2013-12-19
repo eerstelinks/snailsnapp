@@ -425,9 +425,9 @@ function postToSnailsnapp() {
         isSnailsnappPostFinished = true;
         checkIfFbAndSsAreFinished();
       },
-      function() {
+      function(alert) {
         //error
-        showErrorAlert();
+        showErrorAlert(alert);
         setEditableTo(true);
         $.postphoto.show();
       },
