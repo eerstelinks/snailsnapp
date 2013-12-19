@@ -178,8 +178,12 @@ function uploadToSnailsnapp(path, successCallback, errorCallback, dataObject) {
   var xhr = Ti.Network.createHTTPClient();
 
   xhr.onerror = function(e) {
-    Ti.API.error({ errorlocation: 'onload', error: e, responseText: xhr.responseText, headers: xhr.getResponseHeaders() });
-    errorCallback(e);
+    if (Ti.App.deployType != 'production') {
+      errorCallback('debug: ' + e.code + '-error ' + path + ' (message to user: ' + L('no_200_response_code') + ')');
+    }
+    else {
+      errorCallback(L('no_200_response_code'));
+    }
   };
 
   xhr.onload = function(e) {
