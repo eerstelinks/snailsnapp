@@ -79,6 +79,9 @@
   <!-- login -->
   <string name="skip_login">Even overslaan...</string>
 
+  <string name="fb_login_failed_title">Facebook inloggen mislukt</string>
+  <string name="fb_login_failed_message">Snailsnapp heeft je Facebook-gegevens nodig om jouw snapps aan jezelf te linken</string>
+
   <!-- postphoto -->
   <string name="post_photo_title">Plaats Snapp</string>
   <string name="post_photo_description_placeholder">Geef een omschrijving...</string>

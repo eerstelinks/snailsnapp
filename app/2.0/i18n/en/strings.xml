@@ -79,6 +79,9 @@
   <!-- login -->
   <string name="skip_login">Skip for now...</string>
 
+  <string name="fb_login_failed_title">Facebook login failed</string>
+  <string name="fb_login_failed_message">Snailsnapp needs your Facebook details to link your snapps to you as a person</string>
+
   <!-- postphoto -->
   <string name="post_photo_title">Post Snapp</string>
   <string name="post_photo_description_placeholder">Write a description...</string>

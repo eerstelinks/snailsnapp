@@ -42,7 +42,7 @@ facebook.addEventListener('login', function(e) {
 
   }
   else {
-    showErrorAlert(e.error);
+    showErrorAlert(L('fb_login_failed_message'), L('fb_login_failed_title'));
     $.fbButton.show();
     $.fbLoader.hide();
   }
