@@ -18,7 +18,7 @@ $checkKeys = array(
 );
 
 foreach ($checkKeys as $databaseKey => $appKey) {
-  if (!empty($app[$appKey])) {
+  if (isset($app[$appKey])) {
     $insert[$databaseKey] = $app[$appKey];
   }
 }
