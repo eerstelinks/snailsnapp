@@ -125,12 +125,12 @@
 
   <!-- notifications -->
   <string name="notifications_never">Never</string>
-  <string name="notifications_loves_my_snapp">Somebody loves my snapp</string>
-  <string name="notifications_loves_my_comment">Somebody loves my comment</string>
-  <string name="notifications_comments_my_snapp">Somebody comments on my snapp</string>
-  <string name="notifications_comments_my_comment">Somebody comments on my comment</string>
-  <string name="notifications_loves_comment_my_snapp">Somebody loves a comment on my snapp</string>
-  <string name="notifications_loves_comment_my_comment">Somebody loves a comment on my comment</string>
+  <string name="notifications_loves_my_snapp">My snapp is loved</string>
+  <string name="notifications_loves_my_comment">My comment is loved</string>
+  <string name="notifications_comments_my_snapp">Someone comments on my snapp</string>
+  <string name="notifications_comments_my_comment">Someone comments on my comment</string>
+  <string name="notifications_loves_comment_my_snapp">A comment on my snapp loved</string>
+  <string name="notifications_loves_comment_my_comment">A comment on my comment is loved</string>
   <string name="notifications_snailsnapp_updates">An update of Snailsnapp is available</string>
   <string name="notifications_special_occasions">On special occasions</string>
 
