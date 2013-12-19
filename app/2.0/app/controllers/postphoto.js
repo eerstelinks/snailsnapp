@@ -485,13 +485,22 @@ function postToFacebook() {
     }
     else {
       // no permission to post, ask for re-log in
-      dialogs.confirm({
+      var authorisationDialog = Ti.UI.createAlertDialog({
+        cancel: 0,
         title: L('post_photo_no_permission_title'),
         message: L('post_photo_no_permission_message'),
-        no: L('button_no'),
-        yes: L('button_yes'),
-        callback: function() {
+        buttonNames: [L('button_no'), L('button_yes')],
+      });
 
+      authorisationDialog.show();
+
+      authorisationDialog.addEventListener('click', function(e) {
+        if (e.index === e.source.cancel){
+          setLoadingBars(false);
+          setUploadActive(false);
+          $.postphoto.close();
+        }
+        else {
           Alloy.Globals.Facebook.reauthorize(['publish_actions', 'photo_upload'], 'friends', function(e) {
             if (e.success){
               postToFacebook();
@@ -503,7 +512,6 @@ function postToFacebook() {
               checkIfFbAndSsAreFinished();
             }
           });
-
         }
       });
     }
