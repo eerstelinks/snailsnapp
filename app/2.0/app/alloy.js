@@ -36,6 +36,14 @@ facebook.permissions = ["email", "user_birthday", "user_location", "publish_acti
 
 // common functions
 
+// check for ios
+function isIos() {
+  if (Ti.Platform.osname == 'iphone' || Ti.Platform.osname == 'ipad') {
+    return true;
+  }
+  return false;
+}
+
 // simple error alert box with optional messsages
 function showErrorAlert(message, button, title) {
   dialog = Ti.UI.createAlertDialog({
@@ -144,7 +152,7 @@ function getOffsetAsInteger() {
   return offset;
 }
 
-if (Ti.Platform.osname == 'iphone' || Ti.Platform.osname == 'ipad') {
+if (isIos()) {
 
   if (!Ti.App.Properties.getBool('asked_for_push_notifications', false) && !Ti.Network.getRemoteNotificationsEnabled()) {
 

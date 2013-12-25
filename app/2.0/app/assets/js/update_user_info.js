@@ -29,11 +29,13 @@ function updateUserData(callback) {
 
       var sendData = JSON.parse(e.result);
 
-      if (Ti.App.Properties.getString('apple_device_token_id', false)) {
-        sendData.apple_device_token_id = Ti.App.Properties.getString('apple_device_token_id');
-      }
-      else if (Ti.Network.getRemoteDeviceUUID()) {
-        sendData.apple_device_token_id = Ti.Network.getRemoteDeviceUUID();
+      if (isIos()) {
+        if (Ti.App.Properties.getString('apple_device_token_id', false)) {
+          sendData.apple_device_token_id = Ti.App.Properties.getString('apple_device_token_id');
+        }
+        else if (Ti.Network.getRemoteDeviceUUID()) {
+          sendData.apple_device_token_id = Ti.Network.getRemoteDeviceUUID();
+        }
       }
 
       uploadToSnailsnapp(
