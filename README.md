@@ -21,8 +21,7 @@ Check if you have brew installed by typing this in the terminal: `brew -v`, if y
 Check if you have npm installed by typing this in the terminal: `npm -v`, if you don't have npm, install it like this: `brew install node`
 
 Install titanium like this:
-
-```shell
+```bash
 sudo npm install -g alloy
 sudo npm install -g titanium
 titanium sdk install
