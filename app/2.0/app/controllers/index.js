@@ -44,20 +44,21 @@ function timeOutMessage(text) {
 
 function snailSwitch() {
 
-  var mapType = $.snailSwitch.getMapType();
-  if (mapType == 'public') {
+  var showPublicSnapps = Ti.App.Properties.getString('map_visible_type', 'public');
+
+  if (showPublicSnapps == 'public') {
     $.snailSwitch.setImage('/images/icons/group.png');
-    $.snailSwitch.setMapType('private');
+    Ti.App.Properties.setString('map_visible_type', 'private');
   }
   else {
     $.snailSwitch.setImage('/images/icons/user.png');
-    $.snailSwitch.setMapType('public');
+    Ti.App.Properties.setString('map_visible_type', 'public');
   }
 
   $.mapview.removeAllAnnotations();
   getSnappsForRegion($.mapview.getRegion());
 
-  var message = String.format(L('change_maptype_timeout_message'), L('maptype_' + $.snailSwitch.getMapType()));
+  var message = String.format(L('change_maptype_timeout_message'), L('maptype_' + Ti.App.Properties.getString('map_visible_type', 'private')));
   timeOutMessage(message);
 }
 
@@ -75,7 +76,7 @@ function getSnappsForRegion(region) {
       // do nothing
     },
     {
-      type: $.snailSwitch.getMapType(),
+      type: Ti.App.Properties.getString('map_visible_type', 'private'),
       latitude: region.latitude,
       latitude_delta: region.latitudeDelta,
       longitude: region.longitude,
@@ -133,6 +134,7 @@ function setLocation(coords){
     latitudeDelta: 0.01,
     longitudeDelta: 0.01
   };
+  $.mapview.setRegion(region);
   $.mapview.setLocation(region);
 }
 
@@ -204,6 +206,6 @@ function openSettings() {
     Alloy.createController('login').getView().open();
   }
   else {
-  Alloy.createController('settings').getView().open();
+    Alloy.createController('settings').getView().open();
   }
 }
