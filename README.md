@@ -16,39 +16,38 @@ Don't upload any images to this repo. We keep this repo clean, so upload images 
 To connect eerstelinks to snailsnapp via HTTPS
 ----------------------------------------------
 
-<!-- language: lang-php -->
+```php
+// set relative path to snailsnapp directory
+$path = '../../../www.snailsnapp.com/web/';
 
-    // set relative path to snailsnapp directory
-    $path = '../../../www.snailsnapp.com/web/';
+// get filename and path from url
+// everything after https://eerstelinks.nl/snailsnapp/ except arguments (eg. ?foo=bar)
+if (isset($_SERVER['argv'][0]) && stripos($_SERVER['argv'][0], 'path=') === 0) {
 
-    // get filename and path from url
-    // everything after https://eerstelinks.nl/snailsnapp/ except arguments (eg. ?foo=bar)
-    if (isset($_SERVER['argv'][0]) && stripos($_SERVER['argv'][0], 'path=') === 0) {
+  $url = substr($_SERVER['argv'][0], 5);
+  $file = dirname(__FILE__).'/'.$path.$url;
 
-      $url = substr($_SERVER['argv'][0], 5);
-      $file = dirname(__FILE__).'/'.$path.$url;
+  // set the get parameters right if there are any
+  if (strpos($_SERVER['REQUEST_URI'], '?') !== false) {
+    $urlParams = substr(strstr($_SERVER['REQUEST_URI'], '?'), 1);
+    parse_str($urlParams, $_GET);
+  }
+  else {
+    $_GET = array();
+  }
 
-      // set the get parameters right if there are any
-      if (strpos($_SERVER['REQUEST_URI'], '?') !== false) {
-        $urlParams = substr(strstr($_SERVER['REQUEST_URI'], '?'), 1);
-        parse_str($urlParams, $_GET);
-      }
-      else {
-        $_GET = array();
-      }
+  if (file_exists($file)) {
+    require $file;
+    die();
+  }
+  elseif (file_exists($file.'.php')) {
+    require $file.'.php';
+    die();
+  }
+}
 
-      if (file_exists($file)) {
-        require $file;
-        die();
-      }
-      elseif (file_exists($file.'.php')) {
-        require $file.'.php';
-        die();
-      }
-    }
-
-    header('HTTP/1.0 404 Not Found');
-
+header('HTTP/1.0 404 Not Found');
+```
 
 app version 0.1
 ---------------
