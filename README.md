@@ -28,6 +28,10 @@ titanium sdk install
 titanium setup # run quick setup
 ```
 
+Setup GIT with using your Mac OS Keychain
+```git
+git config --global credential.helper osxkeychain
+```
 
 To connect eerstelinks to snailsnapp via HTTPS
 ----------------------------------------------
