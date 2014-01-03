@@ -127,7 +127,7 @@ function viewSnapp(marker) {
         }
         var datetime     = showLocaleDate(comment.created);
         // fill with the new comments
-        $('#comment_wrapper').append('<div class="snapp_info">' +
+        $('#comment_wrapper').append('<div class="separator"></div><div class="snapp_info">' +
           '<img id="fb_profile_pic" src="http://graph.facebook.com/' + comment.fb_user_id + '/picture?width=120&height=120" />' +
           '<div class="snapp_details">' +
             '<p id="fb_full_name">' + comment.fb_full_name + '</p>' +
