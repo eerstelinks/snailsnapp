@@ -12,6 +12,13 @@ if (isset($_POST['data'])) {
     $displayLang = $app['always']['app']['lang'];
   }
 }
+elseif (count($_GET) > 0) {
+  $app = $_GET;
+
+  if (!empty($app['always']['app']['lang'])) {
+    $displayLang = $app['always']['app']['lang'];
+  }
+}
 
 
 // check if required keys are set and exists

@@ -1,0 +1,93 @@
+html {
+  height: 100%;
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    font-family: Helvetica;
+    font-size: 15px;
+
+    #map-canvas {
+      height: 100%;
+      .snapp_marker {
+        width: 50px;
+        height: 50px;
+        border: 2px solid white;
+      }
+    }
+    #close_container {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 25px 288px 0 0;
+      z-index: 2;
+      display: none;
+    }
+    #snapp_container {
+      position: absolute;
+      width: 0;
+      background-color: white;
+      right: 0;
+      top: 0;
+      margin: 30px 0 0 0;
+      max-height: 88%;
+      overflow-y: scroll;
+      .snapp_info {
+        margin: 10px 0 10px 10px;
+        min-height: 80px;
+        #fb_profile_pic {
+          width: 80px;
+          height: 80px;
+          float: left;
+          margin: 0;
+        }
+        .snapp_details {
+          margin: 0 10px 0 90px;
+          width: 190px;
+          #fb_full_name {
+            font-weight: bold;
+            font-size: 17px;
+            margin: 0;
+          }
+          #snapp_created {
+            font-color: #555555; // snailsnapp darkgrey
+            font-size: 14px;
+            margin: 0;
+          }
+          #snapp_description {
+            margin: 5px 0 5px 0;
+          }
+          #comment_love {
+            color: #18DB6E; // snailsnapp green;
+            margin: 0;
+          }
+        }
+      }
+      .snapp_image {
+        position: relative;
+        max-height: 300px;
+        #snapp_image {
+          width: 100%;
+          height: auto;
+        }
+        #image_love {
+          color: #18DB6E; // snailsnapp green;
+          position: absolute;
+          right: 10px;
+          top: 10px;
+          margin: 0;
+        }
+      }
+      .separator {
+        margin: 0;
+        height: 1px;
+        background-color: #DCDCDC;
+      }
+      .separator:first-child {
+        height: 0px!important;
+      }
+    }
+  }
+}

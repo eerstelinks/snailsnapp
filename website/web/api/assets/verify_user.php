@@ -1,30 +1,20 @@
 <?php
 
+if (!isset($verifyUser)) {
+  $verifyUser = false;
+}
+
 if (!isset($app)) {
   $return['debug'] = 'No post data';
   die(json_encode($return));
 }
 
-// required items
-if (!isset($app['always']['facebook']['is_logged_in'])) {
-  $error[] = 'always.facebook.is_logged_in not received';
-}
-if (!isset($app['always']['facebook']['user_id'])) {
-  $error[] = 'always.facebook.user_id not received';
-}
-if (!isset($app['always']['facebook']['access_token'])) {
-  $error[] = 'always.facebook.access_token not received';
-}
-if (!isset($app['always']['facebook']['expiration_date'])) {
-  $error[] = 'always.facebook.expiration_date not received';
+$fb_logged_in = false;
+if (isset($app['always']['facebook']['is_logged_in']) && $app['always']['facebook']['is_logged_in'] === true) {
+  $fb_logged_in = true;
 }
 
-if (!empty($error)) {
-  $return['debug'] = implode(', ', $error);
-  die(json_encode($return));
-}
-
-if ((isset($loginNotRequired) && $loginNotRequired === true) && !$app['always']['facebook']['is_logged_in']) {
+if ((isset($loginNotRequired) && $loginNotRequired === true) && !$fb_logged_in) {
   $verifyUser = false;
 
   if (!isset($ss_user_id)) {
@@ -32,10 +22,29 @@ if ((isset($loginNotRequired) && $loginNotRequired === true) && !$app['always'][
   }
 }
 
-// check for if facebook user is valid
-// if the access token is not valid, check the access token the user send us
-// if that is valid, update our database with the new access token
-if (!isset($verifyUser) || (isset($verifyUser) && $verifyUser === true)) {
+if ($verifyUser) {
+  // required items
+  if (!isset($app['always']['facebook']['is_logged_in'])) {
+    $error[] = 'always.facebook.is_logged_in not received';
+  }
+  if (!isset($app['always']['facebook']['user_id'])) {
+    $error[] = 'always.facebook.user_id not received';
+  }
+  if (!isset($app['always']['facebook']['access_token'])) {
+    $error[] = 'always.facebook.access_token not received';
+  }
+  if (!isset($app['always']['facebook']['expiration_date'])) {
+    $error[] = 'always.facebook.expiration_date not received';
+  }
+
+  if (!empty($error)) {
+    $return['debug'] = implode(', ', $error);
+    die(json_encode($return));
+  }
+
+  // check for if facebook user is valid
+  // if the access token is not valid, check the access token the user send us
+  // if that is valid, update our database with the new access token
 
   // check if facebook access_token is valid
   $query = "SELECT `ss_user_id`
