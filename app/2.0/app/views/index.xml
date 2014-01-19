@@ -1,5 +1,5 @@
 <Alloy>
-  <Window>
+  <Window id="index">
     <View id="loadingBar" top="0" />
     <View id="mapview" ns="Alloy.Globals.Map"></View>
 

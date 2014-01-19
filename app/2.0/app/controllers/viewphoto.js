@@ -50,7 +50,9 @@ function showIndicator() {
   $.activityIndicator.show();
   $.activityIndicator.setWidth('100%');
   $.activityIndicator.setHeight(screenWidth);
-  $.activityIndicator.setStyle('BIG');
+  if (isIos()) {
+    $.activityIndicator.setStyle('BIG');
+  }
 }
 $.snapp_image.setImage(snapp.url_phone);
 $.snapp_description.setText(snapp.description);

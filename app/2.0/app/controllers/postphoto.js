@@ -1,4 +1,4 @@
-// require modules only where needed2
+// require modules only where needed
 var ImageFactory = require('ti.imagefactory');
 
 // include amazon upload script
@@ -288,7 +288,9 @@ function makePicture() {
 
       // convert first toImage so the correct orientation will be kept
       // works on iPhone, maybe not on Android
-      blob = Titanium.UI.createImageView({ image: blob }).toImage();
+      if (isIos()) {
+        blob = Titanium.UI.createImageView({ image: blob }).toImage();
+      }
 
       // calculate crop dimensions for a square
       if (blob.width >= blob.height) {
@@ -315,15 +317,15 @@ function makePicture() {
       $.postphoto.close();
     },
     error:function(e) {
-      showErrorAlert(L('other_camera_error_message'));
+      showErrorAlert(e);
       $.postphoto.close();
     },
     allowEditing: false,
     //saveToPhotoGallery: true,
-    autohide: true,
+    //autohide: true,
     mediaTypes:[Ti.Media.MEDIA_TYPE_PHOTO],
-    overlay: cameraOverlay,
-    showControls: false,
+    //overlay: cameraOverlay,
+    //showControls: false,
   });
 }
 

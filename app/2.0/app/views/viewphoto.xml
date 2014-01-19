@@ -1,4 +1,5 @@
 <Alloy>
+  <!--
   <NavigationWindow platform="ios">
     <Window id="postPhotoWindow" title="L('view_photo_title')">
       <LeftNavButton>
@@ -6,7 +7,8 @@
           <Button image="/images/icons/chevron_left.png" title="L('button_back')" id="backButton" onClick="closeViewPhoto" />
         </View>
       </LeftNavButton>
-
+  -->
+    <Window id="viewphoto">
       <ScrollView id="postPhotoSrollView">
 
         <!-- START OF SNAPP_INFO -->
@@ -43,5 +45,5 @@
 
       </ScrollView>
     </Window>
-  </NavigationWindow>
+  <!--</NavigationWindow>-->
 </Alloy>

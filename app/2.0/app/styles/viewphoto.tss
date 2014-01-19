@@ -3,9 +3,12 @@
   backgroundColor: Alloy.CFG.grey,
 },
 
+'#backButton[platform=ios]': {
+  style: Ti.UI.iPhone.SystemButtonStyle.PLAIN
+},
+
 '#backButton': {
   color: Alloy.CFG.green,
-  style: Ti.UI.iPhone.SystemButtonStyle.PLAIN
 },
 
 '#postPhotoSrollView': {
@@ -25,13 +28,16 @@
   height: Ti.UI.SIZE,
 },
 
+'#image_love[platform=ios]': {
+  style: Ti.UI.iPhone.SystemButtonStyle.PLAIN
+},
+
 '#image_love': {
   top: 0,
   right: 5,
   image: '/images/icons/heart-empty.png',
   title: '0 x',
   color: Alloy.CFG.green,
-  style: Ti.UI.iPhone.SystemButtonStyle.PLAIN
 },
 
 '#snapp_info': {

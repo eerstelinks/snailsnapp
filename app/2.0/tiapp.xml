@@ -11,12 +11,18 @@
     <persistent-wifi>false</persistent-wifi>
     <prerendered-icon>false</prerendered-icon>
     <statusbar-style>default</statusbar-style>
-    <statusbar-hidden>false</statusbar-hidden>
-    <fullscreen>false</fullscreen>
-    <navbar-hidden>false</navbar-hidden>
+    <statusbar-hidden>true</statusbar-hidden>
+    <fullscreen>true</fullscreen>
+    <navbar-hidden>true</navbar-hidden>
     <analytics>true</analytics>
     <guid>755e1dd9-94ec-4749-88b9-f5b5ad6bbad8</guid>
-    <property name="ti.ui.defaultunit" type="string">system</property>
+    <property name="ti.android.useLegacyWindow" type="bool">true</property>
+    <property name="ti.ui.defaultunit" type="string">dip</property>
+
+    <ios>
+        <min-ios-ver>7.0</min-ios-ver>
+    </ios>
+
     <iphone>
         <orientations device="iphone">
             <orientation>Ti.UI.PORTRAIT</orientation>
@@ -28,10 +34,18 @@
             <orientation>Ti.UI.LANDSCAPE_RIGHT</orientation>
         </orientations>
     </iphone>
+
     <android xmlns:android="http://schemas.android.com/apk/res/android">
         <manifest>
+
+            <!-- The camera is quite handy -->
+            <uses-permission android:name="android.permission.CAMERA" />
+
             <!-- Allows the API to download data from Google Map servers -->
             <uses-permission android:name="android.permission.INTERNET"/>
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
             <!-- Allows the API to cache data -->
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
             <!-- Use GPS for device location -->
@@ -48,18 +62,20 @@
             <application>
                 <!-- Replace "PASTE YOUR GOOGLE MAPS API KEY HERE" with the Google API key you obtained -->
                 <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyA44x5A46RNg6-5FZxgy8l_HcctA05S60Q"/>
+                <activity android:configChanges="keyboardHidden|orientation" android:name="ti.modules.titanium.media.TiCameraActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
             </application>
+
+            <supports-screens
+                android:smallScreens="true"
+                android:normalScreens="true"
+                android:largeScreens="true"
+                android:xlargeScreens="true"
+                android:anyDensity="true"
+            />
+
         </manifest>
     </android>
 
-    <mobileweb>
-        <precache/>
-        <splash>
-            <enabled>true</enabled>
-            <inline-css-images>true</inline-css-images>
-        </splash>
-        <theme>default</theme>
-    </mobileweb>
     <modules>
         <module platform="android">ti.map</module>
         <module platform="iphone">ti.map</module>
@@ -74,14 +90,11 @@
         <target device="blackberry">false</target>
         <target device="ipad">true</target>
         <target device="iphone">true</target>
-        <target device="mobileweb">true</target>
+        <target device="mobileweb">false</target>
         <target device="tizen">false</target>
     </deployment-targets>
     <sdk-version>3.2.0.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>
-    <ios>
-        <min-ios-ver>7.0</min-ios-ver>
-    </ios>
 </ti:app>

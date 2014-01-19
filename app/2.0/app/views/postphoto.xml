@@ -1,5 +1,5 @@
 <Alloy>
-  <NavigationWindow platform="ios">
+  <!--<NavigationWindow platform="ios">
     <Window id="postPhotoWindow" title="L('post_photo_title')">
 
       <LeftNavButton>
@@ -12,7 +12,8 @@
           <Button image="/images/icons/trash.png" onClick="cancelButton" />
         </View>
       </RightNavButton>
-
+  -->
+    <Window id="postphoto" title="L('post_photo_title')">
       <View id="loadingBar" top="0" />
 
       <ScrollView id="postPhotoSrollView">
@@ -49,5 +50,5 @@
       </View>
 
     </Window>
-  </NavigationWindow>
+  <!--</NavigationWindow>-->
 </Alloy>
